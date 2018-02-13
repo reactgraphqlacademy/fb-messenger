@@ -1,0 +1,224 @@
+$dark-blue: #4267b2;
+$light-blue: #0084ff;
+$light-grey: #f1f0f0;
+$medium-grey: #bdc7d8;
+$dark-grey: #999999;
+$black: #000000;
+$white: #ffffff;
+
+.App {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  .top-bar {
+    background: $dark-blue;
+    padding: 1em;
+    border-bottom: 1px solid #29487d;
+    color: $white;
+    .icon {
+      color: $white;
+    }
+
+  }
+
+  .content {
+    display: flex;
+    //height: 100%;
+    overflow: hidden;
+  }
+
+  .messenger {
+    display: flex;
+    flex-flow: column;
+    width: 25%;
+    border-right: 1px solid $medium-grey;
+    .messenger-info-bar {
+      border-bottom: 1px solid $medium-grey;
+      padding: 0.85em;
+      .info-bar-content {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+      }
+    }
+    .messenger-list {
+      //padding: 1em;
+      display: flex;
+      overflow-y: auto;
+      ul {
+        width: 100%;
+        list-style: none inside none;
+        padding: 0;
+        margin: 0;
+        li.preview {
+          display: flex;
+          align-items: center;
+          padding: 0.4em 0.75em;
+          &:hover {
+            background: $light-grey;
+            cursor: pointer;
+          }
+          .user-name {
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+
+  .conversation {
+    display: flex;
+    flex-flow: column;
+    width: 75%;
+
+    .conversation-info-bar {
+      border-bottom: 1px solid $medium-grey;
+      padding: 0.7em;
+      .info-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .conversation-title {
+          text-align: center;
+          font-size: 0.9rem;
+          .last-active{
+            font-size: 0.75rem;
+            color: $dark-grey;
+          }
+        }
+        .conversation-menu {
+          & > div {
+            display: inline-block;
+          }
+          .icon {
+            margin: 0 0.5em;
+          }
+        }
+      }
+    }
+
+    .conversation-content-wrapper {
+      display: flex;
+      height: 100%;
+
+      .conversation-detail {
+        width: 66.6%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+
+        .messages {
+          padding: 1em;
+          .message-wrapper {
+            padding: 0.5em;
+            display: flex;
+            &.sent {
+              justify-content: flex-end;
+              .message {
+                background: $light-blue;
+                color: $white;
+              }
+              .message-read .icon {
+                font-size:0.6rem;
+                justify-self: flex-end;
+              }
+            }
+            &.received {
+              .message {
+                background: $light-grey;
+              }
+            }
+            .message {
+              border-radius: 20px;
+              padding: 0.5em 1em;
+              display: inline-block;
+              font-size: 0.9rem;
+            }
+          }
+
+        }
+        .type-message-wrapper {
+          padding: 1em;
+          border-top: 1px solid $medium-grey;
+          font-size: 0.9rem;
+          display: flex;
+          justify-content: space-between;
+          .type-message-box {
+            color: $medium-grey;
+          }
+          .send-button {
+            color: $light-blue;
+            cursor: pointer;
+          }
+        }
+      }
+
+
+
+      .user-detail-wrapper {
+        width: 33.3%;
+        border-left: 1px solid $medium-grey;
+        .user-detail-content {
+          padding: 1em 0.8em;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid $medium-grey;
+          .user-detail {
+            display: flex;
+            align-items: center;
+            .username {
+              font-size: 0.9rem;
+              .last-active {
+                font-size: 0.75rem;
+                color: $dark-grey;
+              }
+            }
+          }
+        }
+        .options {
+          padding: 1em;
+          font-size: 0.9em;
+          color: $dark-grey;
+          border-bottom: 1px solid $medium-grey;
+        }
+        .facebook-profile {
+          padding: 1em;
+          font-size: 0.9em;
+          color: $dark-grey;
+        }
+        .icon {
+          color: $dark-grey;
+          font-size: 1rem;
+        }
+      }
+
+    }
+  }
+}
+
+.avatar {
+  margin-right: 0.5em;
+  &.small {
+    clip-path: circle(10px at center);
+    width:20px;
+  }
+  &.medium {
+    clip-path: circle(15px at center);
+    width:30px;
+  }
+  &.large {
+    clip-path: circle(25px at center);
+    width: 50px;
+  }
+}
+
+.icon {
+  color: $light-blue;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
