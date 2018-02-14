@@ -63,7 +63,12 @@ $white: #ffffff;
             cursor: pointer;
           }
           .user-name {
+            font-size: 0.9em;
             text-transform: capitalize;
+          }
+          .message-preview {
+            font-size: 0.8em;
+            color: $dark-grey;
           }
         }
       }
@@ -85,6 +90,9 @@ $white: #ffffff;
         .conversation-title {
           text-align: center;
           font-size: 0.9rem;
+          .user-name {
+            text-transform: capitalize;
+          }
           .last-active{
             font-size: 0.75rem;
             color: $dark-grey;
@@ -113,6 +121,11 @@ $white: #ffffff;
 
         .messages {
           padding: 1em;
+          overflow-y: auto;
+          p {
+            color: $dark-grey;
+            font-size: 0.9em;
+          }
           .message-wrapper {
             padding: 0.5em;
             display: flex;
@@ -122,9 +135,14 @@ $white: #ffffff;
                 background: $light-blue;
                 color: $white;
               }
-              .message-read .icon {
-                font-size:0.6rem;
-                justify-self: flex-end;
+              .message-read {
+                display: flex;
+                flex-flow: column;
+                justify-content: flex-end;
+                .icon {
+                  font-size:0.6rem;
+                  cursor: auto;
+                }
               }
             }
             &.received {
@@ -147,8 +165,10 @@ $white: #ffffff;
           font-size: 0.9rem;
           display: flex;
           justify-content: space-between;
-          .type-message-box {
+          .message-box {
             color: $medium-grey;
+            border-color: transparent;
+
           }
           .send-button {
             color: $light-blue;
@@ -171,12 +191,13 @@ $white: #ffffff;
           .user-detail {
             display: flex;
             align-items: center;
-            .username {
+            .user-name {
               font-size: 0.9rem;
-              .last-active {
-                font-size: 0.75rem;
-                color: $dark-grey;
-              }
+              text-transform: capitalize;
+            }
+            .last-active {
+              font-size: 0.75rem;
+              color: $dark-grey;
             }
           }
         }
@@ -210,6 +231,7 @@ $white: #ffffff;
   &.medium {
     clip-path: circle(15px at center);
     width:30px;
+    height: 30px;
   }
   &.large {
     clip-path: circle(25px at center);

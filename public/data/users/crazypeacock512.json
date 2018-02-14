@@ -29,5 +29,32 @@
     "thumbnail": "http://api.randomuser.me/portraits/thumb/women/75.jpg"
   },
   "version": "0.6",
-  "nationality": "US"
+  "nationality": "US",
+  "conversation": [
+    {
+      "text": "some kind of message",
+      "status": "sent",
+      "time": "01/02/2018 15:43"
+    },
+    {
+      "text": "first received message",
+      "status": "received",
+      "time": "01/02/2018 15:43"
+    },
+    {
+      "text": "second sent mesage",
+      "status": "sent",
+      "time": "01/02/2018 15:43"
+    },
+    {
+      "text": "third sent message",
+      "status": "sent",
+      "time": "01/02/2018 15:43"
+    },
+    {
+      "text": "second received message",
+      "status": "received",
+      "time": "01/02/2018 15:43"
+    }
+  ]
 }

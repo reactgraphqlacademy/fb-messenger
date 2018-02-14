@@ -1,30 +1,28 @@
 import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
-import './App.css';
+import './App.css'
+
+// add normal font awesome
+
+import users from './mocks/users.js'
+import messages from './mocks/messages.js'
 
 class App extends Component {
 
     constructor() {
         super()
         this.state = {
-            users: []
+            messages: messages,
+            selectedUser: users[0]
         }
     }
 
-    componentDidMount() {
-        fetch('/data/users.js', {
-            method: 'get'
-        }).then((response) => {
-            return response.json()
-        }).then((data) => {
-            this.setState({ users: data })
-        }).catch((err)=> {
-            console.log(err)
-        })
+    selectUser = (user) => {
+        this.setState({selectedUser : user})
     }
 
-    showConversation = () => {
-        console.log('user clicked')
+    handleChange = () => {
+
     }
 
     newMessage = () => {
@@ -37,12 +35,57 @@ class App extends Component {
 
     render() {
 
-        let messengerList = this.state.users.map((user, i) => (
-            <li key={i} onClick={this.showConversation} className="preview">
-                <img src={`images/${user.username}_lg.jpg`} alt={`${user.username}`} className="avatar large" />
-                <span className="user-name">{`${user.name.first} ${user.name.last}`}</span>
-            </li>
-        ))
+        const sortUsers = (user) => {
+            console.log(user)
+        // function(messages) {
+        //     console.log(messages)
+        //     return function compareusers(user) {
+        //         console.log(user)
+        //         return messages.map(message => message.from === user.username || message.to === user.username)
+        //     }
+        // }
+        }
+
+        const displayUsers = (user, i) => (
+                <li key={i} onClick={() => this.selectUser(user)} className="preview">
+                    <img src={`images/${user.username}_lg.jpg`} alt={`${user.username}`} className="avatar large" />
+                    <div>
+                        <div className="user-name">{`${user.name.first} ${user.name.last}`}</div>
+                        <div className="message-preview">
+                            message preview
+                        </div>
+                    </div>
+                </li>
+            )
+
+        const messengerList = users
+            // .sort(sortUsers(this.state.messages))
+            .map(displayUsers)
+
+        const filterMessages = message => message.from === this.state.selectedUser.username || message.to === this.state.selectedUser.username
+
+        const displayMessages = (message,i) =>
+            <div key={i} className={`message-wrapper ${message.from === 'you' ? 'sent' : 'received'}`}>
+                {message.to === 'you' &&
+                <img src={`images/${this.state.selectedUser.username}_lg.jpg`}
+                     alt={`${this.state.selectedUser.username}`} className="avatar medium"/>
+                }
+                <div className="message">
+                    {message.message}
+                </div>
+                {message.from === 'you' &&
+                <div className="message-read">
+                    <FontAwesome
+                        name="check-circle"
+                        className="icon"
+                    />
+                </div>
+                }
+            </div>
+
+        const conversation = this.state.messages
+            .filter(filterMessages)
+            .map(displayMessages)
 
         return (
           <div className="App">
@@ -87,7 +130,9 @@ class App extends Component {
                         <div className="info-bar-content">
                             <div>&nbsp;</div>
                             <div className="conversation-title">
-                                User Name
+                                <div className="user-name">
+                                {this.state.selectedUser.name && `${this.state.selectedUser.name.first} ${this.state.selectedUser.name.last}`}
+                                </div>
                                 <div className="last-active">
                                     Active 20m ago
                                 </div>
@@ -117,43 +162,25 @@ class App extends Component {
                     <div className="conversation-content-wrapper">
                         <div className="conversation-detail">
                             <div className="messages">
-                                <div className="message-wrapper received">
-                                    <div className="avatar medium">
-                                        avatar
-                                    </div>
-                                    <div className="message">
-                                        received message
-                                    </div>
-                                </div>
-                                <div className="message-wrapper sent">
-                                    <div className="message">
-                                        some sent message
-                                    </div>
-                                    <div className="message-read">
-                                        <FontAwesome
-                                            name="check-circle"
-                                            className="icon"
-                                        />
-                                    </div>
-                                </div>
+                                {conversation || <p>You have no messages</p>}
                             </div>
-                            <div className="type-message-wrapper">
-                                <div className="type-message-box">
-                                    Type a message...
-                                </div>
-                                <div className="send-button">
-                                    Send
-                                </div>
+                        <div className="type-message-wrapper">
+                                <input type="text" placeholder="Type your message..." onChange={this.handleChange} className="message-box" />
+                            <div className="send-button">
+                                Send
                             </div>
+                        </div>
                         </div>
                         <div className="user-detail-wrapper">
                             <div className="user-detail-content">
                                 <div className="user-detail">
                                     <div className="avatar large">
-                                        user avatar
+                                        <img src={`images/${this.state.selectedUser.username}_lg.jpg`} alt={`${this.state.selectedUser.username}`} className="avatar large" />
                                     </div>
-                                    <div className="username">
-                                        User Name
+                                    <div className="user-title">
+                                        <div className="user-name">
+                                            {this.state.selectedUser.name && `${this.state.selectedUser.name.first} ${this.state.selectedUser.name.last}`}
+                                        </div>
                                         <div className="last-active">
                                             Active 20m ago
                                         </div>
@@ -171,6 +198,7 @@ class App extends Component {
                             </div>
                             <div className="facebook-profile">
                                 Facebook Profile
+
                             </div>
                         </div>
                     </div>

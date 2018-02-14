@@ -1,4 +1,4 @@
-[
+const users = [
   {
     "gender": "female",
     "name": {
@@ -300,3 +300,5 @@
     "username": "heavygoose106"
   }
 ]
+
+export default users
