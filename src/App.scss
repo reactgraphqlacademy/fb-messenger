@@ -14,9 +14,18 @@ html, body {
   height: 100%;
 }
 
-.App {
+.app {
+  overflow: hidden;
+  flex: 1;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  flex-direction: column;
   display: flex;
-  flex-flow: column;
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -24,40 +33,179 @@ html, body {
   .top-bar {
     background: $dark-blue;
     padding: 1em;
+    text-align: center;
     border-bottom: 1px solid #29487d;
     color: $white;
     .icon {
       color: $white;
     }
-
-  }
-
-  .content {
-    display: flex;
-    //height: 100%;
-    overflow: hidden;
   }
 
   .messenger {
     display: flex;
-    flex-flow: column;
-    width: 25%;
+    //width: 25%;
     border-right: 1px solid $medium-grey;
-    .messenger-info-bar {
-      border-bottom: 1px solid $medium-grey;
-      padding: 0.85em;
-      .info-bar-content {
+
+    .conversation {
+      display: flex;
+      flex-direction: column;
+      flex:3;
+      .conversation-bar {
+          border-bottom: 1px solid $medium-grey;
+          padding: 0.8em;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .conversation-title {
+            text-align: center;
+            margin: auto;
+            font-size: 0.9rem;
+            .user-name {
+              text-transform: capitalize;
+            }
+            .last-active{
+              font-size: 0.75rem;
+              color: $dark-grey;
+            }
+          }
+          .conversation-menu {
+            & > div {
+              display: inline-block;
+            }
+            .icon {
+              margin: 0 0.5em;
+            }
+          }
+        }
+
+      .conversation-content {
         display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: space-between;
+        height: 100%;
+
+        .messages {
+          width: 66.6%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .list {
+            padding: 1em;
+            overflow-y: auto;
+            p {
+              color: $dark-grey;
+              font-size: 0.9em;
+            }
+            .message-wrapper {
+              padding: 0.5em;
+              display: flex;
+              &.sent {
+                justify-content: flex-end;
+                .message {
+                  background: $light-blue;
+                  color: $white;
+                }
+                .message-read {
+                  display: flex;
+                  flex-flow: column;
+                  justify-content: flex-end;
+                  .icon {
+                    font-size:0.6rem;
+                    cursor: auto;
+                  }
+                }
+              }
+              &.received {
+                .message {
+                  background: $light-grey;
+                }
+              }
+              .message {
+                border-radius: 20px;
+                padding: 0.5em 1em;
+                display: inline-block;
+                font-size: 0.9rem;
+              }
+            }
+
+          }
+          .new-message {
+            padding: 1em;
+            border-top: 1px solid $medium-grey;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            .message-box {
+              color: $medium-grey;
+              border-color: transparent;
+
+            }
+            .send-button {
+              color: $light-blue;
+              cursor: pointer;
+            }
+          }
+        }
+
+        .user-detail {
+          width: 33.3%;
+          border-left: 1px solid $medium-grey;
+          .user-detail-content {
+            padding: 1em 0.8em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid $medium-grey;
+            .detail {
+              display: flex;
+              align-items: center;
+              .user-name {
+                font-size: 0.9rem;
+                text-transform: capitalize;
+              }
+              .last-active {
+                font-size: 0.75rem;
+                color: $dark-grey;
+              }
+            }
+          }
+          .options {
+            padding: 1em;
+            font-size: 0.9em;
+            color: $dark-grey;
+            border-bottom: 1px solid $medium-grey;
+          }
+          .facebook-profile {
+            padding: 1em;
+            font-size: 0.9em;
+            color: $dark-grey;
+          }
+          .icon {
+            color: $dark-grey;
+            font-size: 1rem;
+          }
+        }
+
       }
     }
-    .messenger-list {
-      //padding: 1em;
+
+
+    .threads {
       display: flex;
-      overflow-y: auto;
-      ul {
+      border-right: 1px solid $medium-grey;
+      flex-direction: column;
+      flex:1;
+      .thread-bar {
+        border-bottom: 1px solid $medium-grey;
+        padding: 0.85em;
+        .info-bar-content {
+          display: flex;
+          align-items: center;
+          align-content: center;
+          justify-content: space-between;
+        }
+      }
+      .thread-list {
+        overflow-y: auto;
         width: 100%;
         list-style: none inside none;
         padding: 0;
@@ -80,152 +228,6 @@ html, body {
           }
         }
       }
-    }
-  }
-
-  .conversation {
-    display: flex;
-    flex-flow: column;
-    width: 75%;
-
-    .conversation-info-bar {
-      border-bottom: 1px solid $medium-grey;
-      padding: 0.7em;
-      .info-bar-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .conversation-title {
-          text-align: center;
-          font-size: 0.9rem;
-          .user-name {
-            text-transform: capitalize;
-          }
-          .last-active{
-            font-size: 0.75rem;
-            color: $dark-grey;
-          }
-        }
-        .conversation-menu {
-          & > div {
-            display: inline-block;
-          }
-          .icon {
-            margin: 0 0.5em;
-          }
-        }
-      }
-    }
-
-    .conversation-content-wrapper {
-      display: flex;
-      height: 100%;
-
-      .conversation-detail {
-        width: 66.6%;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-
-        .messages {
-          padding: 1em;
-          overflow-y: auto;
-          p {
-            color: $dark-grey;
-            font-size: 0.9em;
-          }
-          .message-wrapper {
-            padding: 0.5em;
-            display: flex;
-            &.sent {
-              justify-content: flex-end;
-              .message {
-                background: $light-blue;
-                color: $white;
-              }
-              .message-read {
-                display: flex;
-                flex-flow: column;
-                justify-content: flex-end;
-                .icon {
-                  font-size:0.6rem;
-                  cursor: auto;
-                }
-              }
-            }
-            &.received {
-              .message {
-                background: $light-grey;
-              }
-            }
-            .message {
-              border-radius: 20px;
-              padding: 0.5em 1em;
-              display: inline-block;
-              font-size: 0.9rem;
-            }
-          }
-
-        }
-        .type-message-wrapper {
-          padding: 1em;
-          border-top: 1px solid $medium-grey;
-          font-size: 0.9rem;
-          display: flex;
-          justify-content: space-between;
-          .message-box {
-            color: $medium-grey;
-            border-color: transparent;
-
-          }
-          .send-button {
-            color: $light-blue;
-            cursor: pointer;
-          }
-        }
-      }
-
-
-
-      .user-detail-wrapper {
-        width: 33.3%;
-        border-left: 1px solid $medium-grey;
-        .user-detail-content {
-          padding: 1em 0.8em;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 1px solid $medium-grey;
-          .user-detail {
-            display: flex;
-            align-items: center;
-            .user-name {
-              font-size: 0.9rem;
-              text-transform: capitalize;
-            }
-            .last-active {
-              font-size: 0.75rem;
-              color: $dark-grey;
-            }
-          }
-        }
-        .options {
-          padding: 1em;
-          font-size: 0.9em;
-          color: $dark-grey;
-          border-bottom: 1px solid $medium-grey;
-        }
-        .facebook-profile {
-          padding: 1em;
-          font-size: 0.9em;
-          color: $dark-grey;
-        }
-        .icon {
-          color: $dark-grey;
-          font-size: 1rem;
-        }
-      }
-
     }
   }
 }

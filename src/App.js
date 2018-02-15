@@ -4,7 +4,7 @@ import "./App.css"
 import users from "./mocks/users.js"
 import messages from "./mocks/messages.js"
 
-const filterMessageByUsername = username => message => (
+const filterMessageByUsername = ({ username } = {}) => message => (
   message.from === username ||
   message.to === username
 )
@@ -15,19 +15,19 @@ class App extends Component {
     const selectedUser = users[0]
     this.state = {
       selectedUser: selectedUser,
-      messages: messages.filter(filterMessageByUsername(selectedUser.username))
+      conversation: messages.filter(filterMessageByUsername(selectedUser))
     }
   }
 
-  selectUser = user => {
+  selectUser = (user = {}) => {
     this.setState({
       selectedUser: user,
-      messages: messages.filter(filterMessageByUsername(user.username))
+      conversation: messages.filter(filterMessageByUsername(user))
     })
   }
 
   newMessage = () => {
-    console.log("new msg clicked")
+    this.selectUser()
   }
 
   showSettings = () => {
@@ -36,7 +36,7 @@ class App extends Component {
 
   render() {
     const selectedUser = this.state.selectedUser
-    const conversation = this.state.messages.map((message, i) => (
+    const styledConversation = this.state.conversation.map((message, i) => (
       <div
         key={i}
         className={`message-wrapper ${
@@ -53,33 +53,34 @@ class App extends Component {
         <div className="message">{message.message}</div>
         {message.from === "you" && (
           <div className="message-read">
-            <i class="icon fa fa-check-circle" />
+            <i className="icon fa fa-check-circle" />
           </div>
         )}
       </div>
     ))
 
     return (
-      <div className="App">
-        <div className="top-bar">
-          <i class="icon fab fa-facebook-messenger" />
-        </div>
+      <div className="app">
+          <div className="top-bar">
+            <i class="icon fab fa-facebook-messenger" />
+          </div>
 
-        <div className="content">
           <div className="messenger">
-            <div className="messenger-info-bar">
-              <div className="info-bar-content">
-                <div onClick={this.showSettings}>
-                  <i class="icon fas fa-cog" />
-                </div>
-                Messenger
-                <div onClick={this.newMessage}>
-                  <i class="icon fas fa-edit" />
+
+            <div className="threads">
+
+              <div className="thread-bar">
+                <div className="info-bar-content">
+                  <a onClick={this.showSettings}>
+                    <i className="icon fas fa-cog" />
+                  </a>
+                  Messenger
+                  <a onClick={this.newMessage}>
+                    <i className="icon fas fa-edit" />
+                  </a>
                 </div>
               </div>
-            </div>
-            <div className="messenger-list">
-              <ul>
+              <ul className="thread-list">
                 {users.map((user, i) => (
                   <li
                     key={i}
@@ -101,12 +102,9 @@ class App extends Component {
                 ))}
               </ul>
             </div>
-          </div>
 
-          <div className="conversation">
-            <div className="conversation-info-bar">
-              <div className="info-bar-content">
-                <div>&nbsp;</div>
+            <div className="conversation">
+              <div className="conversation-bar">
                 <div className="conversation-title">
                   <div className="user-name">
                     {selectedUser.name &&
@@ -116,59 +114,58 @@ class App extends Component {
                 </div>
                 <div className="conversation-menu">
                   <div>
-                    <i class="icon fas fa-phone" />
+                    <i className="icon fas fa-phone" />
                   </div>
                   <div>
-                    <i class="icon fas fa-video" />
+                    <i className="icon fas fa-video" />
                   </div>
                   <div>
-                    <i class="icon fas fa-info-circle" />
+                    <i className="icon fas fa-info-circle" />
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="conversation-content-wrapper">
-              <div className="conversation-detail">
+              <div className="conversation-content">
                 <div className="messages">
-                  {conversation || <p>You have no messages</p>}
+                  <div className="list">
+                    {styledConversation || <p>You have no messages</p>}
+                  </div>
+                  <div className="new-message">
+                    <input
+                      type="text"
+                      placeholder="Type your message..."
+                      className="message-box"
+                    />
+                    <div className="send-button">Send</div>
+                  </div>
                 </div>
-                <div className="type-message-wrapper">
-                  <input
-                    type="text"
-                    placeholder="Type your message..."
-                    className="message-box"
-                  />
-                  <div className="send-button">Send</div>
-                </div>
-              </div>
-              <div className="user-detail-wrapper">
-                <div className="user-detail-content">
-                  <div className="user-detail">
-                    <div className="avatar large">
-                      <img
-                        src={`images/${selectedUser.username}_lg.jpg`}
-                        alt={`${selectedUser.username}`}
-                        className="avatar large"
-                      />
-                    </div>
-                    <div className="user-title">
-                      <div className="user-name">
-                        {selectedUser.name &&
-                          `${selectedUser.name.first} ${selectedUser.name.last}`}
+                <div className="user-detail">
+                  <div className="user-detail-content">
+                    <div className="user">
+                      <div className="avatar large">
+                        <img
+                          src={`images/${selectedUser.username}_lg.jpg`}
+                          alt={`${selectedUser.username}`}
+                          className="avatar large"
+                        />
                       </div>
-                      <div className="last-active">Active 20m ago</div>
+                      <div className="user-title">
+                        <div className="user-name">
+                          {selectedUser.name &&
+                            `${selectedUser.name.first} ${selectedUser.name.last}`}
+                        </div>
+                        <div className="last-active">Active 20m ago</div>
+                      </div>
+                    </div>
+                    <div>
+                      <i className="icon fas fa-cog" />
                     </div>
                   </div>
-                  <div>
-                    <i class="icon fas fa-cog" />
-                  </div>
+                  <div className="options">Options</div>
+                  <div className="facebook-profile">Facebook Profile</div>
                 </div>
-                <div className="options">Options</div>
-                <div className="facebook-profile">Facebook Profile</div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     )
   }
