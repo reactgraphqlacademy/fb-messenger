@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import FontAwesome from 'react-fontawesome'
 import './App.css'
-
-// add normal font awesome
 
 import users from './mocks/users.js'
 import messages from './mocks/messages.js'
@@ -75,10 +72,7 @@ class App extends Component {
                 </div>
                 {message.from === 'you' &&
                 <div className="message-read">
-                    <FontAwesome
-                        name="check-circle"
-                        className="icon"
-                    />
+                    <i class="icon fa fa-check-circle" ></i>
                 </div>
                 }
             </div>
@@ -91,11 +85,7 @@ class App extends Component {
           <div className="App">
 
             <div className="top-bar">
-                <FontAwesome
-                    name="facebook-messenger"
-                    className="icon"
-                />
-
+                <i class="icon fab fa-facebook-messenger"></i>
             </div>
 
             <div className="content">
@@ -104,17 +94,11 @@ class App extends Component {
                     <div className="messenger-info-bar">
                         <div className="info-bar-content">
                             <div onClick={this.showSettings}>
-                                <FontAwesome
-                                    name="cog"
-                                    className="icon"
-                                />
+                                <i class="icon fas fa-cog"></i>
                             </div>
                             Messenger
                             <div onClick={this.newMessage}>
-                                <FontAwesome
-                                    name="edit"
-                                    className="icon"
-                                />
+                                <i class="icon fas fa-edit"></i>
                             </div>
                         </div>
                     </div>
@@ -139,22 +123,13 @@ class App extends Component {
                             </div>
                             <div className="conversation-menu">
                                 <div>
-                                    <FontAwesome
-                                        name="phone"
-                                        className="icon"
-                                    />
+                                    <i class="icon fas fa-phone"></i>
                                 </div>
                                 <div>
-                                    <FontAwesome
-                                        name="video"
-                                        className="icon"
-                                    />
+                                    <i class="icon fas fa-video"></i>
                                 </div>
                                 <div>
-                                    <FontAwesome
-                                        name="info-circle"
-                                        className="icon"
-                                    />
+                                    <i class="icon fas fa-info-circle"></i>
                                 </div>
                             </div>
                         </div>
@@ -187,10 +162,7 @@ class App extends Component {
                                     </div>
                                 </div>
                                 <div>
-                                    <FontAwesome
-                                        name="cog"
-                                        className="icon"
-                                    />
+                                  <i class="icon fas fa-cog"></i>
                                 </div>
                             </div>
                             <div className="options">
