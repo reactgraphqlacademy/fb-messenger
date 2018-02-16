@@ -52,21 +52,15 @@ html, body {
       flex:3;
       .conversation-bar {
           border-bottom: 1px solid $medium-grey;
-          padding: 0.8em;
+          padding: 0.9em;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          .conversation-title {
+          .title {
             text-align: center;
             margin: auto;
             font-size: 0.9rem;
-            .user-name {
-              text-transform: capitalize;
-            }
-            .last-active{
-              font-size: 0.75rem;
-              color: $dark-grey;
-            }
+            text-transform: capitalize;
           }
           .conversation-menu {
             & > div {
@@ -138,10 +132,6 @@ html, body {
               color: $medium-grey;
               border-color: transparent;
 
-            }
-            .send-button {
-              color: $light-blue;
-              cursor: pointer;
             }
           }
         }
@@ -253,4 +243,11 @@ html, body {
   color: $light-blue;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+button {
+  color: $light-blue;
+  border: none;
+  cursor: pointer;
+  font-weight: bolder;
 }
