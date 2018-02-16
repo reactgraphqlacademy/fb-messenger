@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Threads from './Threads'
-import Conversation from './Conversation'
-import messages from "./mocks/messages"
-import users from "./mocks/users"
+import Threads from './messenger/Threads'
+import Conversation from './messenger/Conversation'
+import messages from "../mocks/messages"
+import users from "../mocks/users"
 
 const filterMessageByUsername = ({ username } = {}) => message => (
     message.from === username ||

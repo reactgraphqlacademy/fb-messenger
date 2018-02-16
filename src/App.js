@@ -1,7 +1,7 @@
 import React from "react"
 import "./App.css"
-import TopBar from "./TopBar"
-import Messenger from "./Messenger"
+import TopBar from "./app/TopBar"
+import Messenger from "./app/Messenger"
 
 const App = () => {
 

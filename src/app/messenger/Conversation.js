@@ -1,7 +1,7 @@
 import React from 'react'
 
-import ConversationBar from './ConversationBar'
-import ConversationContent from './ConversationContent'
+import ConversationBar from './conversation/ConversationBar'
+import ConversationContent from './conversation/ConversationContent'
 
 const Conversation = ({ selectedUser, conversation = [] }) => {
 

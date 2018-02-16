@@ -1,7 +1,7 @@
 import React from 'react'
 
-import UserDetail from './UserDetail'
-import Messages from './Messages'
+import UserDetail from './conversationContent/UserDetail'
+import Messages from './conversationContent/Messages'
 
 const ConversationContent = ({ conversation = [], selectedUser }) => (
         <div className="conversation-content">

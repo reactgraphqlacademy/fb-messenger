@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from './Icon'
+import Icon from '../../layout/Icon'
 
 const ConversationBar = ({ selectedUser }) => (
     <div className="conversation-bar">

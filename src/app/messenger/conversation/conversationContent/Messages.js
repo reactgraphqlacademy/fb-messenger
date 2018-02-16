@@ -1,6 +1,6 @@
 import React from 'react'
-import Avatar from './Avatar'
-import Icon from './Icon'
+import Avatar from '../../../layout/Avatar'
+import Icon from '../../../layout/Icon'
 
 const Messages = ({ conversation = [], selectedUser }) => {
 
