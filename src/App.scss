@@ -51,34 +51,32 @@ html, body {
       flex-direction: column;
       flex:3;
       .conversation-bar {
-          border-bottom: 1px solid $medium-grey;
-          padding: 0.9em;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          .title {
-            text-align: center;
-            margin: auto;
-            font-size: 0.9rem;
-            text-transform: capitalize;
+        border-bottom: 1px solid $medium-grey;
+        padding: 0.9em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height:23px;
+        h2 {
+          text-transform: capitalize;
+        }
+        .conversation-menu {
+          & > div {
+            display: inline-block;
           }
-          .conversation-menu {
-            & > div {
-              display: inline-block;
-            }
-            .icon {
-              margin: 0 0.5em;
-            }
+          .icon {
+            margin: 0 0.5em;
           }
         }
+      }
 
       .conversation-content {
         display: flex;
         height: 100%;
 
         .messages {
-          width: 66.6%;
           display: flex;
+          flex:2;
           flex-direction: column;
           justify-content: space-between;
 
@@ -139,13 +137,20 @@ html, body {
         .user-detail {
           width: 33.3%;
           border-left: 1px solid $medium-grey;
-          .user-detail-content {
-            padding: 1em 0.8em;
+          > div {
+            padding: 1em;
+            font-size: 0.9em;
+            color: $dark-grey;
+            border-bottom: 1px solid $medium-grey;
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+          .user {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid $medium-grey;
-            .detail {
+            > div {
               display: flex;
               align-items: center;
               .user-name {
@@ -158,21 +163,21 @@ html, body {
               }
             }
           }
-          .options {
-            padding: 1em;
-            font-size: 0.9em;
-            color: $dark-grey;
-            border-bottom: 1px solid $medium-grey;
-          }
-          .facebook-profile {
-            padding: 1em;
-            font-size: 0.9em;
-            color: $dark-grey;
-          }
-          .icon {
-            color: $dark-grey;
-            font-size: 1rem;
-          }
+          // .options {
+          //   padding: 1em;
+          //   font-size: 0.9em;
+          //   color: $dark-grey;
+          //   border-bottom: 1px solid $medium-grey;
+          // }
+          // .facebook-profile {
+          //   padding: 1em;
+          //   font-size: 0.9em;
+          //   color: $dark-grey;
+          // }
+          // .icon {
+          //   color: $dark-grey;
+          //   font-size: 1rem;
+          // }
         }
 
       }
@@ -187,7 +192,7 @@ html, body {
       .thread-bar {
         border-bottom: 1px solid $medium-grey;
         padding: 0.85em;
-        .info-bar-content {
+        h2 {
           display: flex;
           align-items: center;
           align-content: center;
@@ -200,7 +205,7 @@ html, body {
         list-style: none inside none;
         padding: 0;
         margin: 0;
-        li.preview {
+        li {
           display: flex;
           align-items: center;
           padding: 0.4em 0.75em;
@@ -208,13 +213,15 @@ html, body {
             background: $light-grey;
             cursor: pointer;
           }
-          .user-name {
+          span {
             font-size: 0.9em;
             text-transform: capitalize;
           }
-          .message-preview {
+          small {
             font-size: 0.8em;
             color: $dark-grey;
+            margin: 2px 0;
+            display: block;
           }
         }
       }
@@ -250,4 +257,11 @@ button {
   border: none;
   cursor: pointer;
   font-weight: bolder;
+}
+
+h2 {
+  font-weight: 300;
+  text-align: center;
+  margin: auto;
+  font-size: 1rem;
 }

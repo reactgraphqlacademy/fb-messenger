@@ -67,7 +67,7 @@ class App extends Component {
         <div className="messenger">
           <div className="threads">
             <div className="thread-bar">
-              <div className="info-bar-content">
+              <h2>
                 <a onClick={this.showSettings}>
                   <i className="icon fas fa-cog" />
                 </a>
@@ -75,25 +75,19 @@ class App extends Component {
                 <a onClick={this.newMessage}>
                   <i className="icon fas fa-edit" />
                 </a>
-              </div>
+              </h2>
             </div>
             <ul className="thread-list">
               {users.map((user, i) => (
-                <li
-                  key={i}
-                  onClick={() => this.selectUser(user)}
-                  className="preview"
-                >
+                <li key={i} onClick={() => this.selectUser(user)}>
                   <img
                     src={`images/${user.username}_lg.jpg`}
                     alt={`${user.username}`}
                     className="avatar large"
                   />
-                  <div>
-                    <div className="user-name">{`${user.name.first} ${
-                      user.name.last
-                    }`}</div>
-                    <div className="message-preview">message preview</div>
+                  <div className="user-name">
+                    <span>{`${user.name.first} ${user.name.last}`}</span>
+                    <small>message preview</small>
                   </div>
                 </li>
               ))}
@@ -101,10 +95,10 @@ class App extends Component {
           </div>
           <div className="conversation">
             <div className="conversation-bar">
-              <div className="title">
+              <h2>
                   {selectedUser.name &&
                     `${selectedUser.name.first} ${selectedUser.name.last}`}
-              </div>
+              </h2>
               <div className="conversation-menu">
                 <i className="icon fas fa-phone" />
                 <i className="icon fas fa-video" />
@@ -126,15 +120,13 @@ class App extends Component {
                 </div>
               </div>
               <div className="user-detail">
-                <div className="user-detail-content">
-                  <div className="user">
-                    <div className="avatar large">
-                      <img
-                        src={`images/${selectedUser.username}_lg.jpg`}
-                        alt={`${selectedUser.username}`}
-                        className="avatar large"
-                      />
-                    </div>
+                <div className="user">
+                  <div>
+                    <img
+                      className="avatar large"
+                      src={`images/${selectedUser.username}_lg.jpg`}
+                      alt={`${selectedUser.username}`}
+                    />
                     <div className="user-title">
                       <div className="user-name">
                         {selectedUser.name &&
@@ -143,12 +135,10 @@ class App extends Component {
                       <div className="last-active">Active 20m ago</div>
                     </div>
                   </div>
-                  <div>
-                    <i className="icon fas fa-cog" />
-                  </div>
+                  <i className="icon fas fa-cog" />
                 </div>
-                <div className="options">Options</div>
-                <div className="facebook-profile">Facebook Profile</div>
+                <div>Options</div>
+                <div>Facebook Profile</div>
               </div>
             </div>
           </div>
