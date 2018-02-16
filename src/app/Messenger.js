@@ -37,7 +37,6 @@ class Messenger extends Component {
 
     render() {
         return (
-
             <div className="messenger">
                 <Threads
                     showSettings={this.showSettings}

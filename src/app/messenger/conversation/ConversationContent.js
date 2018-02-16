@@ -3,7 +3,7 @@ import React from 'react'
 import UserDetail from './conversationContent/UserDetail'
 import Messages from './conversationContent/Messages'
 
-const ConversationContent = ({ conversation = [], selectedUser }) => (
+const ConversationContent = ({ conversation, selectedUser }) => (
         <div className="conversation-content">
             <Messages
                 selectedUser={selectedUser}
