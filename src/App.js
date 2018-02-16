@@ -132,7 +132,9 @@ class App extends Component {
                         {selectedUser.name &&
                           `${selectedUser.name.first} ${selectedUser.name.last}`}
                       </div>
-                      <div className="last-active">Active 20m ago</div>
+                      <div className="last-active">
+                        Active {Math.floor(Math.random() * 3) + 1}m ago
+                      </div>
                     </div>
                   </div>
                   <i className="icon fas fa-cog" />
