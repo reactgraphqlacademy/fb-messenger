@@ -39,6 +39,16 @@ html, body {
     .icon {
       color: $white;
     }
+    .username {
+      position: absolute;
+      top: 20px;
+      &.right {
+        right: 20px;
+      }
+      &.left {
+        left: 20px;
+      }
+    }
   }
 
   .messenger {

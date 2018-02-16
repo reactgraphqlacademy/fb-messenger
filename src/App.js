@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./App.css"
+import TopBar from "./TopBar"
 
 import users from "./mocks/users.js"
 import messages from "./mocks/messages.js"
@@ -59,11 +60,10 @@ class App extends Component {
       </div>
     ))
 
+    const loggedUser = { name: 'Alex' }
     return (
       <div className="app">
-        <div className="top-bar">
-          <i class="icon fab fa-facebook-messenger" />
-        </div>
+        <TopBar user={loggedUser} userPosition="right" />
         <div className="messenger">
           <div className="threads">
             <div className="thread-bar">
