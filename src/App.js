@@ -61,6 +61,7 @@ class App extends Component {
     ))
 
     const loggedUser = { name: 'Alex' }
+    
     return (
       <div className="app">
         <TopBar user={loggedUser} userPosition="right" />
