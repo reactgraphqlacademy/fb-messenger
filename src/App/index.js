@@ -4,7 +4,6 @@ import TopBar from "./TopBar"
 import Messenger from "./Messenger"
 
 const App = () => {
-
   const loggedUser = { name: 'Alex' }
 
   return (

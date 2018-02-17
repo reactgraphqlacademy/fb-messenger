@@ -10,46 +10,45 @@ const filterMessageByUsername = ({ username } = {}) => message => (
 )
 
 class Messenger extends Component {
-
-    constructor() {
-        super()
-        const selectedUser = users[0]
-        this.state = {
-            selectedUser: selectedUser,
-            conversation: messages.filter(filterMessageByUsername(selectedUser))
-        }
+  constructor() {
+    super()
+    const selectedUser = users[0]
+    this.state = {
+      selectedUser: selectedUser,
+      conversation: messages.filter(filterMessageByUsername(selectedUser))
     }
+  }
 
-    selectUser = (user = {}) => {
-        this.setState({
-            selectedUser: user,
-            conversation: messages.filter(filterMessageByUsername(user))
-        })
-    }
+  selectUser = (user = {}) => {
+    this.setState({
+      selectedUser: user,
+      conversation: messages.filter(filterMessageByUsername(user))
+    })
+  }
 
-    newMessage = () => {
-        // this.selectUser()
-    }
+  newMessage = () => {
+    // this.selectUser()
+  }
 
-    showSettings = () => {
-        console.log("settings clicked")
-    }
+  showSettings = () => {
+    console.log("settings clicked")
+  }
 
-    render() {
-        return (
-            <div className="messenger">
-                <Threads
-                    showSettings={this.showSettings}
-                    newMessage={this.newMessage}
-                    selectUser={this.selectUser}
-                />
-                <Conversation
-                    selectedUser={this.state.selectedUser}
-                    conversation={this.state.conversation}
-                />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="messenger">
+        <Threads
+          showSettings={this.showSettings}
+          newMessage={this.newMessage}
+          selectUser={this.selectUser}
+        />
+        <Conversation
+          selectedUser={this.state.selectedUser}
+          conversation={this.state.conversation}
+        />
+      </div>
+    )
+  }
 }
 
 export default Messenger
