@@ -3,6 +3,7 @@ import "./index.css"
 import TopBar from "./TopBar"
 import Messenger from "./Messenger"
 import Modal from "./Modal"
+import Footer from "./Footer"
 
 class App extends React.Component {
   constructor() {
@@ -32,9 +33,7 @@ class App extends React.Component {
           userPosition="right"
         />
         <Messenger toggleModal={this.toggleModal} />
-        <div className="footer">
-          ReactJS Academy
-        </div>
+        <Footer />
       </div>
     )
   }
