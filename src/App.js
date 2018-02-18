@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./App.css"
 import TopBar from "./TopBar"
+import Modal from "./Modal"
 
 import users from "./mocks/users.js"
 import messages from "./mocks/messages.js"
@@ -16,23 +17,32 @@ class App extends Component {
     const selectedUser = users[0]
     this.state = {
       selectedUser: selectedUser,
-      conversation: messages.filter(filterMessageByUsername(selectedUser))
+      conversation: messages.filter(filterMessageByUsername(selectedUser)),
+      showModal: false,
     }
   }
 
   selectUser = (user = {}) => {
     this.setState({
+      ...this.state,
       selectedUser: user,
       conversation: messages.filter(filterMessageByUsername(user))
     })
   }
 
   newMessage = () => {
-    this.selectUser()
+
+  }
+
+  toggleModal = () => {
+    this.setState({
+      ...this.state,
+      showModal: !this.state.showModal,
+    })
   }
 
   showSettings = () => {
-    console.log("settings clicked")
+    this.toggleModal()
   }
 
   render() {
@@ -61,10 +71,19 @@ class App extends Component {
     ))
 
     const loggedUser = { name: 'Alex' }
-    
+    const { showModal } = this.state
+
     return (
       <div className="app">
-        <TopBar user={loggedUser} userPosition="right" />
+        <Modal
+          show={showModal}
+          toggleModal={this.toggleModal}
+        />
+        <TopBar
+          toggleModal={this.toggleModal}
+          user={loggedUser}
+          userPosition="right"
+        />
         <div className="messenger">
           <div className="threads">
             <div className="thread-bar">
@@ -145,6 +164,9 @@ class App extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="footer">
+          ReactJS Academy
         </div>
       </div>
     )
