@@ -1,4 +1,4 @@
-## ReactJS Fundamentals - Thinking in React
+## ReactJS Facebook messenger
 
 The goal of this exercise is to learn how to think in React.
 
