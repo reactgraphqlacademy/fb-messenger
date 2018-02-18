@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./App.css"
-import TopBar from "./TopBar"
 import Modal from "./Modal"
+import Footer from "./Footer"
 
 import users from "./mocks/users.js"
 import messages from "./mocks/messages.js"
@@ -72,6 +72,7 @@ class App extends Component {
 
     const loggedUser = { name: 'Alex' }
     const { showModal } = this.state
+    const topbarUserPosition = 'right'
 
     return (
       <div className="app">
@@ -79,11 +80,15 @@ class App extends Component {
           show={showModal}
           toggleModal={this.toggleModal}
         />
-        <TopBar
-          toggleModal={this.toggleModal}
-          user={loggedUser}
-          userPosition="right"
-        />
+        <div className="top-bar">
+          <i className="icon fab fa-facebook-messenger" />
+          <span
+            onClick={this.toggleModal}
+            className={`username ${topbarUserPosition || 'left'}`}
+          >
+            {loggedUser.name}
+          </span>
+        </div>
         <div className="messenger">
           <div className="threads">
             <div className="thread-bar">
@@ -165,9 +170,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div className="footer">
-          ReactJS Academy
-        </div>
+        <Footer />
       </div>
     )
   }
