@@ -1,5 +1,11 @@
 export const fetchUsers = () => (
-  fetch('../mocks/users.js', {
+  fetch('/mocks/users.json', {
       method: 'get'
-  }).then((response) => response.json())
+  }).then((response) => {
+    return response.json()
+  })
+  .catch(err => {
+    console.log(err);
+    debugger;
+  })
 )

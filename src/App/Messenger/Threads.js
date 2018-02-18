@@ -1,9 +1,8 @@
 import React from 'react'
 import Avatar from '../Layout/Avatar'
 import Icon from '../Layout/Icon'
-import users from "../../mocks/users"
 
-const Threads = ({ showSettings, newMessage, selectUser }) => (
+const Threads = ({ showSettings, newMessage, selectUser, users }) => (
   <div className="threads">
     <div className="thread-bar">
       <h2>

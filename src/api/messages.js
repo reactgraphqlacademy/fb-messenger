@@ -1,13 +1,14 @@
 export const fetchMessagesForUser = (selectedUser) => {
+
   const filterMessageByUsername = ({ username } = {}) => message => {
-    message.from === username || message.to === username
+    return message.from === username || message.to === username
   }
 
   return (
-    fetch('../mocks/messages.js', {
+    fetch('/mocks/messages.js', {
       method: 'get',
-    }).then( response =>
-      response.json()
-    ).filter(filterMessageByUsername(selectedUser))
+    }).then( response => {
+      return response.json();
+    })
   )
 }

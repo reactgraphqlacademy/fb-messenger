@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import messages from "../../mocks/messages"
 import { fetchUsers } from '../../api/users'
 import { fetchMessagesForUser } from '../../api/messages'
 import Messenger from './Messenger'
@@ -15,16 +14,20 @@ class MessengerContainer extends Component {
 
   componentDidMount() {
     fetchUsers()
-    .then( data =>
-      this.selectUser(data[0])
+    .then( ({users}) =>
+      this.selectUser(users[0])
     )
   }
 
   selectUser = (user = {}) => {
-    this.setState({
-      selectedUser: user,
-      conversation: fetchMessagesForUser(user)
-    })
+    fetchMessagesForUser(user)
+      .then(data => {
+        this.setState({
+          selectedUser: user,
+          conversation: data
+        })
+      })
+
   }
 
   newMessage = () => {

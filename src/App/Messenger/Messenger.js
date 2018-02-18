@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Threads from './Threads'
+import ThreadsContainer from './ThreadsContainer'
 import Conversation from './Conversation'
 
 
 const Messenger = ({showSettings, newMessage, selectUser, selectedUser, conversation}) => (
   <div className="messenger">
-    <Threads
+    <ThreadsContainer
       showSettings={showSettings}
       newMessage={newMessage}
       selectUser={selectUser}
