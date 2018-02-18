@@ -1,4 +1,4 @@
-const users = [
+ [
   {
     "gender": "female",
     "name": {
@@ -301,4 +301,3 @@ const users = [
   }
 ]
 
-export default users

@@ -1,4 +1,4 @@
-const messages = [
+[
     {
         "from": "crazypeacock512",
         "to":"you",
@@ -102,5 +102,3 @@ const messages = [
         "message":"message text"
     }
 ]
-
-export default messages

@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
 import messages from "../../mocks/messages"
-import users from "../../mocks/users"
+import { fetchUsers } from '../../api/users'
+import { fetchMessagesForUser } from '../../api/messages'
 import Messenger from './Messenger'
-
-const filterMessageByUsername = ({ username } = {}) => message => (
-    message.from === username ||
-    message.to === username
-)
 
 class MessengerContainer extends Component {
   constructor() {
     super()
-    const selectedUser = users[0]
     this.state = {
-      selectedUser: selectedUser,
-      conversation: messages.filter(filterMessageByUsername(selectedUser))
+      selectedUser: {},
+      conversation: []
     }
+  }
+
+  componentDidMount() {
+    fetchUsers()
+    .then( data =>
+      this.selectUser(data[0])
+    )
   }
 
   selectUser = (user = {}) => {
     this.setState({
       selectedUser: user,
-      conversation: messages.filter(filterMessageByUsername(user))
+      conversation: fetchMessagesForUser(user)
     })
   }
 
