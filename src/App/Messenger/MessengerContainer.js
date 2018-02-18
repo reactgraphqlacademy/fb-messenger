@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import Threads from './Threads'
-import Conversation from './Conversation'
 import messages from "../../mocks/messages"
 import users from "../../mocks/users"
+import Messenger from './Messenger'
 
 const filterMessageByUsername = ({ username } = {}) => message => (
     message.from === username ||
     message.to === username
 )
 
-class Messenger extends Component {
+class MessengerContainer extends Component {
   constructor() {
     super()
     const selectedUser = users[0]
@@ -27,7 +26,7 @@ class Messenger extends Component {
   }
 
   newMessage = () => {
-    
+
   }
 
   showSettings = () => {
@@ -36,19 +35,15 @@ class Messenger extends Component {
 
   render() {
     return (
-      <div className="messenger">
-        <Threads
-          showSettings={this.showSettings}
-          newMessage={this.newMessage}
-          selectUser={this.selectUser}
-        />
-        <Conversation
-          selectedUser={this.state.selectedUser}
-          conversation={this.state.conversation}
-        />
-      </div>
+      <Messenger
+        showSettings={this.showSettings}
+        newMessage={this.newMessage}
+        selectUser={this.selectUser}
+        selectedUser={this.state.selectedUser}
+        conversation={this.state.conversation}
+      />
     )
   }
 }
 
-export default Messenger
+export default MessengerContainer

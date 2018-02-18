@@ -1,7 +1,7 @@
 import React from "react"
 import "./index.css"
 import TopBar from "./TopBar"
-import Messenger from "./Messenger"
+import MessengerContainer from "./Messenger/MessengerContainer"
 import Modal from "./Modal"
 import Footer from "./Footer"
 
@@ -32,7 +32,7 @@ class App extends React.Component {
           user={loggedUser}
           userPosition="right"
         />
-        <Messenger toggleModal={this.toggleModal} />
+        <MessengerContainer toggleModal={this.toggleModal} />
         <Footer />
       </div>
     )
