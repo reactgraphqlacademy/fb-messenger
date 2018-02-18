@@ -2,16 +2,42 @@ import React from "react"
 import "./index.css"
 import TopBar from "./TopBar"
 import Messenger from "./Messenger"
+import Modal from "./Modal"
 
-const App = () => {
-  const loggedUser = { name: 'Alex' }
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      showModal: false
+    }
+  }
 
-  return (
-    <div className="app">
-      <TopBar user={loggedUser} userPosition="right" />
-      <Messenger />
-    </div>
-  )
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal })
+  }
+
+  render() {
+    const loggedUser = { name: 'Alex' }
+    const { showModal } = this.state
+
+    return (
+      <div className="app">
+        <Modal
+          show={showModal}
+          toggleModal={this.toggleModal}
+        />
+        <TopBar
+          toggleModal={this.toggleModal}
+          user={loggedUser}
+          userPosition="right"
+        />
+        <Messenger toggleModal={this.toggleModal} />
+        <div className="footer">
+          ReactJS Academy
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App

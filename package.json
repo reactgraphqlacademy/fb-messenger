@@ -5,7 +5,9 @@
   "dependencies": {
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
   },

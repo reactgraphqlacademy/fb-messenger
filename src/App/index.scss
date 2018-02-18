@@ -53,7 +53,6 @@ html, body {
 
   .messenger {
     display: flex;
-    //width: 25%;
     border-right: 1px solid $medium-grey;
 
     .conversation {
@@ -137,6 +136,7 @@ html, body {
             font-size: 0.9rem;
             display: flex;
             justify-content: space-between;
+            height: 60px;
             .message-box {
               color: $medium-grey;
               border-color: transparent;
@@ -174,23 +174,7 @@ html, body {
               }
             }
           }
-          // .options {
-          //   padding: 1em;
-          //   font-size: 0.9em;
-          //   color: $dark-grey;
-          //   border-bottom: 1px solid $medium-grey;
-          // }
-          // .facebook-profile {
-          //   padding: 1em;
-          //   font-size: 0.9em;
-          //   color: $dark-grey;
-          // }
-          // .icon {
-          //   color: $dark-grey;
-          //   font-size: 1rem;
-          // }
         }
-
       }
     }
 
@@ -275,4 +259,12 @@ h2 {
   text-align: center;
   margin: auto;
   font-size: 1rem;
+}
+
+.footer {
+  padding: 8px;
+  text-align: center;
+  background: $light-grey;
+  border-top: 1px solid $medium-grey;
+  font-size: 0.8rem;
 }

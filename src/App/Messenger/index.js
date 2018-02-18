@@ -27,11 +27,11 @@ class Messenger extends Component {
   }
 
   newMessage = () => {
-    // this.selectUser()
+    
   }
 
   showSettings = () => {
-    console.log("settings clicked")
+    this.props.toggleModal()
   }
 
   render() {
