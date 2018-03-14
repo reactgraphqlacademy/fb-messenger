@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import "./App.css"
-import TopBar from "./TopBar"
 import Modal from "./Modal"
 
 import users from "./mocks/users.js"
@@ -79,11 +78,15 @@ class App extends Component {
           show={showModal}
           toggleModal={this.toggleModal}
         />
-        <TopBar
-          toggleModal={this.toggleModal}
-          user={loggedUser}
-          userPosition="right"
-        />
+        <div className="top-bar">
+          <i className="icon fab fa-facebook-messenger" />
+          <span
+            onClick={this.toggleModal}
+            className={`username ${this.userPosition || 'left'}`}
+          >
+            {this.selectUser.name}
+          </span>
+        </div>
         <div className="messenger">
           <div className="threads">
             <div className="thread-bar">
