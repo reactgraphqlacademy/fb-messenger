@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import "./App.css"
 import Modal from "./Modal"
-import Footer from "./Footer"
 
 import users from "./mocks/users.js"
 import messages from "./mocks/messages.js"
@@ -28,10 +27,6 @@ class App extends Component {
       selectedUser: user,
       conversation: messages.filter(filterMessageByUsername(user))
     })
-  }
-
-  newMessage = () => {
-
   }
 
   toggleModal = () => {
@@ -72,7 +67,6 @@ class App extends Component {
 
     const loggedUser = { name: 'Alex' }
     const { showModal } = this.state
-    const topbarUserPosition = 'right'
 
     return (
       <div className="app">
@@ -82,12 +76,12 @@ class App extends Component {
         />
         <div className="top-bar">
           <i className="icon fab fa-facebook-messenger" />
-          <span
+          <a
             onClick={this.toggleModal}
-            className={`username ${topbarUserPosition || 'left'}`}
+            className={`username ${this.userPosition || 'left'}`}
           >
-            {loggedUser.name}
-          </span>
+            Alex
+          </a>
         </div>
         <div className="messenger">
           <div className="threads">
@@ -97,9 +91,7 @@ class App extends Component {
                   <i className="icon fas fa-cog" />
                 </a>
                 Messenger
-                <a onClick={this.newMessage}>
-                  <i className="icon fas fa-edit" />
-                </a>
+                <i className="icon fas fa-edit" />
               </h2>
             </div>
             <ul className="thread-list">
@@ -170,7 +162,9 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <div className="footer">
+          ReactJS Academy
+        </div>
       </div>
     )
   }
