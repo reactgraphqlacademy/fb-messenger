@@ -1,9 +1,12 @@
 import React from "react"
-import "./index.css"
-import TopBar from "./TopBar"
-import MessengerContainer from "./Messenger/MessengerContainer"
+// import {  } from 'react-router'
+import { Redirect, Route, Switch } from 'react-router'
+import { Link } from 'react-router-dom'
+
+import TopBar from "./Layout/TopBar"
+import Messenger from "./Messenger"
+import Footer from "./Layout/Footer"
 import Modal from "./Modal"
-import Footer from "./Footer"
 
 class App extends React.Component {
   constructor() {
@@ -32,7 +35,13 @@ class App extends React.Component {
           user={loggedUser}
           userPosition="right"
         />
-        <MessengerContainer toggleModal={this.toggleModal} />
+        <Switch>
+          <Route exact path="/" component={() => <Link to="/messages">See messages</Link> } />
+          <Route
+            path="/messages"
+            render={() => <Messenger toggleModal={this.toggleModal} /> }
+          />
+        </Switch>
         <Footer />
       </div>
     )

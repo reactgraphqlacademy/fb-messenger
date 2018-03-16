@@ -2,7 +2,7 @@ import React from 'react'
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
-const Messages = ({ conversation = [], selectedUser }) => {
+const Messages = ({ conversation = [],  username }) => {
   const styledConversation = conversation.map((message, i) => (
     <div
       key={i}
@@ -10,7 +10,7 @@ const Messages = ({ conversation = [], selectedUser }) => {
         message.from === "you" ? "sent" : "received"
       }`}
     >
-      {message.to === "you" && <Avatar user={selectedUser} size="medium" />}
+      {message.to === "you" && <Avatar username={username} size="medium" />}
       <div className="message">{message.message}</div>
       {message.from === "you" && (
         <div className="message-read">

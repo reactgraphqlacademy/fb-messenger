@@ -1,11 +1,11 @@
 import React from 'react'
 import Icon from '../../Layout/Icon'
 
-const ConversationBar = ({ selectedUser }) => (
+const ConversationBar = ({ username }) => (
   <div className="conversation-bar">
     <h2>
-      {selectedUser.name &&
-        `${selectedUser.name.first} ${selectedUser.name.last}`}
+      {username}
+        {/* `${selectedUser.name.first} ${selectedUser.name.last}`} */}
     </h2>
     <div className="conversation-menu">
       <Icon name="phone" />

@@ -1,7 +1,10 @@
 {
-  "users": [
+  "threads": [
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "mary",
@@ -11,7 +14,10 @@
       "username": "crazypeacock512"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "alan",
@@ -21,7 +27,10 @@
       "username": "crazytiger134"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "miriam",
@@ -31,7 +40,10 @@
       "username": "blackpanda974"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mrs",
         "first": "annette",
@@ -41,7 +53,10 @@
       "username": "greenelephant690"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "joshua",
@@ -51,7 +66,10 @@
       "username": "bluebutterfly167"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "willard",
@@ -61,7 +79,10 @@
       "username": "redfrog150"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "lucy",
@@ -71,7 +92,10 @@
       "username": "bluesnake414"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "johnni",
@@ -81,7 +105,10 @@
       "username": "biglion303"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "kenneth",
@@ -91,7 +118,10 @@
       "username": "goldenkoala804"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "sergio",
@@ -101,7 +131,10 @@
       "username": "smallsnake403"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "michael",
@@ -111,7 +144,10 @@
       "username": "browndog574"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "judd",
@@ -121,7 +157,10 @@
       "username": "purpleswan777"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "aiden",
@@ -131,7 +170,10 @@
       "username": "crazypanda94"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "edwin",
@@ -141,7 +183,10 @@
       "username": "bigkoala328"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "gail",
@@ -151,7 +196,10 @@
       "username": "silvertiger605"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mrs",
         "first": "jackie",
@@ -161,7 +209,10 @@
       "username": "bigladybug498"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mrs",
         "first": "anita",
@@ -171,7 +222,10 @@
       "username": "silverdog296"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "oscar",
@@ -181,7 +235,10 @@
       "username": "whitedog307"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "george",
@@ -191,7 +248,10 @@
       "username": "whiteduck952"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "wyatt",
@@ -201,7 +261,10 @@
       "username": "lazymeercat254"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "ian",
@@ -211,7 +274,10 @@
       "username": "tinyduck707"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "felix",
@@ -221,7 +287,10 @@
       "username": "blackdog881"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "lloyd",
@@ -231,7 +300,10 @@
       "username": "blueelephant847"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "toni",
@@ -241,7 +313,10 @@
       "username": "bluebear73"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "kelly",
@@ -251,7 +326,10 @@
       "username": "blackgorilla589"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "darryl",
@@ -261,7 +339,14 @@
       "username": "bigbear866"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "arthur",
@@ -271,7 +356,10 @@
       "username": "crazygorilla163"
     },
     {
-      "gender": "female",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "miss",
         "first": "rachel",
@@ -281,7 +369,10 @@
       "username": "silverfish61"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "freddie",
@@ -291,7 +382,10 @@
       "username": "yellowgorilla642"
     },
     {
-      "gender": "male",
+      "lastMessage": {
+        "message": "Hi! how are you?",
+        "time":"2018-02-11T12:00:00Z"
+      },
       "name": {
         "title": "mr",
         "first": "calvin",
