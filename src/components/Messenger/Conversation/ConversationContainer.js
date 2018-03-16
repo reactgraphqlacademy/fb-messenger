@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchConversation } from '../../../api/message'
+import * as api from '../../../api/message'
 import Conversation from './Conversation'
 
 class ConversationContainer extends Component {
@@ -12,11 +12,11 @@ class ConversationContainer extends Component {
   }
 
   componentDidMount() {
-    this.fetchUser(this.props.match.params.username)
+    this.fetchConversation(this.props.match.params.username)
   }
 
-  fetchUser = (username) => {
-    fetchConversation(username)
+  fetchConversation = (username) => {
+    api.fetchConversation(username)
     .then(messages => {
       this.setState({ conversation: messages })
     })
@@ -24,7 +24,7 @@ class ConversationContainer extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.username !== nextProps.match.params.username) {
-      this.fetchUser(nextProps.match.params.username)
+      this.fetchConversation(nextProps.match.params.username)
     }
   }
 
