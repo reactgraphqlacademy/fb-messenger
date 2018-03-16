@@ -42,6 +42,7 @@ html, body {
     }
     .username {
       position: absolute;
+      color: $white;
       top: 20px;
       &.right {
         right: 20px;
