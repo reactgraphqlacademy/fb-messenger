@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import UserDetail from './UserDetail'
 import Messages from './Messages'
-import Modal from "../../../Modal"
+import Modal from '../../../Modal'
 
 class ConversationContent extends Component {
   constructor() {

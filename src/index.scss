@@ -62,16 +62,17 @@ html, body {
       flex-direction: column;
       flex:3;
       .conversation-bar {
+        position: relative;
         border-bottom: 1px solid $medium-grey;
-        padding: 0.86em;
-        display: flex;
-        justify-content: space-between;
+        padding: 1.05em;
         align-items: center;
-        min-height:23px;
         h2 {
           text-transform: capitalize;
         }
         .conversation-menu {
+          position: absolute;
+          right: 5px;
+          top: 15px;
           & > div {
             display: inline-block;
           }
@@ -273,4 +274,13 @@ h2 {
   background: $light-grey;
   border-top: 1px solid $medium-grey;
   font-size: 0.8rem;
+}
+
+.page-center {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
