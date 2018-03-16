@@ -7,13 +7,9 @@ const Threads = ({ history, match, threads }) => (
   <div className="threads">
     <div className="thread-bar">
       <h2>
-        <a onClick={() => alert('Not implemented') }>
-          <Icon name="cog" />
-        </a>
+        <Icon name="cog" />
         Messenger
-        <a onClick={() => alert('Not implemented') }>
-          <Icon name="edit" />
-        </a>
+        <Icon name="edit" />
       </h2>
     </div>
     <ul className="thread-list">

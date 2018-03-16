@@ -3,7 +3,7 @@ import React from 'react'
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
-const UserDetail = ({ username }) => (
+const UserDetail = ({ username, toggleModal }) => (
   <div className="user-detail">
     <div className="user">
       <div>
@@ -18,7 +18,9 @@ const UserDetail = ({ username }) => (
           </div>
         </div>
       </div>
-      <Icon name="cog" />
+      <a onClick={toggleModal}>
+        <Icon name="cog" />
+      </a>
     </div>
     <div>Options</div>
     <div>Facebook Profile</div>

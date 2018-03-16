@@ -8,7 +8,7 @@ const Conversation = ({ conversation, match }) => {
 
   return (
     <div className="conversation">
-      <ConversationBar username={username} />
+      <ConversationBar username={username} match={match} />
       <ConversationContent conversation={conversation} username={username} />
     </div>
   )

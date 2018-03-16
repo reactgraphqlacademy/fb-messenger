@@ -2,7 +2,7 @@ import React from 'react'
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
-const Messages = ({ conversation = [],  username }) => {
+const Messages = ({ conversation = [],  username, toggleModal }) => {
   const styledConversation = conversation.map((message, i) => (
     <div
       key={i}
@@ -35,7 +35,7 @@ const Messages = ({ conversation = [],  username }) => {
           placeholder="Type your message..."
           className="message-box"
         />
-        <button>Send</button>
+        <button onClick={toggleModal}>Send</button>
       </div>
     </div>
   )

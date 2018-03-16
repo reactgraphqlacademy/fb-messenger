@@ -1,16 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import Icon from '../../Layout/Icon'
 
-const ConversationBar = ({ username }) => (
+const ConversationBar = ({ username, match }) => (
   <div className="conversation-bar">
     <h2>
       {username}
-        {/* `${selectedUser.name.first} ${selectedUser.name.last}`} */}
     </h2>
     <div className="conversation-menu">
       <Icon name="phone" />
       <Icon name="video" />
-      <Icon name="info-circle" />
+      <Link to={`${match.url}/detail`}>
+        <Icon name="info-circle" />
+      </Link>
     </div>
   </div>
 )
