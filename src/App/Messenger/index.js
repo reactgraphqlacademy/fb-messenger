@@ -26,10 +26,6 @@ class Messenger extends Component {
     })
   }
 
-  newMessage = () => {
-    
-  }
-
   showSettings = () => {
     this.props.toggleModal()
   }
@@ -39,7 +35,6 @@ class Messenger extends Component {
       <div className="messenger">
         <Threads
           showSettings={this.showSettings}
-          newMessage={this.newMessage}
           selectUser={this.selectUser}
         />
         <Conversation

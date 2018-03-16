@@ -1,6 +1,7 @@
 $dark-blue: #4267b2;
 $light-blue: #0084ff;
 $light-grey: #f1f0f0;
+$grey: #ccc;
 $medium-grey: #bdc7d8;
 $dark-grey: #999999;
 $black: #000000;
@@ -39,7 +40,11 @@ html, body {
     .icon {
       color: $white;
     }
+    a.username {
+      cursor: pointer;
+    }
     .username {
+      color: $white;
       position: absolute;
       top: 20px;
       &.right {
@@ -53,6 +58,7 @@ html, body {
 
   .messenger {
     display: flex;
+    flex: 1;
     border-right: 1px solid $medium-grey;
 
     .conversation {
@@ -61,7 +67,7 @@ html, body {
       flex:3;
       .conversation-bar {
         border-bottom: 1px solid $medium-grey;
-        padding: 0.9em;
+        padding: 0.86em;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -88,7 +94,10 @@ html, body {
           flex:2;
           flex-direction: column;
           justify-content: space-between;
-
+          button {
+            color: $grey;
+            cursor: auto;
+          }
           .list {
             padding: 1em;
             overflow-y: auto;
@@ -242,8 +251,12 @@ html, body {
 }
 
 .icon {
-  color: $light-blue;
+  color: $grey;
   font-size: 1.5rem;
+}
+
+a .icon {
+  color: $light-blue;
   cursor: pointer;
 }
 

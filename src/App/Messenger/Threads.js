@@ -3,7 +3,7 @@ import Avatar from '../Layout/Avatar'
 import Icon from '../Layout/Icon'
 import users from "../../mocks/users"
 
-const Threads = ({ showSettings, newMessage, selectUser }) => (
+const Threads = ({ showSettings, selectUser }) => (
   <div className="threads">
     <div className="thread-bar">
       <h2>
@@ -11,9 +11,7 @@ const Threads = ({ showSettings, newMessage, selectUser }) => (
           <Icon name="cog" />
         </a>
         Messenger
-        <a onClick={newMessage}>
-          <Icon name="edit" />
-        </a>
+        <Icon name="edit" />
       </h2>
     </div>
     <ul className="thread-list">
