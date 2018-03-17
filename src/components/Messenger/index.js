@@ -8,7 +8,7 @@ import Conversation from './Conversation/Conversation'
 const Messenger = ({ showSettings, toggleModal }) => (
   <div className="messenger">
     <Threads />
-    <Route path={`messages/:username`} component={Conversation} />
+    <Route path={`/messages/:username`} component={Conversation} />
   </div>
 )
 
