@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
+
 import Threads from './Threads'
 import { fetchThreads } from '../../api/thread'
 
@@ -34,4 +36,4 @@ class ThreadsContainer extends Component {
   }
 }
 
-export default ThreadsContainer
+export default withRouter(ThreadsContainer)

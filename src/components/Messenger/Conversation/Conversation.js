@@ -2,19 +2,20 @@ import React from 'react'
 
 import ConversationBar from './ConversationBar'
 import ConversationContent from './Content'
+import ConversationSection from './ConversationSection'
 
 const Conversation = ({ conversation, match }) => {
   const { username } = match.params
 
   return (
-    <div className="conversation">
+    <ConversationSection>
       <ConversationBar username={username} match={match} />
       <ConversationContent
         match={match}
         conversation={conversation}
         username={username}
       />
-    </div>
+    </ConversationSection>
   )
 }
 

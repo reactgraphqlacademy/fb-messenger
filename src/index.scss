@@ -37,12 +37,23 @@ html, body {
     text-align: center;
     border-bottom: 1px solid #29487d;
     color: $white;
-    .icon {
+    a, .icon {
       color: $white;
+    }
+    a {
+      cursor: pointer;
     }
     .username {
       position: absolute;
       top: 20px;
+      display: block;
+      list-style: none;
+      img {
+        border-radius: 50%;
+        height: 50px;
+        height: 30px;
+        margin-top: -5px;
+      }
       &.right {
         right: 20px;
       }

@@ -5,10 +5,10 @@ import { Route } from 'react-router-dom'
 import ThreadsContainer from './ThreadsContainer'
 import ConversationContainer from './Conversation/ConversationContainer'
 
-const Messenger = ({ showSettings, toggleModal }) => (
+const Messenger = ({ showSettings, toggleModal, match }) => (
   <div className="messenger">
-    <Route path="/messages" component={ThreadsContainer}/>
-    <Route path="/messages/:username" component={ConversationContainer} />
+    <ThreadsContainer />
+    <Route path={`${match.url}/:username`} component={ConversationContainer} />
   </div>
 )
 

@@ -1,13 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const TopBar = (props) => (
   <div className="top-bar">
     <i className="icon fab fa-facebook-messenger" />
-    <span
-      className={`username ${props.userPosition || 'left'}`}
-    >
-      {props.user.name}
-    </span>
+    <Link to="?" className={`username ${props.userPosition || 'right'}`}>
+     profile <img src="/images/default.jpg" />
+    </Link>
   </div>
 )
 

@@ -31,8 +31,6 @@ class ConversationContainer extends Component {
     }
   }
 
-  newMessage = () => {}
-
   render() {
     const { conversation } = this.state
     const { match } = this.props
