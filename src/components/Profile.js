@@ -5,7 +5,7 @@ const Profile = () => (
   <div className="page-center">
     <img src="/images/default.jpg" />
     <h1>
-      <Link to="/messages">See messages</Link>
+      <a href="/messages">See messages</a>
     </h1>
   </div>
 )
