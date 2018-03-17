@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router'
+import PropTypes from 'prop-types'
 
 import UserDetail from './UserDetail'
 import Messages from './Messages'
@@ -45,6 +46,12 @@ class ConversationContent extends Component {
       </div>
     )
   }
+}
+
+ConversationContent.propTypes = {
+  conversation: PropTypes.array,
+  username: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default ConversationContent

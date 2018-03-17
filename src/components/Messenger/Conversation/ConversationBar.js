@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import Icon from '../../Layout/Icon'
 
@@ -17,5 +18,10 @@ const ConversationBar = ({ username, match }) => (
     </div>
   </div>
 )
+
+ConversationBar.propTypes = {
+  match: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
+}
 
 export default ConversationBar

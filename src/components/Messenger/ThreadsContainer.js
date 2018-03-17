@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
+import PropTypes from 'prop-types'
 
 import Threads from './Threads'
 import { fetchThreads } from '../../api/thread'
@@ -23,7 +24,7 @@ class ThreadsContainer extends Component {
   }
 
   render() {
-    const { showSettings, newMessage, history, match } = this.props
+    const { history, match } = this.props
     const { threads } = this.state
 
     return (

@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
-const Messages = ({ conversation = [],  username, toggleModal }) => {
+const Messages = ({ conversation = [], username, toggleModal }) => {
   const styledConversation = conversation.map((message, i) => (
     <div
       key={i}
@@ -39,6 +41,12 @@ const Messages = ({ conversation = [],  username, toggleModal }) => {
       </div>
     </div>
   )
+}
+
+Messages.propTypes = {
+  conversation: PropTypes.array,
+  toggleModal: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 }
 
 export default Messages

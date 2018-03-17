@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Avatar from '../Layout/Avatar'
 import Icon from '../Layout/Icon'
@@ -25,5 +26,11 @@ const Threads = ({ history, match, threads }) => (
     </ul>
   </div>
 )
+
+Threads.propTypes = {
+  threads: PropTypes.array,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+}
 
 export default Threads

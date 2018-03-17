@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
 
@@ -42,6 +44,10 @@ class ConversationContainer extends Component {
       />
     )
   }
+}
+
+ConversationContainer.propTypes = {
+  match: PropTypes.object.isRequired,
 }
 
 export default ConversationContainer

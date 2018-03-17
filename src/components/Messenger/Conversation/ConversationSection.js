@@ -1,9 +1,18 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import PropTypes from 'prop-types'
 
-const ConversationSection = ({ children }) => (
+import ConversationContainer from './ConversationContainer'
+
+const ConversationSection = ({ match }) => (
   <div className="conversation">
-    { children }
+    <Route path={`${match.url}/:username`} component={ConversationContainer} />
   </div>
 )
 
-export default ConversationSection
+ConversationSection.propTypes = {
+  match: PropTypes.object.isRequired,
+}
+
+export default withRouter(ConversationSection)
