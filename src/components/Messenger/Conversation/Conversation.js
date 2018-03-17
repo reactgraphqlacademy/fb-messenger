@@ -20,6 +20,7 @@ class Conversation extends Component {
 
   fetchConversation = (username) => {
     this.setState({ conversation: [] })
+    // the following setTimeout is to simulate network latency in order to show a "loading" component
     setTimeout(() => {
       api.fetchConversation(username)
       .then(messages => {
