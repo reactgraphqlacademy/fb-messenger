@@ -16,27 +16,22 @@ If you haven't already set up your project, head here and follow the instruction
 
 ##Exercise
 
-1. Implement the following route http://localhost:3000/profile so it renders src/components/Profile.js. Hint, you need to edit 2 files:
-    1. One file is the one where you define the /profile &lt;Route&gt;. Which file is that? Route documentation https://reacttraining.com/react-router/web/api/Route
+1. Implement the following route [http://localhost:3000/login](http://localhost:3000/login) so it renders src/components/Profile.js. Hint, you need to edit 2 files:
+    1. One file is the one where you define the /profile &lt;Route&gt;. Which file is that? Hint, think of the component tree and which component should be the parent of &lt;Profile&gt;. Route documentation https://reacttraining.com/react-router/web/api/Route
     2. The second file is src/components/Layout/TopBar.js, edit the &lt;Link&gt;. Link documentation https://reacttraining.com/react-router/web/api/Link
-. Add Route in App to ProfilePage
-. Add Link in ProfilePage to /messages, why not <a> instead of Link?
-. The NotFound component should be displayed when no path matches
-. implement Container component in Threads
-. implement Container component in Conversation
-. Move the logic on lines 42-48 of UserProfile to UserProfileContainer. HINT: Use the componentWillReceiveProps() lifecycle method
-. Login component should not display header and footer
+2. Add a &lt;Route&gt; in src/components/App.js to ProfilePage.js
+3. Add Link in ProfilePage.js to /messages. Why do you think &lt;Link&gt; is better than &lt;a&gt;?
+4. The NotFound component should be displayed when no path matches in &lt;App&gt;
+5. Refactor the Treads component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005). You have a ThreadsContainer file with some comments and tips. Hint: You will also have to edit the import in src/components/App.js
+6. Refactor the Conversation component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005). You have a ConversationContainer file with some comments and tips. Hint: You will also have to edit the import in src/components/App.js
+7. Move the logic on lines 42-48 of Conversation.js to the componentWillReceiveProps() lifecycle method in ConversationContainer.js. Why do you think componentWillReceiveProps is a better place?
+8. In the following url [http://localhost:3000/login](http://localhost:3000/login), the src/component/Login.js should not display the &lt;TopBar&gt; and &lt;Footer&gt;. HINT: Why not try moving the Login component up the tree.
 
 ###Bonus
-. Given this component &lt;Route path="/messages/:username" etc &gt; in src/components/Messenger/index, how can we replace the hardcoded string "/messages" in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in src/components/Messenger/Conversation/ConversationBar.
-. The path /messages/:username/detail should display the UserDetail of a Conversation. The path /messages/:username should not display the UserDetail of a Conversation. You can navigate to /messages/:username/detail by clicking on the Link component in src/components/Messenger/Conversation/ConversationBar
-. Move the API calls into a separate file in src/api/
-
-1. Finish the implementation of the Login Component (located in src/components/Login.js). Requirements:
-    1. The state of the inputs should be managed by the Login component (is that a controlled or uncontrolled component?). Hint: use the onChange event in the inputs
-    2. Handle the onClick button to validate the inputs. For validation you can use password: 1234 and email: reactfanboy@facebook.com
-    3. If the validation is correct redirect the user to the home page. Hint: you need the router. To inject the router use withRouter from 'react-router-dom'.
-
+- Given this component &lt;Route path="/messages/:username" etc &gt; in src/components/Messenger/index, how can we replace the hardcoded string "/messages" in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in src/components/Messenger/Conversation/ConversationBar.
+- The path /messages/:username/detail should display the UserDetail of a Conversation. The path /messages/:username should not display the UserDetail of a Conversation. You can navigate to /messages/:username/detail by clicking on the Link component in src/components/Messenger/Conversation/ConversationBar
+- Move the API calls into a separate file in src/api/
+- [http://localhost:3000/messages](http://localhost:3000/messages) should not take 100% of the width of the screen. It should take the same width as when there is a Conversation selected. Hint, move the &lt;Route&gt; to the Conversation inside &lt;ConversationSection&gt;
 
 ## License
 
