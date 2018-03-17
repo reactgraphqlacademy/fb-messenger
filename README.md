@@ -17,8 +17,8 @@ If you haven't already set up your project, head here and follow the instruction
 ##Exercise
 
 1. Implement the following route [http://localhost:3000/login](http://localhost:3000/login) so it renders src/components/Profile.js. Hint, you need to edit 2 files:
-    1. One file is the one where you define the /profile &lt;Route&gt;. Which file is that? Hint, think of the component tree and which component should be the parent of &lt;Profile&gt;. Route documentation https://reacttraining.com/react-router/web/api/Route
-    2. The second file is src/components/Layout/TopBar.js, edit the &lt;Link&gt;. Link documentation https://reacttraining.com/react-router/web/api/Link
+    1. One file is the one where you define the /profile &lt;Route&gt;. Which file is that? Hint, think of the component tree and which component should be the parent of &lt;Profile&gt;. [https://reacttraining.com/react-router/web/api/Route](Route documentation) 
+    2. The second file is src/components/Layout/TopBar.js, edit the &lt;Link&gt;. [https://reacttraining.com/react-router/web/api/Link](Link documentation)
 2. Add a &lt;Route&gt; in src/components/App.js to ProfilePage.js
 3. Add Link in ProfilePage.js to /messages. Why do you think &lt;Link&gt; is better than &lt;a&gt;?
 4. The NotFound component should be displayed when no path matches in &lt;App&gt;
