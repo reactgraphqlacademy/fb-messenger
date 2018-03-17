@@ -17,7 +17,7 @@ If you haven't already set up your project, head here and follow the instruction
 ##Exercise
 
 1. Implement the following route [http://localhost:3000/login](http://localhost:3000/login) so it renders src/components/Profile.js. Hint, you need to edit 2 files:
-    1. One file is the one where you define the /profile &lt;Route&gt;. Which file is that? Hint, think of the component tree and which component should be the parent of &lt;Profile&gt;. [https://reacttraining.com/react-router/web/api/Route](Route documentation) 
+    1. One file is the one where you define the /profile &lt;Route&gt;. Which file is that? Hint, think of the component tree and which component should be the parent of &lt;Profile&gt;. [https://reacttraining.com/react-router/web/api/Route](Route documentation)
     2. The second file is src/components/Layout/TopBar.js, edit the &lt;Link&gt;. [https://reacttraining.com/react-router/web/api/Link](Link documentation)
 2. Add a &lt;Route&gt; in src/components/App.js to ProfilePage.js
 3. Add Link in ProfilePage.js to /messages. Why do you think &lt;Link&gt; is better than &lt;a&gt;?
@@ -30,7 +30,6 @@ If you haven't already set up your project, head here and follow the instruction
 ###Bonus
 - Given this component &lt;Route path="/messages/:username" etc &gt; in src/components/Messenger/index, how can we replace the hardcoded string "/messages" in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in src/components/Messenger/Conversation/ConversationBar.
 - The path /messages/:username/detail should display the UserDetail of a Conversation. The path /messages/:username should not display the UserDetail of a Conversation. You can navigate to /messages/:username/detail by clicking on the Link component in src/components/Messenger/Conversation/ConversationBar
-- Move the API calls into a separate file in src/api/
 - [http://localhost:3000/messages](http://localhost:3000/messages) should not take 100% of the width of the screen. It should take the same width as when there is a Conversation selected. Hint, move the &lt;Route&gt; to the Conversation inside &lt;ConversationSection&gt;
 
 ## License
