@@ -8,7 +8,7 @@ import ConversationContainer from './Conversation/ConversationContainer'
 const Messenger = ({ showSettings, toggleModal, match }) => (
   <div className="messenger">
     <ThreadsContainer />
-    <Route path={`${match.url}/:username`} component={ConversationContainer} />
+    <Route path={`/messages/:username`} component={ConversationContainer} />
   </div>
 )
 
