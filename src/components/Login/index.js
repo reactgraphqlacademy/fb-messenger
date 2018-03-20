@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import Input from '../Form/Input'
+import { logIn } from '../../api/auth'
 import './Login.css'
 
 class Login extends Component {
@@ -24,14 +25,7 @@ class Login extends Component {
       return
     }
 
-    const { status } = await fetch('/api/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({ password, email })
-    })
+    const { status } = await logIn({ password, email })
 
     if (status === 200) {
       this.setState({ redirectToReferrer: true })
