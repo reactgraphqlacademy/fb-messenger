@@ -1,16 +1,37 @@
-import React from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-/*
+class Input extends Component {
+  constructor(props) {
+    super(props)
 
-Here you can create your uncontrolled Input
+    this.state = { value: null }
+  }
 
-Hints:
+  render() {
+    const { onChange, type, placeholder, defaultValue } = this.props
 
-- This component will be uncontrolled from the outer components, meaning this
-component needs to keep track of the state of the input.
-- Uncontrolled components receive a prop to "notify" the outer components that the
-state has changed. That prop is normally called onChange. The onChange prop is a
-function, and it passes the state as a parameter when called.
-- If you add the class form-control to your Input it will keep the style
+    return (
+      <input
+        type={type || 'text'}
+        placeholder={placeholder || ''}
+        className="form-control"
+        value={this.state.value || defaultValue || ''}
+        onChange={ e => {
+          const { target: { value }} = e
+          this.setState({ value })
+          onChange && onChange(e)
+        }}
+      />
+    )
+  }
+}
 
-*/
+Input.propTypes = {
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  defaultValue: PropTypes.string,
+}
+
+export default Input

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
+import Input from '../Form/Input'
 import './Login.css'
 
 class Login extends Component {
@@ -45,23 +45,29 @@ class Login extends Component {
         </div>
 
         <div className="form-group">
-          <input
+          <Input
             type="email"
             placeholder="Enter email"
-            className="form-control"
             value={this.state.email}
-            onChange={this.handleChange.bind(this, 'email')}
+            onChange={e => this.handleChange('email', e)}
           />
-          <input
+          <Input
             type="password"
             placeholder="Enter password"
-            className="form-control"
             value={this.state.password}
-            onChange={this.handleChange.bind(this, 'password')}
+            onChange={e => this.handleChange('password', e)}
           />
         </div>
 
-        <Button bsSize="large" bsStyle="primary" block type="submit" onClick={this.handleSubmit}>Sign in</Button>
+        <Button
+          bsSize="large"
+          bsStyle="primary"
+          block
+          type="submit"
+          onClick={this.handleSubmit}
+        >
+          Sign in
+        </Button>
       </form>
     )
   }
