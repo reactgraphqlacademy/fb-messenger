@@ -18,7 +18,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Part 1, login form
 
-Implementation of the Login Component (located in src/components/Login.js). Requirements:
+Finish the implementation of the Login Component located in src/components/Login.js. Requirements:
 
 - The state of the inputs should be managed by the Login component (is that a controlled or uncontrolled component?). Hint: use the onChange event in the inputs
 - Handle the onClick button to validate the inputs. For validation you use password: 123 and email: clone@facebook.com
