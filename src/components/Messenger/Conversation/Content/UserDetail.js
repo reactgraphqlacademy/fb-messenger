@@ -1,28 +1,35 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
-const UserDetail = ({ selectedUser }) => (
+const UserDetail = ({ username, toggleModal }) => (
   <div className="user-detail">
     <div className="user">
       <div>
-        <Avatar user={selectedUser} size="large" />
+        <Avatar username={username} size="large" />
         <div className="user-title">
           <div className="user-name">
-            {selectedUser.name &&
-              `${selectedUser.name.first} ${selectedUser.name.last}`}
+            { username }
           </div>
           <div className="last-active">
             Active {Math.floor(Math.random() * 3) + 1}m ago
           </div>
         </div>
       </div>
-      <Icon name="cog" />
+      <a onClick={toggleModal}>
+        <Icon name="cog" />
+      </a>
     </div>
     <div>Options</div>
     <div>Facebook Profile</div>
   </div>
 )
+
+UserDetail.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+}
 
 export default UserDetail

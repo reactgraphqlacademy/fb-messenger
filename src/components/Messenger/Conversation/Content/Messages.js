@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
-const Messages = ({ conversation = [], selectedUser }) => {
+const Messages = ({ conversation = [], username, toggleModal }) => {
   const styledConversation = conversation.map((message, i) => (
     <div
       key={i}
@@ -10,7 +12,7 @@ const Messages = ({ conversation = [], selectedUser }) => {
         message.from === "you" ? "sent" : "received"
       }`}
     >
-      {message.to === "you" && <Avatar user={selectedUser} size="medium" />}
+      {message.to === "you" && <Avatar username={username} size="medium" />}
       <div className="message">{message.message}</div>
       {message.from === "you" && (
         <div className="message-read">
@@ -35,10 +37,16 @@ const Messages = ({ conversation = [], selectedUser }) => {
           placeholder="Type your message..."
           className="message-box"
         />
-        <button>Send</button>
+        <button onClick={toggleModal}>Send</button>
       </div>
     </div>
   )
+}
+
+Messages.propTypes = {
+  conversation: PropTypes.array,
+  toggleModal: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 }
 
 export default Messages

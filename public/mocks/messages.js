@@ -18,6 +18,12 @@
         "message":"message text"
     },
     {
+        "from": "you",
+        "to":"crazytiger134",
+        "time":"2018-02-10T11:30:00Z",
+        "message":"message text"
+    },
+    {
         "from": "crazygorilla163",
         "to":"you",
         "time":"2018-02-10T10:33:00Z",

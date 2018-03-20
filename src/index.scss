@@ -1,6 +1,7 @@
 $dark-blue: #4267b2;
 $light-blue: #0084ff;
 $light-grey: #f1f0f0;
+$grey: #ccc;
 $medium-grey: #bdc7d8;
 $dark-grey: #999999;
 $black: #000000;
@@ -36,12 +37,23 @@ html, body {
     text-align: center;
     border-bottom: 1px solid #29487d;
     color: $white;
-    .icon {
+    a, .icon {
       color: $white;
+    }
+    a {
+      cursor: pointer;
     }
     .username {
       position: absolute;
       top: 20px;
+      display: block;
+      list-style: none;
+      img {
+        border-radius: 50%;
+        height: 50px;
+        height: 30px;
+        margin-top: -5px;
+      }
       &.right {
         right: 20px;
       }
@@ -53,6 +65,7 @@ html, body {
 
   .messenger {
     display: flex;
+    flex: 1;
     border-right: 1px solid $medium-grey;
 
     .conversation {
@@ -60,16 +73,17 @@ html, body {
       flex-direction: column;
       flex:3;
       .conversation-bar {
+        position: relative;
         border-bottom: 1px solid $medium-grey;
-        padding: 0.9em;
-        display: flex;
-        justify-content: space-between;
+        padding: 1.05em;
         align-items: center;
-        min-height:23px;
         h2 {
           text-transform: capitalize;
         }
         .conversation-menu {
+          position: absolute;
+          right: 5px;
+          top: 15px;
           & > div {
             display: inline-block;
           }
@@ -242,8 +256,12 @@ html, body {
 }
 
 .icon {
-  color: $light-blue;
+  color: $grey;
   font-size: 1.5rem;
+}
+
+a .icon {
+  color: $light-blue;
   cursor: pointer;
 }
 
@@ -267,4 +285,13 @@ h2 {
   background: $light-grey;
   border-top: 1px solid $medium-grey;
   font-size: 0.8rem;
+}
+
+.page-center {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
