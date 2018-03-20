@@ -27,11 +27,11 @@ Finish the implementation of the Login Component located in src/components/Login
 
 ### Part 2, authorization
 
-- If the user is not logged in, all the pages should redirect to /login. You need to use the [&lt;Redirect&gt;](https://reacttraining.com/react-router/web/api/Redirect) component in src/components/Root.js. There is an [example](https://reacttraining.com/react-router/web/example/auth-workflow) in the React Router documentation. Hint, you just need to use the PrivateRoute component from the example.
+- If the user is not logged in, all the pages should redirect to /login. You need to use the [&lt;Redirect&gt;](https://reacttraining.com/react-router/web/api/Redirect) component in src/components/Root.js. There is an [example](https://reacttraining.com/react-router/web/example/auth-workflow) in the React Router documentation. Hint, you just need to look at the render prop of the PrivateRoute component from the example.
 - The log-out button in the TopBar should:
-  - Remove the session cookie. Hint, there is a function in src/auth.js
+  - Remove the session cookie. Hint, there is a function in src/auth.js for that.
   - Redirect the user to /login. Hint, use withRouter in TopBar.js to get a prop in order to push the '/login' path.
-- Display the username of the session in the TopBar. Hint, the username is in the JWT cookie.
+- Display the username of the session in the TopBar. Hint, the username is in the JWT cookie. Use the getSession function in src/auth.js to get the session.
 
 ### Part 3, form components
 
