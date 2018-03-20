@@ -1,27 +1,23 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import Input from '../Form/Input'
 import './Login.css'
 
 class Login extends Component {
   constructor () {
     super()
-    this.state = {
-      email: '',
-      password: ''
-    }
-  }
 
-  handleChange = (name, event) => {
-    let change = {}
-    change[name] = event.target.value
-    this.setState(change)
+    this.state = {
+      redirectToReferrer: false
+    }
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
+
     const { history } = this.props
-    const { password, email } = this.state
+    const { password, email } = this
     const { status } = await fetch('/api/auth', {
       method: 'POST',
       headers: {
@@ -32,12 +28,18 @@ class Login extends Component {
     })
 
     if (status === 200) {
-      const { from } = this.props.location.state || { from: { pathname: "/" } }
-      history.push(from)
+      this.setState({ redirectToReferrer: true })
     }
   }
 
   render () {
+    const { from } = this.props.location.state || { from: { pathname: "/" } }
+    const { redirectToReferrer } = this.state
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />
+    }
+
     return (
       <form className="form-signin">
         <div className="form-group">
@@ -45,19 +47,18 @@ class Login extends Component {
         </div>
 
         <div className="form-group">
-          <input
+          <Input
             type="email"
             placeholder="Enter email"
-            className="form-control"
-            value={this.state.email}
-            onChange={this.handleChange.bind(this, 'email')}
+            defaultValue={this.email}
+            onChange={e => this.email = e.target.value}
           />
-          <input
+          <Input
             type="password"
             placeholder="Enter password"
             className="form-control"
-            value={this.state.password}
-            onChange={this.handleChange.bind(this, 'password')}
+            defaultValue={this.password}
+            onChange={e => this.password = e.target.value}
           />
         </div>
 
