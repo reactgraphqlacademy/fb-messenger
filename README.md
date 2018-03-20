@@ -18,17 +18,18 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Part 1, login form
 
-Finish the implementation of the Login Component located in src/components/Login.js. Requirements:
+Finish the implementation of the Login component located in src/components/Login/index.js. Requirements:
 
-- The state of the inputs should be managed by the Login component (is that a controlled or uncontrolled component?). Hint: use the onChange event in the inputs.
-- Handle the onClick Button to validate the inputs. For validation you use password: 123 and email: clone@facebook.com
-- If the validation is correct then redirect the user to the home page, you can use the prop history.push(). When the validation is correct the API returns a 200 status. When the validation is not correct the API returns a 401 status.
+- The state of the inputs should be managed by the Login component (are the inputs controlled or uncontrolled components?). Hint, use the onChange event in the inputs.
+- Handle the onClick Button to validate the credentials. To log in use the following credentials: password 123 and email clone@facebook.com
+- Add some simple validation. If email or password are not provided don't submit the form and notify the user. You can do `alert('Email and password are required')`
+- If the validation and the credentials are correct then redirect the user to the home page, you can use the prop history.push(). When the validation is correct the API returns a 200 status. When the validation is not correct the API returns a 401 status.
 
 ### Part 2, authorization
 
 - If the user is not logged in, all the pages should redirect to /login. You need to use the [&lt;Redirect&gt;](https://reacttraining.com/react-router/web/api/Redirect) component in src/components/Root.js. There is an [example](https://reacttraining.com/react-router/web/example/auth-workflow) in the React Router documentation. Hint, you just need to look at the render prop of the PrivateRoute component from the example.
 - The log-out button in the TopBar should:
-  - Remove the session cookie. Hint, there is a function in src/auth.js for that
+  - Remove the session cookie. Hint, there is a function in src/auth.js for that.
   - Redirect the user to /login. Hint, use withRouter in TopBar.js to get a prop in order to push the '/login' path.
 - Display the username of the session in the TopBar. Hint, the username is in the JWT cookie. Use the getSession function in src/auth.js to get the session.
 
@@ -37,9 +38,9 @@ Finish the implementation of the Login Component located in src/components/Login
 Create an uncontrolled component called Input that replaces the &lt;input&gt; in Login.js. You can create your Input component in src/components/form/Input.js, there are some tips in that file.
 
 ### Bonus
+- Move the fetch api call to '/api/auth' from src/components/Login/index.js to the src/api folder
 - If the user is not logged in, when it goes to a private route it should redirect to it after logging in. Example, if the user is not logged in, and the the user goes to [http://localhost:3000/messages](http://localhost:3000/messages), then the user will be redirected to [http://localhost:3000/login](http://localhost:3000/login). After logging in, the user should be redirected to [http://localhost:3000/messages](http://localhost:3000/messages), not to the home page.
 - In the Login component, make the redirect when the login is successful more declarative. Meaning, instead of using the prop history.push(), use the &lt;Redirect&gt; component. You have an example [here](https://reacttraining.com/react-router/web/example/auth-workflow). Hint, look at the Login component in the example.
-- Move the fetch api call to '/api/auth' into the src/api folder
 
 ## License
 
