@@ -18,7 +18,7 @@ class Login extends Component {
 
     const { history } = this.props
     const { password, email } = this
-    
+
     if (!password || !email) {
       alert('Email and password are required')
       return
@@ -51,7 +51,6 @@ class Login extends Component {
         <div className="form-group">
           <h2 className="form-signin-heading">Please sign in</h2>
         </div>
-
         <div className="form-group">
           <Input
             type="email"
@@ -67,8 +66,13 @@ class Login extends Component {
             onChange={e => this.password = e.target.value}
           />
         </div>
-
-        <Button bsSize="large" bsStyle="primary" block type="submit" onClick={this.handleSubmit}>Sign in</Button>
+        <Button
+          bsSize="large"
+          bsStyle="primary"
+          block type="submit"
+          onClick={this.handleSubmit}>
+          Sign in
+        </Button>
       </form>
     )
   }
