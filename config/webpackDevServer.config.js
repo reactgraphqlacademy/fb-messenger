@@ -85,24 +85,13 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app) {
-      const SEVEN_DAYS_IN_MILLISECONDS = 604800000
-      app.use('/api/auth2',
-        (req, res) => {
-
-            res.cookie(
-              'asdfa',
-              'cookie',
-              { maxAge: SEVEN_DAYS_IN_MILLISECONDS }
-            )
-            res.json({ yes: 1})
-        }
-      )
-
+      // Middleware to simulate an authentication API
       app.use('/api/auth',
         bodyParser.json(),
         (req, res) => {
           const { email, password } = req.body
           if (email === 'react@facebook.com' && password === '123') {
+            const SEVEN_DAYS_IN_MILLISECONDS = 604800000
             const cookie = jwt.sign(
               { id: '5ab1299177282be8578f3612' },
               'this_is_my_secret_key ^^',
