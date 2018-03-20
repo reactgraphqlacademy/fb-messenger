@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 
 export const getSession = () => {
   const jwt = Cookies.get('__session')
-  let session = {}
+  let session
   try {
     if (jwt) {
       const base64Url = jwt.split('.')[1]
@@ -14,4 +14,8 @@ export const getSession = () => {
   }
 
   return session
+}
+
+export const logOut = () => {
+  Cookies.remove('__session')
 }

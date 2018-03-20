@@ -1,13 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import App from './App'
 import Login from './Login'
+import { getSession } from '../auth'
 
 const Root = () => (
   <Router >
     <Switch>
       <Route exact path="/login" component={Login} />
-      <Route path="/" component={App} />
+      <Route render={ props =>
+        getSession() ? (
+          <App />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
     </Switch>
   </Router>
 )
