@@ -4,19 +4,46 @@ import PropTypes from 'prop-types'
 
 import Icon from '../../Layout/Icon'
 
+import styled from 'styled-components'
+
+const ConversationBarWrapper = styled.div`
+        position: relative;
+        border-bottom: 1px solid $medium-grey;
+        padding: 1.05em;
+        align-items: center;
+        h2 {
+          text-transform: capitalize;
+        }
+        .conversation-menu {
+          
+        }
+`
+
+const ConversationMenu = styled.div`
+position: absolute;
+          right: 5px;
+          top: 15px;
+          & > div {
+            display: inline-block;
+          }
+          .icon {
+            margin: 0 0.5em;
+          }
+`
+
 const ConversationBar = ({ username, match }) => (
-  <div className="conversation-bar">
+  <ConversationBarWrapper>
     <h2>
       {username}
     </h2>
-    <div className="conversation-menu">
+    <ConversationMenu>
       <Icon name="phone" />
       <Icon name="video" />
       <Link to={`${match.url}/detail`}>
         <Icon name="info-circle" />
       </Link>
-    </div>
-  </div>
+    </ConversationMenu>
+  </ConversationBarWrapper>
 )
 
 ConversationBar.propTypes = {

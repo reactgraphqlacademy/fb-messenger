@@ -1,11 +1,4 @@
-$dark-blue: #4267b2;
-$light-blue: #0084ff;
-$light-grey: #f1f0f0;
-$grey: #ccc;
-$medium-grey: #bdc7d8;
-$dark-grey: #999999;
-$black: #000000;
-$white: #ffffff;
+@import "variables";
 
 html, body {
   margin: 0;
@@ -31,48 +24,48 @@ html, body {
   padding: 0;
   margin: 0;
 
-  .top-bar {
-    background: $dark-blue;
-    padding: 1em;
-    text-align: center;
-    border-bottom: 1px solid #29487d;
-    color: $white;
-    a, .icon {
-      color: $white;
-    }
-    a {
-      cursor: pointer;
-    }
-    ul {
-      list-style: none;
-      position: absolute;
-      top: 20px;
-      display: block;
-      img {
-        border-radius: 50%;
-        height: 50px;
-        height: 30px;
-        margin-top: -5px;
-      }
-      li {
-        display: inline-block;
-        padding-right: 8px;
-        padding-left: 8px;
-        &:last-child {
-          padding-right: 0;
-        }
-        &:first-child {
-          padding-left: 0;
-        }
-      }
-      &.right {
-        right: 20px;
-      }
-      &.left {
-        left: 20px;
-      }
-    }
-  }
+  //.top-bar {
+  //  background: $dark-blue;
+  //  padding: 1em;
+  //  text-align: center;
+  //  border-bottom: 1px solid #29487d;
+  //  color: $white;
+  //  a, .icon {
+  //    color: $white;
+  //  }
+  //  a {
+  //    cursor: pointer;
+  //  }
+  //  ul {
+  //    list-style: none;
+  //    position: absolute;
+  //    top: 20px;
+  //    display: block;
+  //    img {
+  //      border-radius: 50%;
+  //      height: 50px;
+  //      height: 30px;
+  //      margin-top: -5px;
+  //    }
+  //    li {
+  //      display: inline-block;
+  //      padding-right: 8px;
+  //      padding-left: 8px;
+  //      &:last-child {
+  //        padding-right: 0;
+  //      }
+  //      &:first-child {
+  //        padding-left: 0;
+  //      }
+  //    }
+  //    &.right {
+  //      right: 20px;
+  //    }
+  //    &.left {
+  //      left: 20px;
+  //    }
+  //  }
+  //}
 
   .messenger {
     display: flex;
@@ -83,25 +76,25 @@ html, body {
       display: flex;
       flex-direction: column;
       flex:3;
-      .conversation-bar {
-        position: relative;
-        border-bottom: 1px solid $medium-grey;
-        padding: 1.05em;
-        align-items: center;
-        h2 {
-          text-transform: capitalize;
-        }
-        .conversation-menu {
-          position: absolute;
-          right: 5px;
-          top: 15px;
-          & > div {
-            display: inline-block;
-          }
-          .icon {
-            margin: 0 0.5em;
-          }
-        }
+      //.conversation-bar {
+      //  position: relative;
+      //  border-bottom: 1px solid $medium-grey;
+      //  padding: 1.05em;
+      //  align-items: center;
+      //  h2 {
+      //    text-transform: capitalize;
+      //  }
+      //  .conversation-menu {
+      //    position: absolute;
+      //    right: 5px;
+      //    top: 15px;
+      //    & > div {
+      //      display: inline-block;
+      //    }
+      //    .icon {
+      //      margin: 0 0.5em;
+      //    }
+      //  }
       }
 
       .conversation-content {
@@ -249,22 +242,22 @@ html, body {
   }
 }
 
-.avatar {
-  margin-right: 0.5em;
-  &.small {
-    clip-path: circle(10px at center);
-    width:20px;
-  }
-  &.medium {
-    clip-path: circle(15px at center);
-    width:30px;
-    height: 30px;
-  }
-  &.large {
-    clip-path: circle(25px at center);
-    width: 50px;
-  }
-}
+//.avatar {
+//  margin-right: 0.5em;
+//  &.small {
+//    clip-path: circle(10px at center);
+//    width:20px;
+//  }
+//  &.medium {
+//    clip-path: circle(15px at center);
+//    width:30px;
+//    height: 30px;
+//  }
+//  &.large {
+//    clip-path: circle(25px at center);
+//    width: 50px;
+//  }
+//}
 
 .icon {
   color: $grey;
@@ -289,14 +282,14 @@ h2 {
   margin: auto;
   font-size: 1rem;
 }
-
-.footer {
-  padding: 8px;
-  text-align: center;
-  background: $light-grey;
-  border-top: 1px solid $medium-grey;
-  font-size: 0.8rem;
-}
+//
+//.footer {
+//  padding: 8px;
+//  text-align: center;
+//  background: $light-grey;
+//  border-top: 1px solid $medium-grey;
+//  font-size: 0.8rem;
+//}
 
 .page-center {
   height: 100%;
