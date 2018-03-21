@@ -1,5 +1,8 @@
 'use strict';
 
+const bodyParser = require('body-parser')
+const jwt = require('jsonwebtoken')
+
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
@@ -82,19 +85,29 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app) {
-      app.use('/api/auth', (req, res, next) => {
-        res.cookie('__session', 'ole!')
-        //res.json({ auth: true })
-
-        next()
-      })
-      app.use('/api/logout', (req, res, next) =>{
-        res.clearCookie('__session' )
-        res.clearCookie('test' )
-        //res.json({ logout: true })
-
-        next()
-      })
+      // Middleware to simulate an authentication API
+      app.use('/api/auth',
+        bodyParser.json(),
+        (req, res) => {
+          const { email, password } = req.body
+          if (email === 'clone@facebook.com' && password === '123') {
+            const SEVEN_DAYS_IN_MILLISECONDS = 604800000
+            const cookie = jwt.sign(
+              { id: '5ab1299177282be8578f3612', username: '@theclone' },
+              'this_is_my_secret_key ^^',
+              { expiresIn: '7 days' }
+            )
+            res.cookie(
+              '__session',
+              cookie,
+              { maxAge: SEVEN_DAYS_IN_MILLISECONDS }
+            )
+            res.status(200).send('Authorized')
+          } else {
+            res.status(401).send('Not authorized')
+          }
+        }
+      )
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
       // This service worker file is effectively a 'no-op' that will reset any
