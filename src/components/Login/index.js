@@ -22,6 +22,12 @@ class Login extends Component {
     e.preventDefault()
     const { history } = this.props
     const { password, email } = this.state
+    
+    if (!password || !email) {
+      alert('Email and password are required')
+      return
+    }
+
     const { status } = await fetch('/api/auth', {
       method: 'POST',
       headers: {
