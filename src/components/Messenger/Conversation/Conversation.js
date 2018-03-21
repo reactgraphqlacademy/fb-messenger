@@ -9,9 +9,10 @@ const Conversation = ({ conversation, match }) => {
   const { username } = match.params
 
   return ([
-    <ConversationBar username={username} match={match} />
+    <ConversationBar key="bar" username={username} match={match} />
     ,
     <ConversationContent
+      key="content"
       match={match}
       conversation={conversation}
       username={username}
