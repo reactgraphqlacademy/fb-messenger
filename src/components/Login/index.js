@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import './Login.css'
 
 class Login extends Component {
@@ -17,7 +16,9 @@ class Login extends Component {
   }
 
   handleSubmit = async (e) => {
+    // When the button(which type=submit) is clicked, we can stop the form submission by doing:
     e.preventDefault()
+    
     const { history } = this.props
     const { password, email } = this.state
 
@@ -58,15 +59,13 @@ class Login extends Component {
             value={this.state.password}
           />
         </div>
-        <Button
-          bsSize="large"
-          bsStyle="primary"
-          block
+        <button
           type="submit"
+          class="btn btn-lg btn-primary btn-block"
           onClick={this.handleSubmit}
         >
           Sign in
-        </Button>
+        </button>
       </form>
     )
   }
