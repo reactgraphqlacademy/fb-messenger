@@ -18,7 +18,7 @@ class Login extends Component {
   handleSubmit = async (e) => {
     // When the button(which type=submit) is clicked, we can stop the form submission by doing:
     e.preventDefault()
-    
+
     const { history } = this.props
     const { password, email } = this.state
 
@@ -61,7 +61,7 @@ class Login extends Component {
         </div>
         <button
           type="submit"
-          class="btn btn-lg btn-primary btn-block"
+          className="btn btn-lg btn-primary btn-block"
           onClick={this.handleSubmit}
         >
           Sign in
