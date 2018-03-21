@@ -10,19 +10,31 @@ class Login extends Component {
     this.state = {}
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    const { history } = this.props
-
-    if (this.state.username === 'react' && this.state.password === '1234') {
-      // Here you need to "send" the user to '/'
-    }
-  }
-
   handleChange = (name, event) => {
     let change = {}
     change[name] = event.target.value
     //You need to set the change object in the state of the component
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    const { history } = this.props
+    const { password, email } = this.state
+
+    // You can add some validation here to make sure password and email are provided
+
+    const { status } = await fetch('/api/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({ password, email })
+    })
+
+    if (status === 200) {
+      // Here you need to "send" the user to '/'
+    }
   }
 
   render () {
@@ -44,7 +56,6 @@ class Login extends Component {
             placeholder="Enter password"
             className="form-control"
             value={this.state.password}
-            onChange={e => this.handleChange('password', e)}
           />
         </div>
         <Button
