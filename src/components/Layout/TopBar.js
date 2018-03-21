@@ -11,10 +11,7 @@ const TopBar = (props) => {
       <Link to="/messages"><i className="icon fab fa-facebook-messenger" /></Link>
       <ul className={`${props.userPosition || 'right'}`}>
         <li>
-          <a onClick={() => {
-            logOut()
-            props.history.push('/login')
-          }}>log out</a>
+          <Link to="/login" onClick={logOut}>log out</Link>
         </li>
         <li>
           <Link to="/profile">
