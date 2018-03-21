@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goals of this exercise are to learn how to use a declarative routing using React Router v4, and learn how to fetch data into your components.
+The goals of this exercise is to learn how to use basic forms in react using state and how to do authentication with react router and JWT.
 
 ## To get started
 
