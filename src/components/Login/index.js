@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import Input from '../Form/Input'
 import { logIn } from '../../api/auth'
@@ -60,13 +59,13 @@ class Login extends Component {
             onChange={e => this.password = e.target.value}
           />
         </div>
-        <Button
-          bsSize="large"
-          bsStyle="primary"
-          block type="submit"
-          onClick={this.handleSubmit}>
+        <button
+          type="submit"
+          className="btn btn-lg btn-primary btn-block"
+          onClick={this.handleSubmit}
+        >
           Sign in
-        </Button>
+        </button>
       </form>
     )
   }
