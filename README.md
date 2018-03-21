@@ -42,6 +42,20 @@ Create an uncontrolled component called Input that replaces the &lt;input&gt; in
 - If the user is not logged in, when she or he goes to a private route it should redirect to it after logging in. Example, if the user is not logged in, and the the user goes to [http://localhost:3000/messages](http://localhost:3000/messages), then the user will be redirected to [http://localhost:3000/login](http://localhost:3000/login). After logging in, the user should be redirected to [http://localhost:3000/messages](http://localhost:3000/messages), not to the home page.
 - In the Login component, make the redirect when the login is successful more declarative. Meaning, instead of using the prop history.push(), use the &lt;Redirect&gt; component. You have an example [here](https://reacttraining.com/react-router/web/example/auth-workflow). Hint, look at the Login component in the example.
 
+## Links and further reading
+
+### React Router
+- [Redirect push()](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/modules/Redirect.js#L88)
+- [Redirect documentation example](https://reacttraining.com/react-router/web/api/Redirect)
+- [react-router-dom Redirect](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/modules/Redirect.js)
+
+### JWT
+- [JWT](https://jwt.io/)
+- [Stateless sessions explained](https://auth0.com/blog/stateless-auth-for-stateful-minds/)
+
+### Controlled Vs. Uncontrolled components
+ - [https://reactjs.org/docs/uncontrolled-components.html](https://reactjs.org/docs/uncontrolled-components.html)
+
 ## License
 
 This material is available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html).
