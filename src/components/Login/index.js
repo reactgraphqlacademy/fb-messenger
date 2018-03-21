@@ -22,7 +22,7 @@ class Login extends Component {
     e.preventDefault()
     const { history } = this.props
     const { password, email } = this.state
-    
+
     if (!password || !email) {
       alert('Email and password are required')
       return
@@ -49,7 +49,6 @@ class Login extends Component {
         <div className="form-group">
           <h2 className="form-signin-heading">Please sign in</h2>
         </div>
-
         <div className="form-group">
           <Input
             type="email"
@@ -64,16 +63,13 @@ class Login extends Component {
             onChange={e => this.handleChange('password', e)}
           />
         </div>
-
-        <Button
-          bsSize="large"
-          bsStyle="primary"
-          block
+        <button
           type="submit"
+          className="btn btn-lg btn-primary btn-block"
           onClick={this.handleSubmit}
         >
           Sign in
-        </Button>
+        </button>
       </form>
     )
   }
