@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 import { Route } from 'react-router'
 import PropTypes from 'prop-types'
 
+import styled from 'styled-components'
+
 import UserDetail from './UserDetail'
 import Messages from './Messages'
 import Modal from '../../../Modal'
+
+const ConversationContentWrapper = styled.div`
+  display: flex;
+   height: 100%;
+`
 
 class ConversationContent extends Component {
   constructor() {
@@ -27,7 +34,7 @@ class ConversationContent extends Component {
     }
 
     return (
-      <div className="conversation-content">
+      <ConversationContentWrapper>
         <Modal
           show={showModal}
           toggleModal={this.toggleModal}
@@ -43,7 +50,7 @@ class ConversationContent extends Component {
             toggleModal={this.toggleModal}
           />
         )} />
-      </div>
+      </ConversationContentWrapper>
     )
   }
 }

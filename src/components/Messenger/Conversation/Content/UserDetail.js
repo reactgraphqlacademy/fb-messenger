@@ -1,8 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import styled from 'styled-components'
+
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
+
+const UserDetailWrapper = styled.div`
+
+`
+
+const User = styled.div`
+
+`
+
+const UserTitle = styled.div`
+
+`
+
+const UserName = styled.div`
+
+`
+
+const LastActive = styled.div`
+
+`
 
 const UserDetail = ({ username, toggleModal }) => (
   <div className="user-detail">

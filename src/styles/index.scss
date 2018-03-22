@@ -97,71 +97,71 @@ html, body {
       //  }
       }
 
-      .conversation-content {
-        display: flex;
-        height: 100%;
+      //.conversation-content {
+      //  display: flex;
+      //  height: 100%;
 
-        .messages {
-          display: flex;
-          flex:2;
-          flex-direction: column;
-          justify-content: space-between;
-
-          .list {
-            padding: 1em;
-            overflow-y: auto;
-            p {
-              color: $dark-grey;
-              font-size: 0.9em;
-            }
-            .message-wrapper {
-              padding: 0.5em;
-              display: flex;
-              &.sent {
-                justify-content: flex-end;
-                .message {
-                  background: $light-blue;
-                  color: $white;
-                }
-                .message-read {
-                  display: flex;
-                  flex-flow: column;
-                  justify-content: flex-end;
-                  .icon {
-                    font-size:0.6rem;
-                    cursor: auto;
-                  }
-                }
-              }
-              &.received {
-                .message {
-                  background: $light-grey;
-                }
-              }
-              .message {
-                border-radius: 20px;
-                padding: 0.5em 1em;
-                display: inline-block;
-                font-size: 0.9rem;
-              }
-            }
-
-          }
-          .new-message {
-            min-height: 20px;
-            padding: 1em;
-            border-top: 1px solid $medium-grey;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            height: 60px;
-            .message-box {
-              color: $medium-grey;
-              border-color: transparent;
-
-            }
-          }
-        }
+        //.messages {
+        //  display: flex;
+        //  flex:2;
+        //  flex-direction: column;
+        //  justify-content: space-between;
+        //
+        //  .list {
+        //    padding: 1em;
+        //    overflow-y: auto;
+        //    p {
+        //      color: $dark-grey;
+        //      font-size: 0.9em;
+        //    }
+            //.message-wrapper {
+              //padding: 0.5em;
+              //display: flex;
+              //&.sent {
+              //  justify-content: flex-end;
+              //  .message {
+              //    background: $light-blue;
+              //    color: $white;
+              //  }
+              //  .message-read {
+              //    display: flex;
+              //    flex-flow: column;
+              //    justify-content: flex-end;
+              //    .icon {
+              //      font-size:0.6rem;
+              //      cursor: auto;
+              //    }
+              //  }
+              //}
+              //&.received {
+              //  .message {
+              //    background: $light-grey;
+              //  }
+              //}
+              //.message {
+              //  border-radius: 20px;
+              //  padding: 0.5em 1em;
+              //  display: inline-block;
+              //  font-size: 0.9rem;
+              //}
+            //}
+        //
+        //  }
+        //  .new-message {
+        //    min-height: 20px;
+        //    padding: 1em;
+        //    border-top: 1px solid $medium-grey;
+        //    font-size: 0.9rem;
+        //    display: flex;
+        //    justify-content: space-between;
+        //    height: 60px;
+        //    .message-box {
+        //      color: $medium-grey;
+        //      border-color: transparent;
+        //
+        //    }
+        //  }
+        //}
 
         .user-detail {
           width: 33.3%;
