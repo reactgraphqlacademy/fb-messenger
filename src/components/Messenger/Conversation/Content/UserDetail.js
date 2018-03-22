@@ -9,12 +9,12 @@ import Icon from '../../../Layout/Icon'
 
 const UserDetailWrapper = styled.div`
     width: 33.3%; 
-    border-left: 1px solid $medium-grey;
+    border-left: 1px solid ${colours.mediumGrey};
     > div {
     padding: 1em;
     font-size: 0.9em;
-    color: $dark-grey;
-    border-bottom: 1px solid $medium-grey;
+    color: ${colours.darkGrey};
+    border-bottom: 1px solid ${colours.mediumGrey};
     &:last-child {
       border-bottom: none;
     }
