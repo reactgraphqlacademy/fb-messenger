@@ -1,27 +1,29 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const AvatarWrapper = styled.img`
   margin-right: 0.5em;
-  &.small {
+
+  ${props => props.size === 'small' && css`
     clip-path: circle(10px at center);
     width:20px;
-  }
-  &.medium {
+  `}
+  
+  ${props => props.size === 'medium' && css`
     clip-path: circle(15px at center);
     width:30px;
     height: 30px;
-  }
-  &.large {
+  `}
+  
+  ${props => props.size === 'large' && css`
     clip-path: circle(25px at center);
     width: 50px;
-  }
+  `}
 `
 
 const Avatar = ({ username, size = "medium" }) => (
   <AvatarWrapper
       size={size}
-    className={size}
       src={`/images/${username}_lg.jpg`}
       alt={`${username}`}
   />

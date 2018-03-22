@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { logOut, getSession } from '../../auth'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import colours from '../../styles/export/colours.css'
+import Icon from './Icon'
 
 const TopBarWrapper = styled.div`
     background: ${colours.darkBlue};
@@ -11,51 +12,50 @@ const TopBarWrapper = styled.div`
     text-align: center;
     border-bottom: 1px solid #29487d;
     color: ${colours.white};
-    a, .icon {
-      color: ${colours.white};
-    }
+`
+
+const TopBarItems = styled.ul`
+    list-style: none;
+    position: absolute;
+    top: 20px;
+    display: block;
+    
+    ${props => props.position === 'right' && css`
+      right: 20px;
+    `}
+        
+    ${props => props.position === 'left' && css`
+      left: 20px;
+    `}
     a {
-      cursor: pointer;
+      color: white;
     }
-    ul {
-      list-style: none;
-      position: absolute;
-      top: 20px;
-      display: block;
-      img {
-        border-radius: 50%;
-        height: 50px;
-        height: 30px;
-        margin-top: -5px;
+    img {
+      border-radius: 50%;
+      height: 50px;
+      height: 30px;
+      margin-top: -5px;
+    }
+    li {
+      display: inline-block;
+      padding-right: 8px;
+      padding-left: 8px;
+      &:last-child {
+        padding-right: 0;
       }
-      li {
-        display: inline-block;
-        padding-right: 8px;
-        padding-left: 8px;
-        &:last-child {
-          padding-right: 0;
-        }
-        &:first-child {
-          padding-left: 0;
-        }
-      }
-      &.right {
-        right: 20px;
-      }
-      &.left {
-        left: 20px;
+      &:first-child {
+        padding-left: 0;
       }
     }
 `
-
 
 const TopBar = (props) => {
   const session = getSession()
 
   return (
     <TopBarWrapper>
-      <Link to="/messages"><i className="icon fab fa-facebook-messenger" /></Link>
-      <ul className={`${props.userPosition || 'right'}`}>
+      <Link to="/messages"><Icon className="fab fa-facebook-messenger" style={{color: 'white'}} /></Link>
+      <TopBarItems position={`${props.userPosition || 'right'}`}>
         <li>
           <a onClick={() => {
             logOut()
@@ -67,7 +67,7 @@ const TopBar = (props) => {
             {session? session.username: ''} <img src="/images/default.jpg" />
           </Link>
         </li>
-      </ul>
+      </TopBarItems>
     </TopBarWrapper>
   )
 }

@@ -24,9 +24,6 @@ const ConversationMenu = styled.div`
   & > div {
     display: inline-block;
   }
-  .icon {
-    margin: 0 0.5em;
-  }
 `
 
 const ConversationBar = ({ username, match }) => (
@@ -35,10 +32,10 @@ const ConversationBar = ({ username, match }) => (
       {username}
     </h2>
     <ConversationMenu>
-      <Icon name="phone" />
-      <Icon name="video" />
+      <Icon name="phone" style={{margin: '0 0.5em'}}/>
+      <Icon name="video" style={{margin: '0 0.5em'}}/>
       <Link to={`${match.url}/detail`}>
-        <Icon name="info-circle" />
+        <Icon name="info-circle" active style={{margin: '0 0.5em'}}/>
       </Link>
     </ConversationMenu>
   </ConversationBarWrapper>

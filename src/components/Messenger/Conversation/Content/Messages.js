@@ -50,11 +50,6 @@ const MessageRead = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
-  
-  .icon {
-    font-size:0.6rem;
-    cursor: auto;
-  }
 `
 
 const Message = styled.div`
@@ -78,7 +73,7 @@ const Messages = ({ conversation = [], username, toggleModal }) => {
 
       {message.from === "you" && (
         <MessageRead>
-          <Icon name="check-circle" />
+          <Icon name="check-circle" size={0.6} />
         </MessageRead>
       )}
 

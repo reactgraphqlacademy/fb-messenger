@@ -8,6 +8,10 @@ html, body {
   height: 100%;
 }
 
+a:link, a:focus, a:hover {
+  cursor: pointer;
+}
+
 .app {
   overflow: hidden;
   flex: 1;
@@ -23,6 +27,7 @@ html, body {
   height: 100vh;
   padding: 0;
   margin: 0;
+}
 
   //.top-bar {
   //  background: $dark-blue;
@@ -196,50 +201,50 @@ html, body {
       //}
     //}
 
-
-    .threads {
-      display: flex;
-      border-right: 1px solid $medium-grey;
-      flex-direction: column;
-      flex:1;
-      .thread-bar {
-        border-bottom: 1px solid $medium-grey;
-        padding: 0.85em;
-        h2 {
-          display: flex;
-          align-items: center;
-          align-content: center;
-          justify-content: space-between;
-        }
-      }
-      .thread-list {
-        overflow-y: auto;
-        width: 100%;
-        list-style: none inside none;
-        padding: 0;
-        margin: 0;
-        li {
-          display: flex;
-          align-items: center;
-          padding: 0.4em 0.75em;
-          &:hover {
-            background: $light-grey;
-            cursor: pointer;
-          }
-          span {
-            font-size: 0.9em;
-            text-transform: capitalize;
-          }
-          small {
-            font-size: 0.8em;
-            color: $dark-grey;
-            margin: 2px 0;
-            display: block;
-          }
-        }
-      }
-    }
-  }
+    //
+    //.threads {
+    //  display: flex;
+    //  border-right: 1px solid $medium-grey;
+    //  flex-direction: column;
+    //  flex:1;
+    //  .thread-bar {
+    //    border-bottom: 1px solid $medium-grey;
+    //    padding: 0.85em;
+    //    h2 {
+    //      display: flex;
+    //      align-items: center;
+    //      align-content: center;
+    //      justify-content: space-between;
+    //    }
+    //  }
+      //.thread-list {
+      //  overflow-y: auto;
+      //  width: 100%;
+      //  list-style: none inside none;
+      //  padding: 0;
+      //  margin: 0;
+      //  li {
+      //    display: flex;
+      //    align-items: center;
+      //    padding: 0.4em 0.75em;
+      //    &:hover {
+      //      background: $light-grey;
+      //      cursor: pointer;
+      //    }
+      //    span {
+      //      font-size: 0.9em;
+      //      text-transform: capitalize;
+      //    }
+      //    small {
+      //      font-size: 0.8em;
+      //      color: $dark-grey;
+      //      margin: 2px 0;
+      //      display: block;
+      //    }
+      //  }
+      //}
+    //}
+  //}
 //}
 
 //.avatar {
@@ -259,15 +264,15 @@ html, body {
 //  }
 //}
 
-.icon {
-  color: $grey;
-  font-size: 1.5rem;
-}
+//.icon {
+//  color: $grey;
+//  font-size: 1.5rem;
+//}
 
-a .icon {
-  color: $light-blue;
-  cursor: pointer;
-}
+//a .icon {
+//  color: $light-blue;
+//  cursor: pointer;
+//}
 
 button {
   color: $light-blue;
