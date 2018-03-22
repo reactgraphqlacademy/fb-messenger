@@ -40,7 +40,7 @@ const LastActive = styled.div`
 `
 
 const UserDetail = ({ username, toggleModal }) => (
-  <UserDetail>
+  <UserDetailWrapper>
     <User>
       <div>
         <Avatar username={username} size="large" />
@@ -59,7 +59,7 @@ const UserDetail = ({ username, toggleModal }) => (
     </User>
     <div>Options</div>
     <div>Facebook Profile</div>
-  </UserDetail>
+  </UserDetailWrapper>
 )
 
 UserDetail.propTypes = {
