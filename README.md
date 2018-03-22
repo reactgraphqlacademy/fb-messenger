@@ -30,6 +30,7 @@ styled-components is a npm package which we need to add to our project
 - Current styles, which are being mapped to our components via classes, can be found in the index.css file (SASS is being compiled to CSS) which is being imported to the index.js file
 - Take appropriate styles from the stylesheet for each of the component and create styled components within each of the components or as a separate component should you need it (if the styled-component is being used on multiple places)
 - You can find an example of how styled-components can be implemented in App.js
+- You can work your way through your application, starting with smaller components in the Layout folder to the bigger ones in Messenger 
 - If you feel that there is a valid reason to keep some styles in the stylesheet be it
 
 
