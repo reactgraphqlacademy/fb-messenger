@@ -2,51 +2,64 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
+import colours from '../../../../styles/export/colours.css'
 
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
 const UserDetailWrapper = styled.div`
-
+    width: 33.3%; 
+    border-left: 1px solid $medium-grey;
+    > div {
+    padding: 1em;
+    font-size: 0.9em;
+    color: $dark-grey;
+    border-bottom: 1px solid $medium-grey;
+    &:last-child {
+      border-bottom: none;
+    }
 `
 
 const User = styled.div`
-
-`
-
-const UserTitle = styled.div`
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > div {
+      display: flex;
+      align-items: center;
 `
 
 const UserName = styled.div`
-
+    font-size: 0.9rem;
+    text-transform: capitalize;
 `
 
 const LastActive = styled.div`
-
+    font-size: 0.75rem;
+    color: ${colours.darkGrey};
 `
 
 const UserDetail = ({ username, toggleModal }) => (
-  <div className="user-detail">
-    <div className="user">
+  <UserDetail>
+    <User>
       <div>
         <Avatar username={username} size="large" />
-        <div className="user-title">
-          <div className="user-name">
+        <div>
+          <UserName>
             { username }
-          </div>
-          <div className="last-active">
+          </UserName>
+          <LastActive>
             Active {Math.floor(Math.random() * 3) + 1}m ago
-          </div>
+          </LastActive>
         </div>
       </div>
       <a onClick={toggleModal}>
         <Icon name="cog" />
       </a>
-    </div>
+    </User>
     <div>Options</div>
     <div>Facebook Profile</div>
-  </div>
+  </UserDetail>
 )
 
 UserDetail.propTypes = {

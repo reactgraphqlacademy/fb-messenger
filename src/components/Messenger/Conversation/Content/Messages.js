@@ -25,7 +25,7 @@ const MessagesList = styled.div`
 const NewMessage = styled.div`
     min-height: 20px;
     padding: 1em;
-    border-top: 1px solid $medium-grey;
+    border-top: 1px solid ${colours.mediumGrey};
     font-size: 0.9rem;
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import colours from '../../styles/export/colours.css'
 
 import Avatar from '../Layout/Avatar'
 import Icon from '../Layout/Icon'

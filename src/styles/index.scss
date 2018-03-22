@@ -67,15 +67,15 @@ html, body {
   //  }
   //}
 
-  .messenger {
-    display: flex;
-    flex: 1;
-    border-right: 1px solid $medium-grey;
+  //.messenger {
+  //  display: flex;
+  //  flex: 1;
+  //  border-right: 1px solid $medium-grey;
 
-    .conversation {
-      display: flex;
-      flex-direction: column;
-      flex:3;
+    //.conversation {
+    //  display: flex;
+    //  flex-direction: column;
+    //  flex:3;
       //.conversation-bar {
       //  position: relative;
       //  border-bottom: 1px solid $medium-grey;
@@ -95,7 +95,7 @@ html, body {
       //      margin: 0 0.5em;
       //    }
       //  }
-      }
+      //}
 
       //.conversation-content {
       //  display: flex;
@@ -163,38 +163,38 @@ html, body {
         //  }
         //}
 
-        .user-detail {
-          width: 33.3%;
-          border-left: 1px solid $medium-grey;
-          > div {
-            padding: 1em;
-            font-size: 0.9em;
-            color: $dark-grey;
-            border-bottom: 1px solid $medium-grey;
-            &:last-child {
-              border-bottom: none;
-            }
-          }
-          .user {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            > div {
-              display: flex;
-              align-items: center;
-              .user-name {
-                font-size: 0.9rem;
-                text-transform: capitalize;
-              }
-              .last-active {
-                font-size: 0.75rem;
-                color: $dark-grey;
-              }
-            }
-          }
-        }
-      }
-    }
+        //.user-detail {
+        //  width: 33.3%;
+        //  border-left: 1px solid $medium-grey;
+        //  > div {
+        //    padding: 1em;
+        //    font-size: 0.9em;
+        //    color: $dark-grey;
+        //    border-bottom: 1px solid $medium-grey;
+        //    &:last-child {
+        //      border-bottom: none;
+        //    }
+        //  }
+      //    .user {
+      //      display: flex;
+      //      justify-content: space-between;
+      //      align-items: center;
+      //      > div {
+      //        display: flex;
+      //        align-items: center;
+      //        .user-name {
+      //          font-size: 0.9rem;
+      //          text-transform: capitalize;
+      //        }
+      //        .last-active {
+      //          font-size: 0.75rem;
+      //          color: $dark-grey;
+      //        }
+      //      }
+      //    }
+      //  }
+      //}
+    //}
 
 
     .threads {
@@ -240,7 +240,7 @@ html, body {
       }
     }
   }
-}
+//}
 
 //.avatar {
 //  margin-right: 0.5em;

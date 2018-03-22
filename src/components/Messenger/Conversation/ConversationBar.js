@@ -5,30 +5,28 @@ import PropTypes from 'prop-types'
 import Icon from '../../Layout/Icon'
 
 import styled from 'styled-components'
+import colours from '../../../styles/export/colours.css'
 
 const ConversationBarWrapper = styled.div`
-        position: relative;
-        border-bottom: 1px solid $medium-grey;
-        padding: 1.05em;
-        align-items: center;
-        h2 {
-          text-transform: capitalize;
-        }
-        .conversation-menu {
-          
-        }
+    position: relative;
+    border-bottom: 1px solid ${colours.mediumGrey};
+    padding: 1.05em;
+    align-items: center;
+    h2 {
+      text-transform: capitalize;
+    }
 `
 
 const ConversationMenu = styled.div`
-position: absolute;
-          right: 5px;
-          top: 15px;
-          & > div {
-            display: inline-block;
-          }
-          .icon {
-            margin: 0 0.5em;
-          }
+  position: absolute;
+  right: 5px;
+  top: 15px;
+  & > div {
+    display: inline-block;
+  }
+  .icon {
+    margin: 0 0.5em;
+  }
 `
 
 const ConversationBar = ({ username, match }) => (

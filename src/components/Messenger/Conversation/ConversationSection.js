@@ -2,13 +2,19 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
-
+import styled from 'styled-components'
 import ConversationContainer from './ConversationContainer'
 
+const Conversation = styled.div`
+      display: flex;
+      flex-direction: column;
+      flex:3;
+`
+
 const ConversationSection = ({ match }) => (
-  <div className="conversation">
+  <Conversation>
     <Route path={`${match.url}/:username`} component={ConversationContainer} />
-  </div>
+  </Conversation>
 )
 
 ConversationSection.propTypes = {

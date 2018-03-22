@@ -10,7 +10,7 @@ import Modal from '../../../Modal'
 
 const ConversationContentWrapper = styled.div`
   display: flex;
-   height: 100%;
+  height: 100%;
 `
 
 class ConversationContent extends Component {
