@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to style your components using styled-components.
+The goals of this exercise are to learn how to use a declarative routing using React Router v4, and learn how to fetch data into your components.
 
 ## To get started
 
@@ -20,8 +20,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 styled-components is a npm package which we need to add to our project
 ```sh
- yarn add styled-components
- npm install styled-components
+ npm install --save styled-components
  ```
 
 ### Part 2, refactoring
@@ -37,7 +36,6 @@ styled-components is a npm package which we need to add to our project
 ### Part 3, sharing variables
 
 In case we need to share variables (like colours or sizes) between CSS and JS we can borrow :export from CSS Modules for this occasion
-Create an uncontrolled component called Input that replaces the &lt;input&gt; in Login.js. You can create your Input component in src/components/form/Input.js, there are some tips in that file.
 
 ## License
 
