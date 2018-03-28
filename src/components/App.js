@@ -8,8 +8,10 @@ import TopBar from './Layout/TopBar'
 import Messenger from './Messenger'
 import Footer from './Layout/Footer'
 import Profile from './Profile'
+import colours from '../styles/export/colours.css'
 
 const AppWrapper = styled.div`
+  background-color: ${colours.white};
   overflow: hidden;
   flex: 1;
   flex-flow: row wrap;
