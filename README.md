@@ -23,19 +23,30 @@ styled-components is a npm package which we need to add to our project
  npm install --save styled-components
  ```
 
-### Part 2, refactoring
+### Part 2, sharing variables
 
-- Once you installed styled-components you can start refactoring your application
-- Current styles, which are being mapped to our components via classes, can be found in the index.css file (SASS is being compiled to CSS) which is being imported to the index.js file
+You can share variables(like colours or sizes) between CSS and JavaScript by using :export from CSS Modules.
+
+- Copy the SCSS variables from src/index.scss to src/styles/variables.scss
+- Export the scss variable as JavaScript by exporting them in src/styles/export/colours.scss. You have an example on how we export $white in colours.scss
+
+src/App.js shows you how we use the SCSS $white variable as a JavaScript variable
+
+### Part 3, refactoring
+
+Once you installed styled-components and you have your sass variables in JS, you can start refactoring your application
+
+Current styles, which are being mapped to our components via classes, can be found in the index.css file (SASS is being compiled to CSS) which is being imported to the src/index.js file. The goal of the refactoring is to migrate those src/index.js styles into styled-components.
+
+- To get started, uncomment the AppWrapper component in src/App.js. Follow the comments in that file to get more tips.
 - Take appropriate styles from the stylesheet for each of the component and create styled components within each of the components or as a separate component should you need it (if the styled-component is being used on multiple places)
-- You can find an example of how styled-components can be implemented in App.js
 - You can work your way through your application, starting with smaller components in the Layout folder to the bigger ones in Messenger
-- If you feel that there is a valid reason to keep some styles in the stylesheet be it
 
+## Links
 
-### Part 3, sharing variables
-
-In case we need to share variables (like colours or sizes) between CSS and JS we can borrow :export from CSS Modules for this occasion
+[https://www.styled-components.com/](https://www.styled-components.com/)
+[https://github.com/css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
+[https://github.com/css-modules/css-modules/](https://github.com/css-modules/css-modules/)
 
 ## License
 

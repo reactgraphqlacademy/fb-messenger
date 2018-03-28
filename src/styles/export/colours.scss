@@ -1,12 +1,6 @@
-@import '../variables';
+@import '../variables.scss';
 
 :export {
-  darkBlue: $dark-blue;
-  lightBlue: $light-blue;
-  lightGrey: $light-grey;
-  grey: $grey;
-  mediumGrey: $medium-grey;
-  darkGrey: $dark-grey;
-  black: $black;
   white: $white;
+  // export the rest of the variables here
 }

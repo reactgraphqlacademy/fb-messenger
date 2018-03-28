@@ -9,13 +9,15 @@ import Messenger from './Messenger'
 import Footer from './Layout/Footer'
 import Login from './Login'
 import Profile from './Profile'
+import colours from '../styles/export/colours.css'
 
 /*
-  To get started, you can uncomment the following AppWrapper component and
-  replace the <div className="app"> bellow with it
+  Part 3. To get started, you can uncomment the following AppWrapper component and
+  replace the <div className="app"> bellow with it. You'll need to uncomment the
+  import styled from 'styled-components' from the top of the page
 */
-
 // const AppWrapper = styled.div`
+//   background-color: ${colours.white};
 //   overflow: hidden;
 //   flex: 1;
 //   flex-flow: row wrap;
