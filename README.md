@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goals of this exercise are to learn how to use a declarative routing using React Router v4, and learn how to fetch data into your components.
+The goal of this exercise is to learn how to style a React app using styled-components.
 
 ## To get started
 
@@ -25,10 +25,10 @@ styled-components is a npm package which we need to add to our project
 
 ### Part 2, sharing variables
 
-You can share variables(like colours or sizes) between CSS and JavaScript by using :export from CSS Modules.
+You can share variables(like colours) between CSS and JavaScript by using :export from CSS Modules.
 
-- Copy the SCSS variables from src/index.scss to src/styles/variables.scss
-- Export the scss variable as JavaScript by exporting them in src/styles/export/colours.scss. You have an example on how we export $white in colours.scss
+- Copy the SCSS variables from src/index.scss into src/styles/variables.scss
+- Export the SCSS variables as JavaScript by exporting them in src/styles/export/colours.scss. You have an example on how we export $white in colours.scss
 
 src/App.js shows you how we use the SCSS $white variable as a JavaScript variable
 

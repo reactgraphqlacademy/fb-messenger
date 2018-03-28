@@ -16,6 +16,7 @@ html, body {
 }
 
 .app {
+  background-color: $white;
   overflow: hidden;
   flex: 1;
   flex-flow: row wrap;
