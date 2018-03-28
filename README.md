@@ -44,9 +44,9 @@ Current styles, which are being mapped to our components via classes, can be fou
 
 ## Links
 
-[https://www.styled-components.com/](https://www.styled-components.com/)
-[https://github.com/css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
-[https://github.com/css-modules/css-modules/](https://github.com/css-modules/css-modules/)
+- [https://www.styled-components.com/](https://www.styled-components.com/)
+- [https://github.com/css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
+- [https://github.com/css-modules/css-modules/](https://github.com/css-modules/css-modules/)
 
 ## License
 
