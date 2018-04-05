@@ -33,14 +33,14 @@ const NewMessage = styled.div`
 `
 
 const MessageBox = styled.input`
-  color: ${colours.mediumGrey};
   border-color: transparent;
+  width: 90%;
 `
 
 const MessageWrapper = styled.div`
   padding: 0.5em;
   display: flex;
-  
+
   ${props => props.from === 'sent' && css`
     justify-content: flex-end;
   `}
@@ -61,49 +61,69 @@ const Message = styled.div`
     color: ${props => props.from === 'received' ? colours.black : colours.white}
 `
 
-const Messages = ({ conversation = [], username, toggleModal }) => {
+class Messages extends React.Component {
+  state = {
+    messageText: ''
+  }
 
+  sendMessage = () => {
+    this.props.setLastMessage({
+      message: {
+        lastMessage: {
+          message: this.state.messageText,
+          time: new Date(),
+        },
+        username: this.props.username,
+      }
+    })
+    this.props.addNewMessageToConversation(this.state.messageText)
+    this.setState({ messageText: '' })
+  }
+
+  render() {
+    const { conversation = [], username, toggleModal } = this.props
     const styledConversation = conversation.map((message, i) => (
-
-    <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
-      {message.to === "you" && <Avatar username={username} size="medium" />}
-      <Message from={message.from === "you" ? "sent" : "received"}>
-          {message.message}
-      </Message>
-
-      {message.from === "you" && (
-        <MessageRead>
-          <Icon name="check-circle" size={0.6} />
-        </MessageRead>
-      )}
-
-    </MessageWrapper>
-  ))
-
-  return (
-    <MessagesWrapper>
-      <MessagesList>
-        {styledConversation.length ? (
-          styledConversation
-        ) : (
-          <p>You have no messages</p>
+      <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
+        {message.to === "you" && <Avatar username={username} size="medium" />}
+        <Message from={message.from === "you" ? "sent" : "received"}>
+            {message.message}
+        </Message>
+        {message.from === "you" && (
+          <MessageRead>
+            <Icon name="check-circle" size={0.6} />
+          </MessageRead>
         )}
-      </MessagesList>
-      <NewMessage>
-        <MessageBox
-          type="text"
-          placeholder="Type your message..."
-        />
-        <button onClick={toggleModal}>Send</button>
-      </NewMessage>
-    </MessagesWrapper>
-  )
+      </MessageWrapper>
+    ))
+
+    return (
+      <MessagesWrapper>
+        <MessagesList>
+          {styledConversation.length ? (
+            styledConversation
+          ) : (
+            <p>You have no messages</p>
+          )}
+        </MessagesList>
+        <NewMessage>
+          <MessageBox
+            onChange={e => this.setState({ messageText: e.target.value })}
+            type="text"
+            value={this.state.messageText}
+            placeholder="Type your message..."
+          />
+          <button onClick={this.sendMessage}>Send</button>
+        </NewMessage>
+      </MessagesWrapper>
+    )
+  }
 }
 
 Messages.propTypes = {
   conversation: PropTypes.array,
   toggleModal: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
+  addNewMessageToConversation: PropTypes.func.isRequired,
 }
 
 export default Messages

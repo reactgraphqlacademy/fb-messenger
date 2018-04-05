@@ -11,14 +11,17 @@ const Conversation = styled.div`
       flex:3;
 `
 
-const ConversationSection = ({ match }) => (
+const ConversationSection = ({ match, setLastMessage }) => (
   <Conversation>
-    <Route path={`${match.url}/:username`} component={ConversationContainer} />
+    <Route path={`${match.url}/:username`} render={props => (
+      <ConversationContainer setLastMessage={setLastMessage} {...props} />
+    )} />
   </Conversation>
 )
 
 ConversationSection.propTypes = {
   match: PropTypes.object.isRequired,
+  setLastMessage: PropTypes.func.isRequired,
 }
 
 export default withRouter(ConversationSection)

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import colours from '../../styles/export/colours.css'
+import { withRouter } from 'react-router'
 
+import colours from '../../styles/export/colours.css'
 import Avatar from '../Layout/Avatar'
 import Icon from '../Layout/Icon'
 
@@ -44,7 +45,6 @@ const ThreadList = styled.ul`
 
 const UserName = styled.div`
   font-size: 0.9rem;
-  text-transform: capitalize;
   span {
     font-size: 0.9em;
     text-transform: capitalize;
@@ -86,4 +86,4 @@ Threads.propTypes = {
   match: PropTypes.object.isRequired,
 }
 
-export default Threads
+export default withRouter(Threads)

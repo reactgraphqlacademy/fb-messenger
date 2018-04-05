@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import colours from '../../styles/export/colours.css'
 
-import ThreadsContainer from './ThreadsContainer'
+import { fetchThreads } from '../../api/thread'
+import Threads from './Threads'
 import ConversationSection from './Conversation/ConversationSection'
 
 const MessengerWrapper = styled.div`
@@ -11,11 +12,43 @@ const MessengerWrapper = styled.div`
   border-right: 1px solid ${colours.mediumGrey};
 `
 
-const Messenger = () => (
-  <MessengerWrapper>
-    <ThreadsContainer />
-    <ConversationSection />
-  </MessengerWrapper>
-)
+class Messenger extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      threads: []
+    }
+  }
+
+  componentDidMount() {
+    fetchThreads().then(({ threads }) => {
+      this.setState({ threads })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  setLastMessage = ({ message }) => {
+    const threads = this.state.threads.map(thread => {
+      if(thread.username === message.username){
+        thread.lastMessage = message.lastMessage
+      }
+      return thread
+    })
+
+    this.setState({ threads })
+  }
+
+  render () {
+    return (
+      <MessengerWrapper>
+        <Threads threads={this.state.threads} />
+        <ConversationSection setLastMessage={this.setLastMessage} />
+      </MessengerWrapper>
+    )
+  }
+}
 
 export default Messenger

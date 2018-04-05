@@ -33,13 +33,25 @@ class ConversationContainer extends Component {
     }
   }
 
+  addNewMessage = (messageText) => {
+    const message = {
+      from: 'you',
+      to: this.props.match.params.username,
+      message: messageText,
+      time: Date.now(),
+    }
+    this.setState({ conversation: [...this.state.conversation, message ]})
+  }
+
   render() {
     const { conversation } = this.state
-    const { match } = this.props
+    const { match, setLastMessage } = this.props
 
     return (
       <Conversation
+        addNewMessageToConversation={this.addNewMessage}
         conversation={conversation}
+        setLastMessage={setLastMessage}
         match={match}
       />
     )
@@ -48,6 +60,7 @@ class ConversationContainer extends Component {
 
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
+  setLastMessage: PropTypes.func.isRequired,
 }
 
 export default ConversationContainer
