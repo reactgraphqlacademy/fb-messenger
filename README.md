@@ -16,37 +16,32 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-### Part 1, install styled-components
+### Part 1, building your own Redux
 
-styled-components is a npm package which we need to add to our project
-```sh
- npm install --save styled-components
- ```
+We have written some unit tests for the relevant code. Each unit test sits side by side with the code it's testing. Example src/actions/index.js unit tests are in src/actions/index.spec.js
 
-### Part 2, sharing variables
+The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you are able to start the app by doing `npm start`.
 
-You can share variables(like colours) between CSS and JavaScript by using :export from CSS Modules.
+In order to make it easier to understand Redux we have created a simplified version of `redux` and `react-redux`. We have some bugs in our simplified version of `redux`and `react-redux` that you should fix. The unit tests will help you fix the app and learn by "fixing".
 
-- Copy the Sass variables from src/index.scss into src/styles/variables.scss
-- Export the Sass variables as JavaScript by exporting them in src/styles/export/colours.scss. You have an example on how we export $white in colours.scss
+- execute `npm test`
 
-src/App.js shows you how we use the Sass $white variable as a JavaScript variable.
+### Part 2, moving the state of the app into Redux
 
-### Part 3, refactoring
+1. Replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works. The official ones have cooler features that you should use ;)
 
-Once you installed styled-components and you have your Sass variables in JS, you can start refactoring your application.
+2. Refactor the reducer src/reducers/conversation.js so it handles the receiveMessage action from src/actions/conversation.js. The src/components/Messenger/Conversation/Messages.js component is already connected to Redux, so clicking on the "send" button should display the message in the conversation once the conversation.js reducer is refactored.
 
-Current styles, which are being mapped to our components via classes, can be found in the index.css file (Sass is being compiled to CSS) which is being imported to the src/index.js file. The goal of the refactoring is to migrate those src/index.js styles into styled-components.
+### Bonus
 
-- To get started, uncomment the AppWrapper component in src/App.js. Follow the comments in that file to get more tips.
-- Take appropriate styles from the stylesheet for each of the component and create styled components within each of the components or as a separate component should you need it (if the styled-component is being used on multiple places).
-- You can work your way through your application, starting with smaller components in the Layout folder to the bigger ones in Messenger.
+1. Delete a message
+
+2. Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), npm install --save redux react-redux, and move the state of the conversation into Redux.
 
 ## Links
 
-- [https://www.styled-components.com/](https://www.styled-components.com/)
-- [https://github.com/css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
-- [https://github.com/css-modules/css-modules/](https://github.com/css-modules/css-modules/)
+- [https://egghead.io/courses/getting-started-with-redux](https://egghead.io/courses/getting-started-with-redux)
+-[https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
 ## License
 

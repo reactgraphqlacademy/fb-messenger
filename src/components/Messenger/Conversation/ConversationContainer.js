@@ -1,30 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
+import {
+  receiveConversations
+} from "../../../actions/conversation"
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
 
 class ConversationContainer extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      conversation: []
-    }
-  }
-
   componentDidMount() {
     this.fetchConversation(this.props.match.params.username)
   }
 
   fetchConversation = (username) => {
-    this.setState({ conversation: [] })
     setTimeout(() => {
       api.fetchConversation(username)
-      .then(messages => {
-        this.setState({ conversation: messages })
+      .then(conversation => {
+        this.props.dispatch(receiveConversations(conversation))
       })
-    },1000)
+    },500)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,23 +28,11 @@ class ConversationContainer extends Component {
     }
   }
 
-  addNewMessage = (messageText) => {
-    const message = {
-      from: 'you',
-      to: this.props.match.params.username,
-      message: messageText,
-      time: Date.now(),
-    }
-    this.setState({ conversation: [...this.state.conversation, message ]})
-  }
-
   render() {
-    const { conversation } = this.state
-    const { match, setLastMessage } = this.props
+    const { match, setLastMessage, conversation } = this.props
 
     return (
       <Conversation
-        addNewMessageToConversation={this.addNewMessage}
         conversation={conversation}
         setLastMessage={setLastMessage}
         match={match}
@@ -60,7 +43,16 @@ class ConversationContainer extends Component {
 
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
+  conversation: PropTypes.array.isRequired,
   setLastMessage: PropTypes.func.isRequired,
 }
 
-export default ConversationContainer
+const mapStateToProps = (state) => ({
+  conversation: state.conversation
+})
+
+const mapStateToDispatch = (dispatch) => ({
+  dispatch
+})
+
+export default connect(mapStateToProps, mapStateToDispatch)(ConversationContainer)

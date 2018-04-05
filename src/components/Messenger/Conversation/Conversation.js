@@ -4,7 +4,7 @@ import ConversationBar from './ConversationBar'
 import ConversationContent from './Content'
 
 const Conversation = ({
-  conversation, match, setLastMessage, addNewMessageToConversation
+  conversation, match, setLastMessage
 }) => {
   const { username } = match.params
 
@@ -12,7 +12,6 @@ const Conversation = ({
     <ConversationBar key="bar" username={username} match={match} />
     ,
     <ConversationContent
-      addNewMessageToConversation={addNewMessageToConversation}
       key="content"
       match={match}
       conversation={conversation}
@@ -26,7 +25,6 @@ Conversation.propTypes = {
   conversation: PropTypes.array,
   match: PropTypes.object.isRequired,
   setLastMessage: PropTypes.func.isRequired,
-  addNewMessageToConversation: PropTypes.func.isRequired,
 }
 
 export default Conversation

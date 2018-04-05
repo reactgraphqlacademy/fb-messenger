@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import colours from '../../../../styles/export/colours.css'
+import { connect } from 'react-redux'
 
+import colours from '../../../../styles/export/colours.css'
+import { receiveMessage } from "../../../../actions/conversation"
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
@@ -63,21 +65,30 @@ const Message = styled.div`
 
 class Messages extends React.Component {
   state = {
-    messageText: ''
+    message: ''
   }
 
   sendMessage = () => {
+    const { username } = this.props
+    const { message } = this.state
+    const time = Date.now()
+
     this.props.setLastMessage({
-      message: {
-        lastMessage: {
-          message: this.state.messageText,
-          time: new Date(),
-        },
-        username: this.props.username,
-      }
+      lastMessage: {
+        message,
+        time,
+      },
+      username,
     })
-    this.props.addNewMessageToConversation(this.state.messageText)
-    this.setState({ messageText: '' })
+
+    this.props.dispatch(receiveMessage({
+      from: 'you',
+      to: username,
+      message,
+      time,
+    }))
+
+    this.setState({ message: '' })
   }
 
   render() {
@@ -107,9 +118,9 @@ class Messages extends React.Component {
         </MessagesList>
         <NewMessage>
           <MessageBox
-            onChange={e => this.setState({ messageText: e.target.value })}
+            onChange={e => this.setState({ message: e.target.value })}
             type="text"
-            value={this.state.messageText}
+            value={this.state.message}
             placeholder="Type your message..."
           />
           <button onClick={this.sendMessage}>Send</button>
@@ -123,7 +134,10 @@ Messages.propTypes = {
   conversation: PropTypes.array,
   toggleModal: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
-  addNewMessageToConversation: PropTypes.func.isRequired,
 }
 
-export default Messages
+const mapStateToDispatch = (dispatch) => ({
+  dispatch
+})
+
+export default connect(null, mapStateToDispatch)(Messages)

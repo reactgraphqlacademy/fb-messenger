@@ -1,0 +1,1 @@
+This a custom and simplified implementation of react-redux to help you understand its core principles. Replace it by https://github.com/reactjs/react-redux once you fix the tests and understand how it works, it should work as well :)

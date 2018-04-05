@@ -26,7 +26,7 @@ class ConversationContent extends Component {
   }
 
   render() {
-    const { conversation = [], username, match, setLastMessage, addNewMessageToConversation } = this.props
+    const { conversation = [], username, match, setLastMessage } = this.props
     const { showModal } = this.state
 
     if (!conversation.length) {
@@ -44,7 +44,6 @@ class ConversationContent extends Component {
           username={username}
           toggleModal={this.toggleModal}
           setLastMessage={setLastMessage}
-          addNewMessageToConversation={addNewMessageToConversation}
         />
         <Route path={`${match.url}/detail`} component={props => (
           <UserDetail
@@ -62,7 +61,6 @@ ConversationContent.propTypes = {
   username: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
   setLastMessage: PropTypes.func.isRequired,
-  addNewMessageToConversation: PropTypes.func.isRequired,
 }
 
 export default ConversationContent

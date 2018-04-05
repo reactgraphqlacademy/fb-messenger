@@ -30,7 +30,7 @@ class Messenger extends React.Component {
     })
   }
 
-  setLastMessage = ({ message }) => {
+  setLastMessage = (message) => {
     const threads = this.state.threads.map(thread => {
       if(thread.username === message.username){
         thread.lastMessage = message.lastMessage
