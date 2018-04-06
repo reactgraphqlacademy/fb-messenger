@@ -9,8 +9,6 @@ export default function (state = [], action) {
         ...state,
         action.message
       ]
-    // case DELETE_MESSAGE:
-    //   return state.filter(message => message.id !== action.message.id)
     default:
       return state
   }

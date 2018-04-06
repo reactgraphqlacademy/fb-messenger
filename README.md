@@ -30,23 +30,23 @@ In order to make it easier to understand Redux we have created a simplified vers
 
 1. Replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works. The official ones have cooler features that you should use ;)
 
-2. The <UserDetail> component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at src/reducers/ui.js
+2. The <UserDetail> component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at src/reducers/ui.js and change the default state.
 
 3. Refactor src/reducers/ui.js so when the TOGGLE_MESSAGE_DETAIL action is dispatched it opens and closes the user detail in the conversation. Hint, the TOGGLE_MESSAGE_DETAIL action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is include another switch case in src/reducers/ui.js  
 
-4. Refactor the reducer src/reducers/conversation.js so it handles the receiveMessage action from src/actions/conversation.js. The src/components/Messenger/Conversation/Messages.js component is already connected to Redux, so clicking on the "send" button should display the message in the conversation once the conversation.js reducer is refactored.
+4. Move the state from ConversationContainer to Redux. You will have to:
+- Create an action creator to "receive conversation" in src/actions/conversation.js. Hint, it'll be like the receiveThread in src/actions/thread.js
+- Create a reducer in src/reducers. I suggest you call the file conversation.js
+- Import the conversation.js reducer in src/reducers/index.js and add it to the combineReducers function.
+- "connect" the ConversationContainer to Redux and "map state to props", so that ConversationContainer gets a prop called conversation with the conversation from the state.
 
-5. Have you noticed that the state from src/Messenger/Threads.js has been moved to src/Messenger/index.js? Do you know why?
-Please move the state from src/Messenger/index.js into Redux.
-  - Use the src/Messenger/ThreadsContainer.js to connect to Redux and get the threads from the store
-  - Return the ThreadsContainer from src/Messenger/index.js instead of returning Threads from src/Messenger/index.js
-
+5. Users should be able to send a message:
+- The sendMessage method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/conversation.js so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is src/reducers/conversation.js
+- When a new message is sent, the Threads component should display the last message sent.
 
 ### Bonus
 
-1. Delete a message
-
-2. Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), npm install --save redux react-redux, and move the state of the conversation into Redux.
+Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), npm install --save redux react-redux, and move the state of the Use rDetail open/ close from the url into Redux.
 
 ## Links
 
