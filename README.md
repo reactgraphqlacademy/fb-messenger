@@ -32,6 +32,12 @@ In order to make it easier to understand Redux we have created a simplified vers
 
 2. Refactor the reducer src/reducers/conversation.js so it handles the receiveMessage action from src/actions/conversation.js. The src/components/Messenger/Conversation/Messages.js component is already connected to Redux, so clicking on the "send" button should display the message in the conversation once the conversation.js reducer is refactored.
 
+3. Have you noticed that the state from src/Messenger/Threads.js has been moved to src/Messenger/index.js? Do you know why?
+Please move the state from src/Messenger/index.js into Redux.
+  - Use the src/Messenger/ThreadsContainer.js to connect to Redux and get the threads from the store
+  - Return the ThreadsContainer from src/Messenger/index.js instead of returning Threads from src/Messenger/index.js
+
+
 ### Bonus
 
 1. Delete a message

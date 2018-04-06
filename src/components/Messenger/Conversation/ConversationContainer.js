@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import {
-  receiveConversations
+  receiveConversation
 } from "../../../actions/conversation"
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
@@ -13,13 +13,11 @@ class ConversationContainer extends Component {
     this.fetchConversation(this.props.match.params.username)
   }
 
-  fetchConversation = (username) => {
-    setTimeout(() => {
-      api.fetchConversation(username)
-      .then(conversation => {
-        this.props.dispatch(receiveConversations(conversation))
-      })
-    },500)
+  fetchConversation = async (username) => {
+    if(!this.props.conversation[username]){
+      const conversation = await api.fetchConversation(username)
+      this.props.dispatch(receiveConversation(conversation, username))
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,10 +28,11 @@ class ConversationContainer extends Component {
 
   render() {
     const { match, setLastMessage, conversation } = this.props
+    const { username } = match.params
 
     return (
       <Conversation
-        conversation={conversation}
+        conversation={conversation[username] || []}
         setLastMessage={setLastMessage}
         match={match}
       />
