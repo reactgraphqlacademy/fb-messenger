@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import colours from '../../../../styles/export/colours.css'
 import { receiveMessage } from "../../../../actions/conversation"
+import * as api from "../../../../api/message"
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
@@ -63,41 +64,33 @@ const Message = styled.div`
     color: ${props => props.from === 'received' ? colours.black : colours.white}
 `
 
+
 class Messages extends React.Component {
   state = {
-    message: ''
+    newMessage: ''
   }
 
   sendMessage = () => {
-    const { username } = this.props
-    const { message } = this.state
-    const time = Date.now()
+    const { username, receiveMessage } = this.props
+    const { newMessage } = this.state
 
-    this.props.setLastMessage({
-      lastMessage: {
-        message,
-        time,
-      },
-      username,
+    const message = api.sendMessage({
+      message: newMessage,
+      to: username
     })
 
-    this.props.dispatch(receiveMessage({
-      from: 'you',
-      to: username,
-      message,
-      time,
-    }))
+    receiveMessage(message)
 
-    this.setState({ message: '' })
+    this.setState({ newMessage: '' })
   }
 
   render() {
-    const { conversation = [], username, toggleModal } = this.props
+    const { conversation = [], username } = this.props
     const styledConversation = conversation.map((message, i) => (
       <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
         {message.to === "you" && <Avatar username={username} size="medium" />}
         <Message from={message.from === "you" ? "sent" : "received"}>
-            {message.message}
+          {message.message}
         </Message>
         {message.from === "you" && (
           <MessageRead>
@@ -118,9 +111,9 @@ class Messages extends React.Component {
         </MessagesList>
         <NewMessage>
           <MessageBox
-            onChange={e => this.setState({ message: e.target.value })}
+            onChange={e => this.setState({ newMessage: e.target.value })}
             type="text"
-            value={this.state.message}
+            value={this.state.newMessage}
             placeholder="Type your message..."
           />
           <button onClick={this.sendMessage}>Send</button>
@@ -132,12 +125,11 @@ class Messages extends React.Component {
 
 Messages.propTypes = {
   conversation: PropTypes.array,
-  toggleModal: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 }
 
-const mapStateToDispatch = (dispatch) => ({
-  dispatch
+const mapDispatchToProps = ({
+  receiveMessage,
 })
 
-export default connect(null, mapStateToDispatch)(Messages)
+export default connect(null, mapDispatchToProps)(Messages)

@@ -6,22 +6,19 @@ import styled from 'styled-components'
 import ConversationContainer from './ConversationContainer'
 
 const Conversation = styled.div`
-      display: flex;
-      flex-direction: column;
-      flex:3;
+  display: flex;
+  flex-direction: column;
+  flex:3;
 `
 
-const ConversationSection = ({ match, setLastMessage }) => (
+const ConversationSection = ({ match }) => (
   <Conversation>
-    <Route path={`${match.url}/:username`} render={props => (
-      <ConversationContainer setLastMessage={setLastMessage} {...props} />
-    )} />
+    <Route path={`${match.url}/:username`} component={ConversationContainer} />
   </Conversation>
 )
 
 ConversationSection.propTypes = {
   match: PropTypes.object.isRequired,
-  setLastMessage: PropTypes.func.isRequired,
 }
 
 export default withRouter(ConversationSection)

@@ -2,7 +2,7 @@
   "threads": [
     {
       "lastMessage": {
-        "message": "Hi! how are you?",
+        "message": "Hi! how do you find the React course?",
         "time":"2018-02-11T12:00:00Z"
       },
       "name": {
@@ -12,75 +12,6 @@
       },
       "email": "mary.jones56@example.com",
       "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how are you?",
-        "time":"2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "mr",
-        "first": "alan",
-        "last": "walters"
-      },
-      "email": "alan.walters29@example.com",
-      "username": "crazytiger134"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how are you?",
-        "time":"2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "mr",
-        "first": "lloyd",
-        "last": "herrera"
-      },
-      "email": "lloyd.herrera71@example.com",
-      "username": "blueelephant847"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how are you?",
-        "time":"2018-02-11T12:00:00Z"
-      },
-      "lastMessage": {
-        "message": "Hi! how are you?",
-        "time":"2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "mr",
-        "first": "arthur",
-        "last": "ferguson"
-      },
-      "email": "arthur.ferguson86@example.com",
-      "username": "crazygorilla163"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how are you?",
-        "time":"2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "rachel",
-        "last": "garrett"
-      },
-      "email": "rachel.garrett39@example.com",
-      "username": "silverfish61"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how are you?",
-        "time":"2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "mr",
-        "first": "calvin",
-        "last": "freeman"
-      },
-      "email": "calvin.freeman62@example.com",
-      "username": "heavygoose106"
     }
   ]
 }

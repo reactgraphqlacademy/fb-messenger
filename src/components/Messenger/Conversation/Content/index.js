@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import styled from 'styled-components'
 
@@ -26,7 +27,7 @@ class ConversationContent extends Component {
   }
 
   render() {
-    const { conversation = [], username, match, setLastMessage } = this.props
+    const { conversation = [], username, match, isMessageDetailOpen } = this.props
     const { showModal } = this.state
 
     if (!conversation.length) {
@@ -43,14 +44,11 @@ class ConversationContent extends Component {
           conversation={conversation}
           username={username}
           toggleModal={this.toggleModal}
-          setLastMessage={setLastMessage}
         />
-        <Route path={`${match.url}/detail`} component={props => (
-          <UserDetail
-            username={username}
-            toggleModal={this.toggleModal}
-          />
-        )} />
+        { isMessageDetailOpen && <UserDetail
+          username={username}
+          toggleModal={this.toggleModal}
+        /> }
       </ConversationContentWrapper>
     )
   }
@@ -60,7 +58,11 @@ ConversationContent.propTypes = {
   conversation: PropTypes.array,
   username: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
-  setLastMessage: PropTypes.func.isRequired,
+  isMessageDetailOpen: PropTypes.bool.isRequired,
 }
 
-export default ConversationContent
+const mapStateToProps = (state) => ({
+  isMessageDetailOpen: state.ui.isMessageDetailOpen
+})
+
+export default connect(mapStateToProps)(ConversationContent)

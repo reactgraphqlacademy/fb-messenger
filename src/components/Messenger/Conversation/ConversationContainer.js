@@ -14,10 +14,8 @@ class ConversationContainer extends Component {
   }
 
   fetchConversation = async (username) => {
-    if(!this.props.conversation[username]){
-      const conversation = await api.fetchConversation(username)
-      this.props.dispatch(receiveConversation(conversation, username))
-    }
+    const conversation = await api.fetchConversation(username)
+    this.props.dispatch(receiveConversation(conversation))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,13 +25,12 @@ class ConversationContainer extends Component {
   }
 
   render() {
-    const { match, setLastMessage, conversation } = this.props
+    const { match, conversation } = this.props
     const { username } = match.params
 
     return (
       <Conversation
-        conversation={conversation[username] || []}
-        setLastMessage={setLastMessage}
+        conversation={conversation}
         match={match}
       />
     )
@@ -43,7 +40,6 @@ class ConversationContainer extends Component {
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
   conversation: PropTypes.array.isRequired,
-  setLastMessage: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({

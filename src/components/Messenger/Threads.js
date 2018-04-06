@@ -57,7 +57,7 @@ const UserName = styled.div`
   }
 `
 
-const Threads = ({ history, match, threads }) => (
+const Threads = ({ history, match, thread, lastMessage }) => (
   <ThreadsWrapper>
     <ThreadBar>
       <h2>
@@ -67,21 +67,21 @@ const Threads = ({ history, match, threads }) => (
       </h2>
     </ThreadBar>
     <ThreadList>
-      {threads.map((thread, i) => (
-        <li key={i} onClick={() => history.push(`${match.url}/${thread.username}`)}>
-          <Avatar username={thread.username} size="large" />
-          <UserName>
-            <span>{`${thread.name.first} ${thread.name.last}`}</span>
-            <small>{`${thread.lastMessage.message}`}</small>
-          </UserName>
-        </li>
-      ))}
+      {thread ?
+      <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
+        <Avatar username={thread.username} size="large" />
+        <UserName>
+          <span>{`${thread.name.first} ${thread.name.last}`}</span>
+          <small>{`${lastMessage? lastMessage.message: thread.lastMessage.message}`}</small>
+        </UserName>
+      </li>
+      : '' }
     </ThreadList>
   </ThreadsWrapper>
 )
 
 Threads.propTypes = {
-  threads: PropTypes.array,
+  thread: PropTypes.object,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
 }

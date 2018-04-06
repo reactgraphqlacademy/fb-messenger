@@ -12,6 +12,7 @@ const TopBarWrapper = styled.div`
     text-align: center;
     border-bottom: 1px solid #29487d;
     color: ${colours.white};
+    min-height: 60px;
 `
 
 const TopBarItems = styled.ul`
@@ -19,11 +20,11 @@ const TopBarItems = styled.ul`
     position: absolute;
     top: 20px;
     display: block;
-    
+
     ${props => props.position === 'right' && css`
       right: 20px;
     `}
-        
+
     ${props => props.position === 'left' && css`
       left: 20px;
     `}
@@ -54,18 +55,12 @@ const TopBar = (props) => {
 
   return (
     <TopBarWrapper>
-      <Link to="/messages"><Icon className="fab fa-facebook-messenger" style={{color: 'white'}} /></Link>
       <TopBarItems position={`${props.userPosition || 'right'}`}>
         <li>
           <a onClick={() => {
             logOut()
             props.history.push('/login')
           }}>log out</a>
-        </li>
-        <li>
-          <Link to="/profile">
-            {session? session.username: ''} <img src="/images/default.jpg" />
-          </Link>
         </li>
       </TopBarItems>
     </TopBarWrapper>

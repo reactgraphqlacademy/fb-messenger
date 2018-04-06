@@ -1,7 +1,11 @@
-import { combineReducers } from "redux"
+import { combineReducers } from 'redux'
 
-import conversation from "./conversation"
+import conversation from './conversation'
+import thread from './thread'
+import ui from './ui'
 
 export default combineReducers({
-    conversation
+    conversation,
+    thread,
+    ui,
 })
