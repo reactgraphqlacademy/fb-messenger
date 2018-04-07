@@ -36,7 +36,8 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
     1. Create an action creator to "receive conversation" in src/actions/conversation.js. Hint, it'll be like the receiveThread in src/actions/thread.js
     2. Create a reducer in src/reducers. I suggest you call the file conversation.js
     3. Import the conversation.js reducer in src/reducers/index.js and add it to the combineReducers function.
-    4. "connect" the ConversationContainer to Redux and "map state to props", so that ConversationContainer gets a prop called conversation with the conversation from the state.
+    4. When componentDidMount call fetchConversation and dispatch receive conversation
+    5. "connect" the ConversationContainer to Redux and "map state to props", so that ConversationContainer gets a prop called conversation with the conversation from the state.
 
 5. Users should be able to send a message:
     1. The sendMessage method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/conversation.js so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is src/reducers/conversation.js
