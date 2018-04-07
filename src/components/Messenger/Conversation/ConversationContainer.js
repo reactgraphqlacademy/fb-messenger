@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  receiveConversations
-} from "../../../actions/conversation"
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
 

@@ -36,4 +36,11 @@ const mapDispatchToProps = (dispatch) => ({
   dispatch
 })
 
+ThreadsContainer.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  thread: PropTypes.object,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+}
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ThreadsContainer))

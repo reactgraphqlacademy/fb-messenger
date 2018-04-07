@@ -26,7 +26,7 @@ class ConversationContent extends Component {
   }
 
   render() {
-    const { conversation = [], username, match, isMessageDetailOpen } = this.props
+    const { conversation = [], username, isMessageDetailOpen } = this.props
     const { showModal } = this.state
 
     if (!conversation.length) {

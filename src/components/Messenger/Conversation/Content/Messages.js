@@ -72,7 +72,6 @@ class Messages extends React.Component {
   sendMessage = () => {
     const { username } = this.props
     const { newMessage } = this.state
-    const time = Date.now()
 
     const message = api.sendMessage({
       message: newMessage,
@@ -85,7 +84,7 @@ class Messages extends React.Component {
   }
 
   render() {
-    const { conversation = [], username, toggleModal } = this.props
+    const { conversation = [], username } = this.props
     const styledConversation = conversation.map((message, i) => (
       <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
         {message.to === "you" && <Avatar username={username} size="medium" />}
@@ -125,7 +124,6 @@ class Messages extends React.Component {
 
 Messages.propTypes = {
   conversation: PropTypes.array,
-  toggleModal: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 }
 

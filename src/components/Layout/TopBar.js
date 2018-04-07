@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
-import { logOut, getSession } from '../../auth'
+import { logOut } from '../../auth'
 import styled, { css } from 'styled-components'
 import colours from '../../styles/export/colours.css'
 
@@ -49,20 +49,16 @@ const TopBarItems = styled.ul`
     }
 `
 
-const TopBar = (props) => {
-  const session = getSession()
-
-  return (
-    <TopBarWrapper>
-      <TopBarItems position={`${props.userPosition || 'right'}`}>
-        <li>
-          <Link to="/login" onClick={() => logOut()}>
-            log out
-          </Link>
-        </li>
-      </TopBarItems>
-    </TopBarWrapper>
-  )
-}
+const TopBar = (props) => (
+  <TopBarWrapper>
+    <TopBarItems position={`${props.userPosition || 'right'}`}>
+      <li>
+        <Link to="/login" onClick={() => logOut()}>
+          log out
+        </Link>
+      </li>
+    </TopBarItems>
+  </TopBarWrapper>
+)
 
 export default withRouter(TopBar)
