@@ -24,9 +24,9 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 1. execute `npm test`
 
-2. Once all the test pass execute `npm start`
+2. Once all the tests pass execute `npm start`
 
-3. Once all the test pass, replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works.
+3. Once all the tests pass, replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works.
 
 	You will need to uncomment ```import { connect } from 'react-redux'``` and comment ```import { connect } from '../**/react-redux/connect'``` in the following files:
     * src/components/Messenger/Conversation/Content/index.js
