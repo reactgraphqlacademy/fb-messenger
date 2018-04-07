@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
+import { connect } from '../../react-redux/connect'
 import PropTypes from 'prop-types'
 
 import Threads from './Threads'

@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
+import { connect } from '../../../../react-redux/connect'
 
 import * as api from "../../../../api/message"
 import colours from '../../../../styles/export/colours.css'

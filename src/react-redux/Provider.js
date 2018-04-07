@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 // this component just adds the store in the context
 
 export class Provider extends React.Component {
@@ -15,5 +15,5 @@ export class Provider extends React.Component {
 }
 
 Provider.childContextTypes = {
-  store: React.PropTypes.object
+  store: PropTypes.object
 }
