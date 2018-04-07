@@ -20,7 +20,7 @@ describe("The action creator called receiveThread in src/actions/index.js", () =
   })
 })
 
-describe("The beers reducer in src/reducers/beers.js", () => {
+describe("The thread reducer in src/reducers/thread.js", () => {
   it("should return the current state if the switch doesn't match any case", () => {
     const state = threadReducer({ id: 1 }, {type: 'test'})
 
