@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import colours from '../../styles/export/colours.css'
 
-import { fetchThreads } from '../../api/thread'
 import ThreadsContainer from './ThreadsContainer'
 import ConversationSection from './Conversation/ConversationSection'
 
