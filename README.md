@@ -62,7 +62,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 ### Bonus
 
-Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), npm install --save redux react-redux, and move the state of the User Detail open/ close from the url into Redux. You will need to set Redux, which involves creating the store in Redux using the createStore function, adding the Provider component in the Root component, etc
+Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), ```npm install --save redux react-redux```, and move the state of the User Detail open/ close from the url into Redux. You will need to set Redux, which involves creating the store in Redux using the createStore function, adding the Provider component in the Root component, etc
 
 ## Links
 
