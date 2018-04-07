@@ -40,6 +40,8 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 	You will need to uncomment ```import { createStore } from 'redux'``` and comment ```import { createStore } from '../redux/createStore'``` in the following file:
     * src/store/index.js
 
+4. Once all the imports from your own implementation of Redux have been replaced by the ones in npm, you should run `npm start` and the web site should still work :D
+
 ### Part 2, moving the state of the app into Redux
 
 
