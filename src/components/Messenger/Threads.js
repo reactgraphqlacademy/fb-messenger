@@ -57,7 +57,7 @@ const UserName = styled.div`
   }
 `
 
-const Threads = ({ history, match, thread, lastMessage }) => (
+const Threads = ({ history, match, thread }) => (
   <ThreadsWrapper>
     <ThreadBar>
       <h2>
@@ -72,7 +72,7 @@ const Threads = ({ history, match, thread, lastMessage }) => (
         <Avatar username={thread.username} size="large" />
         <UserName>
           <span>{`${thread.name.first} ${thread.name.last}`}</span>
-          <small>{`${lastMessage? lastMessage.message: thread.lastMessage.message}`}</small>
+          <small>{`${thread.lastMessage.message}`}</small>
         </UserName>
       </li>
       : '' }

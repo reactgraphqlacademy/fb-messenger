@@ -36,8 +36,9 @@ export const connect = (mapStateToProps, mapDispatchToProps) => {
       }
     }
 
+    //  Hint, you should fix something here
     ConnectedComponent.contextTypes = {
-      store: PropTypes.object
+      whatIsThisKeySupposedToBeCalled: PropTypes.object
     }
 
     return ConnectedComponent
