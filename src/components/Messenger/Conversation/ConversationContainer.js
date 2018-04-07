@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import {
   receiveConversation
-} from "../../../actions/conversation"
+} from '../../../actions/conversation'
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
 
@@ -15,7 +15,7 @@ class ConversationContainer extends Component {
 
   fetchConversation = async (username) => {
     const conversation = await api.fetchConversation(username)
-    this.props.dispatch(receiveConversation(conversation))
+    this.props.receiveConversation(conversation)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,7 +26,6 @@ class ConversationContainer extends Component {
 
   render() {
     const { match, conversation } = this.props
-    const { username } = match.params
 
     return (
       <Conversation
@@ -40,14 +39,15 @@ class ConversationContainer extends Component {
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
   conversation: PropTypes.array.isRequired,
+  receiveConversation: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   conversation: state.conversation
 })
 
-const mapStateToDispatch = (dispatch) => ({
-  dispatch
-})
+const mapStateToDispatch = {
+  receiveConversation
+}
 
 export default connect(mapStateToProps, mapStateToDispatch)(ConversationContainer)

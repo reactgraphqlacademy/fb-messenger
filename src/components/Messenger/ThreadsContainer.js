@@ -11,7 +11,7 @@ import { receiveThread } from '../../actions/thread'
 class ThreadsContainer extends Component {
   componentDidMount () {
     fetchFirstThread().then(thread => {
-      this.props.dispatch(receiveThread(thread))
+      this.props.receiveThread(thread)
     })
   }
 
@@ -32,8 +32,15 @@ const mapStateToProps = (state) => ({
   thread: state.thread
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch
-})
+const mapDispatchToProps = {
+  receiveThread
+}
+
+ThreadsContainer.propTypes = {
+  receiveThread: PropTypes.func.isRequired,
+  thread: PropTypes.object,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ThreadsContainer))

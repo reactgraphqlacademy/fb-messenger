@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -27,7 +26,7 @@ class ConversationContent extends Component {
   }
 
   render() {
-    const { conversation = [], username, match, isMessageDetailOpen } = this.props
+    const { conversation = [], username, isMessageDetailOpen } = this.props
     const { showModal } = this.state
 
     if (!conversation.length) {
@@ -57,7 +56,6 @@ class ConversationContent extends Component {
 ConversationContent.propTypes = {
   conversation: PropTypes.array,
   username: PropTypes.string.isRequired,
-  match: PropTypes.object.isRequired,
   isMessageDetailOpen: PropTypes.bool.isRequired,
 }
 

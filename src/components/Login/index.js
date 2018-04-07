@@ -15,8 +15,6 @@ class Login extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-
-    const { history } = this.props
     const { password, email } = this
 
     if (!password || !email) {
