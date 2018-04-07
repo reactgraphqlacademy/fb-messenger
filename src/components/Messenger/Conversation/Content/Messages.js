@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 
+import * as api from "../../../../api/message"
 import colours from '../../../../styles/export/colours.css'
 import { receiveMessage } from "../../../../actions/conversation"
-import * as api from "../../../../api/message"
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
@@ -64,15 +64,15 @@ const Message = styled.div`
     color: ${props => props.from === 'received' ? colours.black : colours.white}
 `
 
-
 class Messages extends React.Component {
   state = {
     newMessage: ''
   }
 
   sendMessage = () => {
-    const { username, receiveMessage } = this.props
+    const { username } = this.props
     const { newMessage } = this.state
+    const time = Date.now()
 
     const message = api.sendMessage({
       message: newMessage,
@@ -81,16 +81,16 @@ class Messages extends React.Component {
 
     receiveMessage(message)
 
-    this.setState({ newMessage: '' })
+    this.setState({ message: '' })
   }
 
   render() {
-    const { conversation = [], username } = this.props
+    const { conversation = [], username, toggleModal } = this.props
     const styledConversation = conversation.map((message, i) => (
       <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
         {message.to === "you" && <Avatar username={username} size="medium" />}
         <Message from={message.from === "you" ? "sent" : "received"}>
-          {message.message}
+            {message.message}
         </Message>
         {message.from === "you" && (
           <MessageRead>
@@ -125,11 +125,12 @@ class Messages extends React.Component {
 
 Messages.propTypes = {
   conversation: PropTypes.array,
+  toggleModal: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 }
 
-const mapDispatchToProps = ({
-  receiveMessage,
+const mapStateToDispatch = (dispatch) => ({
+  dispatch
 })
 
-export default connect(null, mapDispatchToProps)(Messages)
+export default connect(null, mapStateToDispatch)(Messages)

@@ -10,10 +10,10 @@ const Conversation = ({
 
   return ([
     <ConversationBar
+      conversation={conversation}
       key="bar"
       username={username}
       match={match}
-      conversation={conversation}
     />
     ,
     <ConversationContent

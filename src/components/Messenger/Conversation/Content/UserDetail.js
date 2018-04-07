@@ -8,7 +8,7 @@ import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
 const UserDetailWrapper = styled.div`
-    width: 33.3%; 
+    width: 33.3%;
     border-left: 1px solid ${colours.mediumGrey};
     > div {
     padding: 1em;
@@ -46,7 +46,7 @@ const UserDetail = ({ username, toggleModal }) => (
         <Avatar username={username} size="large" />
         <div>
           <UserName>
-            { username }
+            { username }
           </UserName>
           <LastActive>
             Active {Math.floor(Math.random() * 3) + 1}m ago

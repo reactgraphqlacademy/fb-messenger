@@ -6,9 +6,9 @@ import styled from 'styled-components'
 import ConversationContainer from './ConversationContainer'
 
 const Conversation = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex:3;
+      display: flex;
+      flex-direction: column;
+      flex:3;
 `
 
 const ConversationSection = ({ match }) => (

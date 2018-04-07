@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import {
-  receiveConversation
+  receiveConversations
 } from "../../../actions/conversation"
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
 
 class ConversationContainer extends Component {
+  state = {
+    conversation: []
+  }
+
   componentDidMount() {
     this.fetchConversation(this.props.match.params.username)
   }
 
   fetchConversation = async (username) => {
     const conversation = await api.fetchConversation(username)
-    this.props.dispatch(receiveConversation(conversation))
+    this.setState({ conversation })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,8 +28,8 @@ class ConversationContainer extends Component {
   }
 
   render() {
-    const { match, conversation } = this.props
-    const { username } = match.params
+    const { match } = this.props
+    const { conversation } = this.state
 
     return (
       <Conversation
@@ -39,15 +42,6 @@ class ConversationContainer extends Component {
 
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
-  conversation: PropTypes.array.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  conversation: state.conversation
-})
-
-const mapStateToDispatch = (dispatch) => ({
-  dispatch
-})
-
-export default connect(mapStateToProps, mapStateToDispatch)(ConversationContainer)
+export default ConversationContainer
