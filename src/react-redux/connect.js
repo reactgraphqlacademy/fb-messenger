@@ -23,8 +23,8 @@ export const connect = (mapStateToProps, mapDispatchToProps) => {
       }
 
       render() {
-        const propsWithDataFromTheState = mapStateToProps(this.context.store.getState())
-        const dispatch = mapDispatchToProps(this.context.store.dispatch)
+        const propsWithDataFromTheState = mapStateToProps && mapStateToProps(this.context.store.getState())
+        const dispatch = mapDispatchToProps && mapDispatchToProps(this.context.store.dispatch)
 
         return (
           <Component
