@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 /*
   Connect is a HoC (Hire-order Component) that:
@@ -35,9 +36,8 @@ export const connect = (mapStateToProps, mapDispatchToProps) => {
       }
     }
 
-    // what is this? Hint, you should fix something here
     ConnectedComponent.contextTypes = {
-      store: React.PropTypes.object
+      store: PropTypes.object
     }
 
     return ConnectedComponent

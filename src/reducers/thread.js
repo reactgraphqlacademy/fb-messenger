@@ -7,8 +7,6 @@ export default function (state = null, action) {
       return action.thread
     case RECEIVE_MESSAGE:
       return { ...state, lastMessage: action.message }
-    // case DELETE_MESSAGE:
-    //   return { ...state, lastMessage: action.message }
     default:
       return state
   }

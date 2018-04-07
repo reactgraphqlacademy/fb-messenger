@@ -18,11 +18,9 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Part 1, building your own Redux
 
-We have written some unit tests for the relevant code. Each unit test sits side by side with the code it's testing. Example src/actions/index.js unit tests are in src/actions/index.spec.js
-
-The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you are able to start the app by doing `npm start`.
-
 In order to make it easier to understand Redux we have created a simplified version of `redux` and `react-redux`. We have some bugs in our simplified version of `redux`and `react-redux` that you should fix. The unit tests will help you fix the app and learn by "fixing".
+
+The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you can start the app by doing `npm start`.
 
 - execute `npm test`
 
