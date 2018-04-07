@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom'
 import { logOut, getSession } from '../../auth'
 import styled, { css } from 'styled-components'
 import colours from '../../styles/export/colours.css'
-import Icon from './Icon'
 
 const TopBarWrapper = styled.div`
     background: ${colours.darkBlue};
@@ -20,11 +19,9 @@ const TopBarItems = styled.ul`
     position: absolute;
     top: 20px;
     display: block;
-
     ${props => props.position === 'right' && css`
       right: 20px;
     `}
-
     ${props => props.position === 'left' && css`
       left: 20px;
     `}
@@ -57,10 +54,9 @@ const TopBar = (props) => {
     <TopBarWrapper>
       <TopBarItems position={`${props.userPosition || 'right'}`}>
         <li>
-          <a onClick={() => {
-            logOut()
-            props.history.push('/login')
-          }}>log out</a>
+          <Link to="/login" onClick={() => logOut()}>
+            log out
+          </Link>
         </li>
       </TopBarItems>
     </TopBarWrapper>
