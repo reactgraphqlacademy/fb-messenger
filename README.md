@@ -67,7 +67,7 @@ Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in
 ## Links
 
 - [https://egghead.io/courses/getting-started-with-redux](https://egghead.io/courses/getting-started-with-redux)
--[https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
+- [https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
 ## License
 
