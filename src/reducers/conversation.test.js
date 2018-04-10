@@ -12,15 +12,15 @@ Task 2, implement the expectations
 
 */
 describe('Conversation reducer', () => {
-  it(`should return the default state if no state is provided`, () => {
+  it(``, () => {
 
   })
 
-  it(`should return a new state if it receives a receiveConversation action`, () => {
+  it(``, () => {
 
   })
 
-  it(`should return the current state if the action it receives it's not handled by the reducer`, () => {
+  it(``, () => {
 
   })
 })
