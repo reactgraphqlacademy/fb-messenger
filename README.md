@@ -13,7 +13,12 @@ If you haven't already set up your project, head here and follow the instruction
 ```sh
  git checkout react-router
  ```
-
+ 
+### Step 3
+```sh
+ npm i
+ ```
+ 
 ## Exercise
 
 1. Implement the following route [http://localhost:3000/profile](http://localhost:3000/profile) so it renders src/components/Profile.js. Hint, you need to edit 2 files:
