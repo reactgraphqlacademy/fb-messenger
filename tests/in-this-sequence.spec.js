@@ -5,6 +5,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import Context from 'react-context-component'
 import * as actions from '../src/actions/thread'
 import threadReducer from '../src/reducers/thread'
+import indexReducer from '../src/reducers'
 import { createStore } from '../src/redux/createStore'
 import reducers from '../src/reducers'
 import { connect } from '../src/react-redux/connect'
@@ -38,6 +39,14 @@ describe("The thread reducer in src/reducers/thread.js", () => {
     const state = threadReducer([], {type: 'RECEIVE_THREAD', thread: [ 2, 3 ]})
 
     expect(state).toEqual([2, 3])
+  })
+})
+
+describe("The src/reducers/index.js", () => {
+  it("should combine the thread reducer AND the ui reducer", () => {
+    const received = indexReducer(undefined, { type: '@@redux/INIT' })
+
+    expect(received).toEqual({ thread: null, ui: { isMessageDetailOpen: true } })
   })
 })
 
