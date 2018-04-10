@@ -13,6 +13,11 @@ If you haven't already set up your project, head here and follow the instruction
 ```sh
  git checkout react-router
  ```
+ 
+### Step 3
+```sh
+ npm i
+ ```
 
 ## Exercise
 
