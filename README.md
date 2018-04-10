@@ -12,6 +12,11 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 ```sh
  git checkout redux
+ ``` 
+ 
+### Step 3
+```sh
+ npm i
  ```
 
 ## Exercise
