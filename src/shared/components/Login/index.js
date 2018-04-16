@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import Input from '../Form/Input'
 import { logIn } from '../../api/auth'
-import './Login.css'
 
 class Login extends Component {
   constructor () {
