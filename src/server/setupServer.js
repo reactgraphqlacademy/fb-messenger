@@ -4,7 +4,7 @@ import verifyJWT from 'express-jwt'
 import cookieParser from 'cookie-parser'
 import jwt from 'jsonwebtoken'
 
-import createFakeAPI from './api'
+import getRoutes from './routes'
 import reactApp from './app'
 
 const TOKEN = '__session'
@@ -13,9 +13,7 @@ const setupServer = ({ middlewares = [] } = {}) => {
   const server = express()
   middlewares.map(middleware => server.use(middleware))
 
-  // this should be in a different project
-  createFakeAPI(server)
-
+  server.use(getRoutes())
   server.use(cookieParser())
   server.use(
     verifyJWT({
@@ -24,6 +22,7 @@ const setupServer = ({ middlewares = [] } = {}) => {
       getToken: req => req.cookies[TOKEN]
     })
   )
+  server.use(express.static('public'))
   server.use(helmet())
   server.use(reactApp())
 

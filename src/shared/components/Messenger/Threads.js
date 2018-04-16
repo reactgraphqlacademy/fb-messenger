@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import colours from '../../styles/export/colours.css'
 import Avatar from '../Layout/Avatar'
@@ -55,6 +56,12 @@ const UserName = styled.div`
     margin: 2px 0;
     display: block;
   }
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `
 
 const Threads = ({ history, match, thread, lastMessage }) => (
@@ -68,11 +75,15 @@ const Threads = ({ history, match, thread, lastMessage }) => (
     </ThreadBar>
     <ThreadList>
       {thread ?
-      <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
-        <Avatar username={thread.username} size="large" />
+      <li>
+        <Link to={`${match.url}/${thread.username}`}>
+          <Avatar username={thread.username} size="large" />
+        </Link>
         <UserName>
-          <span>{`${thread.name.first} ${thread.name.last}`}</span>
-          <small>{`${lastMessage? lastMessage.message: thread.lastMessage.message}`}</small>
+          <Link to={`${match.url}/${thread.username}`}>
+            <span>{`${thread.name.first} ${thread.name.last}`}</span>
+            <small>{`${lastMessage? lastMessage.message: thread.lastMessage.message}`}</small>
+          </Link>
         </UserName>
       </li>
       : '' }

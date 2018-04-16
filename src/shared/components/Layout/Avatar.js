@@ -8,13 +8,13 @@ const AvatarWrapper = styled.img`
     clip-path: circle(10px at center);
     width:20px;
   `}
-  
+
   ${props => props.size === 'medium' && css`
     clip-path: circle(15px at center);
     width:30px;
     height: 30px;
   `}
-  
+
   ${props => props.size === 'large' && css`
     clip-path: circle(25px at center);
     width: 50px;
@@ -24,7 +24,7 @@ const AvatarWrapper = styled.img`
 const Avatar = ({ username, size = "medium" }) => (
   <AvatarWrapper
       size={size}
-      src={`/images/${username}_lg.jpg`}
+      src={`/static/images/${username}_lg.jpg`}
       alt={`${username}`}
   />
 )

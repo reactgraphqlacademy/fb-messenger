@@ -25,7 +25,8 @@ const reactApp = () => (req, response) => {
   const setStatus = (newStatus) => {
     status = newStatus
   }
-  const initialState = { session: req.user }
+  const { storeInitiaState = {}} = response
+  const initialState = { session: req.user, ...storeInitiaState }
   const store = configureStore(initialState)
   const sheet = new ServerStyleSheet()
 
@@ -38,7 +39,7 @@ const reactApp = () => (req, response) => {
           </Router>
         </Context>
       </StyleSheetManager>,
-      { sheet, response }
+      { sheet, response, initialState }
     )
   } catch (error) {
     render(<ErrorPage error={error} />, { sheet, response, status: 500 })

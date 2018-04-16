@@ -1,14 +1,14 @@
 import express, { Router } from 'express'
 import path from 'path'
 import proxy from 'http-proxy-middleware'
-
 import setupServer from './setupServer'
+import createFakeAPI from './api'
 
 const middlewares = [
   Router()
+    // this should be in a different project, it's hear to emulate an API
+    .use(createFakeAPI())
     .use('/static/css/', express.static(path.join(process.cwd(), 'src/shared/styles')))
-    .use('/mocks', express.static(path.join(process.cwd(), 'public/mocks')))
-    .use('/images', express.static(path.join(process.cwd(), 'public/images')))
     .use(['/static', '/sockjs-node'],
       proxy({
         target: `http://localhost:${process.env.REACT_APP_CLIENT_PORT}`,

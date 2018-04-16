@@ -6,8 +6,8 @@ import ui from './ui'
 import session from './session'
 
 export default combineReducers({
-    conversation,
-    thread,
-    ui,
-    session,
+  conversation,
+  thread,
+  ui,
+  session,
 })

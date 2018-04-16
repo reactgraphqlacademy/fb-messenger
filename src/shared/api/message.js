@@ -1,3 +1,6 @@
+import 'isomorphic-fetch'
+import { API_BASE_URL } from '../../config'
+
 export const fetchConversation = (username) => {
 
   const filterMessageByUsername = message => {
@@ -5,7 +8,7 @@ export const fetchConversation = (username) => {
   }
 
   return (
-    fetch('/mocks/messages.js', {
+    fetch(`${API_BASE_URL}/static/mocks/messages.js`, {
       method: 'get',
     })
     .then(response => response.json())

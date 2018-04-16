@@ -10,7 +10,7 @@ import colours from '../../../styles/export/colours.css'
 const ConversationBarWrapper = styled.div`
     position: relative;
     border-bottom: 1px solid ${colours.mediumGrey};
-    padding: 0.85em;
+    padding: 1.05em;
     align-items: center;
     h2 {
       text-transform: capitalize;

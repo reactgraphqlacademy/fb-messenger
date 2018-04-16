@@ -10,7 +10,6 @@ import Conversation from './Conversation'
 
 class ConversationContainer extends Component {
   componentDidMount() {
-    debugger
     this.fetchConversation(this.props.match.params.username)
   }
 

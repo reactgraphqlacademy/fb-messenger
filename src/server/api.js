@@ -1,9 +1,10 @@
+import { Router } from 'express'
 import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
 
-const createFakeAPI = (app) => (
+const createFakeAPI = () => {
   // Middleware to simulate an authentication API
-  app.use('/api/auth',
+  return Router().use('/api/auth',
     bodyParser.json(),
     (req, res) => {
       const { email, password } = req.body
@@ -25,6 +26,6 @@ const createFakeAPI = (app) => (
       }
     }
   )
-)
+}
 
 export default createFakeAPI

@@ -12,6 +12,9 @@ const TopBarWrapper = styled.div`
     border-bottom: 1px solid #29487d;
     color: ${colours.white};
     min-height: 60px;
+    a {
+      color: ${colours.white}
+    }
 `
 
 const TopBarItems = styled.ul`
@@ -49,6 +52,7 @@ const TopBarItems = styled.ul`
 
 const TopBar = (props) => (
   <TopBarWrapper>
+    <Link to="/messages"><i className="fab fa-facebook-messenger" /></Link>
     <TopBarItems position={`${props.userPosition || 'right'}`}>
       <li>
         <Link to="/login" onClick={() => logOut()}>
