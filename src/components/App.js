@@ -1,7 +1,9 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Route, Switch, Redirect } from 'react-router'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
+import Login from './Login'
 import NotFound from './NotFound'
 import Home from './Home'
 import TopBar from './Layout/TopBar'
@@ -28,17 +30,35 @@ const AppWrapper = styled.div`
   margin: 0;
 `
 
-const App = () => (
-  <AppWrapper>
-    <TopBar userPosition="right" />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/messages" component={Messenger} />
-      <Route path="/profile" component={Profile} />
-      <Route component={NotFound}/>
-    </Switch>
-    <Footer />
-  </AppWrapper>
+const App = ({ session }) => (
+  <Switch>
+    <Route exact path="/login" component={Login} />
+    <Route render={props =>
+      session ? (
+        <AppWrapper>
+          <TopBar userPosition="right" />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/messages" component={Messenger} />
+            <Route path="/profile" component={Profile} />
+            <Route component={NotFound}/>
+          </Switch>
+          <Footer />
+        </AppWrapper>
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: props.location }
+          }}
+        />
+      )
+    } />
+  </Switch>
 )
 
-export default App
+const masStateToProps = state => ({
+  session: state.session
+})
+
+export default connect(masStateToProps)(App)

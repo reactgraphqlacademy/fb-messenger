@@ -9,13 +9,15 @@ class Login extends Component {
     super()
 
     this.state = {
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      password: '123',
+      email: 'clone@facebook.com',
     }
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const { password, email } = this
+    const { password, email } = this.state
 
     if (!password || !email) {
       alert('Email and password are required')
@@ -46,15 +48,15 @@ class Login extends Component {
           <Input
             type="email"
             placeholder="Enter email"
-            defaultValue={this.email}
-            onChange={e => this.email = e.target.value}
+            value={this.state.email}
+            onChange={e => this.setState({ email: e.target.value })}
           />
           <Input
             type="password"
             placeholder="Enter password"
             className="form-control"
-            defaultValue={this.password}
-            onChange={e => this.password = e.target.value}
+            value={this.state.password}
+            onChange={e => this.setState({ password: e.target.value })}
           />
         </div>
         <button

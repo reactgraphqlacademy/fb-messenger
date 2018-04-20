@@ -1,31 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import { Provider } from "react-redux"
-import App from './App'
-import Login from './Login'
-import { getSession } from '../auth'
+import React from 'react'
+import { Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ApolloProvider } from 'react-apollo'
 
-const Root = ({ store }) => (
-  <Provider store={store}>
-    <Router >
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route render={props =>
-          getSession() ? (
-            <App />
-          ) : (
-              <Redirect
-                to={{
-                  pathname: "/login",
-                  state: { from: props.location }
-                }}
-              />
-            )
-        }
-        />
-      </Switch>
-    </Router>
-  </Provider>
+import App from './App'
+
+const Root = ({ store, graphqlClient }) => (
+  <Router>
+    <Provider store={store}>
+      <ApolloProvider client={graphqlClient}>
+        <Route path="/" component={App} />
+      </ApolloProvider>
+    </Provider>
+  </Router>
 )
 
 export default Root

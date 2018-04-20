@@ -2,24 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Input extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { value: null }
-  }
-
   render() {
-    const { onChange, type, placeholder, defaultValue } = this.props
+    const { onChange, type, placeholder, value } = this.props
 
     return (
       <input
         type={type || 'text'}
         placeholder={placeholder || ''}
         className="form-control"
-        value={this.state.value || defaultValue || ''}
+        value={value || ''}
         onChange={ e => {
-          const { target: { value }} = e
-          this.setState({ value })
           onChange && onChange(e)
         }}
       />
