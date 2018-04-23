@@ -148,17 +148,10 @@ Messages.defaultProps = {
 // `,
 // {
 //   options: (props) => ({
-//     refetchQueries: // TODO you need to add something here,
-//     update: (proxy, { data: { sendMessage } }) => {
-//       const query = { query: THREADS_QUERY }
-//
-//       // Read the data from our cache for this query.
-//       const data = proxy.readQuery(query)
-//
-//       const threads = null // TODO you need to update a thread
-//
-//       // Write our data back to the cache.
-//       proxy.writeQuery({ ...query, data: { threads } })
+//     refetchQueries: // TODO https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations
+//     update: (store, { data: { sendMessage } }) => {
+//       // TODO you need to update a thread and write the Query again in the cache
+//       // Hint https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment
 //     }
 //   }),
 //   name: 'sendMessage',
