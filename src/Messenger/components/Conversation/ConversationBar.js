@@ -45,7 +45,7 @@ const ConversationBar = ({
 
 ConversationBar.propTypes = {
   username: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  dispatchToggleMessageDetail: PropTypes.func.isRequired,
   conversationConnection: PropTypes.object,
 }
 
