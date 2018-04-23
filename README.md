@@ -21,20 +21,20 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-1- Fetch the threads using the threads query
-2- Replace the threads query by threadsConnection
-3- Fetch a Conversation by using the conversationConnection query
-4- Use the sendMessage mutation to send a message. Sending a message should:
-    - Update the conversation to display the new message
-    - Update the threads to display the new message
+1. Fetch the threads using the threads query
+2. Replace the threads query by threadsConnection
+3. Fetch a Conversation by using the conversationConnection query
+4. Use the sendMessage mutation to send a message. Sending a message should:
+    * Update the conversation to display the new message
+    * Update the threads to display the new message
 
 ### Bonus
 
-- Use the getSession query to log in a user instead of calling the REST api
+* Use the getSession query to log in a user instead of calling the REST api
 
 ## Links
 
-- [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
+*  [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
 
 ## License
 
