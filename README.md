@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to use Apollo client and GraphQL queries and mutations.
+The goal of this exercise is to learn how to use GraphQL queries and mutations using Apollo client.
 
 ## To get started
 
