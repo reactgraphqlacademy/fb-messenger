@@ -30,7 +30,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Bonus
 
-* Use the getSession query to log in a user instead of calling the REST api
+* Use the getSession query to log in a user instead of calling the REST API
 
 ## Links
 
