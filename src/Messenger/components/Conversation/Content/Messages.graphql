@@ -1,0 +1,13 @@
+query fetchConversation($username: String!) {
+  conversationConnection(username: $username) {
+    edges {
+      node {
+        from
+        to
+        message
+        id
+        time
+      }
+    }
+  }
+}

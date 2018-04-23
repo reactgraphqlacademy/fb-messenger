@@ -26,7 +26,7 @@ const ConversationMenu = styled.div`
   }
 `
 
-const ConversationBar = ({ username, match, conversation = [], dispatch }) => (
+const ConversationBar = ({ username, conversation = [], dispatch }) => (
   <ConversationBarWrapper>
     <h2>
       {username}
@@ -47,7 +47,6 @@ const ConversationBar = ({ username, match, conversation = [], dispatch }) => (
 )
 
 ConversationBar.propTypes = {
-  match: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }

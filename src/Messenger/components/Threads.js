@@ -70,7 +70,7 @@ const Threads = ({ history, match, data }) => {
     content = edges.length ? (
       <ThreadList>
         {edges.map(({ node: thread }) => (
-        <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
+        <li key={thread.username} onClick={() => history.push(`${match.url}/${thread.username}`)}>
           <Avatar username={thread.username} size="large" />
           <UserName>
             <span>{`${thread.firstName} ${thread.lastName}`}</span>
