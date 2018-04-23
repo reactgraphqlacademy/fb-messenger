@@ -21,9 +21,26 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
+
+### Part 1
+
+```sh
+ npm start
+ ```
+
+[http://localhost:3000/graphiql](http://localhost:3000/graphiql)
+
+* Query a list of threads
+* Query a conversation
+* Send a new message
+* How many threads in the system?
+* How many types do we have in the system?
+
+### Part 2
+
 1. Fetch the threads using the threads query
 2. Replace the threads query by threadsConnection
-3. Fetch a Conversation by using the conversationConnection query
+3. Fetch a conversation by using the conversationConnection query
 4. Use the sendMessage mutation to send a message. Sending a message should:
     * Update the conversation to display the new message
     * Update the threads to display the new message
