@@ -21,12 +21,12 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-1- Replace API get Threads by threads query
-2- Replace threads query by threadsConnection
+1- Fetch the threads using the threads query
+2- Replace the threads query by threadsConnection
 3- Fetch a Conversation by using the conversationConnection query
-4- Use the sendMessage mutation to send a message. Sending a message should_
+4- Use the sendMessage mutation to send a message. Sending a message should:
     - Update the conversation to display the new message
-    - Update the treads to display the last message
+    - Update the threads to display the new message
 
 ### Bonus
 
