@@ -27,18 +27,9 @@ class Login extends Component {
       return
     }
 
-    const { data } = await this.props.client.query({
-      query: gql`
-        query getSession($email: String!, $password: String!) {
-          getSession(email: $email, password: $password) {
-            status
-          }
-        }
-      `,
-      variables: { password, email }
-    })
+    const { status } = await logIn({ password, email })
 
-    if (data.getSession.status == 200) {
+    if (status === 200) {
       this.setState({ redirectToReferrer: true })
     }
   }

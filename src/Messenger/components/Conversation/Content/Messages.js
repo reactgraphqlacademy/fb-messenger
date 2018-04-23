@@ -6,7 +6,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router-dom'
 
-import MESSAGES_QUERY from './Messages.graphql'
+// import MESSAGES_QUERY from './Messages.graphql'
 import { THREADS_QUERY } from '../../Threads'
 import colours from '../../../../App/styles/export/colours.css'
 import Avatar from '../../../../App/components/Layout/Avatar'
@@ -136,47 +136,32 @@ Messages.propTypes = {
   username: PropTypes.string.isRequired,
 }
 
-const sendMessage = graphql(gql`
-  mutation sendMessage($from: String!, $to: String!, $message: String!) {
-    sendMessage(input: { from: $from, to: $to, message: $message }) {
-      id
-      time
-      to
-      from
-      message
-    }
+Messages.defaultProps = {
+  data: {
+    loading: true
   }
-`,
-{
-  options: (props) => ({
-    refetchQueries: [{
-      query: MESSAGES_QUERY, variables: { username: props.username }
-    }],
-    update: (proxy, { data: { sendMessage } }) => {
-      const query = { query: THREADS_QUERY }
+}
 
-      // Read the data from our cache for this query.
-      const data = proxy.readQuery(query)
+// use the following function to send a message
+// const sendMessage = graphql(gql`
+//     TODO add a mutation here
+// `,
+// {
+//   options: (props) => ({
+//     refetchQueries: // TODO you need to add something here,
+//     update: (proxy, { data: { sendMessage } }) => {
+//       const query = { query: THREADS_QUERY }
+//
+//       // Read the data from our cache for this query.
+//       const data = proxy.readQuery(query)
+//
+//       const threads = null // TODO you need to update a thread
+//
+//       // Write our data back to the cache.
+//       proxy.writeQuery({ ...query, data: { threads } })
+//     }
+//   }),
+//   name: 'sendMessage',
+// })
 
-      //data.threads.edges = data.threads.edges.filter(({ node, cursor }) => node.id !== id)
-      const threads = data.threads.map(thread => {
-        if (thread.username === sendMessage.to) {
-          thread.lastMessage.message = sendMessage.message
-        }
-        return thread
-      })
-
-      // Write our data back to the cache.
-      proxy.writeQuery({ ...query, data: { threads } })
-    }
-  }),
-  name: 'sendMessage',
-})
-
-const fetchConversation = graphql(MESSAGES_QUERY, {
-  options: props => ({
-    variables: { username: props.match.params.username }
-  })
-})
-
-export default withRouter(sendMessage(fetchConversation(Messages)))
+export default withRouter(Messages)

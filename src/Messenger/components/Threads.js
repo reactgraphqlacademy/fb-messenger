@@ -102,19 +102,10 @@ Threads.propTypes = {
   match: PropTypes.object.isRequired,
 }
 
-export const THREADS_QUERY = gql`
-  query fetchThreads {
-    threads {
-      title
-      firstName
-      lastName
-      username
-      lastMessage {
-        message
-      }
-    }
+Threads.defaultProps = {
+  data: {
+    loading: true
   }
-`
-const fetchThreads = graphql(THREADS_QUERY)
+}
 
-export default fetchThreads(withRouter(Threads))
+export default withRouter(Threads)

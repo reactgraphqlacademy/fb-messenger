@@ -23,12 +23,12 @@ If you haven't already set up your project, head here and follow the instruction
 
 - Replace API get Threads by threads query
 - Replace threads query by threadsConnection
-- Replace API get Conversation by conversation query
-- Replace API send message by sendMessage mutation
+- Fetch a Conversation by using the conversationConnection query
+- Use the sendMessage mutation to send a message
 
 ### Bonus
 
-Use the getSession query to log in a user instead of calling the REST api
+- Use the getSession query to log in a user instead of calling the REST api
 
 ## Links
 
