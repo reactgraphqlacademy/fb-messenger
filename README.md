@@ -30,9 +30,9 @@ If you haven't already set up your project, head here and follow the instruction
 
 [http://localhost:3000/graphiql](http://localhost:3000/graphiql)
 
-* Query a list of threads
-* Query a conversation
-* Send a new message
+* Query a list of threads and retrieve the username of each thread.
+* Query a conversation. Hint, you need to provide a username.
+* Send a new message.
 * How many threads in the system?
 * How many types do we have in the system?
 
