@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to use Redux in a React app.
+The goal of this exercise is to learn how to use GraphQL queries and mutations using Apollo client.
 
 ## To get started
 
@@ -11,7 +11,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Step 2
 ```sh
- git checkout redux
+ git checkout graphql-apollo
  ```
 
 ### Step 3
@@ -21,57 +21,39 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-### Part 1, building your own Redux
 
-In order to make it easier to understand Redux we have created a simplified version of `redux` and `react-redux`. We have some bugs in our simplified version of `redux`and `react-redux` that you should fix. The unit tests will help you fix the app and learn by "fixing".
+### Part 1
 
-The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you can start the app and it should work (you need to fix the tests first!).
+```sh
+ npm start
+ ```
 
-1. execute `npm test`
+[http://localhost:3000/graphiql](http://localhost:3000/graphiql)
 
-2. Once all the tests pass execute `npm start`
+* Query a list of threads
+* Query a conversation
+* Send a new message
+* How many threads in the system?
+* How many types do we have in the system?
 
-3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works.
+### Part 2
 
-	You will need to uncomment ```import { connect } from 'react-redux'``` and comment ```import { connect } from '../**/react-redux/connect'``` in the following files:
-    * src/components/Messenger/Conversation/Content/index.js
-    * src/components/Messenger/Conversation/Content/Messages.js
-    * src/components/Messenger/Conversation/ConversationBar.js
-    * src/components/Messenger/ThreadsContainer.js
-
-	You will need to uncomment ```import { Provider } from 'react-redux'``` and comment ```import { Provider } from '../react-redux/Provider'``` in the following file:
-    * src/components/Root.js
-
-	You will need to uncomment ```import { createStore } from 'redux'``` and comment ```import { createStore } from '../redux/createStore'``` in the following file:
-    * src/store/index.js
-
-4. Once all the imports from your own implementation of Redux have been replaced by the ones in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
-
-### Part 2, moving the state of the app into Redux
-
-
-1. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at src/reducers/ui.js and change the default state.
-
-2. Refactor src/reducers/ui.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in src/reducers/ui.js  
-
-3. Move the state from ```ConversationContainer``` to Redux. You will have to:
-  - Create an action creator to "receive conversation" in src/actions/conversation.js. Hint, it'll be like the ```receiveThread``` in src/actions/thread.js
-  - Create a reducer in src/reducers. Use the file src/reducers/conversation.js
-  - Import the conversation.js reducer in src/reducers/index.js and add it to the ```combineReducers``` function as a parameter.
-  - The ```fetchConversation``` method in ```ConversationContainer``` should dispatch "receive conversation" when the api.fetchConversation resolves instead of doing ```this.setState({ conversation })```
-  - "connect" the ```ConversationContainer``` to Redux and "map state to props", so that ```ConversationContainer``` gets a prop named conversation with the conversation from the state.
-
-4. Users should be able to send a message:
-  - The ```sendMessage``` method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/conversation.js so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is in src/reducers.
-  - When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers.
+1. Fetch the threads using the threads query
+2. Replace the threads query by threadsConnection
+3. Fetch a conversation by using the conversationConnection query
+4. Use the sendMessage mutation to send a message. Sending a message should:
+    * Update the conversation to display the new message
+    * Update the threads to display the new message
 
 ### Bonus
 
-Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), ```npm install --save redux react-redux```, and move the state of the User Detail open/ close from the url into Redux. You will need to set Redux, which involves creating the store in Redux using the createStore function, adding the Provider component in the Root component, etc
+* Use the getSession query to log in a user instead of calling the REST API
 
 ## Links
 
-- [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
+*  [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
+* [https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations](https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations)
+* [https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment](https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment)
 
 ## License
 
