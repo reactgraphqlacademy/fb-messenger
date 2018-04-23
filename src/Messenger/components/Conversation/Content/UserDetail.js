@@ -39,7 +39,7 @@ const LastActive = styled.div`
     color: ${colours.darkGrey};
 `
 
-const UserDetail = ({ username, toggleModal }) => (
+const UserDetail = ({ username }) => (
   <UserDetailWrapper>
     <User>
       <div>
@@ -53,7 +53,7 @@ const UserDetail = ({ username, toggleModal }) => (
           </LastActive>
         </div>
       </div>
-      <a onClick={toggleModal}>
+      <a>
         <Icon name="cog" />
       </a>
     </User>
@@ -63,7 +63,6 @@ const UserDetail = ({ username, toggleModal }) => (
 )
 
 UserDetail.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 }
 

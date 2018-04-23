@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import colours from '../../App/styles/export/colours.css'
 
-import ThreadsContainer from './ThreadsContainer'
+import Threads from './Threads'
 import ConversationSection from './Conversation/ConversationSection'
 
 const MessengerWrapper = styled.div`
@@ -14,7 +14,7 @@ const MessengerWrapper = styled.div`
 
 const Messenger = () => (
   <MessengerWrapper>
-    <ThreadsContainer />
+    <Threads />
     <ConversationSection />
   </MessengerWrapper>
 )

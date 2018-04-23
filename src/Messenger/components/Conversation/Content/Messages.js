@@ -2,7 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
+import CONVERSATION_QUERY from '../Conversation.graphql'
+import { THREADS_QUERY } from '../../Threads'
 import colours from '../../../../App/styles/export/colours.css'
 import Avatar from '../../../../App/components/Layout/Avatar'
 import Icon from '../../../../App/components/Layout/Icon'
@@ -68,11 +72,18 @@ class Messages extends React.Component {
     newMessage: ''
   }
 
-  sendMessage = () => {
-    const { username } = this.props
+  sendMessage = async () => {
+    const { username, } = this.props
     const { newMessage } = this.state
 
-   // TODO GRAPHQL
+    await this.props.sendMessage({
+      variables: {
+        to: username,
+        from: 'me',
+        message: newMessage
+      }
+    })
+
     this.setState({ newMessage: '' })
   }
 
@@ -120,4 +131,41 @@ Messages.propTypes = {
   username: PropTypes.string.isRequired,
 }
 
-export default Messages
+const sendMessage = graphql(gql`
+  mutation sendMessage($from: String!, $to: String!, $message: String!) {
+    sendMessage(input: { from: $from, to: $to, message: $message }) {
+      id
+      time
+      to
+      from
+      message
+    }
+  }
+`,
+{
+  options: (props) => ({
+    refetchQueries: [{
+      query: CONVERSATION_QUERY, variables: { username: props.username }
+    }],
+    update: (proxy, { data: { sendMessage } }) => {
+      const query = { query: THREADS_QUERY }
+
+      // Read the data from our cache for this query.
+      const data = proxy.readQuery(query)
+
+      //data.threads.edges = data.threads.edges.filter(({ node, cursor }) => node.id !== id)
+      const threads = data.threads.map(thread => {
+        if (thread.username === sendMessage.to) {
+          thread.lastMessage = sendMessage
+        }
+        return thread
+      })
+
+      // Write our data back to the cache.
+      proxy.writeQuery({ ...query, data: { threads } })
+    }
+  }),
+  name: 'sendMessage',
+})
+
+export default sendMessage(Messages)

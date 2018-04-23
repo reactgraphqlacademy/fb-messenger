@@ -1,0 +1,9 @@
+query fetchConversation($username: String!) {
+  conversation(username: $username) {
+    from
+    to
+    message
+    id
+    time
+  }
+}

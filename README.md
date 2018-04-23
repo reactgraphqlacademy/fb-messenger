@@ -12,8 +12,8 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 ```sh
  git checkout redux
- ``` 
- 
+ ```
+
 ### Step 3
 ```sh
  npm i
@@ -71,8 +71,7 @@ Checkout this branch  [https://github.com/leanjscom/fb-messenger/tree/styling-in
 
 ## Links
 
-- [https://egghead.io/courses/getting-started-with-redux](https://egghead.io/courses/getting-started-with-redux)
-- [https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
+- [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
 
 ## License
 

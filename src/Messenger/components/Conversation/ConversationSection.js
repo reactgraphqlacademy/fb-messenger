@@ -3,18 +3,18 @@ import { Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import ConversationContainer from './ConversationContainer'
+import Conversation from './Conversation'
 
-const Conversation = styled.div`
+const Section = styled.div`
   display: flex;
   flex-direction: column;
   flex:3;
 `
 
 const ConversationSection = ({ match }) => (
-  <Conversation>
-    <Route path={`${match.url}/:username`} component={ConversationContainer} />
-  </Conversation>
+  <Section>
+    <Route path={`${match.url}/:username`} component={Conversation} />
+  </Section>
 )
 
 ConversationSection.propTypes = {

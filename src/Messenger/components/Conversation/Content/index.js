@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 import UserDetail from './UserDetail'
 import Messages from './Messages'
-import Modal from '../../../../App/components/Modal'
 
 const ConversationContentWrapper = styled.div`
   display: flex;
@@ -13,39 +12,21 @@ const ConversationContentWrapper = styled.div`
 `
 
 class ConversationContent extends Component {
-  constructor() {
-    super()
-    this.state = {
-      showModal: false
-    }
-  }
-
-  toggleModal = () => {
-    this.setState({ showModal: !this.state.showModal })
-  }
-
   render() {
-    const { conversation = [], username, isMessageDetailOpen } = this.props
-    const { showModal } = this.state
+    const { conversation = [], loading, username, isMessageDetailOpen } = this.props
 
-    if (!conversation.length) {
+    if (loading) {
       return <h2>Loading...</h2>
     }
 
     return (
       <ConversationContentWrapper>
-        <Modal
-          show={showModal}
-          toggleModal={this.toggleModal}
-        />
         <Messages
           conversation={conversation}
           username={username}
-          toggleModal={this.toggleModal}
         />
         { isMessageDetailOpen && <UserDetail
           username={username}
-          toggleModal={this.toggleModal}
         /> }
       </ConversationContentWrapper>
     )

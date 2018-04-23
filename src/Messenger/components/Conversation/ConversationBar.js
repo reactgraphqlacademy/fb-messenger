@@ -26,7 +26,7 @@ const ConversationMenu = styled.div`
   }
 `
 
-const ConversationBar = ({ username, match, conversation, dispatch }) => (
+const ConversationBar = ({ username, match, conversation = [], dispatch }) => (
   <ConversationBarWrapper>
     <h2>
       {username}
