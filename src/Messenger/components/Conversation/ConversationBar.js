@@ -26,20 +26,17 @@ const ConversationMenu = styled.div`
   }
 `
 
-const ConversationBar = ({ username, match, conversation = [], dispatch }) => (
+const ConversationBar = ({
+  username, dispatchToggleMessageDetail
+}) => (
   <ConversationBarWrapper>
     <h2>
       {username}
-      {conversation.length ? (
-        <em>
-          &nbsp; (<strong>{conversation.length}</strong> messages)
-        </em>
-      ):''}
     </h2>
     <ConversationMenu>
       <Icon name="phone" style={{margin: '0 0.5em'}}/>
       <Icon name="video" style={{margin: '0 0.5em'}}/>
-      <a onClick={() => dispatch(toggleMessageDetail())}>
+      <a onClick={dispatchToggleMessageDetail}>
         <Icon name="info-circle" active style={{margin: '0 0.5em'}}/>
       </a>
     </ConversationMenu>
@@ -47,13 +44,13 @@ const ConversationBar = ({ username, match, conversation = [], dispatch }) => (
 )
 
 ConversationBar.propTypes = {
-  match: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
+  conversationConnection: PropTypes.object,
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch
-})
+const mapDispatchToProps = {
+  dispatchToggleMessageDetail: toggleMessageDetail
+}
 
 export default connect(null, mapDispatchToProps)(ConversationBar)

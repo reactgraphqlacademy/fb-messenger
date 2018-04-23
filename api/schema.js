@@ -17,6 +17,13 @@ if (!global.threads) {
 
 const gql = String.raw
 
+function myConnectionFromArray(array, args) {
+  const connection = connectionFromArray(array, args)
+  connection.pageInfo.totalCount = array.length
+  
+  return connection
+}
+
 const typeDefs = gql`
   scalar DateTime
 
@@ -51,6 +58,16 @@ const typeDefs = gql`
     node: Message
   }
 
+  type ThreadConnection {
+    pageInfo: PageInfo!
+    edges: [ThreadEdge]
+  }
+
+  type ThreadEdge {
+    cursor: String!
+    node: Thread
+  }
+
   type Thread {
     "Email of the user"
     title: String!
@@ -58,7 +75,7 @@ const typeDefs = gql`
     lastName: String!
     lastMessage: Message!
     username: String!
-    conversation(
+    conversationConnection(
       first: Int,
       after: String,
       last: Int,
@@ -71,7 +88,19 @@ const typeDefs = gql`
   }
 
   type Query {
-    conversation(username: String!): [Message]
+    conversationConnection(
+      first: Int,
+      after: String,
+      last: Int,
+      before: String,
+      username: String!
+    ): ThreadMessageConnection
+    threadsConnection(
+      first: Int,
+      after: String,
+      last: Int,
+      before: String
+    ): ThreadConnection
     threads: [Thread]
     getSession(email: String!, password: String!): Status
   }
@@ -104,8 +133,15 @@ const resolvers = {
     }
   },
   Query: {
-    conversation: (_, { username }, context) => global.messages.filter(
-      message => message.from === username || message.to === username
+    conversationConnection: (_, { username, ...args }, context) => myConnectionFromArray(
+      global.messages.filter(
+        message => message.from === username || message.to === username
+      ),
+      args,
+    ),
+    threadsConnection: (_, args, context) => myConnectionFromArray(
+      global.threads,
+      args,
     ),
     threads: () => global.threads,
     getSession: (_, { email, password }, context) => {
@@ -132,7 +168,7 @@ const resolvers = {
     thread: () => threads[0]
   },
   Thread: {
-    conversation: (_, args, context) => connectionFromArray(
+    conversationConnection: (_, args, context) => myConnectionFromArray(
       messages.filter(
         message => message.from === _.username || message.to === _.username
       ),

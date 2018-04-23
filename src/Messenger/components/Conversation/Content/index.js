@@ -11,30 +11,26 @@ const ConversationContentWrapper = styled.div`
   height: 100%;
 `
 
-class ConversationContent extends Component {
-  render() {
-    const { conversation = [], loading, username, isMessageDetailOpen } = this.props
+const ConversationContent = ({
+  username, isMessageDetailOpen
+}) => {
+  // if (loading) {
+  //   return <h2>Loading...</h2>
+  // }
 
-    if (loading) {
-      return <h2>Loading...</h2>
-    }
-
-    return (
-      <ConversationContentWrapper>
-        <Messages
-          conversation={conversation}
-          username={username}
-        />
-        { isMessageDetailOpen && <UserDetail
-          username={username}
-        /> }
-      </ConversationContentWrapper>
-    )
-  }
+  return (
+    <ConversationContentWrapper>
+      <Messages
+        username={username}
+      />
+      { isMessageDetailOpen && <UserDetail
+        username={username}
+      /> }
+    </ConversationContentWrapper>
+  )
 }
 
 ConversationContent.propTypes = {
-  conversation: PropTypes.array,
   username: PropTypes.string.isRequired,
   isMessageDetailOpen: PropTypes.bool.isRequired,
 }
