@@ -156,7 +156,7 @@ const sendMessage = graphql(gql`
       //data.threads.edges = data.threads.edges.filter(({ node, cursor }) => node.id !== id)
       const threads = data.threads.map(thread => {
         if (thread.username === sendMessage.to) {
-          thread.lastMessage = sendMessage
+          thread.lastMessage.message = sendMessage.message
         }
         return thread
       })
