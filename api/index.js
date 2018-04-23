@@ -33,9 +33,13 @@ function createApi() {
   router.post(
     '/graphql',
     bodyParser.json(),
-    graphqlExpress({
-      schema
-    }))
+    (req, res) => {
+      return graphqlExpress({
+        schema,
+        context: { response: res },
+      })(req, res)
+    }
+  )
 
   router.get(
     '/graphiql',

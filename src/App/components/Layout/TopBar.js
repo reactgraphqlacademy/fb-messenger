@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
-import { logOut } from '../../../User/auth'
 import styled, { css } from 'styled-components'
+import { connect } from 'react-redux'
+
+import { logOut } from '../../../User/auth'
 import colours from '../../styles/export/colours.css'
 
 const TopBarWrapper = styled.div`
@@ -12,6 +14,10 @@ const TopBarWrapper = styled.div`
     border-bottom: 1px solid #29487d;
     color: ${colours.white};
     min-height: 60px;
+    .fab {
+      color: ${colours.white};
+      font-size: 1.5em;
+    }
 `
 
 const TopBarItems = styled.ul`
@@ -47,16 +53,26 @@ const TopBarItems = styled.ul`
     }
 `
 
-const TopBar = (props) => (
+const TopBar = ({ userPosition, session }) => (
   <TopBarWrapper>
-    <TopBarItems position={`${props.userPosition || 'right'}`}>
+    <Link to="/messages"><i className="icon fab fa-facebook-messenger" /></Link>
+    <TopBarItems position={`${userPosition || 'right'}`}>
       <li>
         <Link to="/login" onClick={() => logOut()}>
           log out
+        </Link>
+      </li>
+      <li>
+        <Link to="/profile">
+          {session? session.username: ''} <img src="/images/default.jpg" />
         </Link>
       </li>
     </TopBarItems>
   </TopBarWrapper>
 )
 
-export default withRouter(TopBar)
+const mapStateToProps = (state) => ({
+  session: state.session
+})
+
+export default withRouter(connect(mapStateToProps)(TopBar))

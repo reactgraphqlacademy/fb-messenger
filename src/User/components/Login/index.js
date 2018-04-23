@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { withApollo } from 'react-apollo'
+import gql from 'graphql-tag'
+
 import Input from '../../../App/components/Form/Input'
 import { logIn } from '../../api/auth'
 import './Login.css'
@@ -24,9 +27,18 @@ class Login extends Component {
       return
     }
 
-    const { status } = await logIn({ password, email })
+    const { data } = await this.props.client.query({
+      query: gql`
+        query getSession($email: String!, $password: String!) {
+          getSession(email: $email, password: $password) {
+            status
+          }
+        }
+      `,
+      variables: { password, email }
+    })
 
-    if (status === 200) {
+    if (data.getSession.status == 200) {
       this.setState({ redirectToReferrer: true })
     }
   }
@@ -71,4 +83,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default withApollo(Login)

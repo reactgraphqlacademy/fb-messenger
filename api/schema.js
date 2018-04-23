@@ -2,6 +2,7 @@ const { makeExecutableSchema } = require('graphql-tools')
 const threads = require('./mocks/threads.json')
 const messages = require('./mocks/messages.json')
 const { GraphQLDateTime } = require('graphql-iso-date')
+const jwt = require('jsonwebtoken')
 const {
   connectionFromArray
 } = require('graphql-relay')
@@ -65,9 +66,14 @@ const typeDefs = gql`
     ): ThreadMessageConnection
   }
 
+  type Status {
+    status: Int!
+  }
+
   type Query {
     conversation(username: String!): [Message]
     threads: [Thread]
+    getSession(email: String!, password: String!): Status
   }
 
   input SendMessageInput {
@@ -101,7 +107,26 @@ const resolvers = {
     conversation: (_, { username }, context) => global.messages.filter(
       message => message.from === username || message.to === username
     ),
-    threads: () => global.threads
+    threads: () => global.threads,
+    getSession: (_, { email, password }, context) => {
+      let status = 200
+      if (email === 'clone@facebook.com' && password === '123') {
+        const SEVEN_DAYS_IN_MILLISECONDS = 604800000
+        const cookie = jwt.sign(
+          { id: '5ab1299177282be8578f3612', username: '@theclone' },
+          'this_is_my_secret_key ^^',
+          { expiresIn: '7 days' }
+        )
+        context.response.cookie(
+          '__session',
+          cookie,
+          { maxAge: SEVEN_DAYS_IN_MILLISECONDS }
+        )
+      } else {
+        status = 401
+      }
+      return { status }
+    }
   },
   Message: {
     thread: () => threads[0]
