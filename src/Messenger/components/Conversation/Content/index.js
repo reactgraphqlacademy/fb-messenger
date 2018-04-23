@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
@@ -13,22 +13,16 @@ const ConversationContentWrapper = styled.div`
 
 const ConversationContent = ({
   username, isMessageDetailOpen
-}) => {
-  // if (loading) {
-  //   return <h2>Loading...</h2>
-  // }
-
-  return (
-    <ConversationContentWrapper>
-      <Messages
-        username={username}
-      />
-      { isMessageDetailOpen && <UserDetail
-        username={username}
-      /> }
-    </ConversationContentWrapper>
-  )
-}
+}) => (
+  <ConversationContentWrapper>
+    <Messages
+      username={username}
+    />
+    { isMessageDetailOpen && <UserDetail
+      username={username}
+    /> }
+  </ConversationContentWrapper>
+)
 
 ConversationContent.propTypes = {
   username: PropTypes.string.isRequired,

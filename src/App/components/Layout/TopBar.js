@@ -64,7 +64,7 @@ const TopBar = ({ userPosition, session }) => (
       </li>
       <li>
         <Link to="/profile">
-          {session? session.username: ''} <img src="/images/default.jpg" />
+          {session? session.username: ''} <img alt="clone" src="/images/default.jpg" />
         </Link>
       </li>
     </TopBarItems>
