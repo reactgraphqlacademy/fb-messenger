@@ -4,7 +4,6 @@ import { withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Input from '../../../App/components/Form/Input'
-import { logIn } from '../../api/auth'
 import './Login.css'
 
 class Login extends Component {
@@ -38,7 +37,7 @@ class Login extends Component {
       variables: { password, email }
     })
 
-    if (data.getSession.status == 200) {
+    if (data.getSession.status === 200) {
       this.setState({ redirectToReferrer: true })
     }
   }
