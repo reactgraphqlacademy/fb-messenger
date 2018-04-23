@@ -66,10 +66,10 @@ const Threads = ({ history, match, data }) => {
   } else if (data.error) {
     content = <p>Oops, there was a problem</p>
   } else {
-    const { threads = [] } = data
-    content = threads.length ? (
+    const { edges = [] } = data.threadsConnection
+    content = edges.length ? (
       <ThreadList>
-        {threads.map(thread => (
+        {edges.map(({ node: thread }) => (
         <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
           <Avatar username={thread.username} size="large" />
           <UserName>
@@ -97,20 +97,24 @@ const Threads = ({ history, match, data }) => {
 }
 
 Threads.propTypes = {
-  thread: PropTypes.object,
+  data: PropTypes.object,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
 }
 
 export const THREADS_QUERY = gql`
   query fetchThreads {
-    threads {
-      title
-      firstName
-      lastName
-      username
-      lastMessage {
-        message
+    threadsConnection {
+      edges {
+        node {
+          username
+          firstName
+          lastName
+          lastMessage {
+            message
+            id
+          }
+        }
       }
     }
   }
