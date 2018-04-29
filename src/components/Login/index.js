@@ -3,7 +3,7 @@ import Input from '../Form/Input'
 import './Login.css'
 
 class Login extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       email: '',
@@ -17,7 +17,7 @@ class Login extends Component {
     this.setState(change)
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault()
     const { history } = this.props
     const { password, email } = this.state
@@ -37,12 +37,11 @@ class Login extends Component {
     })
 
     if (status === 200) {
-      const { from } = this.props.location.state || { from: { pathname: "/" } }
-      history.push(from)
+      history.push('/')
     }
   }
 
-  render () {
+  render() {
     return (
       <form className="form-signin">
         <div className="form-group">
