@@ -63,7 +63,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 4. Users should be able to send a message:
   - The ```sendMessage``` method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/conversation.js so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is in src/reducers.
-  - When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers.
+  - When a new message is sent, the Threads component should display the last message sent. Hint, the only files you need to change are in src/reducers & src/components/Messenger/Conversation/Content/.
 
 ### Bonus
 
