@@ -30,7 +30,7 @@ You can share variables(like colours) between CSS and JavaScript by using :expor
 - Copy the Sass variables from src/index.scss into src/styles/variables.scss
 - Export the Sass variables as JavaScript by exporting them in src/styles/export/colours.scss. You have an example on how we export $white in colours.scss
 
-src/App.js shows you how we use the Sass $white variable as a JavaScript variable.
+`src/components/App.js` shows you how we use the Sass `$white` variable as a JavaScript variable.
 
 ### Part 3, refactoring
 
