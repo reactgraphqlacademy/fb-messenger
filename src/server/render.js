@@ -30,7 +30,7 @@ export default (component, { response }) => {
           You need to enable JavaScript to run this app.
         </noscript>
         <div id="root">${bodyHTML}</div>
-        <script src="/static/bundle.js">
+        <script src="/static/js/bundle.js">
       </body>
     </html>
 

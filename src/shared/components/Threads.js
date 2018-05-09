@@ -34,7 +34,7 @@ class Threads extends Component {
             </li>
           ))}
         </ul>
-      ): <h2>No threads</h2> 
+      ): <h2>No threads</h2>
     ])
   }
 }
