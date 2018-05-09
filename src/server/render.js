@@ -20,7 +20,6 @@ export default (component, { response }) => {
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
         <title>React App</title>
@@ -33,7 +32,6 @@ export default (component, { response }) => {
         <script type="application/javascript" src="/static/js/bundle.js"></script>
       </body>
     </html>
-
   `
   )
 }
