@@ -2,7 +2,7 @@ import express, { Router } from 'express'
 import path from 'path'
 import proxy from 'http-proxy-middleware'
 
-import setupServer from './setupServer'
+import createServer from './createServer'
 
 const middlewares = [
   Router()
@@ -16,10 +16,10 @@ const middlewares = [
       }))
 ]
 
-const app = setupServer({ middlewares })
+const server = createServer({ middlewares })
 
-const server = app.listen(process.env.REACT_APP_SERVER_PORT, () => {
-  const { address, port } = server.address()
+const serverInstance = server.listen(process.env.REACT_APP_SERVER_PORT, () => {
+  const { address, port } = serverInstance.address()
   console.log(`Environment = ${process.env.NODE_ENV}`)
   console.log(`Running an Express server at http://${address}:${port}`)
 })
