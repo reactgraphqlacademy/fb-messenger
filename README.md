@@ -42,7 +42,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 * GraphQL
   * src/server/app.js getDataFromTree
-  * src/server/app.js link: createHttpLink({ uri: `${API_BASE_URL}/graphql` }), // add fetch
+  * src/server/app.js add fetch to link: createHttpLink({ uri: `${API_BASE_URL}/graphql` }),
   * src/server/render.js graphqlClient ? window.__APOLLO_STATE
   * src/client/index cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 
