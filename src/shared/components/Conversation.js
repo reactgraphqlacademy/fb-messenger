@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import * as api from '../api/message'
 
@@ -19,16 +19,23 @@ class Conversation extends Component {
     const { conversation = [] } = this.state
     const { username } = this.props.match.params
 
-    const children = conversation.length? (
-      <ul>
-        {conversation.map((message, i) => (
-          <li>
-            {message.from === 'you' ? 'you' : message.from }:
-            {message.message}
-          </li>
-        ))}
-      </ul>
-    ) : <h2>No conversation with {username} yet.</h2>
+    return (
+      <div>
+        <h1>Conversation with {username}</h1>
+        <hr />
+        {conversation.length? (
+          <ul>
+            <li><h2><Link to="/">Go Home</Link></h2></li>
+            {conversation.map((message, i) => (
+              <li key={message.id}>
+                {message.from === 'you' ? 'you' : message.from }:
+                {message.message}
+              </li>
+            ))}
+          </ul>
+        ) : <h2>No conversation with {username} yet</h2> }
+      </div>
+    )
   }
 }
 

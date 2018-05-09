@@ -1,5 +1,5 @@
 export const fetchThreads = () => (
-  fetch('/mocks/threads.json', {
+  fetch('/static/mocks/threads.json', {
       method: 'get'
   }).then((response) => {
     return response.json()

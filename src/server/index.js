@@ -10,7 +10,10 @@ const server = express()
 
 server.use(
   ['/static', '/sockjs-node'],
-  proxy({ target: `http://localhost:${process.env.REACT_APP_CLIENT_PORT}` })
+  proxy({
+    target: `http://localhost:${process.env.REACT_APP_CLIENT_PORT}`,
+    ws:true,
+  })
 )
 
 server.use((req, response) => {

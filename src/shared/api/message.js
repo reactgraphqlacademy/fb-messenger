@@ -5,7 +5,7 @@ export const fetchConversation = (username) => {
   }
 
   return (
-    fetch('/mocks/messages.js', {
+    fetch('/static/mocks/messages.js', {
       method: 'get',
     })
     .then(response => response.json())
