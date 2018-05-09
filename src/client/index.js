@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import Root from '../shared/components/Root'
 
-ReactDOM.hydrate(
+ReactDOM.render(
   <Router>
     <Root />
   </Router>,

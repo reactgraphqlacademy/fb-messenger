@@ -22,7 +22,7 @@ server.use(
 // The following middleware renders our React app to a string into the response
 server.use((req, response) => {
   render(
-    <Router location={req.url}>
+    <Router>
       <Root />
     </Router>,
     { response }
