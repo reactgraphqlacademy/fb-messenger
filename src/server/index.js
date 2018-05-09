@@ -6,10 +6,11 @@ import proxy from 'http-proxy-middleware'
 import Root from '../shared/components/Root'
 import render from './render'
 
+// Express is the server that we use to return dynamic HTML
 const server = express()
 
 // The following middleware is to proxy some paths from the WebpackDevServer to
-// the server that renders React. This is just for development.
+// the server that returns the dynamic HTML. This is just for development.
 server.use(
   ['/static', '/sockjs-node'],
   proxy({
@@ -18,6 +19,7 @@ server.use(
   })
 )
 
+// The following middleware renders our React app to a string into the response
 server.use((req, response) => {
   render(
     <Router location={req.url}>
@@ -27,6 +29,7 @@ server.use((req, response) => {
   )
 })
 
+// Starts the server
 const serverInstance = server.listen(process.env.REACT_APP_SERVER_PORT, () => {
   const { address, port } = serverInstance.address()
   console.log(`Environment = ${process.env.NODE_ENV}`)
