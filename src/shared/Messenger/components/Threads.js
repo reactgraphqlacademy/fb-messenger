@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { withRouter } from 'react-router'
+import { Link, withRouter } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -45,8 +45,11 @@ const ThreadList = styled.ul`
     }
 `
 
-const UserName = styled.div`
+const UserNameLink = styled(Link)`
   font-size: 0.9rem;
+  &:hover {
+    text-decoration: none;
+  }
   span {
     font-size: 0.9em;
     text-transform: capitalize;
@@ -70,12 +73,14 @@ const Threads = ({ history, match, data }) => {
     content = edges.length ? (
       <ThreadList>
         {edges.map(({ node: thread }) => (
-        <li key={thread.username} onClick={() => history.push(`${match.url}/${thread.username}`)}>
-          <Avatar username={thread.username} size="large" />
-          <UserName>
-            <span>{`${thread.firstName} ${thread.lastName}`}</span>
-            <small>{thread.lastMessage.message}</small>
-          </UserName>
+        <li key={thread.username}>
+          <Link to={`${match.url}/${thread.username}`}>
+            <Avatar username={thread.username} size="large" />
+          </Link>
+          <UserNameLink to={`${match.url}/${thread.username}`}>
+              <span>{`${thread.firstName} ${thread.lastName}`}</span>
+              <small>{thread.lastMessage.message}</small>
+          </UserNameLink>
         </li>
       ))}
       </ThreadList>

@@ -84,7 +84,7 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app) {
-      // Middleware to simulate an authentication API
+      // Middleware to simulate an API
       app.use(createApi())
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());

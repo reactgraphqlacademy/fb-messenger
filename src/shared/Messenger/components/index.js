@@ -7,8 +7,8 @@ import Threads from './Threads'
 import ConversationSection from './Conversation/ConversationSection'
 
 const MessengerWrapper = styled.div`
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
   border-right: 1px solid ${colours.mediumGrey};
 `
 
