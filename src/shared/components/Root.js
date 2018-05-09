@@ -1,12 +1,14 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import App from './App'
+import { Route, Switch } from 'react-router-dom'
 
-const Root = ({ store }) => (
-  <Provider store={store}>
-    <Route path="/" component={App} />
-  </Provider>
+import Threads from './Threads'
+import Conversation from './Conversation'
+
+const Root = () => (
+  <Switch>
+    <Route exact path="/" component={Threads} />
+    <Route path="/:username" component={Conversation} />
+  </Switch>
 )
 
 export default Root

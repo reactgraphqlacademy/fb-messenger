@@ -1,6 +1,3 @@
-import 'isomorphic-fetch'
-import { API_BASE_URL } from '../../config'
-
 export const fetchConversation = (username) => {
 
   const filterMessageByUsername = message => {
@@ -8,7 +5,7 @@ export const fetchConversation = (username) => {
   }
 
   return (
-    fetch(`${API_BASE_URL}/static/mocks/messages.js`, {
+    fetch('/mocks/messages.js', {
       method: 'get',
     })
     .then(response => response.json())
@@ -16,15 +13,4 @@ export const fetchConversation = (username) => {
       return messages.filter(filterMessageByUsername)
     })
   )
-}
-
-export const sendMessage = ({ message, to }) => {
-  // This fake api just returns the message with the current time and random id
-  return {
-    from: 'you',
-    to,
-    message,
-    time: Date.now(),
-    id: Math.random().toString(36).substr(2, 10)
-  }
 }
