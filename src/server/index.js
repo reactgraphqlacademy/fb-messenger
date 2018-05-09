@@ -18,7 +18,7 @@ server.use(
 
 server.use((req, response) => {
   render(
-    <Router>
+    <Router location={req.url}>
       <Root />
     </Router>,
     { response }

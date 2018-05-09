@@ -28,7 +28,7 @@ class Conversation extends Component {
             <li><h2><Link to="/">Go Home</Link></h2></li>
             {conversation.map((message, i) => (
               <li key={message.id}>
-                {message.from === 'you' ? 'you' : message.from }:
+                <strong>{message.from === 'you' ? 'you' : message.from }: </strong>
                 {message.message}
               </li>
             ))}
