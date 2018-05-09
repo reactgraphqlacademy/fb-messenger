@@ -1,26 +1,20 @@
-import https from 'https'
-import setupServer from './server/setupServer'
-import fs from 'fs'
 import express, { Router } from 'express'
 import path from 'path'
-import compression from 'compression'
+import proxy from 'http-proxy-middleware'
+import setupServer from './setupServer'
+import createFakeAPI from './api'
 
-const middlewares = [
-  compression(),
-  Router().use('/', express.static(path.join(process.cwd(), 'public/')))
-]
+const server = express()
 
-const app = setupServer({ middlewares })
-
-const httpsServer = https
-  .createServer(
-  {
-    key: fs.readFileSync('./cert/server.key'),
-    cert: fs.readFileSync('./cert/server.crt')
-  },
-    app
+server.use((req, response) => {
+  render(
+    <Root />,
+    { response }
   )
-  .listen('production_port', 'production_host_name', () => {
-    const { address, port } = httpsServer.address()
-    console.log(`Running an Express server at https://${address}:${port}`)
-  })
+})
+
+const server = app.listen(process.env.REACT_APP_SERVER_PORT, () => {
+  const { address, port } = server.address()
+  console.log(`Environment = ${process.env.NODE_ENV}`)
+  console.log(`Running an Express server at http://${address}:${port}`)
+})
