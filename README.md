@@ -11,7 +11,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Step 2
 ```sh
- git checkout graphql-apollo
+ git checkout SSR
  ```
 
 ### Step 3
@@ -28,26 +28,29 @@ If you haven't already set up your project, head here and follow the instruction
  npm start
  ```
 
-[http://localhost:3000/graphiql](http://localhost:3000/graphiql)
+* React
+  * src/server/render.js bodyHTML = renderToString
+  * src/server/render.js  ...src="${bundleUrl}"></script>
+  * src/client/index hydrate instead of render
 
-* Query a list of threads and retrieve the username of each thread.
-* Query a conversation. Hint, you need to provide a username.
-* Send a new message.
-* How many threads in the system?
-* How many types do we have in the system?
+* Redux
+  * src/server/app.js configure store initialState
 
-### Part 2
+* Style Components
+  * src/server/app.js <StyleSheetManager>
+  * src/server/render.js sheet.getStyleTags()
 
-1. Fetch the threads using the threads query
-2. Replace the threads query by threadsConnection
-3. Fetch a conversation by using the conversationConnection query
-4. Use the sendMessage mutation to send a message. Sending a message should:
-    * Update the conversation to display the new message
-    * Update the threads to display the new message
+* GraphQL
+  * src/server/app.js getDataFromTree
+  * src/server/app.js link: createHttpLink({ uri: `${API_BASE_URL}/graphql` }), // add fetch
+  * src/server/render.js graphqlClient ? window.__APOLLO_STATE
+  * src/client/index cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 
 ### Bonus
 
-* Use the getSession query to log in a user instead of calling the REST API
+* Do we have to do initialize the Redux state in src/client/index with the same state than in src/server/app.js?
+
+* Threads should not rendered on the initial response from the server
 
 ## Links
 

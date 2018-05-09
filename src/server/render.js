@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server'
 
 const DEV = process.env.NODE_ENV === 'development'
 const assetManifest = JSON.parse(process.env.REACT_APP_ASSET_MANIFEST || '{}')
-const bundleUrl = DEV ? '/static/js/bundle.js' : `/${assetManifest['main.js']}`
+const bundleJsUrl = DEV ? '/static/js/bundle.js' : `/${assetManifest['main.js']}`
 
 export default (component, { sheet, response, graphqlClient, status = 200 }) => {
   const bodyHTML = renderToString(component)
@@ -28,7 +28,7 @@ export default (component, { sheet, response, graphqlClient, status = 200 }) => 
       </head>
       <body>
         <div id="root">${bodyHTML}</div>
-        <script type="application/javascript" src="${bundleUrl}"></script>
+        <script type="application/javascript" src="${bundleJsUrl}"></script>
       </body>
   </html>
   `

@@ -33,8 +33,8 @@ const reactApp = () => async (req, response) => {
     status = newStatus
   }
   const initialState = { session: req.user }
-  const sheet = new ServerStyleSheet()
   const store = configureStore(initialState)
+  const sheet = new ServerStyleSheet()
   const graphqlClient = new ApolloClient({
     link: createHttpLink({ uri: `${API_BASE_URL}/graphql`, fetch }),
     cache: new InMemoryCache()
