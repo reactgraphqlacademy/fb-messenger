@@ -27,10 +27,13 @@ If you haven't already set up your project, head here and follow the instruction
 #### Configure Webpack
 
 - In config/paths.js, edit the file and add the following line after `appBuild`:
+
   ```serverBuild: resolveApp('build/server'),```
 - In config/paths.js, edit the following export key `appIndexJs` to be:
+
   ```appIndexJs: resolveApp('src/client/index.js'),```
 - In config/paths.js, edit the file and add the following line after `appIndexJs`:
+
     ```serverIndexJs: resolveApp('src/server/index-dev.js'),```
 - Copy webpack.config.dev.js and name it webpack.config.server.base.js
 - In webpack.config.server.base.js, comment line 48: require.resolve('react-dev-utils/webpackHotDevClient'),
