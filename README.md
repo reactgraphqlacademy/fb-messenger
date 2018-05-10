@@ -112,8 +112,8 @@ compiler.watch({}, (err, stats) => {
 * Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888),
 * How do you fix the following error “Invariant Violation: Browser history needs a DOM
 ”? Hint: replace BrowserRouter by ServerRouter on the server
-* Add a script to the bundle.js at the bottom of the <body> in src/server/render.js
-* In src/server/render.js Add the bodyHTML from renderToString in the html element that is the root of the React app  
+* Add a &lt;script&gt; to the bundle.js at the bottom of the &lt;body&gt; in src/server/render.js
+* In src/server/render.js add the bodyHTML from renderToString in the html element that is the root of the React app  
 * (With JS enabled) If you navigate to [http://localhost:8888/crazypeacock512](http://localhost:8888/crazypeacock512), there is a warning that says “Warning: Text content did not match. Server: "Threads" Client: "Conversation with "”. To fix it, you need to add a prop location={req.url} to the router in src/server/index.js
 * hydrate instead of render
 * If you disable JS, can you see any Thread or Conversation? Why is that? how can we fix it?
@@ -128,7 +128,7 @@ compiler.watch({}, (err, stats) => {
   * src/server/app.js configure store initialState
 
 * Style Components
-  * src/server/app.js <StyleSheetManager>
+  * src/server/app.js &gt;StyleSheetManager&lt;
   * src/server/render.js sheet.getStyleTags()
 
 * GraphQL
