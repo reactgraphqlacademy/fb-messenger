@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to use GraphQL queries and mutations using Apollo client.
+The goal of this exercise is to learn how to do Server-Side Rendering (SSR) in React using Redux, GraphQL, and Styled-Components.
 
 ## To get started
 
