@@ -131,8 +131,8 @@ compiler.watch({}, (err, stats) => {
   * In src/server/render.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering).
 
 * GraphQL
-  * In src/server/app.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree)
-  * In src/server/render.js you need to add window.__APOLLO_STATE. More info [https://github.com/apollographql/react-docs/blob/master/source/server-side-rendering.md](https://github.com/apollographql/react-docs/blob/master/source/server-side-rendering.md)
+  * In src/server/app.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree) to execute the GraphQL queries in order to get data in the components.
+  * In src/server/render.js you need to add [window.__APOLLO_STATE](https://github.com/apollographql/react-docs/blob/master/source/server-side-rendering.md) to sync the state on the server and on  the client.
   * In src/client/index you need to [rehydrate the store](https://www.apollographql.com/docs/react/features/server-side-rendering.html#store-rehydration)
 
 ### Bonus
