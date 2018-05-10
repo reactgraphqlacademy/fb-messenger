@@ -132,16 +132,13 @@ compiler.watch({}, (err, stats) => {
   * src/server/render.js sheet.getStyleTags()
 
 * GraphQL
-  * src/server/app.js getDataFromTree
-  * src/server/app.js add fetch to link: createHttpLink({ uri: `${API_BASE_URL}/graphql` }),
-  * src/server/render.js graphqlClient ? window.__APOLLO_STATE
-  * src/client/index cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+  * In src/server/app.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree)
+  * In src/server/render.js you need to add window.__APOLLO_STATE. More info [https://github.com/apollographql/react-docs/blob/master/source/server-side-rendering.md](https://github.com/apollographql/react-docs/blob/master/source/server-side-rendering.md)
+  * In src/client/index you need to [rehydrate the store](https://www.apollographql.com/docs/react/features/server-side-rendering.html#store-rehydration)
 
 ### Bonus
 
 * Do we have to do initialize the Redux state in src/client/index with the same state than in src/server/app.js?
-
-* Threads should not rendered on the initial response from the server
 
 ## Links
 
