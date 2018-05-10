@@ -126,7 +126,7 @@ compiler.watch({}, (err, stats) => {
 * Redux
   * In src/server/app.js configure the Redux store with initialState.
 
-* Style Components
+* Styled Components
   * In src/server/app.js use [&lt;StyleSheetManager&gt;](https://www.styled-components.com/docs/advanced#server-side-rendering).
   * In src/server/render.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering).
 
