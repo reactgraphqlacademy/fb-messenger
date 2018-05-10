@@ -105,9 +105,13 @@ compiler.watch({}, (err, stats) => {
 ```
 ### Exercise part 2
 
+```sh
+ git checkout SSR-part2
+ ```
+
+* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888),
 * How do you fix the following error “Invariant Violation: Browser history needs a DOM
 ”? Hint: replace BrowserRouter by ServerRouter on the server
-* Copy & paste public/index.html into src/server/render.js
 * Add a script to the bundle.js at the bottom of the <body> in src/server/render.js
 * In src/server/render.js Add the bodyHTML from renderToString in the html element that is the root of the React app  
 * (With JS enabled) If you navigate to [http://localhost:8888/crazypeacock512](http://localhost:8888/crazypeacock512), there is a warning that says “Warning: Text content did not match. Server: "Threads" Client: "Conversation with "”. To fix it, you need to add a prop location={req.url} to the router in src/server/index.js
@@ -117,12 +121,8 @@ compiler.watch({}, (err, stats) => {
 ### Exercise part 3
 
 ```sh
- git checkout SSR
+ git checkout SSR-part3
  ```
- 
-* React
-  * src/server/render.js bodyHTML = renderToString
-  * src/server/render.js  ...src="${bundleUrl}"></script>
 
 * Redux
   * src/server/app.js configure store initialState
@@ -145,19 +145,6 @@ compiler.watch({}, (err, stats) => {
 
 ## Links
 
-*  [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
-* [https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations](https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations)
-* [https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment](https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment)
-* [http://graphql.org/learn/](http://graphql.org/learn/)
-* [http://graphql.org/learn/thinking-in-graphs/](http://graphql.org/learn/thinking-in-graphs/)
-* [https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b](https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b)
-* [https://dev-blog.apollodata.com/graphql-explained-5844742f195e](https://dev-blog.apollodata.com/graphql-explained-5844742f195e)
-* [https://facebook.github.io/relay/docs/thinking-in-graphql.html](https://facebook.github.io/relay/docs/thinking-in-graphql.html)
-* [https://dev-blog.apollodata.com/the-anatomy-of-a-graphql-query-6dffa9e9e747](https://dev-blog.apollodata.com/the-anatomy-of-a-graphql-query-6dffa9e9e747)
-* [https://github.com/apollographql/apollo-server](https://github.com/apollographql/apollo-server)
-* [https://www.youtube.com/watch?v=PHabPhgRUuU](https://www.youtube.com/watch?v=PHabPhgRUuU)
-* [https://facebook.github.io/relay/graphql/connections.htm](https://facebook.github.io/relay/graphql/connections.htm)
-* [https://dev-blog.apollodata.com/introducing-launchpad-the-graphql-server-demo-platform-cc4e7481fcba](https://dev-blog.apollodata.com/introducing-launchpad-the-graphql-server-demo-platform-cc4e7481fcba)
 * [https://dev-blog.apollodata.com/](https://dev-blog.apollodata.com/)
 * [http://dev.apollodata.com](http://dev.apollodata.com)
 
