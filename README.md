@@ -109,12 +109,11 @@ compiler.watch({}, (err, stats) => {
  git checkout SSR-part2
  ```
 
-* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888),
-* How do you fix the following error “Invariant Violation: Browser history needs a DOM
-”? Hint: replace BrowserRouter by ServerRouter on the server
-* Add a &lt;script&gt; to the bundle.js at the bottom of the &lt;body&gt; in src/server/render.js
-* In src/server/render.js add the bodyHTML from renderToString in the html element that is the root of the React app  
-* (With JS enabled) If you navigate to [http://localhost:8888/crazypeacock512](http://localhost:8888/crazypeacock512), there is a warning that says “Warning: Text content did not match. Server: "Threads" Client: "Conversation with "”. To fix it, you need to add a prop location={req.url} to the router in src/server/index.js
+* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888).
+* How do you fix the following error “Invariant Violation: Browser history needs a DOM”? Hint: replace BrowserRouter by ServerRouter on the server.
+* Add a &lt;script&gt; to the bundle.js at the bottom of the &lt;body&gt; in src/server/render.js.
+* In src/server/render.js add the bodyHTML from renderToString in the html element that is the root of the React app.  
+* (With JS enabled) If you navigate to [http://localhost:8888/crazypeacock512](http://localhost:8888/crazypeacock512), there is a warning that says “Warning: Text content did not match. Server: "Threads" Client: "Conversation with "”. To fix it, you need to add a prop location={req.url} to the router in src/server/index.js.
 * hydrate instead of render
 * If you disable JS, can you see any Thread or Conversation? Why is that? how can we fix it?
 
@@ -125,11 +124,11 @@ compiler.watch({}, (err, stats) => {
  ```
 
 * Redux
-  * src/server/app.js configure store initialState
+  * In src/server/app.js configure store with initialState
 
 * Style Components
-  * src/server/app.js &gt;StyleSheetManager&lt;
-  * src/server/render.js sheet.getStyleTags()
+  * In src/server/app.js use [&gt;StyleSheetManager&lt;](https://www.styled-components.com/docs/advanced#server-side-rendering)
+  * In src/server/render.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering)
 
 * GraphQL
   * In src/server/app.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree)
