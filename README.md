@@ -144,8 +144,11 @@ compiler.watch({}, (err, stats) => {
 
 ## Links
 
+* [https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d](https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d)
 * [https://dev-blog.apollodata.com/](https://dev-blog.apollodata.com/)
 * [http://dev.apollodata.com](http://dev.apollodata.com)
+* [https://nextjs.org/](https://nextjs.org/)
+* [https://github.com/jaredpalmer/after.js](https://github.com/jaredpalmer/after.js)
 
 ## License
 
