@@ -124,11 +124,11 @@ compiler.watch({}, (err, stats) => {
  ```
 
 * Redux
-  * In src/server/app.js configure store with initialState
+  * In src/server/app.js configure the Redux store with initialState.
 
 * Style Components
-  * In src/server/app.js use [&gt;StyleSheetManager&lt;](https://www.styled-components.com/docs/advanced#server-side-rendering)
-  * In src/server/render.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering)
+  * In src/server/app.js use [&gt;StyleSheetManager&lt;](https://www.styled-components.com/docs/advanced#server-side-rendering).
+  * In src/server/render.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering).
 
 * GraphQL
   * In src/server/app.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree)
