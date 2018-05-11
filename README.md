@@ -112,10 +112,10 @@ compiler.watch({}, (err, stats) => {
  git checkout SSR-part2
  ```
 
-* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888).
-* How do you fix the following error “Invariant Violation: Browser history needs a DOM”? Hint: replace BrowserRouter by ServerRouter on the server.
-* Add a &lt;script&gt; to the bundle.js at the bottom of the &lt;body&gt; in src/server/render.js.
+* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888). Heads up! there are comments in public/index.html using ` so it escapes the string literal of src/server/render.js. Remove the comments in public/index.html
 * In src/server/render.js add the bodyHTML from renderToString in the html element that is the root of the React app.  
+* How do you fix the following error “Invariant Violation: Browser history needs a DOM”? Hint: replace BrowserRouter by StaticRouter on the server.
+* Add a &lt;script&gt; to the bundle.js at the bottom of the &lt;body&gt; in src/server/render.js.
 * (With JS enabled) If you navigate to [http://localhost:8888/crazypeacock512](http://localhost:8888/crazypeacock512), there is a warning that says “Warning: Text content did not match. Server: "Threads" Client: "Conversation with "”. To fix it, you need to add a prop location={req.url} to the router in src/server/index.js.
 * In src/client/index `hydrate` the component tree instead of `render` it.
 * If you disable JS, can you see any Thread or Conversation? Why is that? how can we fix it?
