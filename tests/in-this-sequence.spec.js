@@ -12,7 +12,7 @@ import { connect } from '../src/react-redux/connect'
 
 configure({ adapter: new Adapter() })
 
-describe("The action creator called receiveThread in src/actions/index.js", () => {
+describe("The action creator called receiveThread in src/actions/thread.js", () => {
   it("should return a JSON object with a key called 'type' and value RECEIVE_THREAD", () => {
     const action = actions.receiveThread()
 
