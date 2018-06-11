@@ -71,7 +71,7 @@ class Messages extends React.Component {
   }
 
   sendMessage = () => {
-    const { username } = this.props
+    const { username, dispatch } = this.props
     const { newMessage } = this.state
 
     const message = api.sendMessage({
@@ -79,7 +79,7 @@ class Messages extends React.Component {
       to: username
     })
 
-    receiveMessage(message)
+    dispatch(receiveMessage(message))
 
     this.setState({ message: '' })
   }
