@@ -1,6 +1,6 @@
 import express from 'express'
 import React from 'react'
-import { StaticRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import proxy from 'http-proxy-middleware'
 
 import Root from '../shared/components/Root'
