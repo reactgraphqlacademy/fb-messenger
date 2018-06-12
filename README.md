@@ -112,7 +112,7 @@ compiler.watch({}, (err, stats) => {
  git checkout SSR-part2
  ```
 
-* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888). Heads up! there are comments in public/index.html using ` so it escapes the string literal of src/server/render.js. Remove the comments in public/index.html
+* Copy & paste public/index.html into src/server/render.js, then `npm start` the project, and navigate to [http://localhost:8888](http://localhost:8888). Heads up! there are comments in public/index.html using ` so it escapes the string literal of src/server/render.js. Remove the comments in the new src/server/render.js after you copied the index.html
 * In src/server/render.js add the bodyHTML from renderToString in the html element that is the root of the React app.  
 * How do you fix the following error “Invariant Violation: Browser history needs a DOM”? Hint: replace BrowserRouter by StaticRouter on the server.
 * Add a &lt;script&gt; to the bundle.js at the bottom of the &lt;body&gt; in src/server/render.js.
