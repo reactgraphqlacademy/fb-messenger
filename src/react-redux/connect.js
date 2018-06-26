@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /*
-  Connect is a HoC (Hire-order Component) that:
+  Connect is a HoC (Higher-order Component) that:
   1. Gets the store from the context (what is context? https://facebook.github.io/react/docs/context.html)
   2. Subscribes to changes from the store. Meaning when the store's state changes we rerender the component calling this.forceUpdate()
   3. It get the state from the store by calling store.getState() and maps parts of the state in the child component using props
