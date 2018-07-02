@@ -9,7 +9,7 @@ You need to have `node`and `npm`installed in your computer.
 ## Clone the repo
 
 ```sh
-git clone git@github.com:leanjscom/fb-messenger.git`
+git clone https://github.com/leanjscom/fb-messenger.git
 ```
 Then `cd` into fb-messenger
 ```sh
