@@ -44,10 +44,10 @@ Current styles, which are being mapped to our components via classes, can be fou
 
 ## Links
 
+- [LeanJS article on Styled Components](https://medium.com/leanjs/styling-in-react-ddfb47eda4d0)
 - [https://www.styled-components.com/](https://www.styled-components.com/)
 - [https://github.com/css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
 - [https://github.com/css-modules/css-modules/](https://github.com/css-modules/css-modules/)
-- [LeanJS article on Styled Components](https://medium.com/leanjs/styling-in-react-ddfb47eda4d0)
 
 ## License
 
