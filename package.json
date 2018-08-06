@@ -63,7 +63,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "node scripts/build.js",
     "build": "npm-run-all build-css build-js",
-    "t": "node scripts/test.js --env=jsdom --silent --verbose --noStackTrace --runInBand"
+    "t2": "node scripts/test.js --env=jsdom --silent --verbose --noStackTrace --runInBand"
   },
   "babel": {
     "presets": [
