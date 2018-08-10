@@ -4,10 +4,15 @@ import {
 } from './thread'
 
 describe('Thread action', () => {
-  it(`should return an action of type ${RECEIVE_THREAD}`, () => {
+  it(`should return an object with type ${RECEIVE_THREAD}`, () => {
     const thread = { id: "1" }
-    const expected = { thread: { id: "1"}, type: RECEIVE_THREAD}
 
-    expect(receiveThread(thread)).toEqual(expected)
+    expect(receiveThread(thread).type).toEqual(RECEIVE_THREAD)
+  })
+
+  it(`should return an object with a thread object`, () => {
+    const thread = { id: "1" }
+
+    expect(receiveThread(thread).thread).toEqual({ id: "1" })
   })
 })
