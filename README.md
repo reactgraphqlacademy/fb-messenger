@@ -23,7 +23,7 @@ If you haven't already set up your project, head here and follow the instruction
 3. The NotFound component should be displayed when no path matches in &lt;App&gt;. Example, navigating to [http://localhost:3000/bla-bla-bla](http://localhost:3000/bla-bla-bla) should display NotFound.js
 4. Refactor the Treads component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005). You have a ThreadsContainer file with some comments and tips. Hint: You will also have to edit the import in src/components/Messenger/index.js
 5. Refactor the Conversation component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005). You have a ConversationContainer file with some comments and tips. Hint: You will also have to edit the import in src/components/Messenger/index.js
-6. Move the logic on lines 36-44 of Conversation.js to the componentWillReceiveProps() lifecycle method in ConversationContainer.js. Why do you think componentWillReceiveProps is a better place?
+6. Move the logic on lines 36-44 of Conversation.js to the componentDidUpdate() lifecycle method in ConversationContainer.js. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the src/component/Login.js should not display the &lt;TopBar&gt; and &lt;Footer&gt;. HINT: Why not try moving the Login component up the tree.
 
 ### Bonus
