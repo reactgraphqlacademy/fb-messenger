@@ -19,15 +19,15 @@ class ConversationContainer extends Component {
     this.setState({ conversation: [] })
     setTimeout(() => {
       api.fetchConversation(username)
-      .then(messages => {
-        this.setState({ conversation: messages })
-      })
-    },1000)
+        .then(messages => {
+          this.setState({ conversation: messages })
+        })
+    }, 1000)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.username !== nextProps.match.params.username) {
-      this.fetchConversation(nextProps.match.params.username)
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.username !== prevProps.match.params.username) {
+      this.fetchConversation(prevProps.match.params.username)
     }
   }
 
