@@ -23,20 +23,20 @@ class Conversation extends Component {
     // the following setTimeout is to simulate network latency in order to show a "loading" component
     setTimeout(() => {
       api.fetchConversation(username)
-      .then(messages => {
-        this.setState({ conversation: messages })
-      })
-    },1000)
+        .then(messages => {
+          this.setState({ conversation: messages })
+        })
+    }, 1000)
   }
 
   render() {
     const { match } = this.props
-    const { username } = match.params
+    const { username } = match.params
     const { conversation } = this.state
 
     // QUESTION 6. Do you think this is a good place to have this needsToFetchUser logic?
-    // Can you please move needsToFetchUser condition to ConversationContainer.componentWillReceiveProps method?
-    // https://facebook.github.io/react/docs/react-component.html#componentwillreceiveprops
+    // Can you please move needsToFetchUser condition to ConversationContainer.componentDidUpdate method?
+    // https://reactjs.org/docs/react-component.html#componentdidupdate
     const needsToFetchUser = conversation.length && !conversation.find(({ from, to }) => (
       to === username || from === username
     ))

@@ -14,10 +14,11 @@ class ConversationContainer extends Component {
     // hint, you should fetch the threads here
   }
 
-  componentWillReceiveProps(nextProps) {
+  // https://reactjs.org/docs/react-component.html#componentdidupdate
+  componentDidUpdate(prevProps) {
     const needsToFetchUser = `Hint. Now you don't need to iterate the messages array
     to see if the username in the url is different from the username's conversation you
-    are displaying. Use the nextProps parameter and the this.props in the following condition `
+    are displaying. Use the prevProps parameter and the this.props in the following condition `
     if (needsToFetchUser) {
       this.fetchConversation(this.props.match.params.username)
     }
