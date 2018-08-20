@@ -13,7 +13,9 @@ class ConversationContent extends Component {
   }
 
   toggleModal = () => {
-    this.setState({ showModal: !this.state.showModal })
+    this.setState((prevState, props) => ({
+      showModal: !prevState.showModal
+    }));
   }
 
   render() {
