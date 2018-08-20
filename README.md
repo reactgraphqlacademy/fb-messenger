@@ -36,7 +36,7 @@ npm install && npm start
 
 ### We recommend you to start from top to bottom, and refactor, refactor, refactor
 
-1. Refactor the “footer” section by creating a stateless component (just like Modal). Make sure everything works.
+1. Replace the “footer” HTML at the bottom of App.js using the src/Footer.js component.
 
 2. Refactor the topbar section  by creating a stateless component and pass the dependencies via props. Make sure everything works Hint: this will be similar to Modal.js
 
