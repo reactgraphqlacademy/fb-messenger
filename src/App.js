@@ -23,7 +23,6 @@ class App extends Component {
 
   selectUser = (user = {}) => {
     this.setState({
-      ...this.state,
       selectedUser: user,
       conversation: messages.filter(filterMessageByUsername(user))
     })
@@ -31,7 +30,6 @@ class App extends Component {
 
   toggleModal = () => {
     this.setState({
-      ...this.state,
       showModal: !this.state.showModal,
     })
   }
