@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router'
+import PropTypes from 'prop-types'
 
 import UserDetail from './UserDetail'
 import Messages from './Messages'
@@ -37,13 +39,21 @@ class ConversationContent extends Component {
           username={username}
           toggleModal={this.toggleModal}
         />
-        <UserDetail
-          username={username}
-          toggleModal={this.toggleModal}
-        />
+        <Route path={`${match.url}/detail`} component={props => (
+          <UserDetail
+            username={username}
+            toggleModal={this.toggleModal}
+          />
+        )} />
       </div>
     )
   }
+}
+
+ConversationContent.propTypes = {
+  conversation: PropTypes.array,
+  username: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default ConversationContent

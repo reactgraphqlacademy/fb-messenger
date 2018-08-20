@@ -16,9 +16,7 @@ class Threads extends Component {
 
   componentDidMount() {
     fetchThreads().then(({ threads }) => {
-      this.setState((prevState, props) => ({
-        threads
-      }));
+      this.setState({ threads });
     })
     .catch(err => {
       console.log(err)
