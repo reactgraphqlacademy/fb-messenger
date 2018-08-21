@@ -11,6 +11,12 @@ class Login extends Component {
 
   handleChange = (name, event) => {
     let change = {}
+    /*
+      explanation about the expression: change[name]
+      change.email = event  // the change variable is an object and so you can add a property by doing .name_of_the_property
+      change["email"] = event // the change variable is an object and so you can add a property by doing ["string_with_the_name_of_the_property_notice_the_quotes"]
+      change[name] = event // the change variable is an object and so you can add a property by doing [variable_with_the_name_of_the_property_notice_no_quotes]
+    */
     change[name] = event.target.value
     //You need to set the change object in the state of the component
   }
