@@ -26,11 +26,11 @@ If you haven't already set up your project, head here and follow the instruction
 
 Finish the implementation of the Login component located in src/components/Login/index.js. Requirements:
 
-To do this part you'll need the following credentials: password 123 and email clone@facebook.com
+To do this part you'll need the following credentials for the server side validation: password 123 and email clone@facebook.com
 
 * The state of the inputs should be managed by the Login component (are the inputs controlled or uncontrolled components?). Hint, use the onChange event in the inputs.
-* Add some simple validation. If email or password are not provided don't submit the form and notify the user. You can do `alert('Email and password are required')`
-* If the validation and the credentials are correct then redirect the user to the home page, you can use the prop history.push(). When the validation is correct the API returns a 200 status. When the validation is not correct the API returns a 401 status.
+* Add some simple client side validation, if the email or password are not provided don't submit the form and notify the user by using `alert('Email and password are required')`
+* If the client side validation and the server side validation are correct then redirect the user to the home page, you can use the prop history.push(). When the server side validation is correct the API returns a 200 status.
 
 ### Part 2, authorization
 
