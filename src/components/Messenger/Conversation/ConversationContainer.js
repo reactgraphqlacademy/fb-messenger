@@ -14,6 +14,7 @@ class ConversationContainer extends Component {
   }
 
   fetchConversation = async (username) => {
+    const { api } = this.props
     const conversation = await api.fetchConversation(username)
     this.props.receiveConversation(conversation)
   }
@@ -40,6 +41,10 @@ ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
   conversation: PropTypes.array.isRequired,
   receiveConversation: PropTypes.func.isRequired,
+}
+
+ConversationContainer.defaultProps = {
+  api
 }
 
 const mapStateToProps = (state) => ({

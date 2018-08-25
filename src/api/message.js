@@ -1,19 +1,8 @@
-export const fetchConversation = (username) => {
-
-  const filterMessageByUsername = message => {
-    return message.from === username || message.to === username
-  }
-
-  return (
-    fetch('/mocks/messages.js', {
-      method: 'get',
-    })
+export const fetchConversation = username => (
+  fetch('/api/conversation')
     .then(response => response.json())
-    .then(messages => {
-      return messages.filter(filterMessageByUsername)
-    })
-  )
-}
+    .then(data => data)
+)
 
 export const sendMessage = ({ message, to }) => {
   // This fake api just returns the message with the current time and random id

@@ -8,9 +8,6 @@ import { fetchThread } from '../../actions/thread'
 
 class ThreadsContainer extends Component {
   componentDidMount () {
-    // fetchFirstThread().then(thread => {
-    //   this.props.receiveThread(thread)
-    // })
     this.props.dispatchFetchThread()
   }
 

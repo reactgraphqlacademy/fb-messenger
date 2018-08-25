@@ -30,6 +30,7 @@
     "jest": "^22.0.4",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.2.0",
+    "lorem-ipsum": "^1.0.5",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "object-assign": "4.1.1",
