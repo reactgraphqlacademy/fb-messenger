@@ -28,7 +28,7 @@ If you haven't already set up your project, head here and follow the instruction
   - When you run `yarn start` you'll get the following error: "Actions must be plain objects. Use custom middleware for async actions." To fix it you must create a thunk middleware in store/index.js.
   - When your thunk middleware works you should see the list of Threads on http://localhost:300X/messages
 
-3. Refactor your logger and thunk middleware so you can use them along with { applyMiddleware } from 'redux' in the createStore function
+3. Refactor your logger and thunk middleware so you can use them along with `{ applyMiddleware } from 'redux'` in the createStore function
 
 4. In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: redux-logger and redux-thunk. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
 
