@@ -15,13 +15,7 @@ const addLoggerMiddleware = store => {
 }
 
 const addThunkMiddleware = store => {
-  const rawDispatch = store.dispatch
-  return action => {
-    if (typeof action === 'function') {
-      return action(store.dispatch, store.getState)
-    }
-    return rawDispatch(action)
-  };
+
 };
 
 const configureStore = () => {
@@ -30,7 +24,6 @@ const configureStore = () => {
   )
 
   store.dispatch = addLoggerMiddleware(store)
-  store.dispatch = addThunkMiddleware(store)
 
   return store
 }
