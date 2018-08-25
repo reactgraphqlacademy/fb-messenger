@@ -38,7 +38,6 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Bonus
 
-
 ## Links
 
 - [https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
