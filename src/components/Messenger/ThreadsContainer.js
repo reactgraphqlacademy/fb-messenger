@@ -4,15 +4,14 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Threads from './Threads'
-import { fetchFirstThread } from '../../api/thread'
-
-import { receiveThread } from '../../actions/thread'
+import { fetchThread } from '../../actions/thread'
 
 class ThreadsContainer extends Component {
   componentDidMount () {
-    fetchFirstThread().then(thread => {
-      this.props.receiveThread(thread)
-    })
+    // fetchFirstThread().then(thread => {
+    //   this.props.receiveThread(thread)
+    // })
+    this.props.dispatchFetchThread()
   }
 
   render() {
@@ -33,11 +32,11 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  receiveThread
+  dispatchFetchThread: fetchThread,
 }
 
 ThreadsContainer.propTypes = {
-  receiveThread: PropTypes.func.isRequired,
+  dispatchFetchThread: PropTypes.func.isRequired,
   thread: PropTypes.object,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
