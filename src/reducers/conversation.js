@@ -19,3 +19,11 @@ export default function (state = { data: [], loading: false }, action) {
       return state
   }
 }
+
+export const selectMessages = (state, username) => (
+  state.conversation.data.filter(
+    message => message.conversationId === username
+  ) || []
+)
+
+export const selectLoading = state => state.conversation.loading

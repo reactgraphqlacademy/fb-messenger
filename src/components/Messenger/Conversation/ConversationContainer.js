@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import reselect from 'reselect'
 
 import {
   fetchConversation,
 } from '../../../actions/conversation'
 import Conversation from './Conversation'
+import { selectLoading, selectMessages } from '../../../reducers/conversation'
 
 class ConversationContainer extends Component {
   componentDidMount() {
     this.fetchConversation()
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    
+  componentDidUpdate(prevProps, prevState, currentProps) {
+    const { conversation = {} } = this.props
+    if (
+      this.props.match.params.username !== prevProps.match.params.username
+      && !conversation.data.length && !conversation.loading
+    ) {
+      this.fetchConversation(this.props.match.params.username)
+    }
   }
+
   fetchConversation = () => {
     this.props.dispatchFetchConversation(this.props.match.params.username)
   }
@@ -39,8 +46,11 @@ ConversationContainer.propTypes = {
   fetchConversation: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  conversation: state.conversation,
+const mapStateToProps = (state, props) => ({
+  conversation: {
+    data: selectMessages(state, props.match.params.username),
+    loading: selectLoading(state),
+  }
 })
 
 const mapStateToDispatch = {
