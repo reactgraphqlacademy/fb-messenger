@@ -32,7 +32,9 @@ If you haven't already set up your project, head here and follow the instruction
 
 4. In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: `redux-logger` and `redux-thunk`. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
 
-5. Using thunks, add loading indicators to the fetchConversation action creator in /actions/conversation.js
+5. Using thunks, add loading indicators to fetch the conversation. Tasks:
+  - Implement the fetchConversation defined in actions/conversation.js. Hint, you need to copy & paste the logic defined in the method called "fetchConversation" in Messenger/ConversationContainer.js. Then refactor those "props"
+  - Dispatch the fetchConversation action in Messenger/ConversationContainer.js instead of receiveConversation & loadingConversation.
 
 6. use reselect to implement a conversation selector
 

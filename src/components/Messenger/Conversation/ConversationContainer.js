@@ -35,12 +35,6 @@ class ConversationContainer extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.username !== nextProps.match.params.username) {
-      this.fetchConversation(nextProps.match.params.username)
-    }
-  }
-
   render() {
     const { match, conversation } = this.props
 
