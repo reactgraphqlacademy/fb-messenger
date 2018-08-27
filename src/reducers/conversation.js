@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect'
 import {
   RECEIVE_CONVERSATION,
   RECEIVE_MESSAGE,
@@ -20,10 +21,17 @@ export default function (state = { data: [], loading: false }, action) {
   }
 }
 
-export const selectMessages = (state, username) => (
+export const selectMessages = (state, props) => (
   state.conversation.data.filter(
-    message => message.conversationId === username
+    message => message.conversationId === props.match.params.username
   ) || []
 )
 
 export const selectLoading = state => state.conversation.loading
+
+export const makeGetConversation = () => {
+  return createSelector(
+    [ selectMessages, selectLoading ],
+    (data, loading) => ({ data, loading })
+  )
+}

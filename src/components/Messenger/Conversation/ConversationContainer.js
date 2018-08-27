@@ -6,7 +6,7 @@ import {
   fetchConversation,
 } from '../../../actions/conversation'
 import Conversation from './Conversation'
-import { selectLoading, selectMessages } from '../../../reducers/conversation'
+import { makeGetConversation } from '../../../reducers/conversation'
 
 class ConversationContainer extends Component {
   componentDidMount() {
@@ -46,12 +46,14 @@ ConversationContainer.propTypes = {
   fetchConversation: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state, props) => ({
-  conversation: {
-    data: selectMessages(state, props.match.params.username),
-    loading: selectLoading(state),
+const mapStateToProps = (state, props) => {
+  const getConversation = makeGetConversation()
+  const conversation = getConversation(state, props)
+
+  return {
+    conversation
   }
-})
+}
 
 const mapStateToDispatch = {
   dispatchFetchConversation: fetchConversation,
