@@ -71,23 +71,20 @@ const Loading = styled.p`
   font-size: 30px !important;
 `
 
-class Messages extends React.Component {
-  state = {
-    newMessage: ''
+const Button = styled.button`
+  :hover {
+    cursor:not-allowed;
   }
+`
 
-  sendMessage = () => {
-    const { username, receiveMessage } = this.props
-    const { newMessage } = this.state
-
-    const message = api.sendMessage({
-      message: newMessage,
-      to: username
-    })
-
-    receiveMessage(message)
-
-    this.setState({ newMessage: '' })
+class Messages extends React.Component {
+  componentDidUpdate(prevProps) {
+    const { conversation = {} } = this.props
+    // if (
+    //   this.props.match.params.username !== prevProps.match.params.username
+    // ) {
+    //   // TODO scroll to the top
+    // }
   }
 
   render() {
@@ -126,12 +123,11 @@ class Messages extends React.Component {
         </ScrollNotifier>
         <NewMessage>
           <MessageBox
-            onChange={e => this.setState({ newMessage: e.target.value })}
+            disabled
             type="text"
-            value={this.state.newMessage}
-            placeholder="Type your message..."
+            value=""
           />
-          <button onClick={this.sendMessage}>Send</button>
+          <Button disabled>Send</Button>
         </NewMessage>
       </MessagesWrapper>
     )

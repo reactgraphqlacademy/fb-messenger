@@ -13,7 +13,7 @@ class ConversationContainer extends Component {
     this.fetchConversation()
   }
 
-  componentDidUpdate(prevProps, prevState, currentProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { conversation = {} } = this.props
     if (
       this.props.match.params.username !== prevProps.match.params.username
