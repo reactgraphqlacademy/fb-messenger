@@ -99,7 +99,7 @@ module.exports = function(proxy, allowedHost) {
                 , paragraphLowerBound: 3        // Minimum sentences per paragraph.
                 , paragraphUpperBound: 7        // Maximum sentences per paragraph.
                 , format: 'plain'               // Plain text or html
-                //, words: ['react', 'graphql', 'redux' ]  // Custom word dictionary. Uses dictionary.words (in lib/dictionary.js) by default.
+                , words: ['react', 'graphql', 'redux', 'awesome' ]  // Custom word dictionary. Uses dictionary.words (in lib/dictionary.js) by default.
               })
               const me = Math.random() >= 0.5;
               return ({

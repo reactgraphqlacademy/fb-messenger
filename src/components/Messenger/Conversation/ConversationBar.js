@@ -30,9 +30,9 @@ const ConversationBar = ({ username, match, conversation, dispatch }) => (
   <ConversationBarWrapper>
     <h2>
       {username}
-      {conversation.length ? (
+      {conversation.data.length ? (
         <em>
-          &nbsp; (<strong>{conversation.length}</strong> messages)
+          &nbsp; (<strong>{conversation.data.length}</strong> messages)
         </em>
       ):''}
     </h2>
@@ -47,6 +47,7 @@ const ConversationBar = ({ username, match, conversation, dispatch }) => (
 )
 
 ConversationBar.propTypes = {
+  conversation: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,

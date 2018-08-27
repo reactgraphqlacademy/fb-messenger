@@ -1,7 +1,10 @@
 export const fetchConversation = username => (
   fetch('/api/conversation')
     .then(response => response.json())
-    .then(data => data)
+    .then(data => new Promise((resolve) => {
+      // this simulates some network latency
+      setTimeout(() => resolve(data), 1000)
+    }))
 )
 
 export const sendMessage = ({ message, to }) => {

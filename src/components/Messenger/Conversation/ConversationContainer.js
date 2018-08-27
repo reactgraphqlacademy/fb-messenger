@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import {
-  receiveConversation
+  receiveConversation,
+  loadingConversation,
 } from '../../../actions/conversation'
 import * as api from '../../../api/message'
 import Conversation from './Conversation'
@@ -14,9 +15,24 @@ class ConversationContainer extends Component {
   }
 
   fetchConversation = async (username) => {
-    const { api } = this.props
-    const conversation = await api.fetchConversation(username)
-    this.props.receiveConversation(conversation)
+    const {
+      api,
+      loadingConversation,
+      receiveConversation,
+      conversation
+    } = this.props
+
+    try {
+      if(conversation.loading) {
+        return
+      }
+      loadingConversation(true)
+      const nextConversation = await api.fetchConversation(username)
+      receiveConversation(nextConversation)
+      loadingConversation(false)
+    } catch (error) {
+      loadingConversation(false)
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,6 +47,7 @@ class ConversationContainer extends Component {
     return (
       <Conversation
         conversation={conversation}
+        fetchNextPage={this.fetchConversation}
         match={match}
       />
     )
@@ -39,7 +56,7 @@ class ConversationContainer extends Component {
 
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
-  conversation: PropTypes.array.isRequired,
+  conversation: PropTypes.object.isRequired,
   receiveConversation: PropTypes.func.isRequired,
 }
 
@@ -48,11 +65,12 @@ ConversationContainer.defaultProps = {
 }
 
 const mapStateToProps = (state) => ({
-  conversation: state.conversation
+  conversation: state.conversation,
 })
 
 const mapStateToDispatch = {
-  receiveConversation
+  receiveConversation,
+  loadingConversation,
 }
 
 export default connect(mapStateToProps, mapStateToDispatch)(ConversationContainer)
