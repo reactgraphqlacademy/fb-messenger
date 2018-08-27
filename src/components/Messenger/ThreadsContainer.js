@@ -4,19 +4,19 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Threads from './Threads'
-import { fetchThread } from '../../actions/thread'
+import { fetchThreads } from '../../actions/thread'
 
 class ThreadsContainer extends Component {
   componentDidMount () {
-    this.props.dispatchFetchThread()
+    this.props.dispatchFetchThreads()
   }
 
   render() {
-    const { history, match, thread } = this.props
+    const { history, match, threads } = this.props
 
     return (
       <Threads
-        thread={thread}
+        threads={threads}
         history={history}
         match={match}
       />
@@ -24,16 +24,16 @@ class ThreadsContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  thread: state.thread
+const mapStateToProps = state => ({
+  threads: state.threads
 })
 
 const mapDispatchToProps = {
-  dispatchFetchThread: fetchThread,
+  dispatchFetchThreads: fetchThreads,
 }
 
 ThreadsContainer.propTypes = {
-  dispatchFetchThread: PropTypes.func.isRequired,
+  dispatchFetchThreads: PropTypes.func.isRequired,
   thread: PropTypes.object,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,

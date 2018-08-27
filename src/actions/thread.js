@@ -1,14 +1,14 @@
-import { fetchFirstThread } from '../api/thread'
+import * as api from '../api/thread'
 
-export const RECEIVE_THREAD = 'RECEIVE_THREAD'
+export const RECEIVE_THREADS = 'RECEIVE_THREADS'
 export const FETCH_THREAD = 'FETCH_THREAD'
 
-export const receiveThread = (thread) => ({
-    type: RECEIVE_THREAD,
-    thread
+export const receiveThreads = threads => ({
+    type: RECEIVE_THREADS,
+    threads
 })
 
-export const fetchThread = () => async (dispatch) => {
-  const thread = await fetchFirstThread()
-  dispatch(receiveThread(thread))
+export const fetchThreads = () => async (dispatch) => {
+  const { threads } = await api.fetchThreads()
+  dispatch(receiveThreads(threads))
 }

@@ -86,25 +86,29 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app) {
-      app.use('/api/conversation',
+      app.use('/api/conversation/:username',
         (req, res) => {
+          const { username } = req.params
           let conversation = Array(15)
             .fill(0)
             .map(n => {
+              const reduxFan = ['react', 'graphql', 'ES6', 'awesome', 'render props', 'better', 'less code' ]
+              const graphqllover = ['react', 'redux', 'thunks', 'redux-saga', 'immutablejs', 'better', 'higher-order components', 'great' ]
+              const me = Math.random() >= 0.5;
               const message = loremIpsum({
                   count: 1                      // Number of words, sentences, or paragraphs to generate.
                 , units: 'sentences'            // Generate words, sentences, or paragraphs.
                 , sentenceLowerBound: 5         // Minimum words per sentence.
-                , sentenceUpperBound: 15        // Maximum words per sentence.
+                , sentenceUpperBound: 10        // Maximum words per sentence.
                 , paragraphLowerBound: 3        // Minimum sentences per paragraph.
                 , paragraphUpperBound: 7        // Maximum sentences per paragraph.
                 , format: 'plain'               // Plain text or html
-                , words: ['react', 'graphql', 'redux', 'awesome' ]  // Custom word dictionary. Uses dictionary.words (in lib/dictionary.js) by default.
+                , words: me?  graphqllover: reduxFan  // Custom word dictionary. Uses dictionary.words (in lib/dictionary.js) by default.
               })
-              const me = Math.random() >= 0.5;
               return ({
-                  "from": "you",
-                  "to":"crazypeacock512",
+                  "conversationId": username,
+                  "from": me? "you": username,
+                  "to": me? username: "you",
                   "time":"2018-02-10T11:33:00Z",
                   "message":message,
                   "id": Math.random()

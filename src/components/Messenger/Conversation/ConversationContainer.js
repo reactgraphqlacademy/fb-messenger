@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import reselect from 'reselect'
 
 import {
   fetchConversation,
@@ -9,11 +10,14 @@ import Conversation from './Conversation'
 
 class ConversationContainer extends Component {
   componentDidMount() {
-    this.fetchConversation(this.props.match.params.username)
+    this.fetchConversation()
   }
 
-  fetchConversation = username => {
-    this.props.dispatchFetchConversation(username)
+  componentDidUpdate(prevProps, prevState) {
+    
+  }
+  fetchConversation = () => {
+    this.props.dispatchFetchConversation(this.props.match.params.username)
   }
 
   render() {

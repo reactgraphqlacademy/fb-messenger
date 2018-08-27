@@ -1,5 +1,5 @@
 export const fetchConversation = username => (
-  fetch('/api/conversation')
+  fetch(`/api/conversation/${username}`)
     .then(response => response.json())
     .then(data => new Promise((resolve) => {
       // this simulates some network latency

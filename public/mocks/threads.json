@@ -2,7 +2,7 @@
   "threads": [
     {
       "lastMessage": {
-        "message": "Hi! how do you find the React course?",
+        "message": "Do you think GraphQL is taking over Redux?",
         "time":"2018-02-11T12:00:00Z"
       },
       "name": {
@@ -12,6 +12,19 @@
       },
       "email": "mary.jones56@example.com",
       "username": "crazypeacock512"
+    },
+    {
+      "lastMessage": {
+        "message": "Hi! how do you find the React course?",
+        "time":"2018-02-11T12:00:00Z"
+      },
+      "name": {
+        "title": "mr",
+        "first": "darryl",
+        "last": "hopkins"
+      },
+      "email": "darryl.hopkins33@example.com",
+      "username": "bigbear866"
     }
   ]
 }

@@ -5,10 +5,10 @@ export const fetchThreads = () => (
   .then(response => response.json())
 )
 
-export const fetchFirstThread = () => (
-  fetch('/mocks/threads.json', {
-      method: 'get'
-  })
-  .then(response => response.json())
-  .then(({ threads }) => threads[0])
-)
+// export const fetchFirstThread = () => (
+//   fetch('/mocks/threads.json', {
+//       method: 'get'
+//   })
+//   .then(response => response.json())
+//   .then(({ threads }) => threads[0])
+// )
