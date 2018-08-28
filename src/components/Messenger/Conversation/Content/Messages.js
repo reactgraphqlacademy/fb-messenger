@@ -2,28 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import colours from '../../../../styles/export/colours.css'
 import { receiveMessage } from "../../../../actions/conversation"
 import * as api from "../../../../api/message"
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
-import ScrollNotifier from '../../../Layout/ScrollNotifier'
 
 const MessagesWrapper = styled.div`
   display: flex;
   flex:2;
   flex-direction: column;
   justify-content: space-between;
-`
-
-const MessagesList = styled.div`
-    padding: 1em;
-    overflow-y: auto;
-    p {
-      color: ${colours.darkGrey};
-      font-size: 0.9em;
-    }
 `
 
 const NewMessage = styled.div`
@@ -71,6 +62,13 @@ const Loading = styled.p`
   font-size: 30px !important;
 `
 
+const LoadMore = styled.button`
+  width: 100%;
+  background: #eee;
+  margin-top:20px;
+  padding: 8px 0;
+`
+
 const Button = styled.button`
   :hover {
     cursor:not-allowed;
@@ -79,12 +77,11 @@ const Button = styled.button`
 
 class Messages extends React.Component {
   componentDidUpdate(prevProps) {
-    const { conversation = {} } = this.props
-    // if (
-    //   this.props.match.params.username !== prevProps.match.params.username
-    // ) {
-    //   // TODO scroll to the top
-    // }
+    if (
+      this.props.match.params.username !== prevProps.match.params.username
+    ) {
+      this.scroller.scrollTop = this.scroller.scrollHeight
+    }
   }
 
   render() {
@@ -105,22 +102,21 @@ class Messages extends React.Component {
 
     return (
       <MessagesWrapper>
-        <ScrollNotifier
-          onScrollAtTheBottom={fetchNextPage}
+        <div
+          style={{ padding: '1em', overflowY: 'auto' }}
+          ref={node => this.scroller = node}
         >
-          <MessagesList>
-            { !conversation.loading && !styledConversation.length ?
-              <p>You have no messages</p>  :
-              <React.Fragment>
-                {styledConversation}
-                {conversation.loading?
-                  <Loading>Loading...</Loading>
-                  : null
-                }
-              </React.Fragment>
-            }
-          </MessagesList>
-        </ScrollNotifier>
+          { !conversation.loading && !styledConversation.length ?
+            <p>You have no messages</p>  :
+            <React.Fragment>
+              {styledConversation}
+              {conversation.loading?
+                <Loading>Loading...</Loading>
+                : <LoadMore onClick={fetchNextPage}>Load more</LoadMore>
+              }
+            </React.Fragment>
+          }
+        </div>
         <NewMessage>
           <MessageBox
             disabled
@@ -144,4 +140,4 @@ const mapDispatchToProps = ({
   receiveMessage,
 })
 
-export default connect(null, mapDispatchToProps)(Messages)
+export default withRouter(connect(null, mapDispatchToProps)(Messages))
