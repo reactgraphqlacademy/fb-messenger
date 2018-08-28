@@ -5,7 +5,8 @@ import {
   loadingConversation, receiveConversation
 } from '../actions/conversation'
 
-export function* fetchConversation (username) {
+export function* fetchConversation (action) {
+  const { username } = action
   const loading = yield select(selectLoading)
   if (loading) {
     return

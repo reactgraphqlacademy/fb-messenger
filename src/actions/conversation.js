@@ -1,5 +1,3 @@
-import * as api from '../api/message'
-
 export const RECEIVE_CONVERSATION = 'RECEIVE_CONVERSATION'
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE'
 export const LOADING_CONVERSATION = 'LOADING_CONVERSATION'
@@ -21,5 +19,6 @@ export const loadingConversation = loading => ({
 })
 
 export const fetchConversation = username => ({
-  type: FETCH_CONVERSATION
+  type: FETCH_CONVERSATION,
+  username
 })

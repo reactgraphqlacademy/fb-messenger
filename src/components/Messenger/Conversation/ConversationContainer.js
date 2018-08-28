@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import {
   fetchConversation,
@@ -59,4 +60,4 @@ const mapStateToDispatch = {
   dispatchFetchConversation: fetchConversation,
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(ConversationContainer)
+export default withRouter(connect(mapStateToProps, mapStateToDispatch)(ConversationContainer))
