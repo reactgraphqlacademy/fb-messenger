@@ -77,9 +77,9 @@ const Button = styled.button`
 
 class Messages extends React.Component {
   componentDidUpdate(prevProps) {
-    if (
-      this.props.match.params.username !== prevProps.match.params.username
-    ) {
+    const { username } = this.props.match.params
+    const prevUsername = prevProps.match.params.username
+    if (username !== prevUsername) {
       this.scroller.scrollTop = this.scroller.scrollHeight
     }
   }
