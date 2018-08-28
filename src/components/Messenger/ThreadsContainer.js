@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import Threads from './Threads'
 import { fetchThreads } from '../../actions/thread'
+import { selectThreads } from '../../reducers/threads'
 
 class ThreadsContainer extends Component {
   componentDidMount () {
@@ -25,7 +26,7 @@ class ThreadsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  threads: state.threads
+  threads: selectThreads(state)
 })
 
 const mapDispatchToProps = {

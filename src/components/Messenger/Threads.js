@@ -68,7 +68,7 @@ const Threads = ({ history, match, threads = [], lastMessage }) => (
     </ThreadBar>
     <ThreadList>
       {threads.map( thread =>
-      <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
+      <li key={thread.username} onClick={() => history.push(`${match.url}/${thread.username}`)}>
         <Avatar username={thread.username} size="large" />
         <UserName>
           <span>{`${thread.name.first} ${thread.name.last}`}</span>

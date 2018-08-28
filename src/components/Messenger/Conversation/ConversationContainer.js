@@ -43,7 +43,7 @@ class ConversationContainer extends Component {
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
   conversation: PropTypes.object.isRequired,
-  fetchConversation: PropTypes.func.isRequired,
+  dispatchFetchConversation: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, props) => {

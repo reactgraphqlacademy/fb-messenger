@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import colours from '../../../../styles/export/colours.css'
-import { receiveMessage } from "../../../../actions/conversation"
-import * as api from "../../../../api/message"
+import { receiveMessage } from '../../../../actions/conversation'
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 

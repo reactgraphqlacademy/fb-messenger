@@ -50,6 +50,7 @@
     "react-test-utils": "^0.0.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "sinon": "^4.5.0",
