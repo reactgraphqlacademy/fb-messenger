@@ -30,6 +30,7 @@ If you haven't already set up your project, head here and follow the instruction
 5. Refactor the Conversation component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005). You have a ConversationContainer file with some comments and tips. Hint: You will also have to edit the import in src/components/Messenger/index.js
 6. Move the logic on lines 36-44 of Conversation.js to the componentDidUpdate() lifecycle method in ConversationContainer.js. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the src/component/Login.js should not display the &lt;TopBar&gt; and &lt;Footer&gt;. HINT: Why not try moving the Login component up the tree.
+8. Display the number of messages in the ConversationBar.
 
 ### Bonus
 - Refactor as many components as you can into stateless components, meaning using functions instead of classes to define the component.
