@@ -11,7 +11,7 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 
 ```sh
- git checkout react-router
+ git checkout forms-and-auth
 ```
 
 ### Step 3
