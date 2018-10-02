@@ -7,7 +7,7 @@ const ConversationBar = ({ username, match, totalMessages }) => (
   <div className="conversation-bar">
     <h2>
       {username}
-      {totalMessages ? <i> (totalMessages)</i> : ''}
+      {totalMessages ? <i> ({totalMessages})</i> : ''}
     </h2>
     <div className="conversation-menu">
       <Icon name="phone" />
