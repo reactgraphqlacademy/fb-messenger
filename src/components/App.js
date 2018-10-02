@@ -6,7 +6,6 @@ import Home from './Home'
 import TopBar from './Layout/TopBar'
 import Messenger from './Messenger'
 import Footer from './Layout/Footer'
-import Login from './Login'
 import Profile from './Profile'
 
 const App = () => (
