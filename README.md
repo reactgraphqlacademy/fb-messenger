@@ -11,7 +11,7 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 
 ```sh
- git checkout react-router
+ git checkout forms-and-auth
 ```
 
 ### Step 3
@@ -26,7 +26,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 Finish the implementation of the Login component located in src/components/Login/index.js. Requirements:
 
-To do this part you'll need the following credentials for the server side validation: password 123 and email clone@facebook.com
+To do this part you'll need the following credentials for the server side validation: email: `clone@facebook.com` & password: `123`
 
 * The state of the inputs should be managed by the Login component (are the inputs controlled or uncontrolled components?). Hint, use the onChange event in the inputs.
 * Add some simple client side validation, if the email or password are not provided don't submit the form and notify the user by using `alert('Email and password are required')`
