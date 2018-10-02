@@ -4,12 +4,12 @@ import ConversationBar from './ConversationBar'
 import ConversationContent from './Content'
 import ConversationSection from './ConversationSection'
 
-const Conversation = ({ conversation, match }) => {
-  const { username } = match.params
+const Conversation = ({ conversation = [], match }) => {
+  const {  username } = match.params
 
   return (
     <ConversationSection>
-      <ConversationBar username={username} match={match} />
+      <ConversationBar username={username} match={match} totalMessages={conversation.length} />
       <ConversationContent
         match={match}
         conversation={conversation}
