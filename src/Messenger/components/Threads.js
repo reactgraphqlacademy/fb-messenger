@@ -115,7 +115,7 @@ There are two ways you can "connect" to the GraphQL API, Render Props or Higher-
 In this example we are going to use HoC.
 You will need to do 3 things:
 
-1) Create the GraphQL query. We recommend you first to run it in http://localhost:3000/graphiql
+1) Create the GraphQL query. We recommend you to first run it in http://localhost:3000/graphiql
 
 2) Transform the query into JavaScript so it can run on the browser. You'll need to use the gql function imported at the top. Example: https://github.com/apollographql/graphql-tag
 E.g. 
