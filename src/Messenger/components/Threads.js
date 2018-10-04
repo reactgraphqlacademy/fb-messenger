@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { withRouter } from 'react-router'
-// import { graphql } from 'react-apollo'
-// import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 import colours from '../../App/styles/export/colours.css'
 import Avatar from '../../App/components/Layout/Avatar'
@@ -61,7 +61,7 @@ const UserName = styled.div`
 
 const Threads = ({ history, match, data }) => {
   let content
-  if (data.loading ) {
+  if (data.loading) {
     content = <p>Loading...</p>
   } else if (data.error) {
     content = <p>Oops, there was a problem</p>
@@ -70,14 +70,14 @@ const Threads = ({ history, match, data }) => {
     content = threads.length ? (
       <ThreadList>
         {threads.map(thread => (
-        <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
-          <Avatar username={thread.username} size="large" />
-          <UserName>
-            <span>{`${thread.firstName} ${thread.lastName}`}</span>
-            <small>{thread.lastMessage.message}</small>
-          </UserName>
-        </li>
-      ))}
+          <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
+            <Avatar username={thread.username} size="large" />
+            <UserName>
+              <span>{`${thread.firstName} ${thread.lastName}`}</span>
+              <small>{thread.lastMessage.message}</small>
+            </UserName>
+          </li>
+        ))}
       </ThreadList>
     ) : <p>There are no messages</p>
   }
@@ -96,6 +96,8 @@ const Threads = ({ history, match, data }) => {
   )
 }
 
+
+
 Threads.propTypes = {
   thread: PropTypes.object,
   history: PropTypes.object.isRequired,
@@ -107,5 +109,21 @@ Threads.defaultProps = {
     loading: true
   }
 }
+
+/* 
+There are two ways you can "connect" to the GraphQL API, Render Props or Higher-Order Components (HoC). 
+In this example we are going to use HoC.
+You will need to do 3 things:
+
+1) Create the GraphQL query. We recommend you first to run it in http://localhost:3000/graphiql
+
+2) Transform the query into JavaScript so it can run on the browser. You'll need to use the gql function imported at the top. Example: https://github.com/apollographql/graphql-tag
+E.g. 
+const query = gql`
+  someQuery
+`
+
+3) "Connect" the Threads component to GraphQL using the HoC graphql (imported at the top). This Hoc will receive your query and the Threads Component. Official documentation https://www.apollographql.com/docs/react/api/react-apollo.html#graphql
+*/
 
 export default withRouter(Threads)
