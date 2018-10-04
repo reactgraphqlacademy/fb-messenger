@@ -123,7 +123,10 @@ const query = gql`
   someQuery
 `
 
-3) "Connect" the Threads component to GraphQL using the HoC graphql (imported at the top). This Hoc will receive your query and the Threads Component. Official documentation https://www.apollographql.com/docs/react/api/react-apollo.html#graphql
+3) "Connect" the Threads component to GraphQL using the HoC graphql (imported at the top). This Hoc will receive your query and the Threads Component. 
+Official documentation https://www.apollographql.com/docs/react/api/react-apollo.html#graphql
+E.g.
+export default graphql(query)(MyCoolComponent)
 */
 
 export default withRouter(Threads)
