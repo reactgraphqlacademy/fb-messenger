@@ -38,20 +38,19 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 ### Part 2, moving the state of the app into Redux
 
 
-1. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at src/reducers/ui.js and change the default state.
+1. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
 
-2. Refactor src/reducers/ui.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in src/reducers/ui.js  
+2. Refactor uiReducer in src/reducers/index.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in the uiReducer in  src/reducers/index.js  
 
 3. Move the state from ```ConversationContainer``` to Redux. You will have to:
-  - Create an action creator to "receive conversation" in src/actions/conversation.js. Hint, it'll be like the ```receiveThread``` in src/actions/thread.js
-  - Create a reducer in src/reducers. Use the file src/reducers/conversation.js
-  - Import the conversation.js reducer in src/reducers/index.js and add it to the ```combineReducers``` function as a parameter.
+  - Create an action creator to "receive conversation" in src/actions/index.js. Hint, it'll be very similar to the ```receiveThread```
+  - Create a reducer in src/reducers/index.js called conversationReducer. Add the conversationReducer to the ```combineReducers``` function as another parameter like ui and thread.
   - The ```fetchConversation``` method in ```ConversationContainer``` should dispatch "receive conversation" when the api.fetchConversation resolves instead of doing ```this.setState({ conversation })```
   - "connect" the ```ConversationContainer``` to Redux and "map state to props", so that ```ConversationContainer``` gets a prop named conversation with the conversation from the state.
 
 4. Users should be able to send a message:
-  - The ```sendMessage``` method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/conversation.js so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is in src/reducers.
-  - When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers.
+  - The ```sendMessage``` method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/index.js conversationReducer so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is in src/reducers/index.js.
+  - When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers/index.js.
 
 ### Bonus
 
