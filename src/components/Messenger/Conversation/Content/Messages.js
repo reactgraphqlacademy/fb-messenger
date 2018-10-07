@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import * as api from "../../../../api/message"
 import colours from '../../../../styles/export/colours.css'
-import { receiveMessage } from "../../../../actions/conversation"
+import { receiveMessage } from "../../../../actions"
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
