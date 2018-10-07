@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-// import { connect } from 'react-redux'
-import { connect } from '../../../../react-redux/connect'
+import { connect } from 'react-redux'
 
 import * as api from "../../../../api/message"
 import colours from '../../../../styles/export/colours.css'
@@ -90,7 +89,7 @@ class Messages extends React.Component {
       <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
         {message.to === "you" && <Avatar username={username} size="medium" />}
         <Message from={message.from === "you" ? "sent" : "received"}>
-            {message.message}
+          {message.message}
         </Message>
         {message.from === "you" && (
           <MessageRead>
@@ -106,8 +105,8 @@ class Messages extends React.Component {
           {styledConversation.length ? (
             styledConversation
           ) : (
-            <p>You have no messages</p>
-          )}
+              <p>You have no messages</p>
+            )}
         </MessagesList>
         <NewMessage>
           <MessageBox

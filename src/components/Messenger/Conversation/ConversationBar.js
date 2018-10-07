@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { connect } from 'react-redux'
-import { connect } from '../../../react-redux/connect'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import { toggleMessageDetail } from '../../../actions/ui'
@@ -35,13 +34,13 @@ const ConversationBar = ({ username, match, conversation, dispatch }) => (
         <em>
           &nbsp; (<strong>{conversation.length}</strong> messages)
         </em>
-      ):''}
+      ) : ''}
     </h2>
     <ConversationMenu>
-      <Icon name="phone" style={{margin: '0 0.5em'}}/>
-      <Icon name="video" style={{margin: '0 0.5em'}}/>
+      <Icon name="phone" style={{ margin: '0 0.5em' }} />
+      <Icon name="video" style={{ margin: '0 0.5em' }} />
       <a onClick={() => dispatch(toggleMessageDetail())}>
-        <Icon name="info-circle" active style={{margin: '0 0.5em'}}/>
+        <Icon name="info-circle" active style={{ margin: '0 0.5em' }} />
       </a>
     </ConversationMenu>
   </ConversationBarWrapper>

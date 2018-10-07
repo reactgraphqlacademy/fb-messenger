@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import { connect } from 'react-redux'
-import { connect } from '../../../../react-redux/connect'
+import { connect } from 'react-redux'
 
 import styled from 'styled-components'
 
@@ -45,10 +44,10 @@ class ConversationContent extends Component {
           username={username}
           toggleModal={this.toggleModal}
         />
-        { isMessageDetailOpen && <UserDetail
+        {isMessageDetailOpen && <UserDetail
           username={username}
           toggleModal={this.toggleModal}
-        /> }
+        />}
       </ConversationContentWrapper>
     )
   }
