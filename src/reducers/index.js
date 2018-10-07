@@ -20,5 +20,6 @@ export function threadReducer(state, action) {
 
 export default combineReducers({
     ui: uiReducer,
+    thread: '?',
     // combineReducers can combine as many reducers as you need
 })
