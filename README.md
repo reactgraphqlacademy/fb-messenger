@@ -12,14 +12,6 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 ```sh
  git checkout redux
-<<<<<<< HEAD
- ```
- 
-### Step 3
-```sh
- npm i
-=======
->>>>>>> redux
  ```
  
 ### Step 3
@@ -39,47 +31,13 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 2. Once all the tests pass execute `npm start`
 
-<<<<<<< HEAD
-The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you can start the app and it should work (you need to fix the tests first!).
-
-1. execute `npm test`
-
-2. Once all the tests pass execute `npm start`
-
-3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works.
-
-	You will need to uncomment ```import { connect } from 'react-redux'``` and comment ```import { connect } from '../**/react-redux/connect'``` in the following files:
-    * src/components/Messenger/Conversation/Content/index.js
-    * src/components/Messenger/Conversation/Content/Messages.js
-    * src/components/Messenger/Conversation/ConversationBar.js
-    * src/components/Messenger/ThreadsContainer.js
-
-	You will need to uncomment ```import { Provider } from 'react-redux'``` and comment ```import { Provider } from '../react-redux/Provider'``` in the following file:
-    * src/components/Root.js
-
-	You will need to uncomment ```import { createStore } from 'redux'``` and comment ```import { createStore } from '../redux/createStore'``` in the following file:
-    * src/store/index.js
-
-4. Once all the imports from your own implementation of Redux have been replaced by the ones in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
-=======
 3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` with https://www.npmjs.com/package/redux (already installed in this project) now that you've understood how it works. You will need to uncomment `import { createStore } from 'redux'` and comment `import { createStore } from '../redux/createStore'` in the following file `src/store/index.js`
 
 4. Once the import from your own implementation of Redux has been replaced by the one in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
->>>>>>> redux
 
 ### Part 2, moving the state of the app into Redux
 
 
-<<<<<<< HEAD
-1. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at src/reducers/ui.js and change the default state.
-
-2. Refactor src/reducers/ui.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in src/reducers/ui.js  
-
-3. Move the state from ```ConversationContainer``` to Redux. You will have to:
-  - Create an action creator to "receive conversation" in src/actions/conversation.js. Hint, it'll be like the ```receiveThread``` in src/actions/thread.js
-  - Create a reducer in src/reducers. Use the file src/reducers/conversation.js
-  - Import the conversation.js reducer in src/reducers/index.js and add it to the ```combineReducers``` function as a parameter.
-=======
 1. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
 
 2. Refactor uiReducer in src/reducers/index.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in the uiReducer in  src/reducers/index.js  
@@ -87,18 +45,12 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 3. Move the state from ```src/components/Messenger/Conversation/ConversationContainer.js``` to Redux. You will have to:
   - Create an action creator to "receive conversation" in src/actions/index.js. Hint, it'll be very similar to the ```receiveThread```
   - Create a reducer in src/reducers/index.js called conversationReducer. Add the conversationReducer to the ```combineReducers``` function as another parameter like ui and thread.
->>>>>>> redux
   - The ```fetchConversation``` method in ```ConversationContainer``` should dispatch "receive conversation" when the api.fetchConversation resolves instead of doing ```this.setState({ conversation })```
   - "connect" the ```ConversationContainer``` to Redux and "map state to props", so that ```ConversationContainer``` gets a prop named conversation with the conversation from the state.
 
 4. Users should be able to send a message:
-<<<<<<< HEAD
-  - The ```sendMessage``` method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/conversation.js so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is in src/reducers.
-  - When a new message is sent, the Threads component should display the last message sent. Hint, the only files you need to change are in src/reducers & src/components/Messenger/Conversation/Content/.
-=======
   - The ```sendMessage``` method in src/components/Messenger/Conversation/Content/Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/index.js conversationReducer so that when a "receive message" action is dispatched the message is added at the end of the conversation. Hint, the only file you need to change is in src/reducers/index.js.
   - When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers/index.js.
->>>>>>> redux
 
 ### Bonus
 
