@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import * as api from "../../../../api/message"
 import colours from '../../../../styles/export/colours.css'
-import { receiveMessage } from "../../../../actions/conversation"
+import { receiveMessage } from "../../../../actions"
 import Avatar from '../../../Layout/Avatar'
 import Icon from '../../../Layout/Icon'
 
@@ -70,7 +70,7 @@ class Messages extends React.Component {
   }
 
   sendMessage = () => {
-    const { username } = this.props
+    const { username, dispatch } = this.props
     const { newMessage } = this.state
 
     const message = api.sendMessage({
@@ -78,7 +78,7 @@ class Messages extends React.Component {
       to: username
     })
 
-    receiveMessage(message)
+    dispatch(receiveMessage(message))
 
     this.setState({ message: '' })
   }
@@ -89,7 +89,7 @@ class Messages extends React.Component {
       <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
         {message.to === "you" && <Avatar username={username} size="medium" />}
         <Message from={message.from === "you" ? "sent" : "received"}>
-            {message.message}
+          {message.message}
         </Message>
         {message.from === "you" && (
           <MessageRead>
@@ -105,8 +105,8 @@ class Messages extends React.Component {
           {styledConversation.length ? (
             styledConversation
           ) : (
-            <p>You have no messages</p>
-          )}
+              <p>You have no messages</p>
+            )}
         </MessagesList>
         <NewMessage>
           <MessageBox

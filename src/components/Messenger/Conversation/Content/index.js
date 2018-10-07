@@ -44,10 +44,10 @@ class ConversationContent extends Component {
           username={username}
           toggleModal={this.toggleModal}
         />
-        { isMessageDetailOpen && <UserDetail
+        {isMessageDetailOpen && <UserDetail
           username={username}
           toggleModal={this.toggleModal}
-        /> }
+        />}
       </ConversationContentWrapper>
     )
   }

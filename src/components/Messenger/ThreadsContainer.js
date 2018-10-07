@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 import Threads from './Threads'
 import { fetchFirstThread } from '../../api/thread'
 
-import { receiveThread } from '../../actions/thread'
+import { receiveThread } from '../../actions'
 
 class ThreadsContainer extends Component {
-  componentDidMount () {
+  componentDidMount() {
     fetchFirstThread().then(thread => {
       this.props.dispatch(receiveThread(thread))
     })
@@ -47,12 +47,10 @@ const mapDispatchToProps = dispatch => ({
 })
 
 // Then instead of this
-this.props.dispatch(actions.receiveThread(thread))
+// this.props.dispatch(actions.receiveThread(thread))
 // we can simply do this
-this.props.dispatchReceiveThread(thread)
-
-// The following technique is not implemented in our simplified react-redux,
-// but { connect } from 'react-redux' does. It helps get the best of the previous ones:
+// this.props.dispatchReceiveThread(thread)
+// It helps get the best of the previous ones:
 // Not much typing, and we just provide to the component the actions it can dispatch
 const mapDispatchToProps = {
   dispatchReceiveThread: actions.receiveThread
