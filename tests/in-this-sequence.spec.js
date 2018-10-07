@@ -8,7 +8,6 @@ import threadReducer from '../src/reducers/thread'
 import indexReducer from '../src/reducers'
 import { createStore } from '../src/redux/createStore'
 import reducers from '../src/reducers'
-import { connect } from '../src/react-redux/connect'
 
 configure({ adapter: new Adapter() })
 
@@ -23,7 +22,7 @@ describe("The action creator called receiveThread in src/actions/thread.js", () 
 
 describe("The thread reducer in src/reducers/thread.js", () => {
   it("should return the current state if the switch doesn't match any case", () => {
-    const state = threadReducer({ id: 1 }, {type: 'test'})
+    const state = threadReducer({ id: 1 }, { type: 'test' })
 
     expect(state).toEqual({ id: 1 })
   })
@@ -36,7 +35,7 @@ describe("The thread reducer in src/reducers/thread.js", () => {
   })
 
   it("should handle the action type called RECEIVE_THREAD and set the state of the reducer to the action.thread", () => {
-    const state = threadReducer([], {type: 'RECEIVE_THREAD', thread: [ 2, 3 ]})
+    const state = threadReducer([], { type: 'RECEIVE_THREAD', thread: [2, 3] })
 
     expect(state).toEqual([2, 3])
   })
@@ -70,7 +69,7 @@ describe("My simplified src/redux/createStore.js", () => {
   })
 
   it("the getState method should return a JSON object that represents the current state of the app", () => {
-    const testReducer = (state = { hello: 'redux'}, action) => state
+    const testReducer = (state = { hello: 'redux' }, action) => state
     const store = createStore(testReducer)
     const state = store.getState()
 
@@ -85,34 +84,5 @@ describe("My simplified src/redux/createStore.js", () => {
     store.dispatch(myAction)
 
     sinon.assert.calledWith(store.dispatch, myAction)
-  })
-})
-
-describe("My simplified src/react-redux/connect.js", () => {
-  it("should get the store from the context and call it 'store'", () => {
-    class DumbComponent extends React.Component {
-      componentDidMount() {
-        this.props.dispatch({type:'test'})
-      }
-      render() {
-        return <i></i>
-      }
-    }
-    const mapStateToProps = () => {}
-    const mapDispatchToProps = dispatch => ({dispatch})
-    const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(DumbComponent)
-    const getState = sinon.spy()
-    const dispatch = sinon.spy()
-    const subscribe = sinon.spy()
-
-    mount(
-      <Context store={{ getState, dispatch, subscribe }}>
-        <ConnectedComponent />
-      </Context>
-    )
-
-    sinon.assert.called(getState)
-    sinon.assert.called(dispatch)
-    sinon.assert.called(subscribe)
   })
 })
