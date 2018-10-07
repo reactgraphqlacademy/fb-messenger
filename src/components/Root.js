@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-// import { Provider } from 'react-redux'
-import { Provider } from '../react-redux/Provider'
+import { Provider } from 'react-redux'
 import App from './App'
 import Login from './Login'
 import { getSession } from '../auth'

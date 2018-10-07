@@ -23,7 +23,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Part 1, building your own Redux
 
-In order to make it easier to understand Redux we have created a simplified version of `redux` and `react-redux`. We have some bugs in our simplified version of `redux`and `react-redux` that you should fix. The unit tests will help you fix the app and learn by "fixing".
+In order to make it easier to understand Redux we have created a simplified version of `redux`. We have some bugs in our simplified version of `redux` that you should fix. The unit tests will help you fix the app and learn by "fixing".
 
 The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you can start the app and it should work (you need to fix the tests first!).
 
@@ -31,21 +31,12 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 2. Once all the tests pass execute `npm start`
 
-3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` and `react-redux` with https://github.com/reactjs/redux and https://github.com/reactjs/react-redux now that you've understood how it works.
-
-	You will need to uncomment ```import { connect } from 'react-redux'``` and comment ```import { connect } from '../**/react-redux/connect'``` in the following files:
-    * src/components/Messenger/Conversation/Content/index.js
-    * src/components/Messenger/Conversation/Content/Messages.js
-    * src/components/Messenger/Conversation/ConversationBar.js
-    * src/components/Messenger/ThreadsContainer.js
-
-	You will need to uncomment ```import { Provider } from 'react-redux'``` and comment ```import { Provider } from '../react-redux/Provider'``` in the following file:
-    * src/components/Root.js
+3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` with https://www.npmjs.com/package/redux (already installed in this project) now that you've understood how it works.
 
 	You will need to uncomment ```import { createStore } from 'redux'``` and comment ```import { createStore } from '../redux/createStore'``` in the following file:
     * src/store/index.js
 
-4. Once all the imports from your own implementation of Redux have been replaced by the ones in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
+4. Once the import from your own implementation of Redux have been replaced by the one in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
 
 ### Part 2, moving the state of the app into Redux
 
