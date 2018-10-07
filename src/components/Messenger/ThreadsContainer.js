@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import Threads from './Threads'
 import { fetchFirstThread } from '../../api/thread'
 
-import { receiveThread } from '../../actions/thread'
+import { receiveThread } from '../../actions'
 
 class ThreadsContainer extends Component {
   componentDidMount() {

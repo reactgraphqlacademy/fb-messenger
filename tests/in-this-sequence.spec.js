@@ -1,26 +1,20 @@
 import sinon from 'sinon'
-import React from 'react'
-import { mount, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import Context from 'react-context-component'
-import * as actions from '../src/actions/thread'
-import threadReducer from '../src/reducers/thread'
+import { receiveThread } from '../src/actions'
+import { threadReducer } from '../src/reducers'
 import indexReducer from '../src/reducers'
 import { createStore } from '../src/redux/createStore'
 import reducers from '../src/reducers'
 
-configure({ adapter: new Adapter() })
-
-describe("The action creator called receiveThread in src/actions/thread.js", () => {
+describe("The action creator called receiveThread in src/actions/index.js", () => {
   it("should return a JSON object with a key called 'type' and value RECEIVE_THREAD", () => {
-    const action = actions.receiveThread()
+    const action = receiveThread()
 
     expect(action.type).not.toBe(undefined)
     expect(action.type).toBe('RECEIVE_THREAD')
   })
 })
 
-describe("The thread reducer in src/reducers/thread.js", () => {
+describe("The threadReducer in src/reducers/index.js", () => {
   it("should return the current state if the switch doesn't match any case", () => {
     const state = threadReducer({ id: 1 }, { type: 'test' })
 
@@ -41,7 +35,7 @@ describe("The thread reducer in src/reducers/thread.js", () => {
   })
 })
 
-describe("The src/reducers/index.js", () => {
+describe("src/reducers/index.js", () => {
   it("should combine the thread reducer AND the ui reducer", () => {
     const received = indexReducer(undefined, { type: '@@redux/INIT' })
 
