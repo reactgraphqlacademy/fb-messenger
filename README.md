@@ -31,8 +31,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 2. Once all the tests pass execute `npm start`
 
-3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` with https://www.npmjs.com/package/redux (already installed in this project) now that you've understood how it works. You will need to uncomment ```import { createStore } from 'redux'``` and comment ```import { createStore } from '../redux/createStore'``` in the following file:
-    * src/store/index.js
+3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` with https://www.npmjs.com/package/redux (already installed in this project) now that you've understood how it works. You will need to uncomment `import { createStore } from 'redux'` and comment `import { createStore } from '../redux/createStore'` in the following file `src/store/index.js`
 
 4. Once the import from your own implementation of Redux have been replaced by the one in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
 
