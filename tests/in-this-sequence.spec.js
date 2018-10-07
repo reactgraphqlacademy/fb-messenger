@@ -70,7 +70,7 @@ describe("My simplified src/redux/createStore.js", () => {
     expect(state.hello).toBe('redux')
   })
 
-  it("the dispatch method should receive an action as a parameter", () => {
+  it("the dispatch method should receive an action as a parameter and pass it on the reducer", () => {
     const store = createStore(reducers)
     const myAction = { type: 'test' }
     sinon.spy(store, 'dispatch')

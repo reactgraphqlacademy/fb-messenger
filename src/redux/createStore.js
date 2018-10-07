@@ -7,7 +7,7 @@ export const createStore = (reducer) => {
 
   const getState = () => { }
 
-  const dispatch = (action) => {
+  const dispatch = () => {
     state = reducer(state)
     listeners.forEach(listener => listener())
   }
