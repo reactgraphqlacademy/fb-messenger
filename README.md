@@ -38,8 +38,8 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Part 2
 
-1. In src/Messenger/components/Threads.js you need fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js
-2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll need to update the threads.map(thread => ...
+1. In src/Messenger/components/Threads.js you need to fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js
+2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll also need to update the threads.map(thread => ...
 3. In src/Messenger/components/Conversation/Content/Messages.js, fetch a conversation by using the conversationConnection query. You have some hints at the bottom of src/Messenger/components/Conversation/Content/Messages.js
 4. Use the sendMessage mutation to send a message. Sending a message should:
     * Update the conversation to display the new message
