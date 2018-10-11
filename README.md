@@ -41,7 +41,7 @@ If you haven't already set up your project, head here and follow the instruction
 1. In src/Messenger/components/Threads.js you need to fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js
 2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll also need to update the threads.map(thread => ...
 3. In src/Messenger/components/Conversation/Content/Messages.js, fetch a conversation by using the conversationConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. You can pass variables to the graphql HoC by doing:
-
+```
 export default graphql(gql`{ ... }`, {
   options: props => ({
     variables: {
@@ -49,7 +49,7 @@ export default graphql(gql`{ ... }`, {
      }
   }),
 })(MyComponent);
-
+```
 4. Use the sendMessage mutation to send a message. Sending a message should:
     * Update the conversation to display the new message
     * Update the threads to display the new message
