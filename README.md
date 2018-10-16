@@ -25,9 +25,9 @@ styled-components is a npm package which we need to add to our project
 
 ### Part 2, sharing variables
 
-You can share variables(like colours) between CSS and JavaScript by using :export from CSS Modules.
+You can share variables(like colours in this case) between CSS and JavaScript by using :export from CSS Modules.
 
-Copy the Sass variables from `src/styles/variables.scss` into `src/styles/export/colours.scss`. You have an example on how we export `$white` in `colours.scss`. This way you can share you SASS variables with JavaScript to incrementally migrate the CSS in styled-components.
+Copy the Sass variables from `src/styles/variables.scss` into `src/styles/export/colours.scss`. You have an example on how we export `$white` in `colours.scss`. This way you can share your SASS variables with JavaScript to incrementally migrate the CSS in styled-components.
 
 `src/components/App.js` shows you how we use the Sass `$white` variable as a JavaScript variable.
 
