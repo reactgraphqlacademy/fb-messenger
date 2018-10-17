@@ -127,8 +127,8 @@ Messages.propTypes = {
   username: PropTypes.string.isRequired,
 }
 
-const mapStateToDispatch = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   dispatch
 })
 
-export default connect(null, mapStateToDispatch)(Messages)
+export default connect(null, mapDispatchToProps)(Messages)
