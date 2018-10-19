@@ -1,5 +1,9 @@
-import { receiveThread } from '../actions/thread'
-import threadReducer from '../reducers/thread'
+import {
+  receiveThread,
+  RECEIVE_THREAD,
+} from '../actions/thread'
+
+import threadReducer from './thread'
 
 /*
 
@@ -11,6 +15,14 @@ Task 2, implement the expectations
 */
 
 describe('Thread reducer', () => {
+  it(``, () => {
+
+  })
+
+  it(``, () => {
+
+  })
+
   it(``, () => {
 
   })
