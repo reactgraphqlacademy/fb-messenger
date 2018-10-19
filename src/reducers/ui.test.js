@@ -1,8 +1,9 @@
 import {
   toggleMessageDetail,
+  TOGGLE_MESSAGE_DETAIL,
 } from '../actions/ui'
 
-import ui from './ui'
+import uiReducer, { getInitialState } from './ui'
 
 /*
 
