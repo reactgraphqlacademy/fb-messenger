@@ -1,7 +1,9 @@
 import {
-  receiveThread,
-  RECEIVE_THREAD,
-} from './thread'
+  receiveConversation,
+  RECEIVE_CONVERSATION
+} from '../actions/conversation'
+
+import conversationReducer from './conversation'
 
 /*
 
@@ -16,7 +18,7 @@ describe('Conversation reducer', () => {
 
   })
 
-  it(`should return a new state if it receives a receiveConversation action`, () => {
+  it(`should return a new state if it receives a ${RECEIVE_CONVERSATION} action`, () => {
 
   })
 

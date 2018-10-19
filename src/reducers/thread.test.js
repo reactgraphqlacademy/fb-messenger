@@ -1,8 +1,9 @@
 import {
   receiveThread,
+  RECEIVE_THREAD,
 } from '../actions/thread'
 
-import threadReducer from '../reducers/thread'
+import threadReducer from './thread'
 
 /*
 
@@ -18,7 +19,7 @@ describe("Thread reducer", () => {
     expect(threadReducer(undefined, {})).toEqual(null);
   });
 
-  it(`should return a new state if it receives a receiveThread action`, () => {
+  it(`should return a new state if it receives a ${RECEIVE_THREAD} action`, () => {
     const action = receiveThread({ id: "1" });
     const newState = { id: "1" };
 
@@ -27,7 +28,7 @@ describe("Thread reducer", () => {
 
   it(`should return the current state if the action it receives it's not handled by the reducer`, () => {
     const state = {
-        id: "1"
+      id: "1"
     };
     const action = { type: "SOMETHING_ELSE" };
     expect(threadReducer(state, action)).toEqual(state);
