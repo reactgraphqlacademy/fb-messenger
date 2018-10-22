@@ -56,7 +56,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 You are going to set Redux from scratch in a project that does not use Redux. You have two options. One option is to bring Redux to your photo app from the previous recap exercise and move the photos from the React state into Redux. Or you can checkout this branch [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), ```npm install --save redux react-redux```, and move the state of the User Detail open/ close from the url into Redux. You will need to set Redux, which involves creating the store in Redux using the createStore function, adding the Provider component in the Root component, etc
 
-## Links
+## Articles and links
 
 - [Introduction to Redux — Redux explained with very simple examples](https://medium.com/leanjs/introduction-to-redux-redux-explained-with-very-simple-examples-b39d7967ceb8)
 - [https://egghead.io/courses/getting-started-with-redux](https://egghead.io/courses/getting-started-with-redux)
