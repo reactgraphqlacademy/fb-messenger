@@ -39,6 +39,10 @@ If you haven't already set up your project, head here and follow the instruction
 - [http://localhost:3000/messages](http://localhost:3000/messages) should not take 100% of the width of the screen. It should take the same width as when there is a Conversation selected. Hint, move the &lt;Route&gt; to the Conversation inside &lt;ConversationSection&gt;
 - Add prop-types to all the components that need it.
 
+## Articles and links
+- [Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
+
+
 ## License
 
 This material is available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html).
