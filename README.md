@@ -59,7 +59,7 @@ You have some hints at the bottom of src/Messenger/components/Conversation/Conte
 
 * Use the getSession query to log in a user instead of calling the REST API
 
-## Links
+## Articles and links
 
 *  [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
 * [https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations](https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations)
