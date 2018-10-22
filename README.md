@@ -32,7 +32,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 4. In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: `redux-logger` and `redux-thunk`. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
 
-5. Using thunks, add loading indicators to fetch the conversation. Tasks:
+5. Steps before you do this task: 1) checkout https://github.com/leanjscom/fb-messenger/tree/advanced-redux-part5, 2) npm stop && npm start. Using thunks, add loading indicators to fetch the conversation you have to:
   - Implement the fetchConversation defined in actions/conversation.js. Hint, you need to copy & paste the logic defined in the method called "fetchConversation" in Messenger/ConversationContainer.js. Then refactor those "props"
   - Dispatch the fetchConversation action in Messenger/ConversationContainer.js instead of receiveConversation & loadingConversation.
 

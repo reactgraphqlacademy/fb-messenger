@@ -23,7 +23,7 @@ class ConversationContainer extends Component {
     } = this.props
 
     try {
-      if(conversation.loading) {
+      if (conversation.loading) {
         return
       }
       loadingConversation(true)
