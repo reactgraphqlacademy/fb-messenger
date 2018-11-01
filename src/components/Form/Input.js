@@ -1,17 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Input = ({ type, placeholder, defaultValue, onChange, value }) => (
+// Option 1
+const Input = ({ type, placeholder, defaultValue, onChange }) => (
   <input
     type={type || 'text'}
     placeholder={placeholder || ''}
     className="form-control"
     defaultValue={defaultValue}
-    value={value}
     onChange={onChange}
   />
 )
 
+// Option 2
+// const Input = (props) => (
+//   <input
+//     {...props}
+//     className="form-control"
+//   />
+// )
+
+// Option 3
 // class Input extends Component {
 //   constructor(props) {
 //     super(props)

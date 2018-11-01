@@ -52,8 +52,7 @@ class Login extends Component {
           />
           <Input
             type="password"
-            placeholder="Enter password"
-            className="form-control"
+            placeholder="Enter password"  
             defaultValue={this.password}
             onChange={e => this.password = e.target.value}
           />
