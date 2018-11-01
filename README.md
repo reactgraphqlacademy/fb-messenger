@@ -42,7 +42,7 @@ To do this part you'll need the following credentials for the server side valida
 
 ### Part 3, form components
 
-Create an uncontrolled component called Input that replaces the &lt;input&gt; in Login.js. You can create your Input component in src/components/form/Input.js, there are some tips in that file.
+Create an Input component that replaces the &lt;input&gt; in your app and can be controlled and uncontrolled. You can create your Input component in src/components/form/Input.js, there are some tips in that file. Replace the inputs in Login/index.js with your Input component.
 
 ### Bonus
 
