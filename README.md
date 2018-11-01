@@ -11,7 +11,7 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 
 ```sh
- git checkout react-router
+ git checkout forms-and-auth
 ```
 
 ### Step 3
@@ -26,7 +26,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 Finish the implementation of the Login component located in src/components/Login/index.js. Requirements:
 
-To do this part you'll need the following credentials for the server side validation: password 123 and email clone@facebook.com
+To do this part you'll need the following credentials for the server side validation: email: `clone@facebook.com` & password: `123`
 
 * The state of the inputs should be managed by the Login component (are the inputs controlled or uncontrolled components?). Hint, use the onChange event in the inputs.
 * Add some simple client side validation, if the email or password are not provided don't submit the form and notify the user by using `alert('Email and password are required')`
@@ -50,7 +50,7 @@ Create an uncontrolled component called Input that replaces the &lt;input&gt; in
 * If the user is not logged in, when she or he goes to a private route it should redirect to it after logging in. Example, if the user is not logged in, and the the user goes to [http://localhost:3000/messages](http://localhost:3000/messages), then the user will be redirected to [http://localhost:3000/login](http://localhost:3000/login). After logging in, the user should be redirected to [http://localhost:3000/messages](http://localhost:3000/messages), not to the home page.
 * In the Login component, make the redirect when the login is successful more declarative. Meaning, instead of using the prop history.push(), use the &lt;Redirect&gt; component. You have an example [here](https://reacttraining.com/react-router/web/example/auth-workflow). Hint, look at the Login component in the example.
 
-## Links and further reading
+## Articles and links
 
 ### React Router
 

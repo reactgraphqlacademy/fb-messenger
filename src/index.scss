@@ -43,16 +43,27 @@ html, body {
     a {
       cursor: pointer;
     }
-    .username {
+    ul {
+      list-style: none;
       position: absolute;
       top: 20px;
       display: block;
-      list-style: none;
       img {
         border-radius: 50%;
         height: 50px;
         height: 30px;
         margin-top: -5px;
+      }
+      li {
+        display: inline-block;
+        padding-right: 8px;
+        padding-left: 8px;
+        &:last-child {
+          padding-right: 0;
+        }
+        &:first-child {
+          padding-left: 0;
+        }
       }
       &.right {
         right: 20px;

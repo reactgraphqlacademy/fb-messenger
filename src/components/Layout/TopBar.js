@@ -12,13 +12,13 @@ const TopBar = props => {
       </Link>
       <ul className={`${props.userPosition || 'right'}`}>
         <li>
-          <Link>
+        <Link to="/login">
             log out
           </Link>
         </li>
         <li>
           <Link to="/profile">
-            {session ? 'username???' : ''} <img src="/images/default.jpg" />
+            {session ? 'username???' : ''} <img alt="profile" src="/images/default.jpg" />
           </Link>
         </li>
       </ul>
