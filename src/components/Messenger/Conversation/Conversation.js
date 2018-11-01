@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import ConversationBar from './ConversationBar'
 import ConversationContent from './Content'
-import ConversationSection from './ConversationSection'
 
 const Conversation = ({ conversation, match }) => {
   const { username } = match.params
