@@ -6,7 +6,7 @@ function test(message, callback) {
   /* Task:
     - console.log the message
     - Execute the callback
-    - Catch the error if the callback throw an error and display the error message
+    - Catch the error if the callback throws an error and display the error message
     - Bonus, add emojis 😋
   */
 }
