@@ -11,6 +11,8 @@ import { receiveThread } from '../../actions'
 class ThreadsContainer extends Component {
   componentDidMount() {
     fetchFirstThread().then(thread => {
+      // Here we dispatch the RECEIVE_THREAD action created by the receiveThread action creator
+      // The dispatch props is injected by `connect` at the bottom of the file
       this.props.dispatch(receiveThread(thread))
     })
   }
@@ -27,6 +29,23 @@ class ThreadsContainer extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  thread: state.thread
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+})
+
+ThreadsContainer.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  thread: PropTypes.object,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ThreadsContainer))
 
 /*
 SOME EXPLANATION AND TIPS ABOUT USING CONNECT
@@ -58,20 +77,3 @@ const mapDispatchToProps = {
 
 // try to use the last one :)
 */
-
-const mapStateToProps = (state) => ({
-  thread: state.thread
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  dispatch
-})
-
-ThreadsContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  thread: PropTypes.object,
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ThreadsContainer))
