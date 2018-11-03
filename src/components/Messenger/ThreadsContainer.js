@@ -12,7 +12,7 @@ class ThreadsContainer extends Component {
   componentDidMount() {
     fetchFirstThread().then(thread => {
       // Here we dispatch the RECEIVE_THREAD action created by the receiveThread action creator
-      // The dispatch props is injected by `connect` at the bottom of the file
+      // The dispatch prop is injected by `connect` at the bottom of the file
       this.props.dispatch(receiveThread(thread))
     })
   }
