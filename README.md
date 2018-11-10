@@ -38,11 +38,11 @@ npm install && npm start
 
 1. Replace the “footer” HTML at the bottom of App.js using the src/Footer.js component.
 
-2. Refactor the topbar section  by creating a stateless component and pass the dependencies via props. Make sure everything works Hint: this will be similar to Modal.js
+2. Refactor the topbar section  by creating a functional component and pass the dependencies via props. Make sure everything works Hint: this will be similar to Modal.js
 
 3. Create a component for “messenger” and pass down the dependencies from App via props. Make sure everything works. You can start by making a Messenger folder with an index.js.
 
-4. Is there any state in app that should be in the Messenger component?  Refactor this logic out of App.js and into Messenger. Then, create further stateless components from the contents of Messenger and pass them down dependencies via props. Hint: maybe you could have a Threads component, and maybe Conversation?
+4. Is there any state in app that should be in the Messenger component?  Refactor this logic out of App.js and into Messenger. Then, create further functional components from the contents of Messenger and pass them down dependencies via props. Hint: maybe you could have a Threads component, and maybe Conversation?
 
 5. Question: Is it possible to move showModal from app.js down the tree? why/why not?
 
