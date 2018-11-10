@@ -9,7 +9,7 @@ You need to have `node`and `npm`installed in your computer.
 ## Clone the repo
 
 ```sh
-git clone git@github.com:leanjscom/fb-messenger.git`
+git clone https://github.com/leanjscom/fb-messenger.git
 ```
 Then `cd` into fb-messenger
 ```sh
@@ -34,16 +34,29 @@ git checkout <branch_name>
 npm install && npm start
 ```
 
+### We recommend you to start from top to bottom, and refactor, refactor, refactor
 
-## Articles and links
+1. Replace the “footer” HTML at the bottom of App.js using the src/Footer.js component.
 
-* [https://medium.com/leanjs/introduction-to-react-3000e9cbcd26](https://medium.com/leanjs/introduction-to-react-3000e9cbcd26)
-* Basic React course from [freeCodeCamp](
-https://learn.freecodecamp.org/front-end-libraries/react/)
+2. Refactor the topbar section  by creating a functional component and pass the dependencies via props. Make sure everything works Hint: this will be similar to Modal.js
+
+3. Create a component for “messenger” and pass down the dependencies from App via props. Make sure everything works. You can start by making a Messenger folder with an index.js.
+
+4. Is there any state in app that should be in the Messenger component?  Refactor this logic out of App.js and into Messenger. Then, create further functional components from the contents of Messenger and pass them down dependencies via props. Hint: maybe you could have a Threads component, and maybe Conversation?
+
+5. Question: Is it possible to move showModal from app.js down the tree? why/why not?
+
+6. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ... 
+
+7. What do you think it would make sense to componentize next? Are there any parts on that view that you can reuse? Try to explain to a mentor what you want to refactor before you code :)
+
+## Articles and Links
+
 * [https://reactjs.org/docs/introducing-jsx.html](https://reactjs.org/docs/introducing-jsx.html)
 * [https://reactjs.org/docs/thinking-in-react.html](https://reactjs.org/docs/thinking-in-react.html)
 * [https://reactjs.org/docs/composition-vs-inheritance.html](https://reactjs.org/docs/composition-vs-inheritance.html)
-* [babel repl example](https://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&code_lz=MYewdgzgLgBAEgUwDZJAYRAWwA7gWWAXhgAoBKGQgPlICgYYAeAEwEsA3K-hpgCwEYqiFCACEjAPQCuPJtioB1ZKEwIYUEEwCGMXgCcEAM0IAiXlCjYIALgkSDW4FABWEAHSOtzBJgCeJqgAlBEcoACkAZTcAQWAvH19JLSpJeW5JNk5aMgBuWloWDhhgJC0ICAA5LVVTUAItVjAEPQD0zOLS8qqakz0QAHdW2QBvYVQMHDwCAF90iUyuDI4qIA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&lineWrap=false&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=6.26.0&envVersion=)
+* [babel repl example](https://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&code_lz=MYewdgzgLgBAEgUwDZJAYRAWwA7gWWAXhgAoBKGQgPlICgYYAeAEwEsA3K-hpgCwEYqiFCACEjAPQCuPJtioB1ZKEwIYUEDABSAZRgAZAIYAjA-GbhJ87pLadaZANy1aLDjGBJDECADlDqoQARKAEhqxgCABOQTJMdh5ePv6BQVEgAO6x3AwA3sKoGDh4BAC-NhJ2XLYcVEA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&lineWrap=false&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=6.26.0&envVersion=)
+
 
 ## License
 
