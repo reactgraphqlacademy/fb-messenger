@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./App.css"
 import Modal from "./Modal"
-
+import LeanJSLogo from './LeanJSLogo'
 import users from "./mocks/users.js"
 import messages from "./mocks/messages.js"
 
@@ -45,7 +45,7 @@ class App extends Component {
         key={i}
         className={`message-wrapper ${
           message.from === "you" ? "sent" : "received"
-        }`}
+          }`}
       >
         {message.to === "you" && (
           <img
@@ -111,8 +111,8 @@ class App extends Component {
           <div className="conversation">
             <div className="conversation-bar">
               <h2>
-                  {selectedUser.name &&
-                    `${selectedUser.name.first} ${selectedUser.name.last}`}
+                {selectedUser.name &&
+                  `${selectedUser.name.first} ${selectedUser.name.last}`}
               </h2>
               <div className="conversation-menu">
                 <i className="icon fas fa-phone" />
@@ -161,7 +161,19 @@ class App extends Component {
           </div>
         </div>
         <div className="footer">
-          ReactJS Academy
+          <ul>
+            <li>
+              <a target="_blank" href="https://reactjs.academy">ReactJS Academy</a>
+            </li>
+            <li>
+              by
+            </li>
+            <li>
+              <a target="_blank" href="https://leanjs.com">
+                <LeanJSLogo width={25} />
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     )

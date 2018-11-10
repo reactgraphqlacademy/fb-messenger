@@ -46,7 +46,9 @@ npm install && npm start
 
 5. Question: Is it possible to move showModal from app.js down the tree? why/why not?
 
-6. What do you think it would make sense to componentize next? Are there any parts on that view that you can reuse? Try to explain to a mentor what you want to refactor before you code :)
+6. Create a Link component for the a tags in the footer. Who are the children of the Link component?
+
+7. What do you think it would make sense to componentize next? Are there any parts on that view that you can reuse? Try to explain to a mentor what you want to refactor before you code :)
 
 ## Links
 

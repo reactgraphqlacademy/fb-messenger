@@ -275,4 +275,14 @@ h2 {
   background: $light-grey;
   border-top: 1px solid $medium-grey;
   font-size: 0.8rem;
+  ul {
+    text-decoration: none;
+    li {
+      padding: 0 4px;
+      display: inline-block;
+      svg {
+        margin-bottom: -6px;
+      }
+    }
+  }
 }
