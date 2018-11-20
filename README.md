@@ -54,7 +54,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 2. Refactor src/reducers/ui.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in src/reducers/ui.js  
 
-3. Move the state from ```ConversationContainer``` to Redux. You will have to:
+3. Move the state from ```src/components/Messenger/Conversation/ConversationContainer.js``` to Redux. Before doing that have a look at how `connect` is implemented in ```src/components/Messenger/ThreadsContainer.js```, please read the comments at the bottom of the file. After reading ThreadsContainer, you are ready to work on ConversationContainer. You will have to:
   - Create an action creator to "receive conversation" in src/actions/conversation.js. Hint, it'll be like the ```receiveThread``` in src/actions/thread.js
   - Create a reducer in src/reducers. Use the file src/reducers/conversation.js
   - Import the conversation.js reducer in src/reducers/index.js and add it to the ```combineReducers``` function as a parameter.
