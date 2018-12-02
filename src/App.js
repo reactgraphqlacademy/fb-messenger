@@ -1,51 +1,49 @@
-import React, { Component } from "react"
-import "./App.css"
-import Modal from "./Modal"
-import LeanJSLogo from './LeanJSLogo'
-import users from "./mocks/users.js"
-import messages from "./mocks/messages.js"
+import React, { Component } from "react";
+import "./App.css";
+import Modal from "./Modal";
+import LeanJSLogo from "./LeanJSLogo";
+import users from "./mocks/users.js";
+import messages from "./mocks/messages.js";
 
-const filterMessageByUsername = ({ username } = {}) => message => (
-  message.from === username ||
-  message.to === username
-)
+const filterMessageByUsername = ({ username } = {}) => message =>
+  message.from === username || message.to === username;
 
 class App extends Component {
   constructor() {
-    super()
-    const selectedUser = users[0]
+    super();
+    const selectedUser = users[0];
     this.state = {
       selectedUser: selectedUser,
       conversation: messages.filter(filterMessageByUsername(selectedUser)),
-      showModal: false,
-    }
+      showModal: false
+    };
   }
 
   selectUser = (user = {}) => {
     this.setState({
       selectedUser: user,
       conversation: messages.filter(filterMessageByUsername(user))
-    })
-  }
+    });
+  };
 
   toggleModal = () => {
-    this.setState({
-      showModal: !this.state.showModal,
-    })
-  }
+    this.setState(state => ({
+      showModal: !state.showModal
+    }));
+  };
 
   showSettings = () => {
-    this.toggleModal()
-  }
+    this.toggleModal();
+  };
 
   render() {
-    const selectedUser = this.state.selectedUser
+    const selectedUser = this.state.selectedUser;
     const styledConversation = this.state.conversation.map((message, i) => (
       <div
         key={i}
         className={`message-wrapper ${
           message.from === "you" ? "sent" : "received"
-          }`}
+        }`}
       >
         {message.to === "you" && (
           <img
@@ -61,22 +59,19 @@ class App extends Component {
           </div>
         )}
       </div>
-    ))
+    ));
 
-    const loggedUser = { name: 'Alex' }
-    const { showModal } = this.state
+    const loggedUser = { name: "Alex" };
+    const { showModal } = this.state;
 
     return (
       <div className="app">
-        <Modal
-          show={showModal}
-          toggleModal={this.toggleModal}
-        />
+        <Modal show={showModal} toggleModal={this.toggleModal} />
         <div className="top-bar">
           <i className="icon fab fa-facebook-messenger" />
           <a
             onClick={this.toggleModal}
-            className={`username ${this.userPosition || 'left'}`}
+            className={`username ${this.userPosition || "left"}`}
           >
             Alex
           </a>
@@ -145,7 +140,9 @@ class App extends Component {
                     <div className="user-title">
                       <div className="user-name">
                         {selectedUser.name &&
-                          `${selectedUser.name.first} ${selectedUser.name.last}`}
+                          `${selectedUser.name.first} ${
+                            selectedUser.name.last
+                          }`}
                       </div>
                       <div className="last-active">
                         Active {Math.floor(Math.random() * 3) + 1}m ago
@@ -163,11 +160,11 @@ class App extends Component {
         <div className="footer">
           <ul>
             <li>
-              <a target="_blank" href="https://reactjs.academy">ReactJS Academy</a>
+              <a target="_blank" href="https://reactjs.academy">
+                ReactJS Academy
+              </a>
             </li>
-            <li>
-              by
-            </li>
+            <li>by</li>
             <li>
               <a target="_blank" href="https://leanjs.com">
                 <LeanJSLogo width={25} />
@@ -176,8 +173,8 @@ class App extends Component {
           </ul>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
