@@ -12,12 +12,7 @@ const Root = () => (
         getSession() ? (
           <App />
         ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
+          <Redirect to="/login" />
         )
       }
     />
