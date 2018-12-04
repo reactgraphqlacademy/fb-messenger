@@ -1,23 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import App from './App'
-import Login from './Login'
-import { getSession } from '../auth'
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
+import App from "./App";
+import Login from "./Login";
+import { getSession } from "../auth";
 
 const Root = () => (
-  <Router >
+  <Router>
     <Switch>
       <Route exact path="/login" component={Login} />
-      <Route render={ props =>
-        getSession() ? (
-          <App />
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
-    />
+      <Route
+        render={props => (getSession() ? <App /> : <Redirect to="/login" />)}
+      />
     </Switch>
   </Router>
-)
+);
 
-export default Root
+export default Root;

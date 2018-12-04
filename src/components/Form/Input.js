@@ -1,58 +1,45 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-// Option 1
-const Input = ({ type, placeholder, defaultValue, onChange, value }) => (
-  <input
-    type={type || 'text'}
-    placeholder={placeholder || ''}
-    className="form-control"
-    value={value}
-    defaultValue={defaultValue}
-    onChange={onChange}
-  />
-)
+// Two different approaches to do the same. Note, the goal of these approaches is
+// to understand the differences between controlled and uncontrolled components.
 
-// Option 2
-// const Input = (props) => (
-//   <input
-//     {...props}
-//     className="form-control"
-//   />
-// )
-
-// Option 3
-// class Input extends Component {
+// A:
+// class Input extends React.Component {
 //   constructor(props) {
-//     super(props)
-//
-//     this.state = { value: null }
+//     super(props);
+
+//     this.state = { value: null };
 //   }
-//
+
 //   render() {
-//     const { onChange, type, placeholder, defaultValue } = this.props
-//
+//     const { onChange, defaultValue } = this.props;
+
 //     return (
 //       <input
-//         type={type || 'text'}
-//         placeholder={placeholder || ''}
+//         {...this.props}
 //         className="form-control"
-//         value={this.state.value || defaultValue || ''}
-//         onChange={ e => {
-//           const { target: { value }} = e
-//           this.setState({ value })
-//           onChange && onChange(e)
+//         value={this.state.value || defaultValue || ""}
+//         onChange={e => {
+//           const {
+//             target: { value }
+//           } = e;
+//           this.setState({ value });
+//           onChange && onChange(e);
 //         }}
 //       />
-//     )
+//     );
 //   }
 // }
 
-Input.propTypes = {
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  type: PropTypes.string,
-  defaultValue: PropTypes.string,
-}
+// Input.propTypes = {
+//   onChange: PropTypes.func,
+//   value: PropTypes.string,
+//   defaultValue: PropTypes.string
+// };
 
-export default Input
+// B: We can use the internal state from the input and expose it to the outer component.
+// the input itself can be either controlled or uncontrolled
+const Input = props => <input {...props} className="form-control" />;
+
+export default Input;

@@ -1,45 +1,45 @@
-import React, { Component } from 'react'
-import Input from '../Form/Input'
-import './Login.css'
+import React, { Component } from "react";
+import Input from "../Form/Input";
+import "./Login.css";
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: ""
+    };
   }
 
   handleChange = (name, event) => {
-    let change = {}
-    change[name] = event.target.value
-    this.setState(change)
-  }
+    let change = {};
+    change[name] = event.target.value;
+    this.setState(change);
+  };
 
   handleSubmit = async e => {
-    e.preventDefault()
-    const { history } = this.props
-    const { password, email } = this.state
+    e.preventDefault();
+    const { history } = this.props;
+    const { password, email } = this.state;
 
     if (!password || !email) {
-      alert('Email and password are required')
-      return
+      alert("Email and password are required");
+      return;
     }
 
-    const { status } = await fetch('/api/auth', {
-      method: 'POST',
+    const { status } = await fetch("/api/auth", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
-      credentials: 'include',
+      credentials: "include",
       body: JSON.stringify({ password, email })
-    })
+    });
 
     if (status === 200) {
-      history.push('/')
+      history.push("/");
     }
-  }
+  };
 
   render() {
     return (
@@ -52,13 +52,13 @@ class Login extends Component {
             type="email"
             placeholder="Enter email"
             value={this.state.email}
-            onChange={e => this.handleChange('email', e)}
+            onChange={e => this.handleChange("email", e)}
           />
           <Input
             type="password"
             placeholder="Enter password"
             value={this.state.password}
-            onChange={e => this.handleChange('password', e)}
+            onChange={e => this.handleChange("password", e)}
           />
         </div>
         <button
@@ -69,8 +69,8 @@ class Login extends Component {
           Sign in
         </button>
       </form>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;
