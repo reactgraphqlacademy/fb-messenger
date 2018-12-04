@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// Two different approaches to do the same. Note, the goal of these approaches is
+// Two different implementations to do the same. Note, the goal of these two implementations is
 // to understand the differences between controlled and uncontrolled components.
 
 // A:
