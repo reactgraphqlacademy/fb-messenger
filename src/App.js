@@ -73,7 +73,7 @@ class App extends Component {
             onClick={this.toggleModal}
             className={`username ${this.userPosition || "left"}`}
           >
-            Alex
+            {loggedUser.name}
           </a>
         </div>
         <div className="messenger">
