@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { configureStore } from "./store"
-import Root from './Components/Root'
+import Root from './components/Root'
 import "./styles/index.css"
 
 const store = configureStore()
