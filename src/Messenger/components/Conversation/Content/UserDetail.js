@@ -1,11 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
+import { Query } from "react-apollo";
+import styled from "styled-components";
 
-import styled from 'styled-components'
-
-import colours from '../../../../App/styles/export/colours.css'
-import Avatar from '../../../../App/components/Layout/Avatar'
-import Icon from '../../../../App/components/Layout/Icon'
+import colours from "../../../../App/styles/export/colours.css";
+import Avatar from "../../../../App/components/Layout/Avatar";
+import Icon from "../../../../App/components/Layout/Icon";
+import USER_DETAIL_QUERY from "./UserDetail.graphql";
 
 const UserDetailWrapper = styled.div`
     width: 33.3%;
@@ -18,7 +19,7 @@ const UserDetailWrapper = styled.div`
     &:last-child {
       border-bottom: none;
     }
-`
+`;
 
 const User = styled.div`
     display: flex;
@@ -27,17 +28,21 @@ const User = styled.div`
     > div {
       display: flex;
       align-items: center;
-`
+`;
 
 const UserName = styled.div`
-    font-size: 0.9rem;
-    text-transform: capitalize;
-`
+  font-size: 0.9rem;
+  text-transform: capitalize;
+`;
 
 const LastActive = styled.div`
-    font-size: 0.75rem;
-    color: ${colours.darkGrey};
-`
+  font-size: 0.75rem;
+  color: ${colours.darkGrey};
+`;
+
+const UserBio = styled.p`
+  padding: 1em;
+`;
 
 const UserDetail = ({ username }) => (
   <UserDetailWrapper>
@@ -45,9 +50,7 @@ const UserDetail = ({ username }) => (
       <div>
         <Avatar username={username} size="large" />
         <div>
-          <UserName>
-            { username }
-          </UserName>
+          <UserName>{username}</UserName>
           <LastActive>
             Active {Math.floor(Math.random() * 3) + 1}m ago
           </LastActive>
@@ -57,13 +60,22 @@ const UserDetail = ({ username }) => (
         <Icon name="cog" />
       </a>
     </User>
-    <div>Options</div>
-    <div>Facebook Profile</div>
+
+    <UserBio>
+      <Query query={USER_DETAIL_QUERY} variables={{ username }}>
+        {({ loading, error, data }) => {
+          if (loading) return "Loading...";
+          if (error) return `Error! ${error.message}`;
+
+          return data.getUser.bio;
+        }}
+      </Query>
+    </UserBio>
   </UserDetailWrapper>
-)
+);
 
 UserDetail.propTypes = {
-  username: PropTypes.string.isRequired,
-}
+  username: PropTypes.string.isRequired
+};
 
-export default UserDetail
+export default UserDetail;
