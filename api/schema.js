@@ -5,6 +5,7 @@ const { GraphQLDateTime } = require("graphql-iso-date");
 const jwt = require("jsonwebtoken");
 const { connectionFromArray } = require("graphql-relay");
 const loremIpsum = require("lorem-ipsum");
+const sleep = require("sleep");
 
 if (!global.messages) {
   global.messages = messages;
@@ -91,6 +92,12 @@ const typeDefs = gql`
       before: String
     ): ThreadConnection
     threads: [Thread]
+    threadsConnectionWithError(
+      first: Int
+      after: String
+      last: Int
+      before: String
+    ): ThreadConnection
     getSession(email: String!, password: String!): Status
     getUser(username: String!): User
   }
@@ -101,6 +108,7 @@ const typeDefs = gql`
   }
   type Mutation {
     sendMessage(input: SendMessageInput!): Message
+    sendMessageWithRandomError(input: SendMessageInput!): Message
   }
   type User {
     username: String!
@@ -108,22 +116,33 @@ const typeDefs = gql`
   }
 `;
 
+const sendMessage = (_, { input: message }, context) => {
+  global.threads = global.threads.map(thread => {
+    if (thread.username === message.to) {
+      thread.lastMessage = message;
+    }
+    return thread;
+  });
+
+  message.id = Math.random()
+    .toString(36)
+    .substr(2, 9);
+  message.time = new Date();
+  global.messages.push(message);
+  return message;
+};
+
 const resolvers = {
   Mutation: {
-    sendMessage: (_, { input: message }, context) => {
-      global.threads = global.threads.map(thread => {
-        if (thread.username === message.to) {
-          thread.lastMessage = message;
-        }
-        return thread;
-      });
-
-      message.id = Math.random()
-        .toString(36)
-        .substr(2, 9);
-      message.time = new Date();
-      global.messages.push(message);
-      return message;
+    sendMessage,
+    sendMessageWithRandomError: (_, { input: message }, context) => {
+      sleep.sleep(3);
+      const randomBoolean = Math.random() >= 0.5;
+      if (randomBoolean) {
+        return sendMessage(_, { input: message }, context);
+      } else {
+        throw new Error("Opps, I'm a random error");
+      }
     }
   },
   Query: {
@@ -157,7 +176,10 @@ const resolvers = {
     getUser: (_, { username }, context) => ({
       username,
       bio: loremIpsum()
-    })
+    }),
+    threadsConnectionWithError: (_, { username }, context) => {
+      throw new Error("Oops, there was an error");
+    }
   },
   Message: {
     thread: () => threads[0]

@@ -65,6 +65,7 @@ export default graphql(gql`{ ... }`, {
 
 1. Add query batching by replacing the apollo-link-http with apollo-link-batch-http in `src/index.js`. Hint: https://www.apollographql.com/docs/link/links/batch-http.html
 2. Prefetch the bio of the user displayed in `src/Messenger/components/Conversation/Content/UserDetail` when the user moves the mouse over the "info-circle" link in `src/Messenger/components/Conversation/ConversationBar.js` Hint: https://www.apollographql.com/docs/react/recipes/performance.html#prefetching
+3. Create a HoC in `src/Messenger/components/Conversation/Content/Messages.js` that transforms the Mutation component in a HoC and passes the error from the Mutation component to the Messages component.
 
 ## Articles and links
 

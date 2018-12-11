@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.6.2",
     "apollo-cache-inmemory": "^1.1.12",
     "apollo-client": "^2.2.8",
     "apollo-link-http": "^1.5.4",
@@ -39,6 +40,7 @@
     "jest": "20.0.4",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.2.0",
+    "lorem-ipsum": "^1.0.6",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "object-assign": "4.1.1",
@@ -56,6 +58,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
+    "sleep": "^5.2.3",
     "style-loader": "0.19.0",
     "styled-components": "^3.2.3",
     "sw-precache-webpack-plugin": "0.11.4",
