@@ -46,7 +46,7 @@ server.use(
 server.use(
   createSSRMiddleware(async (req, res, next) => {
     const initialState = { session: req.user };
-    const store = configureStore(initialState);
+    const store = configureStore();
     const sheet = new ServerStyleSheet();
     const graphqlClient = new ApolloClient({
       link: createHttpLink({ uri: `${API_BASE_URL}/api/graphql`, fetch }),
@@ -55,23 +55,25 @@ server.use(
 
     let body;
     let linkHelmet = "";
+    let styleTags = "";
+    let state = ""; // state argument from the next function below must be a string
     try {
       const App = (
-        <StyleSheetManager sheet={sheet.instance}>
-          <Router context={{}} location={req.url}>
-            <Root store={store} graphqlClient={graphqlClient} />
-          </Router>
-        </StyleSheetManager>
+        <Router context={{}} location={req.url}>
+          <Root store={store} graphqlClient={graphqlClient} />
+        </Router>
       );
-      await getDataFromTree(App);
+
+      // Hint, use in this line the getDataFromTree the https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree
+
       body = renderToString(App);
-      const helmet = Helmet.renderStatic();
-      linkHelmet = helmet.link.toString();
+
+      linkHelmet = ""; // Hint, use the link to string method https://github.com/nfl/react-helmet#server-usage
     } catch (error) {
       body = renderToString(<ErrorPage error={error} />);
     }
 
-    next({ body, meta: [linkHelmet, sheet.getStyleTags()] }, req, res);
+    next({ body, meta: [linkHelmet, styleTags], state }, req, res);
   })
 );
 
