@@ -1,53 +1,33 @@
-const Express = require('express')
-const bodyParser = require('body-parser')
-const jwt = require('jsonwebtoken')
-const { graphiqlExpress, graphqlExpress } = require('graphql-server-express')
-const schema = require('./schema')
+const express = require("express");
+const { ApolloServer } = require("apollo-server-express");
+const { typeDefs, resolvers } = require("./schema");
+const routes = require("./routes");
 
-function createApi() {
-  const router = Express.Router()
+function setupApi({ app, routesPrefix = "/api" } = {}) {
+  const apollo = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({ req, res }) => ({
+      user: req.user,
+      response: res
+    })
+  });
 
-  router.use('/api/auth',
-    bodyParser.json(),
-    (req, res) => {
-      const { email, password } = req.body
-      if (email === 'clone@facebook.com' && password === '123') {
-        const SEVEN_DAYS_IN_MILLISECONDS = 604800000
-        const cookie = jwt.sign(
-          { id: '5ab1299177282be8578f3612', username: '@theclone' },
-          'this_is_my_secret_key ^^',
-          { expiresIn: '7 days' }
-        )
-        res.cookie(
-          '__session',
-          cookie,
-          { maxAge: SEVEN_DAYS_IN_MILLISECONDS }
-        )
-        res.status(200).send('Authorized')
-      } else {
-        res.status(401).send('Not authorized')
-      }
-    }
-  )
+  app.use(routes);
 
-  router.post(
-    '/graphql',
-    bodyParser.json(),
-    (req, res) => {
-      return graphqlExpress({
-        schema,
-        context: { response: res },
-      })(req, res)
-    }
-  )
+  apollo.applyMiddleware({
+    app,
+    path: `${routesPrefix}/graphql`
+  });
 
-  router.get(
-    '/graphiql',
-    graphiqlExpress({
-      endpointURL: '/graphql'
-    }))
-
-  return router
+  return app;
 }
 
-module.exports = createApi
+// const app = express();
+// setupApi({ app });
+
+// app.listen(8888, () => {
+//   console.log("listening on port 8888");
+// });
+
+module.exports = { setupApi };
