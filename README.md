@@ -32,8 +32,6 @@ If you haven't already set up your project, head here and follow the instruction
 - In src/client/index `hydrate` the component tree instead of `render` it.
 - If you disable JS, can you see any Thread or Conversation? Why is that? how can we fix it?
 
-To know more about the changes made in Create React App for this exercise part 1 read [/scripts/README.md](/scripts/README.md)
-
 ### Exercise part 2
 
 ```sh
@@ -42,17 +40,21 @@ To know more about the changes made in Create React App for this exercise part 1
 
 - Redux
 
-  - In src/server/app.js configure the Redux store with initialState.
+  - In src/server.js configure the Redux store with initialState.
 
 - Styled Components
 
-  - In src/server/app.js use [&lt;StyleSheetManager&gt;](https://www.styled-components.com/docs/advanced#server-side-rendering).
-  - In src/server/render.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering).
+  - In src/server.js use [&lt;StyleSheetManager&gt;](https://www.styled-components.com/docs/advanced#server-side-rendering).
+  - In src/server.js use [sheet.getStyleTags()](https://www.styled-components.com/docs/advanced#server-side-rendering).
 
 - GraphQL
-  - In src/server/app.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree) to execute the GraphQL queries in order to get data in the components.
-  - In src/server/render.js you need to add [window.\_\_APOLLO_STATE](https://github.com/apollographql/react-docs/blob/master/source/server-side-rendering.md) to sync the state on the server and on the client.
-  - In src/client/index you need to [rehydrate the store](https://www.apollographql.com/docs/react/features/server-side-rendering.html#store-rehydration)
+
+  - In src/server.js you need to use [getDataFromTree](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree) to execute the GraphQL queries in order to get data in the components.
+  - In src/index.js you need to restore the state from `window.__PRELOADED_STATE__` in `cache: new InMemoryCache().restore()` to sync the state on the server and client. Heads up, [https://www.apollographql.com/docs/react/features/server-side-rendering.html#store-rehydration](https://www.apollographql.com/docs/react/features/server-side-rendering.html#store-rehydration) calls it `window.__APOLLO_STATE__`, we call it `window.__PRELOADED_STATE__`
+
+- React Helmet
+
+  - In src/server.js you need to use [helmet.link.toString()](https://github.com/nfl/react-helmet#server-usage) to set the linkHelmet variable so it can be passed as a meta to the next middleware.
 
 ### Bonus part 2
 
