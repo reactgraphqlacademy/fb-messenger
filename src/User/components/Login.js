@@ -61,6 +61,7 @@ class Login extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+
     const { password, email } = this.state;
 
     if (!password || !email) {
@@ -82,6 +83,7 @@ class Login extends Component {
     if (data.getSession.status === 200) {
       this.setState({ redirectToReferrer: true });
     }
+    return false;
   };
 
   render() {
@@ -95,30 +97,33 @@ class Login extends Component {
     return (
       <React.Fragment>
         <GlobalStyle />
-        <form className="form-signin">
+        <form
+          onSubmit={this.handleSubmit}
+          action="/api/login"
+          method="post"
+          className="form-signin"
+        >
           <div className="form-group">
             <h2 className="form-signin-heading">Please sign in</h2>
           </div>
           <div className="form-group">
             <Input
               type="email"
+              name="email"
               placeholder="Enter email"
               value={this.state.email}
               onChange={e => this.setState({ email: e.target.value })}
             />
             <Input
               type="password"
+              name="password"
               placeholder="Enter password"
               className="form-control"
               value={this.state.password}
               onChange={e => this.setState({ password: e.target.value })}
             />
           </div>
-          <button
-            type="submit"
-            className="btn btn-lg btn-primary btn-block"
-            onClick={this.handleSubmit}
-          >
+          <button type="submit" className="btn btn-lg btn-primary btn-block">
             Sign in
           </button>
         </form>
