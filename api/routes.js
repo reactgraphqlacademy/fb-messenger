@@ -25,11 +25,4 @@ router.post(
   }
 );
 
-router.get("*", (req, res, next) => {
-  if (!req.user && req.path !== "/login") {
-    res.redirect("/login");
-  }
-  next();
-});
-
 module.exports = router;

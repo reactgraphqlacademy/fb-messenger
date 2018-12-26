@@ -43,6 +43,14 @@ server.use(
   })
 );
 
+server.get("*", (req, res, next) => {
+  if (!req.user && req.path !== "/login") {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+});
+
 server.use(
   createSSRMiddleware(async (req, res, next) => {
     const initialState = { session: req.user };

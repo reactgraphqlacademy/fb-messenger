@@ -1,4 +1,3 @@
-const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schema");
 const routes = require("./routes");
@@ -22,12 +21,5 @@ function setupApi({ app, routesPrefix = "/api" } = {}) {
 
   return app;
 }
-
-// const app = express();
-// setupApi({ app });
-
-// app.listen(8888, () => {
-//   console.log("listening on port 8888");
-// });
 
 module.exports = { setupApi };
