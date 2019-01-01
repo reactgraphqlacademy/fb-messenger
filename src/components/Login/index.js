@@ -43,7 +43,7 @@ class Login extends Component {
 
   render() {
     return (
-      <form className="form-signin">
+      <form className="form-signin" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <h2 className="form-signin-heading">Please sign in</h2>
         </div>
@@ -61,11 +61,7 @@ class Login extends Component {
             onChange={e => this.handleChange("password", e)}
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-lg btn-primary btn-block"
-          onClick={this.handleSubmit}
-        >
+        <button type="submit" className="btn btn-lg btn-primary btn-block">
           Sign in
         </button>
       </form>
