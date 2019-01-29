@@ -1,13 +1,15 @@
 ## ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to think in React.
+The goal of these exercises is to understand the core principles and libraries of the React ecosystem.
 
 ## Requirements
 
 - Be comfortable writing JavaScript (ES6: Module system, class syntax, destructuring assignment).
 - Have `node`and `npm` installed in your computer.
 
-## Clone the repo
+## Getting started
+
+### Clone the repo on your machine
 
 ```sh
 git clone git@github.com:leanjscom/fb-messenger.git
@@ -19,7 +21,7 @@ Then `cd` into `./fb-messenger`
 cd fb-messenger
 ```
 
-## Branches
+### Download all the exercices
 
 You will need to head to the correct branch for the exercise.
 
@@ -27,16 +29,8 @@ How? run:
 
 ```sh
 git pull --all
-
 git branch --all
-
 git checkout <branch_name>
-```
-
-## Getting started:
-
-```sh
-npm install && npm start
 ```
 
 ## License
