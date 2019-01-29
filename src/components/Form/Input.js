@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Option 1
-const Input = ({ type, placeholder, defaultValue, onChange }) => (
+const Input = ({ type, placeholder, defaultValue, onChange, value }) => (
   <input
     type={type || 'text'}
     placeholder={placeholder || ''}
     className="form-control"
+    value={value}
     defaultValue={defaultValue}
     onChange={onChange}
   />
