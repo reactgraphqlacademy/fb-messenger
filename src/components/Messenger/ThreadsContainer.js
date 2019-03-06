@@ -66,13 +66,13 @@ const mapDispatchToProps = dispatch => ({
 })
 
 // Then instead of this
-this.props.dispatch(actions.receiveThread(thread))
+this.props.dispatch(receiveThread(thread))
 // we can simply do this
 this.props.dispatchReceiveThread(thread)
 // It helps get the best of the previous ones:
 // Not much typing, and we just provide to the component the actions it can dispatch
 const mapDispatchToProps = {
-  dispatchReceiveThread: actions.receiveThread
+  dispatchReceiveThread: receiveThread
 }
 
 // try to use the last one :)
