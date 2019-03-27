@@ -50,6 +50,14 @@ npm install && npm start
 
 7. What do you think it would make sense to componentize next? Are there any parts on that view that you can reuse? Try to explain to a mentor what you want to refactor before you code :)
 
+## Learning objectives
+
+- Learn the difference between declarative and imperative code.
+- Comprehend the value of breaking down your UI into reusable components.
+- Understand how to pass down dependencies via props. 
+- Understand which components should hold state and how to share and manipulate state in React.
+- Feel comfortable with class component and functional component syntax and using jsx.
+
 ## Links
 
 * [https://reactjs.org/docs/introducing-jsx.html](https://reactjs.org/docs/introducing-jsx.html)
