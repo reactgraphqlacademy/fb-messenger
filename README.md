@@ -49,9 +49,19 @@ If you haven't already set up your project, head here and follow the instruction
 - [ ] [http://localhost:3000/messages](http://localhost:3000/messages) should not take 100% of the width of the screen. It should take the same width as when there is a Conversation selected. Hint, move the `<Route>` to the Conversation inside `<ConversationSection>`
 - [ ] Add prop-types to all the components that need it.
 
+## Learning objectives
+
+- Understand the difference beween classic approaches and declarative routing 
+- Learn how to implement declarative routing with react-router v4^
+- Understand the use of the `componentDidMount()` lifecycle method
+- Implement basic data fetching in React using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
 ## Articles and links
 
 - [Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
+- [React Router Docs and approach](https://reacttraining.com/react-router/core/guides/philosophy)
+- [Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
+- [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
 ## License
 
