@@ -16,9 +16,11 @@ class ConversationContainer extends Component {
 
   // https://reactjs.org/docs/react-component.html#componentdidupdate
   componentDidUpdate(prevProps) {
-    const needsToFetchUser = `Hint. Now you don't need to iterate the messages array
+    /* Hint. Now you don't need to iterate the messages array
     to see if the username in the url is different from the username's conversation you
-    are displaying. Use the prevProps parameter and the this.props in the following condition `
+    are displaying. Use the prevProps parameter and the this.props in the following condition to
+    replace the hardcoded false  */
+    const needsToFetchUser =  false 
     if (needsToFetchUser) {
       this.fetchConversation(this.props.match.params.username)
     }
