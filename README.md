@@ -38,7 +38,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 ### Part 2, moving the state of the app into Redux
 
 
-1. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
+1. Click through to the thread, so you can read the messages. The ```<UserDetail>``` component should not be open by default. The src/components/Messenger/Conversation/Content/index.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
 
 2. Refactor uiReducer in src/reducers/index.js so when the ```TOGGLE_MESSAGE_DETAIL``` action is dispatched then the ```UserDetail``` in the conversation is opened or closed. Hint, the ```TOGGLE_MESSAGE_DETAIL``` action is already dispatched in src/components/Messenger/Conversation/ConversationBar, so the only thing you need to do is to include another switch case in the uiReducer in  src/reducers/index.js  
 
