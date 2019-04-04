@@ -4,9 +4,9 @@
   the name of the file has a .test.js sufix
 */
 
-const fs = require('fs')
+const fs = require('fs');
 
-const files = fs.readdirSync('./my-test-framework')
+const files = fs.readdirSync(__dirname);
 
 /*
 Task, iterate over the files array and if the file name includes the sufix

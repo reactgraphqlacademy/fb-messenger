@@ -4,12 +4,12 @@
   the name of the file has a .test.js sufix
 */
 
-const fs = require('fs')
+const fs = require('fs');
 
-const files = fs.readdirSync('./my-test-framework')
+const files = fs.readdirSync(__dirname);
 
 const testFiles = files.filter(file => {
-  if(file.includes('.test.js')) {
+  if (file.includes('.test.js')) {
     const test = require(`./${file}`)
   }
 })

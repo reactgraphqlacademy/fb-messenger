@@ -2,6 +2,8 @@ const sum = (a, b) => a + b;
 
 const subtract = (a, b) => a - b;
 
+let actual;
+
 actual = sum(2, 1);
 expect(actual).toBe(3);
 
