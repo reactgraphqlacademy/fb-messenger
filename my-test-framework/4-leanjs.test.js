@@ -13,12 +13,12 @@ function test(message, callback) {
 }
 
 test("sum 2 and 1 should be 3", () => {
-  actual = sum(2, 1);
+  const actual = sum(2, 1);
   expect(actual).toBe(4);
 });
 
 test("subtract 2 and 1 should be 1", () => {
-  actual = subtract(2, 1);
+  const actual = subtract(2, 1);
   expect(actual).toBe(1);
 });
 
