@@ -28,7 +28,7 @@ describe("The threadReducer in src/reducers/index.js", () => {
     expect(Object.prototype.toString.call(state)).toEqual('[object Null]')
   })
 
-  it("should handle the action type called RECEIVE_THREAD and set the state of the reducer to the action.thread", () => {
+  it("should handle the action type called RECEIVE_THREAD and put action.thread in the state", () => {
     const state = threadReducer([], { type: 'RECEIVE_THREAD', thread: [2, 3] })
 
     expect(state).toEqual([2, 3])
