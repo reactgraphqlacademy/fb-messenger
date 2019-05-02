@@ -29,4 +29,4 @@ class ThreadsContainer extends Component {
   }
 }
 
-export default withRouter(ThreadsContainer);
+export default ThreadsContainer;
