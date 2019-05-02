@@ -15,7 +15,6 @@ class ThreadsContainer extends Component {
   }
 
   render() {
-    const { history, match } = this.props
     const { threads } = this.state
 
     return (
