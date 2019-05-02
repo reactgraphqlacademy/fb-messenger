@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { Route, Link } from "react-router-dom";
 
-import Avatar from '../Layout/Avatar'
-import Icon from '../Layout/Icon'
+import Avatar from "../Layout/Avatar";
+import Icon from "../Layout/Icon";
 
-const Threads = ({ history, match, threads }) => (
+const Threads = ({ threads }) => (
   <div className="threads">
     <div className="thread-bar">
       <h2>
@@ -12,18 +13,25 @@ const Threads = ({ history, match, threads }) => (
         <Icon name="edit" />
       </h2>
     </div>
-    <ul className="thread-list">
-      {threads.map((thread, i) => (
-        <li key={i} onClick={() => history.push(`${match.url}/${thread.username}`)}>
-          <Avatar username={thread.username} size="large" />
-          <div className="user-name">
-            <span>{`${thread.name.first} ${thread.name.last}`}</span>
-            <small>{`${thread.lastMessage.message}`}</small>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <Route
+      render={({ match, history }) => (
+        <ul className="thread-list">
+          {threads.map((thread, i) => (
+            <li
+              key={i}
+              onClick={() => history.push(`${match.url}/${thread.username}`)}
+            >
+              <Avatar username={thread.username} size="large" />
+              <p className="user-name">
+                <span>{`${thread.name.first} ${thread.name.last}`}</span>
+                <small>{`${thread.lastMessage.message}`}</small>
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
+    />
   </div>
-)
+);
 
-export default Threads
+export default Threads;
