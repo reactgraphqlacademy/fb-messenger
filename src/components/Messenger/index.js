@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
+import { Route } from "react-router-dom";
 
-import ThreadsContainer from './ThreadsContainer'
-import ConversationSection from './Conversation/ConversationSection'
+import ThreadsContainer from "./ThreadsContainer";
+import ConversationContainer from "./Conversation/ConversationContainer";
 
-const Messenger = () => (
+const Messenger = ({ match }) => (
   <div className="messenger">
     <ThreadsContainer />
-    <ConversationSection />
+    <Route path={`${match.url}/:username`} component={ConversationContainer} />
   </div>
-)
+);
 
-export default Messenger
+Messenger.propTypes = {
+  match: PropTypes.object
+};
+
+export default Messenger;
