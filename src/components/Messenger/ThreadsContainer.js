@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
 
 import Threads from './Threads'
 import { fetchThreads } from '../../api/thread'
@@ -16,7 +15,7 @@ class ThreadsContainer extends Component {
   }
 
   render() {
-    const { showSettings, newMessage, history, match } = this.props
+    const { history, match } = this.props
     const { threads } = this.state
 
     return (
@@ -25,4 +24,4 @@ class ThreadsContainer extends Component {
   }
 }
 
-export default withRouter(ThreadsContainer)
+export default ThreadsContainer

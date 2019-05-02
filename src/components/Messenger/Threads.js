@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
+import { Route, Link } from 'react-router-dom'
 
 import { fetchThreads } from '../../api/thread'
 import Avatar from '../Layout/Avatar'
@@ -10,7 +10,7 @@ class Threads extends Component {
     super(props)
 
     this.state = {
-      threads: []
+      threads: [],
     }
   }
 
@@ -25,7 +25,6 @@ class Threads extends Component {
   }
 
   render() {
-    const { history, match } = this.props
     const { threads } = this.state
 
     return (
@@ -37,23 +36,29 @@ class Threads extends Component {
             <Icon name="edit" />
           </h2>
         </div>
-        <ul className="thread-list">
-          {threads.map((thread, i) => (
-            <li
-              key={i}
-              onClick={() => history.push(`${match.url}/${thread.username}`)}
-            >
-              <Avatar username={thread.username} size="large" />
-              <div className="user-name">
-                <span>{`${thread.name.first} ${thread.name.last}`}</span>
-                <small>{`${thread.lastMessage.message}`}</small>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <Route
+          render={({ match, history }) => (
+            <ul className="thread-list">
+              {threads.map((thread, i) => (
+                <li
+                  key={i}
+                  onClick={() =>
+                    history.push(`${match.url}/${thread.username}`)
+                  }
+                >
+                  <Avatar username={thread.username} size="large" />
+                  <p className="user-name">
+                    <span>{`${thread.name.first} ${thread.name.last}`}</span>
+                    <small>{`${thread.lastMessage.message}`}</small>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+        />
       </div>
     )
   }
 }
 
-export default withRouter(Threads)
+export default Threads
