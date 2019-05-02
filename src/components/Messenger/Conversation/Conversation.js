@@ -1,22 +1,25 @@
-import React from 'react'
+import React from "react";
 
-import ConversationBar from './ConversationBar'
-import ConversationContent from './Content'
-import ConversationSection from './ConversationSection'
+import ConversationBar from "./ConversationBar";
+import ConversationContent from "./Content";
 
 const Conversation = ({ conversation = [], match }) => {
-  const {  username } = match.params
+  const { username } = match.params;
 
   return (
-    <ConversationSection>
-      <ConversationBar username={username} match={match} totalMessages={conversation.length} />
+    <div className="conversation">
+      <ConversationBar
+        username={username}
+        match={match}
+        totalMessages={conversation.length}
+      />
       <ConversationContent
         match={match}
         conversation={conversation}
         username={username}
       />
-    </ConversationSection>
-  )
-}
+    </div>
+  );
+};
 
-export default Conversation
+export default Conversation;
