@@ -7,7 +7,8 @@ $dark-grey: #999999;
 $black: #000000;
 $white: #ffffff;
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -37,7 +38,8 @@ html, body {
     text-align: center;
     border-bottom: 1px solid #29487d;
     color: $white;
-    a, .icon {
+    a,
+    .icon {
       color: $white;
     }
     a {
@@ -82,7 +84,7 @@ html, body {
     .conversation {
       display: flex;
       flex-direction: column;
-      flex:3;
+      flex-basis: 70%;
       .conversation-bar {
         position: relative;
         border-bottom: 1px solid $medium-grey;
@@ -110,7 +112,7 @@ html, body {
 
         .messages {
           display: flex;
-          flex:2;
+          flex: 2;
           flex-direction: column;
           justify-content: space-between;
 
@@ -135,7 +137,7 @@ html, body {
                   flex-flow: column;
                   justify-content: flex-end;
                   .icon {
-                    font-size:0.6rem;
+                    font-size: 0.6rem;
                     cursor: auto;
                   }
                 }
@@ -152,7 +154,6 @@ html, body {
                 font-size: 0.9rem;
               }
             }
-
           }
           .new-message {
             min-height: 20px;
@@ -165,7 +166,6 @@ html, body {
             .message-box {
               color: $medium-grey;
               border-color: transparent;
-
             }
           }
         }
@@ -203,12 +203,11 @@ html, body {
       }
     }
 
-
     .threads {
       display: flex;
       border-right: 1px solid $medium-grey;
       flex-direction: column;
-      flex:1;
+      flex-basis: 30%;
       .thread-bar {
         border-bottom: 1px solid $medium-grey;
         padding: 0.85em;
@@ -253,11 +252,11 @@ html, body {
   margin-right: 0.5em;
   &.small {
     clip-path: circle(10px at center);
-    width:20px;
+    width: 20px;
   }
   &.medium {
     clip-path: circle(15px at center);
-    width:30px;
+    width: 30px;
     height: 30px;
   }
   &.large {
