@@ -1,53 +1,47 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import * as api from '../../../api/message'
-import Conversation from './Conversation'
+import * as api from "../../../api/message";
+import Conversation from "./Conversation";
 
 class ConversationContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       conversation: []
-    }
+    };
   }
 
   componentDidMount() {
-    this.fetchConversation(this.props.match.params.username)
+    this.fetchConversation(this.props.match.params.username);
   }
 
-  fetchConversation = (username) => {
-    this.setState({ conversation: [] })
+  fetchConversation = username => {
+    this.setState({ conversation: [] });
     setTimeout(() => {
-      api.fetchConversation(username)
-      .then(messages => {
-        this.setState({ conversation: messages })
-      })
-    },1000)
-  }
+      api.fetchConversation(username).then(messages => {
+        this.setState({ conversation: messages });
+      });
+    }, 1000);
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.username !== nextProps.match.params.username) {
-      this.fetchConversation(nextProps.match.params.username)
+      this.fetchConversation(nextProps.match.params.username);
     }
   }
 
   render() {
-    const { conversation } = this.state
-    const { match } = this.props
+    const { conversation } = this.state;
+    const { match } = this.props;
 
-    return (
-      <Conversation
-        conversation={conversation}
-        match={match}
-      />
-    )
+    return <Conversation conversation={conversation} match={match} />;
   }
 }
 
 ConversationContainer.propTypes = {
-  match: PropTypes.object.isRequired,
-}
+  match: PropTypes.object.isRequired
+};
 
-export default ConversationContainer
+export default ConversationContainer;
