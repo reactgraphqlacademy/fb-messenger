@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
 import * as api from '../../../api/message'
+import UserDetail from './UserDetail'
+import Messages from './Messages'
 import ChatBar from './ChatBar'
-import ChatContent from './ChatContent'
 
 class Chat extends Component {
   constructor(props) {
@@ -36,6 +37,10 @@ class Chat extends Component {
     const { username } = match.params
     const { messages } = this.state
 
+    if (!messages.length) {
+      return <h2>Loading...</h2>
+    }
+
     // QUESTION 6. Do you think this is a good place to have this needsToFetchUser logic?
     // Can you please move needsToFetchUser condition to ChatContainer.componentDidUpdate method?
     // https://reactjs.org/docs/react-component.html#componentdidupdate
@@ -47,9 +52,12 @@ class Chat extends Component {
     }
 
     return (
-      <div className="conversation">
+      <div className="chat">
         <ChatBar username={username} match={match} />
-        <ChatContent match={match} messages={messages} username={username} />
+        <div className="chat-content">
+          <Messages messages={messages} username={username} />
+          <UserDetail username={username} />
+        </div>
       </div>
     )
   }

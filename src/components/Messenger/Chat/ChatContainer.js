@@ -27,7 +27,7 @@ class ChatContainer extends Component {
   }
 
   render() {
-    const { conversation } = this.state
+    const { messages } = this.state
     const { match } = this.props
 
     return (
