@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import Modal from "./Modal";
 import LeanJSLogo from "./LeanJSLogo";
 import users from "./mocks/users.js";
@@ -103,19 +102,19 @@ class App extends Component {
               ))}
             </ul>
           </div>
-          <div className="conversation">
-            <div className="conversation-bar">
+          <div className="chat">
+            <div className="chat-bar">
               <h2>
                 {selectedUser.name &&
                   `${selectedUser.name.first} ${selectedUser.name.last}`}
               </h2>
-              <div className="conversation-menu">
+              <div className="chat-menu">
                 <i className="icon fas fa-phone" />
                 <i className="icon fas fa-video" />
                 <i className="icon fas fa-info-circle" />
               </div>
             </div>
-            <div className="conversation-content">
+            <div className="chat-content">
               <div className="messages">
                 <div className="list">
                   {styledMessages || <p>You have no messages</p>}
@@ -160,13 +159,21 @@ class App extends Component {
         <div className="footer">
           <ul>
             <li>
-              <a target="_blank" href="https://reactjs.academy">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://reactjs.academy"
+              >
                 ReactJS Academy
               </a>
             </li>
             <li>by</li>
             <li>
-              <a target="_blank" href="https://leanjs.com">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://leanjs.com"
+              >
                 <LeanJSLogo width={25} />
               </a>
             </li>
