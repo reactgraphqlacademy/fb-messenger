@@ -55,7 +55,7 @@ yarn && yarn start
 
 ## Bonus exercise
 
-Split the Chat component in the following components:
+Split the Chat component into the following components:
 
 - ChatBar.js
 - Messages.js
