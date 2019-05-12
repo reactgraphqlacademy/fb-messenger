@@ -1,5 +1,5 @@
 import React from "react";
-import LeanJSLogo from "./LeanJSLogo";
+import LeanJSLogo from "./Layout/LeanJSLogo";
 import Link from "./Link";
 
 const Footer = () => (

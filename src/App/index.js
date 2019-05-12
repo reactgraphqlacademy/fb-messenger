@@ -1,8 +1,7 @@
 import React from "react";
-import "./index.css";
 import TopBar from "./TopBar";
 import Messenger from "./Messenger";
-import Modal from "./Modal";
+import Modal from "./Layout/Modal";
 import Footer from "./Footer";
 
 class App extends React.Component {
