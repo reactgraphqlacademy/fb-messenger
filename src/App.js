@@ -14,7 +14,7 @@ class App extends Component {
     const selectedUser = users[0];
     this.state = {
       selectedUser: selectedUser,
-      conversation: messages.filter(filterMessageByUsername(selectedUser)),
+      messages: messages.filter(filterMessageByUsername(selectedUser)),
       showModal: false
     };
   }
@@ -22,7 +22,7 @@ class App extends Component {
   selectUser = (user = {}) => {
     this.setState({
       selectedUser: user,
-      conversation: messages.filter(filterMessageByUsername(user))
+      messages: messages.filter(filterMessageByUsername(user))
     });
   };
 
@@ -38,7 +38,7 @@ class App extends Component {
 
   render() {
     const selectedUser = this.state.selectedUser;
-    const styledConversation = this.state.conversation.map((message, i) => (
+    const styledMessages = this.state.messages.map((message, i) => (
       <div
         key={i}
         className={`message-wrapper ${
@@ -118,7 +118,7 @@ class App extends Component {
             <div className="conversation-content">
               <div className="messages">
                 <div className="list">
-                  {styledConversation || <p>You have no messages</p>}
+                  {styledMessages || <p>You have no messages</p>}
                 </div>
                 <div className="new-message">
                   <input
