@@ -43,9 +43,9 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Bonus
 
-- [ ] Refactor as many components as you can into functional components, meaning using functions instead of classes to define the component.
 - [ ] Given this component `<Route path="/messages/:username">` in `src/components/Messenger/index`, how can we replace the hardcoded string `"/messages"` in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in `src/components/Messenger/Chat/ChatBar`.
 - [ ] The path `/messages/:username/detail` should display the `UserDetail` of a Chat. The path `/messages/:username` should not display the `UserDetail` of a Chat. You can navigate to `/messages/:username/detail` by clicking on the Link component in `src/components/Messenger/Chat/ChatBar`
+- [ ] Refactor as many components as you can into functional components, meaning using functions instead of classes to define the component.
 - [ ] Add prop-types to all the components that need it.
 
 ## Learning objectives
