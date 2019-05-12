@@ -36,7 +36,7 @@ git checkout thinking-in-react
 ## Getting started:
 
 ```sh
-npm install && npm start
+yarn && yarn start
 ```
 
 ### We recommend you to start from top to bottom, and refactor, refactor, refactor
