@@ -30,7 +30,7 @@ git pull --all
 
 git branch --all
 
-git checkout <branch_name>
+git checkout thinking-in-react
 ```
 
 ## Getting started:
