@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Modal from "./Modal";
-import LeanJSLogo from "./LeanJSLogo";
-import users from "./mocks/users.js";
-import messages from "./mocks/messages.js";
+import Modal from "./Layout/Modal";
+import LeanJSLogo from "./Layout/LeanJSLogo";
+import users from "../mocks/users.js";
+import messages from "../mocks/messages.js";
 
 const filterMessageByUsername = ({ username } = {}) => message =>
   message.from === username || message.to === username;
@@ -37,7 +37,7 @@ class App extends Component {
 
   render() {
     const selectedUser = this.state.selectedUser;
-    const styledMessages = this.state.messages.map((message, i) => (
+    const conversation = this.state.messages.map((message, i) => (
       <div
         key={i}
         className={`message-wrapper ${
@@ -88,7 +88,15 @@ class App extends Component {
             </div>
             <ul className="thread-list">
               {users.map((user, i) => (
-                <li key={i} onClick={() => this.selectUser(user)}>
+                <li
+                  key={i}
+                  className={
+                    selectedUser.username === user.username
+                      ? "active-thread"
+                      : ""
+                  }
+                  onClick={() => this.selectUser(user)}
+                >
                   <img
                     src={`images/${user.username}_lg.jpg`}
                     alt={`${user.username}`}
@@ -117,7 +125,7 @@ class App extends Component {
             <div className="chat-content">
               <div className="messages">
                 <div className="list">
-                  {styledMessages || <p>You have no messages</p>}
+                  {conversation || <p>You have no messages</p>}
                 </div>
                 <div className="new-message">
                   <input

@@ -202,6 +202,9 @@ body {
         list-style: none inside none;
         padding: 0;
         margin: 0;
+        .active-thread {
+          background: $light-grey;
+        }
         li {
           display: flex;
           align-items: center;
