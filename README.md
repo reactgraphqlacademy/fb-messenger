@@ -33,20 +33,20 @@ If you haven't already set up your project, head here and follow the instruction
 
 - [ ] 4. Refactor the `src/components/Messenger/Threads.js` component so it implements the container component pattern, [please read this article first](https://medium.com/@learnreact/container-components-c0e67432e005). You have a `src/components/Messenger/ThreadsContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`
 
-- [ ] 5. Refactor the `src/components/Messenger/Conversation/Conversation.js` component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005) as well. You have a `src/components/Messenger/Conversation/ConversationContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`.
+- [ ] 5. Refactor the `src/components/Messenger/Chat/Chat.js` component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005) as well. You have a `src/components/Messenger/Chat/ChatContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`.
 
-- [ ] 6. Move the logic on lines 36-44 of `src/components/Messenger/Conversation/Conversation.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Conversation/ConversationContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
+- [ ] 6. Move the logic on lines 36-44 of `src/components/Messenger/Chat/Chat.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Chat/ChatContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
 
 - [ ] 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the `src/component/Login.js` should not display the `<TopBar>` and `<Footer>`. Hint: Why not try moving the Login component up the tree.
 
-- [ ] 8. Display the number of messages in `<ConversationBar>`.
+- [ ] 8. Display the number of messages in `<ChatBar>`.
 
 ### Bonus
 
 - [ ] Refactor as many components as you can into functional components, meaning using functions instead of classes to define the component.
-- [ ] Given this component `<Route path="/messages/:username">` in `src/components/Messenger/index`, how can we replace the hardcoded string `"/messages"` in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in `src/components/Messenger/Conversation/ConversationBar`.
-- [ ] The path `/messages/:username/detail` should display the `UserDetail` of a Conversation. The path `/messages/:username` should not display the `UserDetail` of a Conversation. You can navigate to `/messages/:username/detail` by clicking on the Link component in `src/components/Messenger/Conversation/ConversationBar`
-- [ ] [http://localhost:3000/messages](http://localhost:3000/messages) should not take 100% of the width of the screen. It should take the same width as when there is a Conversation selected. Hint, move the `<Route>` to the Conversation inside `<ConversationSection>`
+- [ ] Given this component `<Route path="/messages/:username">` in `src/components/Messenger/index`, how can we replace the hardcoded string `"/messages"` in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in `src/components/Messenger/Chat/ChatBar`.
+- [ ] The path `/messages/:username/detail` should display the `UserDetail` of a Chat. The path `/messages/:username` should not display the `UserDetail` of a Chat. You can navigate to `/messages/:username/detail` by clicking on the Link component in `src/components/Messenger/Chat/ChatBar`
+- [ ] [http://localhost:3000/messages](http://localhost:3000/messages) should not take 100% of the width of the screen. It should take the same width as when there is a Conversation selected.
 - [ ] Add prop-types to all the components that need it.
 
 ## Learning objectives
