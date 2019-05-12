@@ -1,9 +1,9 @@
-import React from 'react'
-import Avatar from '../Layout/Avatar'
-import Icon from '../Layout/Icon'
-import users from "../../mocks/users"
+import React from "react";
+import Avatar from "../Layout/Avatar";
+import Icon from "../Layout/Icon";
+import users from "../../mocks/users";
 
-const Threads = ({ showSettings, selectUser }) => (
+const Threads = ({ showSettings, selectUser, selectedUsername }) => (
   <div className="threads">
     <div className="thread-bar">
       <h2>
@@ -16,7 +16,11 @@ const Threads = ({ showSettings, selectUser }) => (
     </div>
     <ul className="thread-list">
       {users.map((user, i) => (
-        <li key={i} onClick={() => selectUser(user)}>
+        <li
+          key={i}
+          className={selectedUsername === user.username ? "active-thread" : ""}
+          onClick={() => selectUser(user)}
+        >
           <Avatar user={user} size="large" />
           <div className="user-name">
             <span>{`${user.name.first} ${user.name.last}`}</span>
@@ -26,6 +30,6 @@ const Threads = ({ showSettings, selectUser }) => (
       ))}
     </ul>
   </div>
-)
+);
 
-export default Threads
+export default Threads;

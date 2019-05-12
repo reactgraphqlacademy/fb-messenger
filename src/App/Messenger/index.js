@@ -36,6 +36,7 @@ class Messenger extends Component {
         <Threads
           showSettings={this.showSettings}
           selectUser={this.selectUser}
+          selectedUsername={selectedUser.username}
         />
         <Chat selectedUser={selectedUser} messages={messages} />
       </div>
