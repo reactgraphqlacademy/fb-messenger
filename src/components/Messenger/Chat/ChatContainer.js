@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 import * as api from '../../../api/message'
-import Conversation from './Conversation'
+import Chat from './Chat'
 
-class ConversationContainer extends Component {
+class ChatContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -22,7 +22,7 @@ class ConversationContainer extends Component {
     replace the hardcoded false  */
     const needsToFetchUser =  false 
     if (needsToFetchUser) {
-      this.fetchConversation(this.props.match.params.username)
+      this.fetchMessages(this.props.match.params.username)
     }
   }
 
@@ -36,4 +36,4 @@ class ConversationContainer extends Component {
   }
 }
 
-export default ConversationContainer
+export default ChatContainer

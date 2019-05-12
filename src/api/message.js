@@ -1,4 +1,4 @@
-export const fetchConversation = username => {
+export const fetchMessages = username => {
   const filterMessageByUsername = message => {
     return message.from === username || message.to === username
   }

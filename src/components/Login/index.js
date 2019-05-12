@@ -3,11 +3,6 @@ import { FormGroup, FormControl, Button } from 'react-bootstrap'
 import './Login.css'
 
 class Login extends Component {
-  constructor() {
-    super()
-    //Here you'll need to set up the state of the component
-  }
-
   handleSubmit = e => {
     e.preventDefault()
     const { history } = this.props
