@@ -47,7 +47,7 @@ yarn && yarn start
 
 3. Create a component for “Messenger” and pass down the dependencies from App via props. Make sure everything works. You can start by making a Messenger folder with an index.js.
 
-4. Is there any state in App/index.js that should be in the Messenger component? Refactor this logic out of App/index.js and into Messenger. Then, create further functional components from the contents of Messenger and pass them down dependencies via props. Hint: Create a Threads.js file and Chat folder with an index.js file inside the Messenger folder.
+4. Is there any state in App/index.js that should be in the Messenger component? Refactor this logic out of App/index.js and into Messenger. Then, create further functional components from the contents of Messenger and pass them down dependencies via props. Hint: Create a Threads.js file and a Chat folder with an index.js file inside the Messenger folder.
 
 5. Question: Is it possible to move showModal from App/index.js down the tree? why/why not?
 
