@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-import Avatar from '../../../Layout/Avatar'
-import Icon from '../../../Layout/Icon'
+import Avatar from "../../Layout/Avatar";
+import Icon from "../../Layout/Icon";
 
 const UserDetail = ({ selectedUser }) => (
   <div className="user-detail">
@@ -23,6 +23,6 @@ const UserDetail = ({ selectedUser }) => (
     <div>Options</div>
     <div>Facebook Profile</div>
   </div>
-)
+);
 
-export default UserDetail
+export default UserDetail;
