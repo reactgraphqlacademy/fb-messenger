@@ -81,11 +81,11 @@ body {
     flex: 1;
     border-right: 1px solid $medium-grey;
 
-    .conversation {
+    .chat {
       display: flex;
       flex-direction: column;
       flex-basis: 70%;
-      .conversation-bar {
+      .chat-bar {
         position: relative;
         border-bottom: 1px solid $medium-grey;
         padding: 1.05em;
@@ -93,7 +93,7 @@ body {
         h2 {
           text-transform: capitalize;
         }
-        .conversation-menu {
+        .chat-menu {
           position: absolute;
           right: 5px;
           top: 15px;
@@ -106,7 +106,7 @@ body {
         }
       }
 
-      .conversation-content {
+      .chat-content {
         display: flex;
         height: 100%;
 

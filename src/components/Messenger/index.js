@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 
 import ThreadsContainer from "./ThreadsContainer";
-import ConversationContainer from "./Conversation/ConversationContainer";
+import ChatContainer from "./Chat/ChatContainer";
 
 const Messenger = ({ match }) => (
   <div className="messenger">
     <ThreadsContainer />
-    <Route path={`${match.url}/:username`} component={ConversationContainer} />
+    <Route path={`${match.url}/:username`} component={ChatContainer} />
   </div>
 );
 
