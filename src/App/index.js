@@ -62,6 +62,7 @@ class App extends Component {
 
     const loggedUser = { name: "Alex" };
     const { showModal } = this.state;
+    const userPosition = "right";
 
     return (
       <div className="app">
@@ -70,7 +71,7 @@ class App extends Component {
           <i className="icon fab fa-facebook-messenger" />
           <a
             onClick={this.toggleModal}
-            className={`username ${this.userPosition || "left"}`}
+            className={`username ${userPosition || "left"}`}
           >
             {loggedUser.name}
           </a>
