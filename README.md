@@ -41,7 +41,7 @@ yarn && yarn start
 
 ### We recommend you to start from top to bottom, and refactor, refactor, refactor
 
-1. Replace the “footer” HTML at the bottom of App.js using the src/Footer.js component.
+1. Replace the “footer” HTML at the bottom of App/index.js using the src/Footer.js component.
 
 2. Refactor the topbar section by creating a functional component and pass the dependencies via props. Make sure everything works Hint: this will be similar to Modal.js
 
