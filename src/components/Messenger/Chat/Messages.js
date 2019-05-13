@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import Avatar from '../../../Layout/Avatar'
-import Icon from '../../../Layout/Icon'
+import Avatar from "../../Layout/Avatar";
+import Icon from "../../Layout/Icon";
 
-const Messages = ({ conversation = [], username, toggleModal }) => {
-  const styledConversation = conversation.map((message, i) => (
+const Messages = ({ messages = [], username }) => {
+  const conversation = messages.map((message, i) => (
     <div
       key={i}
       className={`message-wrapper ${
@@ -20,16 +20,12 @@ const Messages = ({ conversation = [], username, toggleModal }) => {
         </div>
       )}
     </div>
-  ))
+  ));
 
   return (
     <div className="messages">
       <div className="list">
-        {styledConversation.length ? (
-          styledConversation
-        ) : (
-          <p>You have no messages</p>
-        )}
+        {conversation.length ? conversation : <p>You have no messages</p>}
       </div>
       <div className="new-message">
         <input
@@ -37,16 +33,15 @@ const Messages = ({ conversation = [], username, toggleModal }) => {
           placeholder="Type your message..."
           className="message-box"
         />
-        <button onClick={toggleModal}>Send</button>
+        <button>Send</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 Messages.propTypes = {
-  conversation: PropTypes.array,
-  toggleModal: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-}
+  messages: PropTypes.array,
+  username: PropTypes.string.isRequired
+};
 
-export default Messages
+export default Messages;
