@@ -9,10 +9,7 @@ const UserDetail = ({ username }) => (
       <div>
         <Avatar username={username} size="large" />
         <div className="user-title">
-          <div className="user-name">
-            {username}
-            {/* `${selectedUser.name.first} ${selectedUser.name.last}`} */}
-          </div>
+          <div className="user-name">{username}</div>
           <div className="last-active">
             Active {Math.floor(Math.random() * 3) + 1}m ago
           </div>
