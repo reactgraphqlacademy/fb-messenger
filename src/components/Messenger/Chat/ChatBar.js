@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Icon from "../../Layout/Icon";
 
-const ConversationBar = ({ username, match }) => (
+const ChatBar = ({ username, match }) => (
   <div className="chat-bar">
     <h2>{username}</h2>
     <div className="chat-menu">
@@ -17,9 +17,9 @@ const ConversationBar = ({ username, match }) => (
   </div>
 );
 
-ConversationBar.propTypes = {
+ChatBar.propTypes = {
   match: PropTypes.object.isRequired,
   username: PropTypes.string.isRequired
 };
 
-export default ConversationBar;
+export default ChatBar;
