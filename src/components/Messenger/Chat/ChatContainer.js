@@ -27,8 +27,9 @@ class ChatContainer extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (this.props.match.params.username !== prevProps.match.params.username) {
-      this.fetchMessages(prevProps.match.params.username);
+    const { username } = this.props.match.params;
+    if (username !== prevProps.match.params.username) {
+      this.fetchMessages(username);
     }
   }
 
