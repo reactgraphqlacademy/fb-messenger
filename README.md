@@ -61,7 +61,7 @@ Checkout this branch [https://github.com/leanjscom/fb-messenger/tree/styling-in-
 
 ## Links
 
-- [Introduction to Redux — Redux explained with very simple examples](https://medium.com/leanjs/introduction-to-redux-redux-explained-with-very-simple-examples-b39d7967ceb8)
+- [Introduction to Redux — Redux explained with very simple examples](https://reactjs.academy/blog/introduction-to-redux-explained-with-simple-examples/)
 - [https://egghead.io/courses/getting-started-with-redux](https://egghead.io/courses/getting-started-with-redux)
 - [https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
