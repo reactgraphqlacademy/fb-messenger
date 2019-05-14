@@ -41,7 +41,6 @@ const Chat = ({ messages = [], match }) => {
 
 Chat.propTypes = {
   messages: PropTypes.array,
-  username: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired
 };
 
