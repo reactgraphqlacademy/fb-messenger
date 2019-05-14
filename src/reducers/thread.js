@@ -1,13 +1,13 @@
-import { RECEIVE_THREAD } from '../actions/thread'
-import { RECEIVE_MESSAGE } from '../actions/conversation'
+import { RECEIVE_THREAD } from "../actions/thread";
+import { RECEIVE_MESSAGE } from "../actions/messages";
 
-export default function (state = null, action) {
+export default function(state = null, action) {
   switch (action.type) {
     case RECEIVE_THREAD:
-      return action.thread
+      return action.thread;
     case RECEIVE_MESSAGE:
-      return { ...state, lastMessage: action.message }
+      return { ...state, lastMessage: action.message };
     default:
-      return state
+      return state;
   }
 }
