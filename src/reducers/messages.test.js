@@ -1,13 +1,13 @@
-import { receiveMessages, RECEIVE_MESSAGES } from "../actions/conversation";
+import { receiveMessages, RECEIVE_MESSAGES } from "../actions/messages";
 
-import conversationReducer from "./conversation";
+import messagesReducer from "./messages";
 
 /*
 What BEHAVIOUR do we have to test?
 Task 1, write the describe and its
 Task 2, implement the expectations
 */
-describe("Conversation reducer", () => {
+describe("Messages reducer", () => {
   it(``, () => {});
 
   it(``, () => {});

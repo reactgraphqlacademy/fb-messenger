@@ -5,6 +5,6 @@ import {
   RECEIVE_MESSAGES
 } from "./messages";
 
-describe("Conversation action", () => {
+describe("Messages action", () => {
   it(``, () => {});
 });

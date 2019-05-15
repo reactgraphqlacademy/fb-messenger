@@ -88,7 +88,7 @@ class Messages extends React.Component {
 
   render() {
     const { messages = [], username } = this.props;
-    const styledConversation = messages.map((message, i) => (
+    const conversation = messages.map((message, i) => (
       <MessageWrapper
         key={i}
         from={message.from === "you" ? "sent" : "received"}
@@ -108,11 +108,7 @@ class Messages extends React.Component {
     return (
       <MessagesWrapper>
         <MessagesList>
-          {styledConversation.length ? (
-            styledConversation
-          ) : (
-            <p>You have no messages</p>
-          )}
+          {conversation.length ? conversation : <p>You have no messages</p>}
         </MessagesList>
         <NewMessage>
           <MessageBox
