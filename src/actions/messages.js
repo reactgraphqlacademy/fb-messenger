@@ -1,9 +1,9 @@
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 
-export const receiveMessages = conversation => ({
+export const receiveMessages = messages => ({
   type: RECEIVE_MESSAGES,
-  conversation
+  messages
 });
 
 export const receiveMessage = message => ({
