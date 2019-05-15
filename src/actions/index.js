@@ -1,7 +1,7 @@
-export const RECEIVE_CONVERSATION = 'RECEIVE_CONVERSATION'
-export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE'
-export const RECEIVE_THREAD = 'RECEIVE_THREAD'
-export const TOGGLE_MESSAGE_DETAIL = 'TOGGLE_MESSAGE_DETAIL'
+export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
+export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
+export const RECEIVE_THREAD = "RECEIVE_THREAD";
+export const TOGGLE_MESSAGE_DETAIL = "TOGGLE_MESSAGE_DETAIL";
 
 /*
 
@@ -12,16 +12,16 @@ action creators
 
 */
 
-export const receiveThread = (thread) => ({
-    type: RECEIVE_THREAD,
-    thread
-})
+export const receiveThread = thread => ({
+  type: RECEIVE_THREAD,
+  thread
+});
 
 export const toggleMessageDetail = () => ({
-    type: TOGGLE_MESSAGE_DETAIL,
-})
+  type: TOGGLE_MESSAGE_DETAIL
+});
 
-export const receiveMessage = (message) => ({
-    type: RECEIVE_MESSAGE,
-    message
-})
+export const receiveMessage = message => ({
+  type: RECEIVE_MESSAGE,
+  message
+});
