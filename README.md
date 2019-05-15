@@ -71,6 +71,7 @@ You have some hints at the bottom of src/Messenger/components/Chat/Messages.js t
 ### Bonus
 
 - Use the [Apollo Query](https://www.apollographql.com/docs/react/essentials/queries#basic) component (render props) to fetch the bio of the user in `src/Messenger/components/Chat/UserDetail.js`
+- Use [withApollo](https://www.apollographql.com/docs/react/api/react-apollo#withApollo) to get a session on handleSubmit in `src/User/components/Login` using the graphql `query getSession` instead of the REST API.
 
 ## Articles and links
 

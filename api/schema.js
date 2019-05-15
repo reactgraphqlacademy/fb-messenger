@@ -99,6 +99,7 @@ const typeDefs = gql`
       before: String
     ): ThreadConnection
     getUser(username: String!): User
+    getSession(email: String!, password: String!): Status
   }
   input SendMessageInput {
     from: String!
@@ -108,7 +109,6 @@ const typeDefs = gql`
   type Mutation {
     sendMessage(input: SendMessageInput!): Message
     sendMessageWithRandomError(input: SendMessageInput!): Message
-    logIn(email: String!, password: String!): Status
   }
   type User {
     username: String!
@@ -143,23 +143,6 @@ const resolvers = {
       } else {
         throw new Error("Opps, I'm a random error");
       }
-    },
-    logIn: (_, { email, password }, context) => {
-      let status = 200;
-      if (email === "clone@facebook.com" && password === "123") {
-        const SEVEN_DAYS_IN_MILLISECONDS = 604800000;
-        const cookie = jwt.sign(
-          { id: "5ab1299177282be8578f3612", username: "@theclone" },
-          "this_is_my_secret_key ^^",
-          { expiresIn: "7 days" }
-        );
-        context.response.cookie("__session", cookie, {
-          maxAge: SEVEN_DAYS_IN_MILLISECONDS
-        });
-      } else {
-        status = 401;
-      }
-      return { status };
     }
   },
   Query: {
@@ -179,6 +162,23 @@ const resolvers = {
     }),
     threadsConnectionWithError: (_, { username }, context) => {
       throw new Error("Oops, there was an error");
+    },
+    getSession: (_, { email, password }, context) => {
+      let status = 200;
+      if (email === "clone@facebook.com" && password === "123") {
+        const SEVEN_DAYS_IN_MILLISECONDS = 604800000;
+        const cookie = jwt.sign(
+          { id: "5ab1299177282be8578f3612", username: "@theclone" },
+          "this_is_my_secret_key ^^",
+          { expiresIn: "7 days" }
+        );
+        context.response.cookie("__session", cookie, {
+          maxAge: SEVEN_DAYS_IN_MILLISECONDS
+        });
+      } else {
+        status = 401;
+      }
+      return { status };
     }
   },
   Message: {
