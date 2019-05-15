@@ -27,7 +27,7 @@ const Chat = ({ messages = [], match }) => {
 
   return (
     <ChatWrapper>
-      <ChatBar username={username} match={match} />
+      <ChatBar messages={messages} username={username} match={match} />
       <MessagesWrapper>
         <Messages messages={messages} username={username} />
         <Route
