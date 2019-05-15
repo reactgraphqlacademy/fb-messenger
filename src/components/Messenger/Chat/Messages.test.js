@@ -4,45 +4,66 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
 
-import configureStore from "../../../store";
+import { configureStore } from "../../../store";
 import ComposedMessages, { Messages, MessageBox, Message } from "./Messages";
+
+// TODO move this file to some /test/utils.js
+const Root = ({ children }) => {
+  const store = configureStore();
+  return (
+    <Router>
+      <Provider store={store}>{children}</Provider>
+    </Router>
+  );
+};
 
 describe("<Messages />", () => {
   it(`should send a message (unit test)`, async () => {
-    // 1. shallow the <Messages /> component
-    // You can use console.log(wrapper.debug()) to console.log the component that you are testing
-    // 2  Mock the api. Hint, the api functions are passed as a defaultProp (look at the bottom of Messages.js),
-    // you can override that prop by doing <Messages api={my_mocked_api_object} />
-    // 3. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // 4. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // 5. Assert the 'message was sent' ->
-    //      You can use toHaveBeenCalled on the my_mocked_api_object you passed.
-    //      toHaveBeenCalled needs a mock function https://jestjs.io/docs/en/mock-functions, is your sendMessage a mock?
-    //      You have an example here http://airbnb.io/enzyme/#shallow-rendering heads-up!
-    //      Enzyme expectations are not camel case,
-    //      Jest expectations are camel case (for when you copy&paste :)
-    // Final questions:
-    // - Is this black-box testing or white-box testing?
-    // - If I remove Redux from my application and put all the state in React, do I need to update this test?
-    // - What's your level of confidence that the user will be able to send a message?
+    const receiveMessage = jest.fn();
+    // In this case you could also return `const api = {sendMessage: jest.fn()}`,
+    // but in the test below (integration test) that approach does not work and you need to return a promise.
+    // For simplicity we have used the same api implementation in both examples
+    const api = {
+      sendMessage: jest.fn(message => Promise.resolve(message))
+    };
+    const wrapper = shallow(
+      <Messages receiveMessage={receiveMessage} api={api} username="Alex" />
+    );
+
+    wrapper
+      .find(MessageBox)
+      .props()
+      .onChange({ target: { value: "hi!" } });
+    // Heads up! the following "await" works in this case because the code that handles the click returns a Promise.resolve,
+    // it won't work if the code returns a pending promise waiting to be resolved or rejected.
+    // Events don't return anything. Therefore the promise returned from sendMessage is not passed to this code.
+    // It's better to use https://www.npmjs.com/package/wait-for-expect. Check the next test to see how to use it
+    await wrapper.find("button").simulate("click");
+
+    expect(receiveMessage).toHaveBeenCalledWith({ message: "hi!", to: "Alex" });
   });
 
   it(`should send a message (integration test)`, async () => {
-    // 1. shallow or mount the <Messages /> component ?
-    //    A) which component, Messages or ComposedMessages?
-    //    B) If you mount the component then all the children are rendered. Hint: you need to provide a store.
-    // 2  Mock the api. Hint, the api functions are passed as a defaultProp (look at the bottom of Messages.js),
-    // you can override that prop by doing <Messages api={my_mocked_api_object} />
-    // 3. Add some text to the input
-    // Hint: wrapper.find(MessageBox).props().onChange({ target: { value: 'hi!' }})
-    // 4. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // 5. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // Heads-up! you need to use await on the click button. Or even better use https://www.npmjs.com/package/wait-for-expect
-    // 6. You need to update the rendered component using http://airbnb.io/enzyme/docs/api/ShallowWrapper/update.html
-    // 7. Assert the 'message was sent' -> you can just validate the message you sent is on the Messages list
-    // Final questions:
-    // - Is this black-box testing or white-box testing?
-    // - If I remove Redux from my application and put all the state in React, do I need to update this test?
-    // - What's your level of confidence that the user will be able to send a message?
+    const api = {
+      sendMessage: jest.fn(message => Promise.resolve(message))
+    };
+    const wrapper = mount(
+      <Root>
+        <ComposedMessages api={api} username="Alex" />
+      </Root>
+    );
+
+    expect(wrapper.find(Message).length).toBe(0);
+
+    wrapper
+      .find("input")
+      .simulate("change", { target: { value: "hi there!" } });
+    wrapper.find("button").simulate("click");
+
+    await waitForExpect(() => {
+      wrapper.update();
+      expect(wrapper.find(Message).length).toBe(1);
+      expect(wrapper.find(Message).text()).toBe("hi there!");
+    });
   });
 });

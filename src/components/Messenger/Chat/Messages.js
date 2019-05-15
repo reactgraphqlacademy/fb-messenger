@@ -35,7 +35,7 @@ const NewMessage = styled.div`
   height: 60px;
 `;
 
-const MessageBox = styled.input`
+export const MessageBox = styled.input`
   border-color: transparent;
   width: 90%;
 `;
@@ -56,7 +56,7 @@ const MessageRead = styled.div`
   justify-content: flex-end;
 `;
 
-const Message = styled.div`
+export const Message = styled.div`
   border-radius: 20px;
   padding: 0.5em 1em;
   display: inline-block;
@@ -67,16 +67,15 @@ const Message = styled.div`
     props.from === "received" ? colours.black : colours.white};
 `;
 
-class Messages extends React.Component {
+export class Messages extends React.Component {
   state = {
     newMessage: ""
   };
 
-  sendMessage = () => {
-    const { username, receiveMessage } = this.props;
+  sendMessage = async () => {
+    const { username, receiveMessage, api } = this.props;
     const { newMessage } = this.state;
-
-    const message = api.sendMessage({
+    const message = await api.sendMessage({
       message: newMessage,
       to: username
     });
@@ -128,16 +127,26 @@ class Messages extends React.Component {
   }
 }
 
+Messages.defaultProps = {
+  api
+};
+
 Messages.propTypes = {
   messages: PropTypes.array,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
+  api: PropTypes.object.isRequired,
+  receiveMessage: PropTypes.func.isRequired
 };
+
+const mapStateToProps = state => ({
+  messages: state.messages
+});
 
 const mapDispatchToProps = {
   receiveMessage
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Messages);

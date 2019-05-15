@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar /> renders Avatar 1`] = `
+<styled.img
+  alt="alex"
+  size="medium"
+  src="/images/alex_lg.jpg"
+/>
+`;

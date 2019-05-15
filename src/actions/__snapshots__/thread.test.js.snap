@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Thread action should return a RECEIVE_THREAD action 1`] = `
+Object {
+  "thread": Object {
+    "id": "1",
+  },
+  "type": "RECEIVE_THREAD",
+}
+`;
