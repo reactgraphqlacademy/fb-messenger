@@ -53,13 +53,14 @@ export default graphql(gql`{ ... }`, {
 ```
 
 4. Use the sendMessage mutation to send a message. Sending a message should:
-   _ Update the messages in the chat to display the new message
-   _ Update the threads to display the new message
-   You have some hints at the bottom of src/Messenger/components/Chat/Messages.js to help you complete task 4
+
+- Update the messages in the chat to display the new message
+- Update the threads to display the new message
+  You have some hints at the bottom of src/Messenger/components/Chat/Messages.js to help you complete task 4
 
 #### Bonus part 2
 
-- Use the getSession query to log in a user instead of calling the REST API
+- Use the logIn mutation to log in a user in src/User/components/Login instead of calling the REST API
 
 ### Part 3
 
