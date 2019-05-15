@@ -31,7 +31,7 @@ If you haven't already set up your project, head here and follow the instruction
 [http://localhost:3000/graphiql](http://localhost:3000/graphiql)
 
 - Query a list of threads and retrieve the username of each thread.
-- Query a conversation. Hint, you need to provide a username.
+- Query a list of messages given a username. Hint, you need to provide a username.
 - Send a new message.
 - How many threads in the system?
 - How many types do we have in the system?
@@ -40,7 +40,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 1. In src/Messenger/components/Threads.js you need to fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js. Hint [https://www.apollographql.com/docs/react/api/react-apollo#graphql](https://www.apollographql.com/docs/react/api/react-apollo#graphql)
 2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll also need to update the threads.map(thread => ...
-3. In src/Messenger/components/Conversation/Content/Messages.js, fetch a conversation by using the conversationConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. You can pass variables to the graphql HoC by doing:
+3. In src/Messenger/components/Chat/Messages.js, fetch a list of messages using the messagesConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. You can pass variables to the graphql HoC by doing:
 
 ```
 export default graphql(gql`{ ... }`, {
@@ -53,9 +53,9 @@ export default graphql(gql`{ ... }`, {
 ```
 
 4. Use the sendMessage mutation to send a message. Sending a message should:
-   _ Update the conversation to display the new message
+   _ Update the messages in the chat to display the new message
    _ Update the threads to display the new message
-   You have some hints at the bottom of src/Messenger/components/Conversation/Content/Messages.js to help you complete task 4
+   You have some hints at the bottom of src/Messenger/components/Chat/Messages.js to help you complete task 4
 
 #### Bonus part 2
 
@@ -64,8 +64,8 @@ export default graphql(gql`{ ... }`, {
 ### Part 3
 
 1. Add query batching by replacing the apollo-link-http with apollo-link-batch-http in `src/index.js`. Hint: https://www.apollographql.com/docs/link/links/batch-http.html
-2. Prefetch the bio of the user displayed in `src/Messenger/components/Conversation/Content/UserDetail` when the user moves the mouse over the "info-circle" link in `src/Messenger/components/Conversation/ConversationBar.js` Hint: https://www.apollographql.com/docs/react/recipes/performance.html#prefetching
-3. Create a HoC in `src/Messenger/components/Conversation/Content/Messages.js` that transforms the Mutation component in a HoC and passes the error from the Mutation component to the Messages component.
+2. Prefetch the bio of the user displayed in `src/Messenger/components/Chat/UserDetail` when the user moves the mouse over the "info-circle" link in `src/Messenger/components/Chat/ChatBar.js` Hint: https://www.apollographql.com/docs/react/recipes/performance.html#prefetching
+3. Create a HoC in `src/Messenger/components/Chat/Messages.js` that transforms the Mutation component in a HoC and passes the error from the Mutation component to the Messages component.
 
 ## Articles and links
 

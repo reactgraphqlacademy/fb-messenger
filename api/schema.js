@@ -67,7 +67,7 @@ const typeDefs = gql`
     lastName: String!
     lastMessage: Message!
     username: String!
-    conversationConnection(
+    messagesConnection(
       first: Int
       after: String
       last: Int
@@ -78,7 +78,7 @@ const typeDefs = gql`
     status: Int!
   }
   type Query {
-    conversationConnection(
+    messagesConnection(
       first: Int
       after: String
       last: Int
@@ -146,7 +146,7 @@ const resolvers = {
     }
   },
   Query: {
-    conversationConnection: (_, { username, ...args }, context) =>
+    messagesConnection: (_, { username, ...args }, context) =>
       myConnectionFromArray(
         global.messages.filter(
           message => message.from === username || message.to === username
@@ -185,7 +185,7 @@ const resolvers = {
     thread: () => threads[0]
   },
   Thread: {
-    conversationConnection: (_, args, context) =>
+    messagesConnection: (_, args, context) =>
       myConnectionFromArray(
         messages.filter(
           message => message.from === _.username || message.to === _.username
