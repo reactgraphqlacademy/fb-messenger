@@ -1,9 +1,6 @@
-import {
-  receiveThread,
-  RECEIVE_THREAD,
-} from '../actions/thread'
+import { receiveThread, RECEIVE_THREAD } from "../actions/thread";
 
-import threadReducer from './thread'
+import threadReducer from "./thread";
 
 /*
 
@@ -16,14 +13,13 @@ Task 2, implement the expectations
 
 describe("Thread reducer", () => {
   it(`should return the default state if no state is provided`, () => {
-    expect(threadReducer(undefined, {})).toEqual(null);
+    expect(threadReducer(undefined, {})).toMatchSnapshot();
   });
 
   it(`should return a new state if it receives a ${RECEIVE_THREAD} action`, () => {
     const action = receiveThread({ id: "1" });
-    const newState = { id: "1" };
 
-    expect(threadReducer(null, action)).toEqual(newState);
+    expect(threadReducer(null, action)).toMatchSnapshot();
   });
 
   it(`should return the current state if the action it receives it's not handled by the reducer`, () => {
@@ -31,6 +27,6 @@ describe("Thread reducer", () => {
       id: "1"
     };
     const action = { type: "SOMETHING_ELSE" };
-    expect(threadReducer(state, action)).toEqual(state);
+    expect(threadReducer(state, action)).toMatchSnapshot();
   });
 });

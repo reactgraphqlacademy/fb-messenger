@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Thread reducer should return a new state if it receives a RECEIVE_THREAD action 1`] = `
+Object {
+  "id": "1",
+}
+`;
+
+exports[`Thread reducer should return the current state if the action it receives it's not handled by the reducer 1`] = `
+Object {
+  "id": "1",
+}
+`;
+
+exports[`Thread reducer should return the default state if no state is provided 1`] = `null`;
