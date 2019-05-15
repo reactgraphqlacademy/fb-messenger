@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to use GraphQL queries and mutations using Apollo client.
+The goal of this exercise is to learn how to use GraphQL queries and mutations using Apollo Client.
 
 ## To get started
 
@@ -40,7 +40,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 1. In src/Messenger/components/Threads.js you need to fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js. Hint [https://www.apollographql.com/docs/react/api/react-apollo#graphql](https://www.apollographql.com/docs/react/api/react-apollo#graphql)
 2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll also need to update the threads.map(thread => ...
-3. In src/Messenger/components/Chat/Messages.js, fetch a list of messages using the messagesConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. If the graphql query has an argument with the same name as any of the props, then apollo client will map that prop with the query variable. For instance, call your variable in the query \$username since Messages has a prop called username. Otherwise, you'll have to pass variables to the graphql HoC by doing:
+3. In src/Messenger/components/Chat/Messages.js, fetch a list of messages using the messagesConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. If the graphql query has an argument with the same name as any of the props, then Apollo Client will map that prop with the query variable. For instance, call your variable in the query \$username since Messages has a prop called username. Otherwise, you'll have to pass variables to the graphql HoC by doing:
 
 ```
 export default graphql(gql`{ ... }`, {
@@ -54,9 +54,19 @@ export default graphql(gql`{ ... }`, {
 
 4. Use the sendMessage mutation to send a message. Sending a message should:
 
-- Update the messages in the chat to display the new message
-- Update the threads to display the new message
-  You have some hints at the bottom of src/Messenger/components/Chat/Messages.js to help you complete task 4
+- Display the new message at the bottom of the chat. Hint, you'll need to update the Apollo Client cache. Suggestion: update the Apollo Client cache using [refetchQueries](https://www.apollographql.com/docs/react/advanced/caching#after-mutations)
+- Update the threads to display the new message. Hint, you'll need to update the Apollo Client cache. Suggestion, update the Apollo Client cache using the [update function in options](https://www.apollographql.com/docs/react/advanced/caching#writequery-and-writefragment):
+
+```{
+      options: {
+        update:  (store, { data: { sendMessage } }) => {
+          // TODO
+        }
+      }
+    }
+```
+
+You have some hints at the bottom of src/Messenger/components/Chat/Messages.js to help you complete task 4
 
 #### Bonus part 2
 
