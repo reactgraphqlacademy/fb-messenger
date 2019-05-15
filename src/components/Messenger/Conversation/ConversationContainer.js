@@ -1,53 +1,49 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import {
-  receiveConversation
-} from '../../../actions/conversation'
-import * as api from '../../../api/message'
-import Conversation from './Conversation'
+import { receiveMessages } from "../../../actions/conversation";
+import * as api from "../../../api/message";
+import Conversation from "./Conversation";
 
 class ConversationContainer extends Component {
   componentDidMount() {
-    this.fetchConversation(this.props.match.params.username)
+    this.fetchMessages(this.props.match.params.username);
   }
 
-  fetchConversation = async (username) => {
-    const conversation = await api.fetchConversation(username)
-    this.props.receiveConversation(conversation)
-  }
+  fetchMessages = async username => {
+    const conversation = await api.fetchMessages(username);
+    this.props.receiveMessages(conversation);
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.username !== nextProps.match.params.username) {
-      this.fetchConversation(nextProps.match.params.username)
+      this.fetchMessages(nextProps.match.params.username);
     }
   }
 
   render() {
-    const { match, conversation } = this.props
+    const { match, conversation } = this.props;
 
-    return (
-      <Conversation
-        conversation={conversation}
-        match={match}
-      />
-    )
+    return <Conversation conversation={conversation} match={match} />;
   }
 }
 
 ConversationContainer.propTypes = {
   match: PropTypes.object.isRequired,
   conversation: PropTypes.array.isRequired,
-  receiveConversation: PropTypes.func.isRequired,
-}
+  receiveMessages: PropTypes.func.isRequired
+};
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   conversation: state.conversation
-})
+});
 
 const mapStateToDispatch = {
-  receiveConversation
-}
+  receiveMessages
+};
 
-export default connect(mapStateToProps, mapStateToDispatch)(ConversationContainer)
+export default connect(
+  mapStateToProps,
+  mapStateToDispatch
+)(ConversationContainer);
