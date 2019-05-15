@@ -70,7 +70,7 @@ You have some hints at the bottom of src/Messenger/components/Chat/Messages.js t
 
 #### Bonus part 2
 
-- Use the logIn mutation to log in a user in src/User/components/Login instead of calling the REST API
+- Use the [Apollo Query](https://www.apollographql.com/docs/react/essentials/queries#basic) component (render props) to fetch the bio of the user in `src/Messenger/components/Chat/UserDetail.js`
 
 ### Part 3
 

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Query } from "react-apollo";
 import styled from "styled-components";
 
 import colours from "App/styles/export/colours.css";
@@ -63,16 +62,7 @@ const UserDetail = ({ username }) => (
       </a>
     </User>
 
-    <UserBio>
-      <Query query={USER_DETAIL_QUERY} variables={{ username }}>
-        {({ loading, error, data }) => {
-          if (loading) return "Loading...";
-          if (error) return `Error! ${error.message}`;
-
-          return data.getUser.bio;
-        }}
-      </Query>
-    </UserBio>
+    <UserBio>BONUS! add the bio here</UserBio>
   </UserDetailWrapper>
 );
 
