@@ -40,7 +40,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 1. In src/Messenger/components/Threads.js you need to fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js. Hint [https://www.apollographql.com/docs/react/api/react-apollo#graphql](https://www.apollographql.com/docs/react/api/react-apollo#graphql)
 2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll also need to update the threads.map(thread => ...
-3. In src/Messenger/components/Chat/Messages.js, fetch a list of messages using the messagesConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. You can pass variables to the graphql HoC by doing:
+3. In src/Messenger/components/Chat/Messages.js, fetch a list of messages using the messagesConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. If the graphql query has an argument with the same name as any of the props, then apollo client will map that prop with the variable. For instance, call your variable in the query \$username since Messages has a prop called username. Otherwise, you'll have to pass variables to the graphql HoC by doing:
 
 ```
 export default graphql(gql`{ ... }`, {
