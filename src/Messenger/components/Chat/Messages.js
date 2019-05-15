@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-// import { graphql } from 'react-apollo'
-// import gql from 'graphql-tag'
+// import { graphql } from "react-apollo";
+// import gql from "graphql-tag";
 
 // import MESSAGES_QUERY from './Messages.graphql'
 // import { THREADS_QUERY } from '../Threads'
@@ -91,40 +91,33 @@ class Messages extends React.Component {
 
   render() {
     const {
-      data: { conversationConnection, loading },
+      data: { messagesConnection, loading, error },
       username
     } = this.props;
-    if (loading) {
+    if (error) {
+      return <h2>{error.message}</h2>;
+    } else if (loading) {
       return <h2>Loading...</h2>;
     }
 
-    const styledConversation = conversationConnection.edges.map(
-      ({ node }, i) => (
-        <MessageWrapper
-          key={i}
-          from={node.from === "you" ? "sent" : "received"}
-        >
-          {node.to === "you" && <Avatar username={username} size="medium" />}
-          <Message from={node.from === "you" ? "sent" : "received"}>
-            {node.message}
-          </Message>
-          {node.from === "you" && (
-            <MessageRead>
-              <Icon name="check-circle" size={0.6} />
-            </MessageRead>
-          )}
-        </MessageWrapper>
-      )
-    );
+    const conversation = messagesConnection.edges.map(({ node }, i) => (
+      <MessageWrapper key={i} from={node.from === "you" ? "sent" : "received"}>
+        {node.to === "you" && <Avatar username={username} size="medium" />}
+        <Message from={node.from === "you" ? "sent" : "received"}>
+          {node.message}
+        </Message>
+        {node.from === "you" && (
+          <MessageRead>
+            <Icon name="check-circle" size={0.6} />
+          </MessageRead>
+        )}
+      </MessageWrapper>
+    ));
 
     return (
       <MessagesWrapper>
         <MessagesList>
-          {styledConversation.length ? (
-            styledConversation
-          ) : (
-            <p>You have no messages</p>
-          )}
+          {conversation.length ? conversation : <p>You have no messages</p>}
         </MessagesList>
         <NewMessage>
           <MessageBox
