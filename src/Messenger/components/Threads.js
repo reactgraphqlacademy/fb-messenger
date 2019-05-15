@@ -1,20 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { withRouter } from 'react-router'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 
-import colours from '../../App/styles/export/colours.css'
-import Avatar from '../../App/components/Layout/Avatar'
-import Icon from '../../App/components/Layout/Icon'
+import colours from "../../App/styles/export/colours.css";
+import Avatar from "../../App/components/Layout/Avatar";
+import Icon from "../../App/components/Layout/Icon";
 
 const ThreadsWrapper = styled.div`
   display: flex;
   border-right: 1px solid ${colours.mediumGrey};
   flex-direction: column;
-  flex:1;
-`
+  flex: 1;
+`;
 
 const ThreadBar = styled.div`
   border-bottom: 1px solid ${colours.mediumGrey};
@@ -25,25 +24,24 @@ const ThreadBar = styled.div`
     align-content: center;
     justify-content: space-between;
   }
-`
+`;
 
 const ThreadList = styled.ul`
-    overflow-y: auto;
-    width: 100%;
-    list-style: none inside none;
-    padding: 0;
-    margin: 0;
-    li {
-      display: flex;
-      align-items: center;
-      padding: 0.4em 0.75em;
-      &:hover {
-        background: ${colours.lightGrey};
-        cursor: pointer;
-      }
-
+  overflow-y: auto;
+  width: 100%;
+  list-style: none inside none;
+  padding: 0;
+  margin: 0;
+  li {
+    display: flex;
+    align-items: center;
+    padding: 0.4em 0.75em;
+    &:hover {
+      background: ${colours.lightGrey};
+      cursor: pointer;
     }
-`
+  }
+`;
 
 const UserName = styled.div`
   font-size: 0.9rem;
@@ -57,16 +55,16 @@ const UserName = styled.div`
     margin: 2px 0;
     display: block;
   }
-`
+`;
 
 const Threads = ({ history, match, data }) => {
-  let content
+  let content;
   if (data.loading) {
-    content = <p>Loading...</p>
+    content = <p>Loading...</p>;
   } else if (data.error) {
-    content = <p>Oops, there was a problem</p>
+    content = <p>Oops, there was a problem</p>;
   } else {
-    const { threads = [] } = data
+    const { threads = [] } = data;
     content = threads.length ? (
       <ThreadList>
         {threads.map(thread => (
@@ -79,7 +77,9 @@ const Threads = ({ history, match, data }) => {
           </li>
         ))}
       </ThreadList>
-    ) : <p>There are no messages</p>
+    ) : (
+      <p>There are no messages</p>
+    );
   }
 
   return (
@@ -93,22 +93,20 @@ const Threads = ({ history, match, data }) => {
       </ThreadBar>
       {content}
     </ThreadsWrapper>
-  )
-}
-
-
+  );
+};
 
 Threads.propTypes = {
   thread: PropTypes.object,
   history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-}
+  match: PropTypes.object.isRequired
+};
 
 Threads.defaultProps = {
   data: {
     loading: true
   }
-}
+};
 
 /* 
 There are two ways you can "connect" to the GraphQL API, Render Props or Higher-Order Components (HoC). 
@@ -129,4 +127,4 @@ E.g.
 export default graphql(query)(MyCoolComponent)
 */
 
-export default withRouter(Threads)
+export default Threads;

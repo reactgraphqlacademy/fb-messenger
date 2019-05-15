@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import styled from "styled-components";
 
-import colours from "../../../../App/styles/export/colours.css";
-import Avatar from "../../../../App/components/Layout/Avatar";
-import Icon from "../../../../App/components/Layout/Icon";
+import colours from "App/styles/export/colours.css";
+import Avatar from "App/components/Layout/Avatar";
+import Icon from "App/components/Layout/Icon";
 import USER_DETAIL_QUERY from "./UserDetail.graphql";
 
 const UserDetailWrapper = styled.div`
-    width: 33.3%;
-    border-left: 1px solid ${colours.mediumGrey};
-    > div {
+  width: 33.3%;
+  border-left: 1px solid ${colours.mediumGrey};
+  > div {
     padding: 1em;
     font-size: 0.9em;
     color: ${colours.darkGrey};
@@ -19,15 +19,17 @@ const UserDetailWrapper = styled.div`
     &:last-child {
       border-bottom: none;
     }
+  }
 `;
 
 const User = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > div {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    > div {
-      display: flex;
-      align-items: center;
+  }
 `;
 
 const UserName = styled.div`

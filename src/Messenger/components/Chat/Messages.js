@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { withRouter } from "react-router-dom";
+import styled from "styled-components";
 // import { graphql } from 'react-apollo'
 // import gql from 'graphql-tag'
 
 // import MESSAGES_QUERY from './Messages.graphql'
-// import { THREADS_QUERY } from '../../Threads'
-import colours from "../../../../App/styles/export/colours.css";
-import Avatar from "../../../../App/components/Layout/Avatar";
-import Icon from "../../../../App/components/Layout/Icon";
-import Snackbar from "@material-ui/core/Snackbar";
+// import { THREADS_QUERY } from '../Threads'
+import colours from "App/styles/export/colours.css";
+import Avatar from "App/components/Layout/Avatar";
+import Icon from "App/components/Layout/Icon";
 
 const MessagesWrapper = styled.div`
   display: flex;
@@ -49,7 +47,7 @@ const MessageWrapper = styled.div`
 
   ${props =>
     props.from === "sent" &&
-    css`
+    `
       justify-content: flex-end;
     `}
 `;
@@ -168,4 +166,4 @@ Messages.defaultProps = {
 //   name: 'sendMessage',
 // })
 
-export default withRouter(Messages);
+export default Messages;
