@@ -1,45 +1,45 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { withApollo } from 'react-apollo'
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { withApollo } from "react-apollo";
 // import gql from 'graphql-tag'
 
-import Input from '../../../App/components/Form/Input'
-import { logIn } from '../../api/auth'
-import './Login.css'
+import Input from "../../../App/components/Form/Input";
+import { logIn } from "../../api/auth";
+import "./Login.css";
 
 class Login extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
 
     this.state = {
       redirectToReferrer: false,
-      password: '123',
-      email: 'clone@facebook.com',
-    }
+      password: "123",
+      email: "clone@facebook.com"
+    };
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
-    const { password, email } = this.state
+  handleSubmit = async e => {
+    e.preventDefault();
+    const { password, email } = this.state;
 
     if (!password || !email) {
-      alert('Email and password are required')
-      return
+      alert("Email and password are required");
+      return;
     }
 
-    const { status } = await logIn({ password, email })
+    const { status } = await logIn({ password, email });
 
     if (status === 200) {
-      this.setState({ redirectToReferrer: true })
+      this.setState({ redirectToReferrer: true });
     }
-  }
+  };
 
-  render () {
-    const { from } = this.props.location.state || { from: { pathname: "/" } }
-    const { redirectToReferrer } = this.state
+  render() {
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
-      return <Redirect to={from} />
+      return <Redirect to={from} />;
     }
 
     return (
@@ -70,8 +70,8 @@ class Login extends Component {
           Sign in
         </button>
       </form>
-    )
+    );
   }
 }
 
-export default withApollo(Login)
+export default withApollo(Login);

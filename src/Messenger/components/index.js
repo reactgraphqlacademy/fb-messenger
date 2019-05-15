@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Route } from "react-router-dom";
 
 import colours from "App/styles/export/colours.css";
 
@@ -16,7 +17,7 @@ const MessengerWrapper = styled.div`
 const Messenger = ({ match, history }) => (
   <MessengerWrapper>
     <Threads match={match} history={history} />
-    <Chat username={match.params.username} />
+    <Route path={`${match.url}/:username`} component={Chat} />
   </MessengerWrapper>
 );
 

@@ -17,18 +17,22 @@ const ChatWrapper = styled.div`
   flex-basis: 70%;
 `;
 
-const Chat = ({ username }) => (
-  <ChatWrapper>
-    <ChatBar username={username} />
-    <MessagesWrapper>
-      <Messages username={username} />
-      <UserDetail username={username} />
-    </MessagesWrapper>
-  </ChatWrapper>
-);
+const Chat = ({ match }) => {
+  const { username } = match.params;
+
+  return (
+    <ChatWrapper>
+      <ChatBar username={username} />
+      <MessagesWrapper>
+        <Messages username={username} />
+        <UserDetail username={username} />
+      </MessagesWrapper>
+    </ChatWrapper>
+  );
+};
 
 Chat.propTypes = {
-  username: PropTypes.string.isRequired
+  match: PropTypes.object.isRequired
 };
 
 export default Chat;
