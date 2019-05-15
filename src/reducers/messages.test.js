@@ -10,7 +10,7 @@ Task 1, write the describe and its
 Task 2, implement the expectations
 
 */
-describe("Conversation reducer", () => {
+describe("Messages reducer", () => {
   it(`should return the default state if no state is provided`, () => {});
 
   it(`should return a new state if it receives a ${RECEIVE_CONVERSATION} action`, () => {});

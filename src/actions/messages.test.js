@@ -5,7 +5,7 @@ import {
   RECEIVE_CONVERSATION
 } from "./messages";
 
-describe("Conversation action", () => {
+describe("Messages action", () => {
   it(`should return an action of type ${RECEIVE_MESSAGE}`, () => {
     const expected = {
       message: {
