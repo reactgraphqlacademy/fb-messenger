@@ -98,7 +98,6 @@ const typeDefs = gql`
       last: Int
       before: String
     ): ThreadConnection
-    getSession(email: String!, password: String!): Status
     getUser(username: String!): User
   }
   input SendMessageInput {
@@ -109,6 +108,7 @@ const typeDefs = gql`
   type Mutation {
     sendMessage(input: SendMessageInput!): Message
     sendMessageWithRandomError(input: SendMessageInput!): Message
+    logIn(email: String!, password: String!): Status
   }
   type User {
     username: String!
@@ -143,20 +143,8 @@ const resolvers = {
       } else {
         throw new Error("Opps, I'm a random error");
       }
-    }
-  },
-  Query: {
-    messagesConnection: (_, { username, ...args }, context) =>
-      myConnectionFromArray(
-        global.messages.filter(
-          message => message.from === username || message.to === username
-        ),
-        args
-      ),
-    threadsConnection: (_, args, context) =>
-      myConnectionFromArray(global.threads, args),
-    threads: () => global.threads,
-    getSession: (_, { email, password }, context) => {
+    },
+    logIn: (_, { email, password }, context) => {
       let status = 200;
       if (email === "clone@facebook.com" && password === "123") {
         const SEVEN_DAYS_IN_MILLISECONDS = 604800000;
@@ -172,7 +160,19 @@ const resolvers = {
         status = 401;
       }
       return { status };
-    },
+    }
+  },
+  Query: {
+    messagesConnection: (_, { username, ...args }, context) =>
+      myConnectionFromArray(
+        global.messages.filter(
+          message => message.from === username || message.to === username
+        ),
+        args
+      ),
+    threadsConnection: (_, args, context) =>
+      myConnectionFromArray(global.threads, args),
+    threads: () => global.threads,
     getUser: (_, { username }, context) => ({
       username,
       bio: loremIpsum()
