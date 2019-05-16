@@ -91,12 +91,6 @@ const typeDefs = gql`
       before: String
     ): ThreadConnection
     threads: [Thread]
-    threadsConnectionWithError(
-      first: Int
-      after: String
-      last: Int
-      before: String
-    ): ThreadConnection
     getUser(username: String!): User
     getSession(email: String!, password: String!): Status
   }
@@ -107,6 +101,7 @@ const typeDefs = gql`
   }
   type Mutation {
     sendMessage(input: SendMessageInput!): Message
+    sendMessageWithRandomError(input: SendMessageInput!): Message
   }
   type User {
     username: String!
@@ -132,7 +127,8 @@ const sendMessage = (_, { input: message }, context) => {
 
 const resolvers = {
   Mutation: {
-    sendMessage,
+    sendMessage
+  },
   Query: {
     messagesConnection: (_, { username, ...args }, context) =>
       myConnectionFromArray(
@@ -148,9 +144,6 @@ const resolvers = {
       username,
       bio: loremIpsum()
     }),
-    threadsConnectionWithError: (_, { username }, context) => {
-      throw new Error("Oops, there was an error");
-    },
     getSession: (_, { email, password }, context) => {
       let status = 200;
       if (email === "clone@facebook.com" && password === "123") {
