@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { graphql } from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import { withRouter } from "react-router-dom";
 
 import { THREADS_QUERY } from "../Threads";
 import colours from "../../../App/styles/colours.js";
@@ -204,10 +203,9 @@ const sendMessage = graphql(SEND_MESSAGE_MUTATION, {
   name: "sendMessage"
 });
 
-const fetchMessages = graphql(MESSAGES_QUERY, {
-  options: props => ({
-    variables: { username: props.match.params.username }
-  })
-});
+const fetchMessages = graphql(MESSAGES_QUERY);
 
-export default withRouter(sendMessage(fetchMessages(Messages)));
+export default compose(
+  sendMessage,
+  fetchMessages
+)(Messages);
