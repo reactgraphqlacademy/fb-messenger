@@ -79,7 +79,7 @@ class Login extends Component {
       variables: { password, email }
     });
 
-    if (data.getSession.status === 200) {
+    if (data && data.getSession && data.getSession.status === 200) {
       this.setState({ redirectToReferrer: true });
     }
   };

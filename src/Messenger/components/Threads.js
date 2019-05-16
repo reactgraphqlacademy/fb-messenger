@@ -13,7 +13,7 @@ const ThreadsWrapper = styled.div`
   display: flex;
   border-right: 1px solid ${colours.mediumGrey};
   flex-direction: column;
-  flex: 1;
+  flex-basis: 30%;
 `;
 
 const ThreadBar = styled.div`

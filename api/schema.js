@@ -1,8 +1,11 @@
+const { makeExecutableSchema } = require("graphql-tools");
 const threads = require("./mocks/threads.json");
 const messages = require("./mocks/messages.json");
 const { GraphQLDateTime } = require("graphql-iso-date");
 const jwt = require("jsonwebtoken");
 const { connectionFromArray } = require("graphql-relay");
+const loremIpsum = require("lorem-ipsum");
+const sleep = require("sleep");
 
 if (!global.messages) {
   global.messages = messages;
@@ -26,7 +29,6 @@ const typeDefs = gql`
   interface Node {
     id: ID!
   }
-
   type PageInfo {
     hasNextPage: Boolean!
     hasPreviousPage: Boolean!
@@ -65,7 +67,7 @@ const typeDefs = gql`
     lastName: String!
     lastMessage: Message!
     username: String!
-    conversationConnection(
+    messagesConnection(
       first: Int
       after: String
       last: Int
@@ -76,7 +78,7 @@ const typeDefs = gql`
     status: Int!
   }
   type Query {
-    conversationConnection(
+    messagesConnection(
       first: Int
       after: String
       last: Int
@@ -90,6 +92,13 @@ const typeDefs = gql`
       before: String
     ): ThreadConnection
     threads: [Thread]
+    threadsConnectionWithError(
+      first: Int
+      after: String
+      last: Int
+      before: String
+    ): ThreadConnection
+    getUser(username: String!): User
     getSession(email: String!, password: String!): Status
   }
   input SendMessageInput {
@@ -99,34 +108,45 @@ const typeDefs = gql`
   }
   type Mutation {
     sendMessage(input: SendMessageInput!): Message
+    sendMessageWithRandomError(input: SendMessageInput!): Message
+  }
+  type User {
+    username: String!
+    bio: String!
   }
 `;
 
-const resolvers = {
-  Node: {
-    __resolveType() {
-      return null;
+const sendMessage = (_, { input: message }, context) => {
+  global.threads = global.threads.map(thread => {
+    if (thread.username === message.to) {
+      thread.lastMessage = message;
     }
-  },
-  Mutation: {
-    sendMessage: (_, { input: message }, context) => {
-      global.threads = global.threads.map(thread => {
-        if (thread.username === message.to) {
-          thread.lastMessage = message;
-        }
-        return thread;
-      });
+    return thread;
+  });
 
-      message.id = Math.random()
-        .toString(36)
-        .substr(2, 9);
-      message.time = new Date();
-      global.messages.push(message);
-      return message;
+  message.id = Math.random()
+    .toString(36)
+    .substr(2, 9);
+  message.time = new Date();
+  global.messages.push(message);
+  return message;
+};
+
+const resolvers = {
+  Mutation: {
+    sendMessage,
+    sendMessageWithRandomError: (_, { input: message }, context) => {
+      sleep.sleep(3);
+      const randomBoolean = Math.random() >= 0.5;
+      if (randomBoolean) {
+        return sendMessage(_, { input: message }, context);
+      } else {
+        throw new Error("Opps, I'm a random error");
+      }
     }
   },
   Query: {
-    conversationConnection: (_, { username, ...args }, context) =>
+    messagesConnection: (_, { username, ...args }, context) =>
       myConnectionFromArray(
         global.messages.filter(
           message => message.from === username || message.to === username
@@ -136,6 +156,13 @@ const resolvers = {
     threadsConnection: (_, args, context) =>
       myConnectionFromArray(global.threads, args),
     threads: () => global.threads,
+    getUser: (_, { username }, context) => ({
+      username,
+      bio: loremIpsum()
+    }),
+    threadsConnectionWithError: (_, { username }, context) => {
+      throw new Error("Oops, there was an error");
+    },
     getSession: (_, { email, password }, context) => {
       let status = 200;
       if (email === "clone@facebook.com" && password === "123") {
@@ -158,7 +185,7 @@ const resolvers = {
     thread: () => threads[0]
   },
   Thread: {
-    conversationConnection: (_, args, context) =>
+    messagesConnection: (_, args, context) =>
       myConnectionFromArray(
         messages.filter(
           message => message.from === _.username || message.to === _.username
@@ -169,7 +196,7 @@ const resolvers = {
   DateTime: GraphQLDateTime
 };
 
-module.exports = {
+module.exports = makeExecutableSchema({
   typeDefs,
   resolvers
-};
+});

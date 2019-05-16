@@ -11,8 +11,8 @@ import Avatar from "../../../../App/components/Layout/Avatar";
 import Icon from "../../../../App/components/Layout/Icon";
 
 const MESSAGES_QUERY = gql`
-  query fetchConversation($username: String!) {
-    conversationConnection(username: $username) {
+  query fetchMessages($username: String!) {
+    messagesConnection(username: $username) {
       edges {
         node {
           from
@@ -106,16 +106,16 @@ class Messages extends React.Component {
 
   render() {
     const {
-      data: { conversationConnection, loading },
+      data: { messagesConnection, loading },
       username
     } = this.props;
     if (loading) {
       return <h2>Loading...</h2>;
     }
 
-    const styledConversation =
-      conversationConnection &&
-      conversationConnection.edges.map(({ node }, i) => (
+    const conversation =
+      messagesConnection &&
+      messagesConnection.edges.map(({ node }, i) => (
         <MessageWrapper
           key={i}
           from={node.from === "you" ? "sent" : "received"}
@@ -135,8 +135,8 @@ class Messages extends React.Component {
     return (
       <MessagesWrapper>
         <MessagesList>
-          {conversationConnection && styledConversation.length ? (
-            styledConversation
+          {messagesConnection && conversation.length ? (
+            conversation
           ) : (
             <p>You have no messages</p>
           )}
@@ -203,10 +203,10 @@ const sendMessage = graphql(
   }
 );
 
-const fetchConversation = graphql(MESSAGES_QUERY, {
+const fetchMessages = graphql(MESSAGES_QUERY, {
   options: props => ({
     variables: { username: props.match.params.username }
   })
 });
 
-export default withRouter(sendMessage(fetchConversation(Messages)));
+export default withRouter(sendMessage(fetchMessages(Messages)));
