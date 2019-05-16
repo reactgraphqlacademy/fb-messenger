@@ -5,10 +5,10 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { withRouter } from "react-router-dom";
 
-import { THREADS_QUERY } from "../../Threads";
-import colours from "../../../../App/styles/colours.js";
-import Avatar from "../../../../App/components/Layout/Avatar";
-import Icon from "../../../../App/components/Layout/Icon";
+import { THREADS_QUERY } from "../Threads";
+import colours from "../../../App/styles/colours.js";
+import Avatar from "../../../App/components/Layout/Avatar";
+import Icon from "../../../App/components/Layout/Icon";
 
 const MESSAGES_QUERY = gql`
   query fetchMessages($username: String!) {
@@ -160,48 +160,49 @@ Messages.propTypes = {
   username: PropTypes.string.isRequired
 };
 
-const sendMessage = graphql(
-  gql`
-    mutation sendMessage($from: String!, $to: String!, $message: String!) {
-      sendMessage(input: { from: $from, to: $to, message: $message }) {
-        id
-        time
-        to
-        from
-        message
-      }
+const SEND_MESSAGE_MUTATION = gql`
+  mutation sendMessage($from: String!, $to: String!, $message: String!) {
+    sendMessage(input: { from: $from, to: $to, message: $message }) {
+      id
+      time
+      to
+      from
+      message
     }
-  `,
-  {
-    options: props => ({
-      refetchQueries: [
-        {
-          query: MESSAGES_QUERY,
-          variables: { username: props.username }
-        }
-      ],
-      update: (proxy, { data: { sendMessage } }) => {
-        const query = { query: THREADS_QUERY };
-
-        // Read the data from our cache for this query.
-        const data = proxy.readQuery(query);
-
-        const edges = data.threadsConnection.edges.map(({ node }) => {
-          if (node.username === sendMessage.to) {
-            node.lastMessage.message = sendMessage.message;
-          }
-          return node;
-        });
-
-        const newData = Object.assign({ threadsConnection: { edges } }, data);
-
-        // Write our data back to the cache.
-        proxy.writeQuery({ ...query, data: newData });
-      }
-    }),
-    name: "sendMessage"
   }
-);
+`;
+
+const sendMessage = graphql(SEND_MESSAGE_MUTATION, {
+  options: props => ({
+    refetchQueries: [
+      {
+        query: MESSAGES_QUERY,
+        variables: { username: props.username }
+      }
+    ],
+    update: (store, { data: { sendMessage } }) => {
+      const query = { query: THREADS_QUERY };
+
+      // Read the data from our cache for this query.
+      const data = store.readQuery(query);
+
+      // Mutate the cached data
+      data.threadsConnection.edges.map(({ node }) => {
+        if (node.username === sendMessage.to) {
+          node.lastMessage = {
+            ...node.lastMessage,
+            ...sendMessage
+          };
+        }
+        return { node };
+      });
+
+      // Write our data back to the cache.
+      store.writeQuery({ ...query, data });
+    }
+  }),
+  name: "sendMessage"
+});
 
 const fetchMessages = graphql(MESSAGES_QUERY, {
   options: props => ({

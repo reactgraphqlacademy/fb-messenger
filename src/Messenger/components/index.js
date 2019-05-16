@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
 
-import colours from "App/styles/export/colours.css";
-
+import colours from "../../App/styles/colours.js";
 import Threads from "./Threads";
 import Chat from "./Chat";
 

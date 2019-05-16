@@ -5,7 +5,6 @@ const { GraphQLDateTime } = require("graphql-iso-date");
 const jwt = require("jsonwebtoken");
 const { connectionFromArray } = require("graphql-relay");
 const loremIpsum = require("lorem-ipsum");
-const sleep = require("sleep");
 
 if (!global.messages) {
   global.messages = messages;
@@ -108,7 +107,6 @@ const typeDefs = gql`
   }
   type Mutation {
     sendMessage(input: SendMessageInput!): Message
-    sendMessageWithRandomError(input: SendMessageInput!): Message
   }
   type User {
     username: String!
@@ -134,16 +132,7 @@ const sendMessage = (_, { input: message }, context) => {
 
 const resolvers = {
   Mutation: {
-    sendMessage,
-    sendMessageWithRandomError: (_, { input: message }, context) => {
-      sleep.sleep(3);
-      const randomBoolean = Math.random() >= 0.5;
-      if (randomBoolean) {
-        return sendMessage(_, { input: message }, context);
-      } else {
-        throw new Error("Opps, I'm a random error");
-      }
-    }
+    sendMessage
   },
   Query: {
     messagesConnection: (_, { username, ...args }, context) =>
@@ -193,10 +182,15 @@ const resolvers = {
         args
       )
   },
+  Node: {
+    __resolveType() {
+      return null;
+    }
+  },
   DateTime: GraphQLDateTime
 };
 
-module.exports = makeExecutableSchema({
+module.exports = {
   typeDefs,
   resolvers
-});
+};

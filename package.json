@@ -17,6 +17,7 @@
     "graphql-relay": "^0.5.5",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.4.0",
+    "lorem-ipsum": "^2.0.2",
     "node-fetch": "^2.3.0",
     "react": "^16.7.0",
     "react-apollo": "^2.3.3",

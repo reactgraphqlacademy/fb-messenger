@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { toggleMessageDetail } from "../../../App/actions/ui";
 import Icon from "../../../App/components/Layout/Icon";
 import colours from "../../../App/styles/colours.js";
 
