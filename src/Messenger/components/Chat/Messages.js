@@ -1,18 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { graphql } from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import { withRouter } from "react-router-dom";
 
-import { THREADS_QUERY } from "../../Threads";
-import colours from "../../../../App/styles/colours.js";
-import Avatar from "../../../../App/components/Layout/Avatar";
-import Icon from "../../../../App/components/Layout/Icon";
+import { THREADS_QUERY } from "../Threads";
+import colours from "../../../App/styles/colours.js";
+import Avatar from "../../../App/components/Layout/Avatar";
+import Icon from "../../../App/components/Layout/Icon";
 
 const MESSAGES_QUERY = gql`
-  query fetchConversation($username: String!) {
-    conversationConnection(username: $username) {
+  query fetchMessages($username: String!) {
+    messagesConnection(username: $username) {
       edges {
         node {
           from
@@ -106,16 +105,16 @@ class Messages extends React.Component {
 
   render() {
     const {
-      data: { conversationConnection, loading },
+      data: { messagesConnection, loading },
       username
     } = this.props;
     if (loading) {
       return <h2>Loading...</h2>;
     }
 
-    const styledConversation =
-      conversationConnection &&
-      conversationConnection.edges.map(({ node }, i) => (
+    const conversation =
+      messagesConnection &&
+      messagesConnection.edges.map(({ node }, i) => (
         <MessageWrapper
           key={i}
           from={node.from === "you" ? "sent" : "received"}
@@ -135,8 +134,8 @@ class Messages extends React.Component {
     return (
       <MessagesWrapper>
         <MessagesList>
-          {conversationConnection && styledConversation.length ? (
-            styledConversation
+          {messagesConnection && conversation.length ? (
+            conversation
           ) : (
             <p>You have no messages</p>
           )}
@@ -160,53 +159,53 @@ Messages.propTypes = {
   username: PropTypes.string.isRequired
 };
 
-const sendMessage = graphql(
-  gql`
-    mutation sendMessage($from: String!, $to: String!, $message: String!) {
-      sendMessage(input: { from: $from, to: $to, message: $message }) {
-        id
-        time
-        to
-        from
-        message
-      }
+const SEND_MESSAGE_MUTATION = gql`
+  mutation sendMessage($from: String!, $to: String!, $message: String!) {
+    sendMessage(input: { from: $from, to: $to, message: $message }) {
+      id
+      time
+      to
+      from
+      message
     }
-  `,
-  {
-    options: props => ({
-      refetchQueries: [
-        {
-          query: MESSAGES_QUERY,
-          variables: { username: props.username }
-        }
-      ],
-      update: (proxy, { data: { sendMessage } }) => {
-        const query = { query: THREADS_QUERY };
-
-        // Read the data from our cache for this query.
-        const data = proxy.readQuery(query);
-
-        const edges = data.threadsConnection.edges.map(({ node }) => {
-          if (node.username === sendMessage.to) {
-            node.lastMessage.message = sendMessage.message;
-          }
-          return node;
-        });
-
-        const newData = Object.assign({ threadsConnection: { edges } }, data);
-
-        // Write our data back to the cache.
-        proxy.writeQuery({ ...query, data: newData });
-      }
-    }),
-    name: "sendMessage"
   }
-);
+`;
 
-const fetchConversation = graphql(MESSAGES_QUERY, {
+const sendMessage = graphql(SEND_MESSAGE_MUTATION, {
   options: props => ({
-    variables: { username: props.match.params.username }
-  })
+    refetchQueries: [
+      {
+        query: MESSAGES_QUERY,
+        variables: { username: props.username }
+      }
+    ],
+    update: (store, { data: { sendMessage } }) => {
+      const query = { query: THREADS_QUERY };
+
+      // Read the data from our cache for this query.
+      const data = store.readQuery(query);
+
+      // Mutate the cached data
+      data.threadsConnection.edges.map(({ node }) => {
+        if (node.username === sendMessage.to) {
+          node.lastMessage = {
+            ...node.lastMessage,
+            ...sendMessage
+          };
+        }
+        return { node };
+      });
+
+      // Write our data back to the cache.
+      store.writeQuery({ ...query, data });
+    }
+  }),
+  name: "sendMessage"
 });
 
-export default withRouter(sendMessage(fetchConversation(Messages)));
+const fetchMessages = graphql(MESSAGES_QUERY);
+
+export default compose(
+  sendMessage,
+  fetchMessages
+)(Messages);

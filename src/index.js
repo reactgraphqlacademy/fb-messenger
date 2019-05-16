@@ -16,7 +16,7 @@ const configLink = {
 
 const graphqlClient = new ApolloClient({
   link: ApolloLink.from([createHttpLink(configLink)]),
-  cache: new InMemoryCache().restore(window.__APOLLO_STATE__)
+  cache: new InMemoryCache().restore(window.__PRELOADED_STATE__)
 });
 
 const store = configureStore();

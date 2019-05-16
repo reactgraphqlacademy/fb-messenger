@@ -61,8 +61,10 @@ server.use(
       cache: new InMemoryCache()
     });
 
-    let body;
-    let linkHelmet = "";
+    let body = "",
+      graphqlInitialState = "",
+      linkHelmet = "";
+
     try {
       const App = (
         <StyleSheetManager sheet={sheet.instance}>
@@ -71,15 +73,28 @@ server.use(
           </Router>
         </StyleSheetManager>
       );
+
       await getDataFromTree(App);
       body = renderToString(App);
       const helmet = Helmet.renderStatic();
       linkHelmet = helmet.link.toString();
+      graphqlInitialState = JSON.stringify(graphqlClient.extract()).replace(
+        /</g,
+        "\\u003c"
+      );
     } catch (error) {
       body = renderToString(<ErrorPage error={error} />);
     }
 
-    next({ body, meta: [linkHelmet, sheet.getStyleTags()] }, req, res);
+    next(
+      {
+        body,
+        meta: [linkHelmet, sheet.getStyleTags()],
+        state: graphqlInitialState
+      },
+      req,
+      res
+    );
   })
 );
 

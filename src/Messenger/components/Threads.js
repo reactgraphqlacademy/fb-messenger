@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -13,7 +13,7 @@ const ThreadsWrapper = styled.div`
   display: flex;
   border-right: 1px solid ${colours.mediumGrey};
   flex-direction: column;
-  flex: 1;
+  flex-basis: 30%;
 `;
 
 const ThreadBar = styled.div`
@@ -61,8 +61,9 @@ const UserNameLink = styled(Link)`
   }
 `;
 
-const Threads = ({ history, match, data }) => {
+const Threads = ({ match, data }) => {
   let content;
+
   if (data.loading) {
     content = <p>Loading...</p>;
   } else if (data.error) {
@@ -127,4 +128,4 @@ export const THREADS_QUERY = gql`
 `;
 const fetchThreads = graphql(THREADS_QUERY);
 
-export default fetchThreads(withRouter(Threads));
+export default fetchThreads(Threads);
