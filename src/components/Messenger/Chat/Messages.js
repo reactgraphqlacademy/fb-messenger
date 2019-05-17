@@ -133,6 +133,8 @@ Messages.defaultProps = {
 };
 
 Messages.propTypes = {
+  api: PropTypes.object.isRequired,
+  receiveMessage: PropTypes.func.isRequired,
   messages: PropTypes.array,
   username: PropTypes.string.isRequired
 };
