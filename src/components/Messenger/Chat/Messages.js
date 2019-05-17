@@ -73,7 +73,7 @@ class Messages extends React.Component {
   };
 
   sendMessage = () => {
-    const { username, receiveMessage } = this.props;
+    const { username, receiveMessage, api } = this.props;
     const { newMessage } = this.state;
 
     const message = api.sendMessage({
@@ -127,6 +127,10 @@ class Messages extends React.Component {
     );
   }
 }
+
+Messages.defaultProps = {
+  api
+};
 
 Messages.propTypes = {
   messages: PropTypes.array,
