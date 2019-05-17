@@ -4,7 +4,7 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
 
-import configureStore from "../../../store";
+import { configureStore } from "../../../store";
 import ComposedMessages, { Messages, MessageBox, Message } from "./Messages";
 
 describe("<Messages />", () => {
