@@ -6,5 +6,6 @@ describe("Login", function() {
     cy.get('input[type="password"]').type("123");
 
     cy.get("button").click();
+    cy.get("h1").contains("Sorry the news feed is not implemented yet");
   });
 });
