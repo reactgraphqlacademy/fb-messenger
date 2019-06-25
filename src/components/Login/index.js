@@ -1,40 +1,40 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import Input from '../Form/Input'
-import { logIn } from '../../api/auth'
-import './Login.css'
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import Input from "../Form/Input";
+import { logIn } from "../../api/auth";
+import "./Login.css";
 
 class Login extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
 
     this.state = {
       redirectToReferrer: false
-    }
+    };
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
-    const { password, email } = this
+  handleSubmit = async e => {
+    e.preventDefault();
+    const { password, email } = this;
 
     if (!password || !email) {
-      alert('Email and password are required')
-      return
+      alert("Email and password are required");
+      return;
     }
 
-    const { status } = await logIn({ password, email })
+    const { status } = await logIn({ password, email });
 
     if (status === 200) {
-      this.setState({ redirectToReferrer: true })
+      this.setState({ redirectToReferrer: true });
     }
-  }
+  };
 
-  render () {
-    const { from } = this.props.location.state || { from: { pathname: "/" } }
-    const { redirectToReferrer } = this.state
+  render() {
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
-      return <Redirect to={from} />
+      return <Redirect to={from} />;
     }
 
     return (
@@ -47,17 +47,18 @@ class Login extends Component {
             type="email"
             placeholder="Enter email"
             defaultValue={this.email}
-            onChange={e => this.email = e.target.value}
+            onChange={e => (this.email = e.target.value)}
           />
           <Input
             type="password"
             placeholder="Enter password"
             className="form-control"
             defaultValue={this.password}
-            onChange={e => this.password = e.target.value}
+            onChange={e => (this.password = e.target.value)}
           />
         </div>
         <button
+          data-cy={`submit-button`}
           type="submit"
           className="btn btn-lg btn-primary btn-block"
           onClick={this.handleSubmit}
@@ -65,8 +66,8 @@ class Login extends Component {
           Sign in
         </button>
       </form>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;
