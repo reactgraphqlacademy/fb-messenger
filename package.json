@@ -107,6 +107,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "cypress": "^3.3.1",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.5",
