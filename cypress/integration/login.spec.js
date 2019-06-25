@@ -1,3 +1,5 @@
+// /// <reference types="Cypress" />
+
 describe("Login", function() {
   it("clicking '1-week bootcamp' navigates to a correct url", function() {
     cy.visit("/login");
