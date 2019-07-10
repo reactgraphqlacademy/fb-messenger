@@ -34,9 +34,14 @@ If you haven't already set up your project, head here and follow the instruction
 
 4) In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: `redux-logger` and `redux-thunk`. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
 
-5) Using thunks, add loading indicators to the fetchConversation action creator in /actions/conversation.js
+5) Using thunk:
+	1. `git checkout advanced-redux-part5`
+	2. Add loading indicators to the conversation component by implementing the fetchConversation action creator in /actions/conversation.js
 
-6) use reselect to implement a conversation selector
+6) Selectors:
+	1. `git checkout advanced-redux-part6`
+	2. Create a simple selector in the conversation reducer and use it in the ConversationContainer
+	3. Replace your selector in the conversation reducer with reselect
 
 ### Bonus
 
