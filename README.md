@@ -30,7 +30,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 3) Refactor the logger and think middlewares:
 	1. `git checkout advanced-redux-part3`
-	2. Refactor your logger and thunk middleware so you can use them along with `{ applyMiddleware } from 'redux'` in the createStore function
+	2. Refactor your logger and thunk middleware so you can use them along with `{ applyMiddleware } from 'redux'` in the createStore function. Documentation [https://redux.js.org/api/applymiddleware](https://redux.js.org/api/applymiddleware).
 
 4) In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: `redux-logger` and `redux-thunk`. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
 
