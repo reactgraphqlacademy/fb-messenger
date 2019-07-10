@@ -21,22 +21,22 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-1- Create a logger middleware to log in the console every action that is dispatched
- 
-2- Think middleware:
- A.`git checkout advanced-redux-part2`
- B. When you run `yarn start` you'll get the following error: "Actions must be plain objects. Use custom middleware for async actions." To fix it you must create a thunk middleware in store/index.js.
- C. When your thunk middleware works you should see the list of Threads on http://localhost:300X/messages
+1) Create a logger middleware to log in the console every action that is dispatched
 
-3- Refactor the logger and think middlewares:
- B.`git checkout advanced-redux-part3`
- A.Refactor your logger and thunk middleware so you can use them along with `{ applyMiddleware } from 'redux'` in the createStore function
+2) Think middleware:
+ 1. `git checkout advanced-redux-part2`
+ 2. When you run `yarn start` you'll get the following error: "Actions must be plain objects. Use custom middleware for async actions." To fix it you must create a thunk middleware in store/index.js.
+ 3. When your thunk middleware works you should see the list of Threads on http://localhost:300X/messages
 
-4. In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: `redux-logger` and `redux-thunk`. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
+3) Refactor the logger and think middlewares:
+	1. `git checkout advanced-redux-part3`
+	2. Refactor your logger and thunk middleware so you can use them along with `{ applyMiddleware } from 'redux'` in the createStore function
 
-5. Using thunks, add loading indicators to the fetchConversation action creator in /actions/conversation.js
+4) In configureStore.dev.js, replace the addLoggerMiddleware and addPromiseSupportToDispatch that you've created with the ones in npm: `redux-logger` and `redux-thunk`. Note, we already did `yarn add redux-logger` and `yarn add redux-thunk`.
 
-6. use reselect to implement a conversation selector
+5) Using thunks, add loading indicators to the fetchConversation action creator in /actions/conversation.js
+
+6) use reselect to implement a conversation selector
 
 ### Bonus
 
