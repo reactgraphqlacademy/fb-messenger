@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Route } from "react-router";
+import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -18,7 +18,7 @@ const ChatWrapper = styled.div`
   flex-basis: 70%;
 `;
 
-const Chat = ({ messages = [], match }) => {
+const Chat = ({ messages = [], match, isMessageDetailOpen }) => {
   const { username } = match.params;
 
   if (!messages.length) {
@@ -30,18 +30,20 @@ const Chat = ({ messages = [], match }) => {
       <ChatBar messages={messages} username={username} match={match} />
       <MessagesWrapper>
         <Messages messages={messages} username={username} />
-        <Route
-          path={`${match.url}/detail`}
-          component={() => <UserDetail username={username} />}
-        />
+        {isMessageDetailOpen && <UserDetail username={username} />}
       </MessagesWrapper>
     </ChatWrapper>
   );
 };
 
+const mapStateToProps = state => ({
+  isMessageDetailOpen: state.ui.isMessageDetailOpen
+});
+
 Chat.propTypes = {
   messages: PropTypes.array,
+  isMessageDetailOpen: PropTypes.bool.isRequired,
   match: PropTypes.object.isRequired
 };
 
-export default Chat;
+export default connect(mapStateToProps)(Chat);
