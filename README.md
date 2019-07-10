@@ -24,9 +24,9 @@ If you haven't already set up your project, head here and follow the instruction
 1) Create a logger middleware to log in the console every action that is dispatched
 
 2) Think middleware:
- 1. `git checkout advanced-redux-part2`
- 2. When you run `yarn start` you'll get the following error: "Actions must be plain objects. Use custom middleware for async actions." To fix it you must create a thunk middleware in store/index.js.
- 3. When your thunk middleware works you should see the list of Threads on http://localhost:300X/messages
+	1. `git checkout advanced-redux-part2`
+	2. When you run `yarn start` you'll get the following error: "Actions must be plain objects. Use custom middleware for async actions." To fix it you must create a thunk middleware in store/index.js.
+	3. When your thunk middleware works you should see the list of Threads on http://localhost:300X/messages
 
 3) Refactor the logger and think middlewares:
 	1. `git checkout advanced-redux-part3`
