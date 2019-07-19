@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { withRouter } from "react-router";
+import { Route } from "react-router-dom";
 
 import colours from "../../styles/export/colours.css";
 import Avatar from "../Layout/Avatar";
@@ -56,7 +56,7 @@ const UserName = styled.div`
   }
 `;
 
-const Threads = ({ history, match, thread }) => (
+const Threads = ({ thread }) => (
   <ThreadsWrapper>
     <ThreadBar>
       <h2>
@@ -66,25 +66,25 @@ const Threads = ({ history, match, thread }) => (
       </h2>
     </ThreadBar>
     <ThreadList>
-      {thread ? (
-        <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
-          <Avatar username={thread.username} size="large" />
-          <UserName>
-            <span>{`${thread.name.first} ${thread.name.last}`}</span>
-            <small>{`${thread.lastMessage.message}`}</small>
-          </UserName>
-        </li>
-      ) : (
-        ""
-      )}
+      <Route
+        render={({ history, match }) =>
+          thread && (
+            <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
+              <Avatar username={thread.username} size="large" />
+              <UserName>
+                <span>{`${thread.name.first} ${thread.name.last}`}</span>
+                <small>{`${thread.lastMessage.message}`}</small>
+              </UserName>
+            </li>
+          )
+        }
+      />
     </ThreadList>
   </ThreadsWrapper>
 );
 
 Threads.propTypes = {
-  thread: PropTypes.object,
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  thread: PropTypes.object
 };
 
-export default withRouter(Threads);
+export default Threads;
