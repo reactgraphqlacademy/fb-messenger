@@ -1,51 +1,47 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import Threads from './Threads'
-import { fetchFirstThread } from '../../api/thread'
+import Threads from "./Threads";
+import { fetchFirstThread } from "../../api/thread";
 
-import { receiveThread } from '../../actions'
+import { receiveThread } from "../../actions";
 
 class ThreadsContainer extends Component {
   componentDidMount() {
     fetchFirstThread().then(thread => {
       // Here we dispatch the RECEIVE_THREAD action created by the receiveThread action creator
       // The dispatch prop is injected by `connect` at the bottom of the file
-      this.props.dispatch(receiveThread(thread))
-    })
+      this.props.dispatch(receiveThread(thread));
+    });
   }
 
   render() {
-    const { history, match, thread } = this.props
+    const { thread } = this.props;
 
-    return (
-      <Threads
-        thread={thread}
-        history={history}
-        match={match}
-      />
-    )
+    return <Threads thread={thread} />;
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   thread: state.thread
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   dispatch
-})
+});
 
 ThreadsContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   thread: PropTypes.object,
   history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-}
+  match: PropTypes.object.isRequired
+};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ThreadsContainer))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ThreadsContainer);
 
 /*
 SOME EXPLANATION AND TIPS ABOUT USING CONNECT
