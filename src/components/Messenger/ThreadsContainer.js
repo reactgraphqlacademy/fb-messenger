@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -16,9 +15,9 @@ class ThreadsContainer extends Component {
   }
 
   render() {
-    const { history, match, thread } = this.props;
+    const { thread } = this.props;
 
-    return <Threads thread={thread} history={history} match={match} />;
+    return <Threads thread={thread} />;
   }
 }
 
@@ -37,12 +36,10 @@ ThreadsContainer.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ThreadsContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ThreadsContainer);
 
 /*
 // SOME EXPLANATION AND TIPS ABOUT USING CONNECT
