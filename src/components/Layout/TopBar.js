@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logOut, getSession } from "../../auth";
 
 const TopBar = props => {
   const session = getSession();
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `${count} clicks`;
+  });
 
   return (
     <div className="top-bar">
-      <Link to="/messages">
-        <i className="icon fab fa-facebook-messenger" />
-      </Link>
+      <a onClick={() => setCount(count + 1)}>
+        CLICK ME AND LOOK AT THE DOCUMENT TITLE (TAB)
+      </a>
       <ul className={`${props.userPosition || "right"}`}>
         <li>
           <Link to="/login" onClick={logOut}>

@@ -1,47 +1,29 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import * as api from "../../../api/message";
 import Chat from "./Chat";
 
-class ChatContainer extends Component {
-  constructor(props) {
-    super(props);
+const ChatContainer = ({ match }) => {
+  const [messages, setMessages] = useState([]);
+  const {
+    params: { username }
+  } = match;
 
-    this.state = {
-      messages: []
-    };
-  }
+  useEffect(() => {
+    fetchMessages(username);
+  }, [username]);
 
-  componentDidMount() {
-    this.fetchMessages(this.props.match.params.username);
-  }
-
-  fetchMessages = username => {
-    this.setState({ messages: [] });
+  const fetchMessages = username => {
+    setMessages([]);
     setTimeout(() => {
       api.fetchMessages(username).then(messages => {
-        this.setState({ messages });
+        setMessages(messages);
       });
     }, 1000);
   };
 
-  componentDidUpdate(nextProps) {
-    if (this.props.match.params.username !== nextProps.match.params.username) {
-      this.fetchMessages(nextProps.match.params.username);
-    }
-  }
-
-  render() {
-    const { messages } = this.state;
-    const { match } = this.props;
-
-    return <Chat messages={messages} match={match} />;
-  }
-}
-
-ChatContainer.propTypes = {
-  match: PropTypes.object.isRequired
+  return <Chat messages={messages} match={match} />;
 };
 
 export default ChatContainer;

@@ -1,26 +1,13 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Input from "../Form/Input";
 import "./Login.css";
 
-class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: ""
-    };
-  }
+const Login = ({ history }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  handleChange = (name, event) => {
-    let change = {};
-    change[name] = event.target.value;
-    this.setState(change);
-  };
-
-  handleSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const { history } = this.props;
-    const { password, email } = this.state;
 
     if (!password || !email) {
       alert("Email and password are required");
@@ -41,32 +28,30 @@ class Login extends Component {
     }
   };
 
-  render() {
-    return (
-      <form className="form-signin" onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <h2 className="form-signin-heading">Please sign in</h2>
-        </div>
-        <div className="form-group">
-          <Input
-            type="email"
-            placeholder="Enter email"
-            value={this.state.email}
-            onChange={e => this.handleChange("email", e)}
-          />
-          <Input
-            type="password"
-            placeholder="Enter password"
-            value={this.state.password}
-            onChange={e => this.handleChange("password", e)}
-          />
-        </div>
-        <button type="submit" className="btn btn-lg btn-primary btn-block">
-          Sign in
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form className="form-signin" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <h2 className="form-signin-heading">Please sign in</h2>
+      </div>
+      <div className="form-group">
+        <Input
+          type="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+      </div>
+      <button type="submit" className="btn btn-lg btn-primary btn-block">
+        Sign in
+      </button>
+    </form>
+  );
+};
 
 export default Login;
