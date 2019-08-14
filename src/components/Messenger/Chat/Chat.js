@@ -28,7 +28,7 @@ const Chat = ({ messages = [], match, isMessageDetailOpen }) => {
   return (
     <ChatWrapper>
       <ChatBar messages={messages} username={username} match={match} />
-      <MessagesWrapper>
+      <MessagesWrapper data-cy="chat">
         <Messages messages={messages} username={username} />
         {isMessageDetailOpen && <UserDetail username={username} />}
       </MessagesWrapper>

@@ -89,6 +89,7 @@ export class Messages extends React.Component {
     const { messages = [], username } = this.props;
     const styledConversation = messages.map((message, i) => (
       <MessageWrapper
+        data-cy={`message ${i}`}
         key={i}
         from={message.from === "you" ? "sent" : "received"}
       >
