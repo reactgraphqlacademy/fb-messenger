@@ -36,12 +36,12 @@ npm install
 - [ ] 3. Refactor the `src/components/Messenger/ThreadsContainer.js` component so it uses the useState and useEffect hooks. Tasks:
   - [ ] 3.1. Refactor the class component into a function component.
   - [ ] 3.2. Replace this.setState with useState.
-  - [ ] 3.3. Invoke the fetchThreads functions only once (on mount). Hint: [If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array ([]) as a second argument. This tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run.](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
+  - [ ] 3.3. Invoke the fetchThreads function only once (on mount). Hint: [If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array ([]) as a second argument. This tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run.](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
 
 * [ ] 4. Refactor the `src/components/Messenger/Chat/ChatContainer.js` component so it uses the useState and useEffect hooks. Tasks:
   - [ ] 3.1. Refactor the class component into a function component.
   - [ ] 3.2. Replace this.setState with useState.
-  - [ ] 3.3. Invoke the fetchMessages functions only once (on mount). Hint: [only run the effect when the username from the URL changes](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
+  - [ ] 3.3. Invoke the fetchMessages function only once (on mount). Hint: [only run the effect when the username from the URL changes](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
 
 ### Bonus
 
