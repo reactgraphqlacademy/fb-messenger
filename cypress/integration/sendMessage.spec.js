@@ -1,9 +1,7 @@
 describe("Send message", function() {
   beforeEach(() => {
     cy.visit("/login");
-    cy.get('[type="email"]').type("clone@facebook.com");
-    cy.get('input[type="password"]').type("123");
-    cy.get("[data-cy=submit-button]").click();
+    cy.login();
   });
 
   const clickMessenger = () => {
