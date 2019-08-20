@@ -9,6 +9,7 @@ import Messages from "./Messages";
 
 const MessagesWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100%;
 `;
 

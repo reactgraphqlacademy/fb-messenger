@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { connect } from "react-redux";
@@ -7,7 +7,6 @@ import colours from "../../../styles/export/colours.css";
 import { receiveMessage } from "../../../actions/messages";
 import * as api from "../../../api/message";
 import Avatar from "../../Layout/Avatar";
-import Icon from "../../Layout/Icon";
 
 const MessagesWrapper = styled.div`
   display: flex;
@@ -35,7 +34,7 @@ const NewMessage = styled.div`
   height: 60px;
 `;
 
-export const MessageBox = styled.input`
+export const InputMessage = styled.input`
   border-color: transparent;
   width: 90%;
 `;
@@ -50,12 +49,6 @@ const MessageWrapper = styled.div`
     `}
 `;
 
-const MessageRead = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-end;
-`;
-
 export const Message = styled.div`
   border-radius: 20px;
   padding: 0.5em 1em;
@@ -67,14 +60,10 @@ export const Message = styled.div`
     props.from === "received" ? colours.black : colours.white};
 `;
 
-export class Messages extends React.Component {
-  state = {
-    newMessage: ""
-  };
+const Messages = ({ username, receiveMessage, messages = [], api }) => {
+  const [newMessage, setNewMessage] = useState("");
 
-  sendMessage = async () => {
-    const { username, receiveMessage, api } = this.props;
-    const { newMessage } = this.state;
+  const sendMessage = async () => {
     const message = await api.sendMessage({
       message: newMessage,
       to: username
@@ -82,50 +71,39 @@ export class Messages extends React.Component {
 
     receiveMessage(message);
 
-    this.setState({ newMessage: "" });
+    setNewMessage("");
   };
 
-  render() {
-    const { messages = [], username } = this.props;
-    const styledConversation = messages.map((message, i) => (
-      <MessageWrapper
-        key={i}
-        from={message.from === "you" ? "sent" : "received"}
-      >
-        {message.to === "you" && <Avatar username={username} size="medium" />}
-        <Message from={message.from === "you" ? "sent" : "received"}>
-          {message.message}
-        </Message>
-        {message.from === "you" && (
-          <MessageRead>
-            <Icon name="check-circle" size={0.6} />
-          </MessageRead>
-        )}
-      </MessageWrapper>
-    ));
+  const styledConversation = messages.map((message, i) => (
+    <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
+      {message.to === "you" && <Avatar username={username} size="medium" />}
+      <Message from={message.from === "you" ? "sent" : "received"}>
+        {message.message}
+      </Message>
+    </MessageWrapper>
+  ));
 
-    return (
-      <MessagesWrapper>
-        <MessagesList>
-          {styledConversation.length ? (
-            styledConversation
-          ) : (
-            <p>You have no messages</p>
-          )}
-        </MessagesList>
-        <NewMessage>
-          <MessageBox
-            onChange={e => this.setState({ newMessage: e.target.value })}
-            type="text"
-            value={this.state.newMessage}
-            placeholder="Type your message..."
-          />
-          <button onClick={this.sendMessage}>Send</button>
-        </NewMessage>
-      </MessagesWrapper>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <MessagesList>
+        {styledConversation.length ? (
+          styledConversation
+        ) : (
+          <p>You have no messages</p>
+        )}
+      </MessagesList>
+      <NewMessage>
+        <InputMessage
+          onChange={e => setNewMessage(e.target.value)}
+          type="text"
+          value={newMessage}
+          placeholder="Type your message..."
+        />
+        <button onClick={sendMessage}>Send</button>
+      </NewMessage>
+    </React.Fragment>
+  );
+};
 
 Messages.defaultProps = {
   api
