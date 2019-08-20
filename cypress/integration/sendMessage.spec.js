@@ -17,11 +17,20 @@ describe("Send message", function() {
     cy.url().should("include", "/messages");
   });
 
-  it("shows the messenger with our initial messages", function() {
+  it("shows the messenger with  initial messages", function() {
     clickMessenger();
     cy.get("[data-cy=thread]").click();
     cy.get("[data-cy=chat]")
       .contains("Hi!")
       .should("have.text", "Hi! how do you find the React course?");
+  });
+
+  it("sends messages", function() {
+    const TEST_MESSAGE = "test text";
+    clickMessenger();
+    cy.get("[data-cy=thread]").click();
+    cy.get(".sc-cSHVUG").type(TEST_MESSAGE);
+    cy.get("button").click();
+    cy.get('[data-cy="message 2"]').should("have.text", TEST_MESSAGE);
   });
 });

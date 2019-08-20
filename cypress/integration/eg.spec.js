@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 describe("fb messenger", function() {
   it("loads the login page", function() {
     cy.visit("/");
