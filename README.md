@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to start testing in JavaScript.
+The goal of this exercise is to learn how to start e2e testing in with cypress.
 
 ## To get started
 
