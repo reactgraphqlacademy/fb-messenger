@@ -54,16 +54,11 @@ HINT: you may want to implement the following data-cy selectors in the code to h
 
 - Create a custom cypress command which handles the login for you in `support/commands.js` and refactor your tests to make use of the command.
 
--
+- Write some more tests! What other things constitute important functionality that we have not yet tested?
 
 ## Links
 
-- [https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/](https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/)
-- [https://martinfowler.com/bliki/TestPyramid.html](https://martinfowler.com/bliki/TestPyramid.html)
-- [https://facebook.github.io/jest/docs/en/expect.html#content](https://facebook.github.io/jest/docs/en/expect.html#content)
-- [https://martinfowler.com/articles/mocksArentStubs.html](https://martinfowler.com/articles/mocksArentStubs.html)
-- [https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a](https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a)
-- [https://www.youtube.com/watch?v=EZ05e7EMOLM](https://www.youtube.com/watch?v=EZ05e7EMOLM)
+- [Cypess Docs](https://docs.cypress.io/guides/overview/why-cypress.html)
 
 ## License
 
