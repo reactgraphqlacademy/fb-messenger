@@ -28,7 +28,8 @@ If you haven't already set up your project, head here and follow the instruction
 
 TIP: You can see in your editor the reference types using `/// <reference types="Cypress" />` at the top of any test file as long as it uses IntelliSense. If you use VS Code you can add a tsconfig.json and include the following so you don't need to add it at the top of test files:
 
-````{
+```
+{
     "compilerOptions": {
         "allowJs": true,
         "baseUrl": "../node_modules",
@@ -39,9 +40,8 @@ TIP: You can see in your editor the reference types using `/// <reference types=
     "include": [
         "**/*.*"
     ]
-}```
-
-
+}
+```
 
 ## Part 1
 
@@ -86,4 +86,3 @@ HINT: you may want to implement the following data-cy selectors in the code to h
 ## License
 
 This material is available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html).
-````
