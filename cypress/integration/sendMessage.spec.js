@@ -10,7 +10,7 @@ describe("Send message", function() {
       .click();
   };
 
-  it("clicking '1-week bootcamp' navigates to a correct url", function() {
+  it("clicking 'Messenger' navigates to a correct url", function() {
     clickMessenger();
     cy.url().should("include", "/messages");
   });
@@ -27,7 +27,7 @@ describe("Send message", function() {
     const TEST_MESSAGE = "test text";
     clickMessenger();
     cy.get("[data-cy=thread]").click();
-    cy.get(".sc-cSHVUG").type(TEST_MESSAGE);
+    cy.get("[data-cy=messageBox]").type(TEST_MESSAGE);
     cy.get("button").click();
     cy.get('[data-cy="message 2"]').should("have.text", TEST_MESSAGE);
   });

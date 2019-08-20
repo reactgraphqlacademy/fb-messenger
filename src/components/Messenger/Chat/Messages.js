@@ -120,6 +120,7 @@ export class Messages extends React.Component {
             type="text"
             value={this.state.newMessage}
             placeholder="Type your message..."
+            data-cy="messageBox"
           />
           <button onClick={this.sendMessage}>Send</button>
         </NewMessage>
