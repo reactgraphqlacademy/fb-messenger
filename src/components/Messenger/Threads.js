@@ -7,24 +7,25 @@ import colours from "../../styles/export/colours.css";
 import Avatar from "../Layout/Avatar";
 import Icon from "../Layout/Icon";
 
-// const ThreadsWrapper = styled.div`
-//   display: flex;
-//   border-right: 1px solid ${colours.mediumGrey};
-//   flex-direction: column;
-//   flex: 1;
-// `;
-
 const ThreadsWrapper = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  flex-direction: column;
-  min-height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   border-right: 1px solid ${colours.mediumGrey};
+  flex-direction: column;
+  flex: 1;
+  max-width: 350px;
 `;
+
+// const ThreadsWrapper = styled.div`
+//   display: flex;
+//   flex-flow: row wrap;
+//   flex-direction: column;
+//   min-height: 100vh;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   border-right: 1px solid ${colours.mediumGrey};
+// `;
 
 const ThreadBar = styled.div`
   border-bottom: 1px solid ${colours.mediumGrey};

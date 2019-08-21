@@ -9,8 +9,10 @@ import Messages from "./Messages";
 
 const MessagesWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex: 2;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
 `;
 
 const ChatWrapper = styled.div`

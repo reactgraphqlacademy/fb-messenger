@@ -10,6 +10,7 @@ const MessengerWrapper = styled.div`
   display: flex;
   flex: 1;
   border-right: 1px solid ${colours.mediumGrey};
+  overflow: hidden;
 `;
 
 const Messenger = ({ match }) => (

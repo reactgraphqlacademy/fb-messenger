@@ -8,7 +8,7 @@ import { receiveMessage } from "../../../actions/messages";
 import * as api from "../../../api/message";
 import Avatar from "../../Layout/Avatar";
 
-const MessagesWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex: 2;
   flex-direction: column;
@@ -25,7 +25,7 @@ const MessagesList = styled.div`
 `;
 
 const NewMessage = styled.div`
-  min-height: 20px;
+  min-height: 60px;
   padding: 1em;
   border-top: 1px solid ${colours.mediumGrey};
   font-size: 0.9rem;
@@ -84,7 +84,7 @@ const Messages = ({ username, receiveMessage, messages = [], api }) => {
   ));
 
   return (
-    <React.Fragment>
+    <Wrapper>
       <MessagesList>
         {styledConversation.length ? (
           styledConversation
@@ -101,7 +101,7 @@ const Messages = ({ username, receiveMessage, messages = [], api }) => {
         />
         <button onClick={sendMessage}>Send</button>
       </NewMessage>
-    </React.Fragment>
+    </Wrapper>
   );
 };
 

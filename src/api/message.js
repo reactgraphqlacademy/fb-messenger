@@ -3,7 +3,7 @@ export const fetchMessages = username => {
     return message.from === username || message.to === username;
   };
 
-  return fetch("/mocks/messages.js", {
+  return fetch("/mocks/messages.json", {
     method: "get"
   })
     .then(response => response.json())
