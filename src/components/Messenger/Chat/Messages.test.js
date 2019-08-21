@@ -3,9 +3,16 @@ import { shallow, mount } from "enzyme";
 import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
+import "@testing-library/jest-dom/extend-expect";
+import { render, fireEvent, wait } from "@testing-library/react";
 
 import { configureStore } from "../../../store";
 import ComposedMessages, { Messages, MessageBox, Message } from "./Messages";
+
+const Root = ({ children }) => {
+  const store = configureStore();
+  return <Provider store={store}>{children}</Provider>;
+};
 
 describe("<Messages />", () => {
   it(`should send a message (unit test)`, async () => {
@@ -27,7 +34,7 @@ describe("<Messages />", () => {
     // - What's your level of confidence that the user will be able to send a message?
   });
 
-  it(`should send a message (integration test)`, async () => {
+  it(`should send a message (integration test with Enzyme)`, async () => {
     // 1. shallow or mount the <Messages /> component ?
     //    A) which component, Messages or ComposedMessages?
     //    B) If you mount the component then all the children are rendered. Hint: you need to provide a store.
@@ -44,5 +51,59 @@ describe("<Messages />", () => {
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
     // - What's your level of confidence that the user will be able to send a message?
+  });
+
+  it(`should send a message (integration test with React Testing Library)`, async () => {
+    const api = {
+      sendMessage: jest.fn(message => Promise.resolve(message))
+    };
+
+    const { queryAllByTestId, getByText, getByPlaceholderText } = render(
+      <h1>Replace this h1 with the component/s you are testing</h1>
+    );
+
+    // REMOVE IN EXERCISE
+    // SOLUTION
+    // const { queryAllByTestId, getByText, getByPlaceholderText } = render(
+    //   <Root>
+    //     <ComposedMessages api={api} username="alex_lobera" />
+    //   </Root>
+    // );
+
+    // TODO. It expects to have cero messages in the chat
+
+    // REMOVE IN EXERCISE
+    // SOLUTION
+    //expect(queryAllByTestId(/message-*./i).length).toBe(0);
+
+    // TODO. Fire an on change event on the input message with the text "Hi!"
+
+    // REMOVE IN EXERCISE
+    // SOLUTION
+    // fireEvent.change(getByPlaceholderText(/Type your message.../i), {
+    //   target: { value: "Hi!" }
+    // });
+
+    // TODO fire the click event on the send message button
+    // https://testing-library.com/docs/dom-testing-library/api-events#fireevent-eventname
+
+    // REMOVE IN EXERCISE
+    // SOLUTION
+    // fireEvent.click(getByText(/Send/i));
+
+    // https://testing-library.com/docs/dom-testing-library/api-async#wait
+    await wait(() => {
+      // TODO. Write the following expectations:
+      // 1) It expects to have 1 message in the chat
+      // 2) It expects the last message on the chat to be "Hi!"
+      //
+      //
+      //
+      //
+      // SOLUTION
+      // const messages = queryAllByTestId(/message-*./i);
+      // expect(messages.length).toBe(1);
+      // expect(messages[messages.length - 1]).toHaveTextContent("Hi!");
+    });
   });
 });
