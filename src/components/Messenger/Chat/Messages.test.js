@@ -64,6 +64,7 @@ describe("<Messages />", () => {
     );
 
     // TODO. It expects to have cero messages in the chat
+    // Hint: You might need to add something to the Message component to facilitate this
 
     // TODO. Fire an on change event on the input message with the text "Hi!"
 
