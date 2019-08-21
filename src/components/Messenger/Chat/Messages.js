@@ -93,10 +93,7 @@ export class Messages extends React.Component {
         from={message.from === "you" ? "sent" : "received"}
       >
         {message.to === "you" && <Avatar username={username} size="medium" />}
-        <Message
-          data-testid={`message-${message.id}`}
-          from={message.from === "you" ? "sent" : "received"}
-        >
+        <Message from={message.from === "you" ? "sent" : "received"}>
           {message.message}
         </Message>
         {message.from === "you" && (
