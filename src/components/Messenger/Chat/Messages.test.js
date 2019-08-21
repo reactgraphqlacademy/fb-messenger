@@ -79,7 +79,7 @@ describe("<Messages />", () => {
       // TODO. Write the following expectations:
       // 1) It expects to have 1 message in the chat
       // 2) It expects the last message on the chat to be "Hi!"
-      //    Hint: You might want to use the (some component).toHaveTextContent(some text) to facilitate this
+      //    Hint: You might want to use the '(some component).toHaveTextContent(some text)' to facilitate this
       //          .toHaveTextContent() comes from jest-dom's assertions -> import "@testing-library/jest-dom/extend-expect";
     });
   });
