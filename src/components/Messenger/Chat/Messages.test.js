@@ -3,6 +3,8 @@ import { shallow, mount } from "enzyme";
 import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
+import "@testing-library/jest-dom/extend-expect";
+import { render, fireEvent, wait } from "@testing-library/react";
 
 import { configureStore } from "../../../store";
 import ComposedMessages, { Messages, MessageBox, Message } from "./Messages";
@@ -64,6 +66,33 @@ describe("<Messages />", () => {
       wrapper.update();
       expect(wrapper.find(Message).length).toBe(1);
       expect(wrapper.find(Message).text()).toBe("hi there!");
+    });
+  });
+
+  it(`should send a message (integration test with React Testing Library)`, async () => {
+    const api = {
+      sendMessage: jest.fn(message => Promise.resolve(message))
+    };
+
+    const { queryAllByTestId, getByText, getByPlaceholderText } = render(
+      <Root>
+        <ComposedMessages api={api} username="alex_lobera" />
+      </Root>
+    );
+
+    expect(queryAllByTestId(/message-*./i).length).toBe(0);
+
+    fireEvent.change(getByPlaceholderText(/Type your message.../i), {
+      target: { value: "Hi!" }
+    });
+
+    fireEvent.click(getByText(/Send/i));
+
+    // https://testing-library.com/docs/dom-testing-library/api-async#wait
+    await wait(() => {
+      const messages = queryAllByTestId(/message-*./i);
+      expect(messages.length).toBe(1);
+      expect(messages[messages.length - 1]).toHaveTextContent("Hi!");
     });
   });
 });
