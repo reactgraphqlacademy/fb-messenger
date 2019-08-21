@@ -59,23 +59,28 @@ describe("<Messages />", () => {
     };
 
     // TODO. Replace the following h1 with the component/s you are testing
+    // Hint: It's very (very very) similar to what you did in the previous integration test
     const { queryAllByTestId, getByText, getByPlaceholderText } = render(
       <h1>Replace this h1 with the component/s you are testing</h1>
     );
 
-    // TODO. It expects to have cero messages in the chat
+    // TODO. It expects to have zero messages in the chat
     // Hint: You might need to add something to the Message component to facilitate this
 
     // TODO. Fire an on change event on the input message with the text "Hi!"
+    // Hint: You might want to use the placeholder to find the input
 
     // TODO fire the click event on the send message button
     // https://testing-library.com/docs/dom-testing-library/api-events#fireevent-eventname
+    // Question: What do you think is the best way to find the UI element that executes the send message action?
 
     // https://testing-library.com/docs/dom-testing-library/api-async#wait
     await wait(() => {
       // TODO. Write the following expectations:
       // 1) It expects to have 1 message in the chat
       // 2) It expects the last message on the chat to be "Hi!"
+      //    Hint: You might want to use the (some component).toHaveTextContent(some text) to facilitate this
+      //          .toHaveTextContent() comes from jest-dom's assertions -> import "@testing-library/jest-dom/extend-expect";
     });
   });
 });
