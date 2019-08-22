@@ -59,7 +59,7 @@ export const Message = styled.div`
     props.from === "received" ? colours.black : colours.white};
 `;
 
-const Messages = ({ username, receiveMessage, messages = [], api }) => {
+export const Messages = ({ username, receiveMessage, messages = [], api }) => {
   const [newMessage, setNewMessage] = useState("");
 
   const sendMessage = async () => {
