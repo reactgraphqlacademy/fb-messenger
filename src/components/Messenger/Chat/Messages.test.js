@@ -10,6 +10,36 @@ import ComposedMessages, { Messages, InputMessage, Message } from "./Messages";
 describe("<Messages />", () => {
   it(`should send a message (unit test)`, async () => {
     // TODO define unit
+    const receiveMessage = jest.fn();
+    const fakeApi = {
+      sendMessage: jest.fn(message => message)
+    };
+    const wrapper = shallow(
+      <Messages
+        username="alex_lobera"
+        receiveMessage={receiveMessage}
+        api={fakeApi}
+      />
+    );
+
+    wrapper
+      .find(InputMessage)
+      .simulate("change", { target: { value: "hi there!" } });
+
+    wrapper.find("button").simulate("click");
+
+    await waitForExpect(() => {
+      expect(fakeApi.sendMessage).toHaveBeenCalledWith({
+        message: "hi there!",
+        to: "alex_lobera"
+      });
+
+      expect(receiveMessage).toHaveBeenCalledWith({
+        message: "hi there!",
+        to: "alex_lobera"
+      });
+    });
+
     // Final questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
