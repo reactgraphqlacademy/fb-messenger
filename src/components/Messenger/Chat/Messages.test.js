@@ -15,7 +15,7 @@ describe("<Messages />", () => {
     // TODO define unit
     const receiveMessage = jest.fn();
     const fakeApi = {
-      sendMessage: jest.fn(message => message)
+      sendMessage: jest.fn(message => Promise.resolve(message))
     };
     const wrapper = shallow(
       <Messages
