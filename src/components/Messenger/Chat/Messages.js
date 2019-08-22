@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import colours from "../../../styles/export/colours.css";
 import { receiveMessage } from "../../../actions/messages";
-import * as api from "../../../api/message";
+import * as apiImplementation from "../../../api/message";
 import Avatar from "../../Layout/Avatar";
 
 const MessagesLayout = styled.div`
@@ -59,7 +59,12 @@ export const Message = styled.div`
     props.from === "received" ? colours.black : colours.white};
 `;
 
-export const Messages = ({ username, receiveMessage, messages = [], api }) => {
+export const Messages = ({
+  username,
+  receiveMessage,
+  messages = [],
+  api = apiImplementation
+}) => {
   const [newMessage, setNewMessage] = useState("");
 
   const sendMessage = async () => {
@@ -98,10 +103,6 @@ export const Messages = ({ username, receiveMessage, messages = [], api }) => {
       </NewMessage>
     </MessagesLayout>
   );
-};
-
-Messages.defaultProps = {
-  api
 };
 
 const mapStateToProps = state => ({

@@ -5,10 +5,11 @@ import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
 
 import { configureStore } from "../../../store";
-import ComposedMessages, { Messages, MessageBox, Message } from "./Messages";
+import ComposedMessages, { Messages, InputMessage, Message } from "./Messages";
 
 describe("<Messages />", () => {
   it(`should send a message (unit test)`, async () => {
+    // TODO define unit
     // Final questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
@@ -16,6 +17,7 @@ describe("<Messages />", () => {
   });
 
   it(`should send a message (integration test with Enzyme)`, async () => {
+    // TODO define integration test
     // Final questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
