@@ -2,159 +2,16 @@
   "threads": [
     {
       "lastMessage": {
-        "message": "Hi! how do you find the React course?",
+        "message": "Thanks Kent 😅",
         "time": "2018-02-11T12:00:00Z"
       },
       "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
+        "title": "Mr",
+        "first": "Kent",
+        "last": "C. Dodds"
       },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
-    },
-    {
-      "lastMessage": {
-        "message": "Hi! how do you find the React course?",
-        "time": "2018-02-11T12:00:00Z"
-      },
-      "name": {
-        "title": "miss",
-        "first": "mary",
-        "last": "jones"
-      },
-      "email": "mary.jones56@example.com",
-      "username": "crazypeacock512"
+      "email": "kent@cdodds.com",
+      "username": "kentcdodds"
     }
   ]
 }

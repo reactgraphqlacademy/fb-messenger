@@ -1,51 +1,37 @@
 [
   {
-    "from": "crazypeacock512",
+    "from": "kentcdodds",
     "to": "you",
     "time": "2018-02-11T12:00:00Z",
-    "message": "Hi! how do you find the React course?",
-    "id": "k0ut102efa"
-  },
-  {
-    "from": "crazypeacock512",
-    "to": "you",
-    "time": "2018-02-11T12:00:00Z",
-    "message": "Hi! how do you find the React course?",
-    "id": "k0ut102efa"
-  },
-  {
-    "from": "crazypeacock512",
-    "to": "you",
-    "time": "2018-02-11T12:00:00Z",
-    "message": "Hi! how do you find the React course?",
-    "id": "k0ut102efa"
-  },
-  {
-    "from": "crazypeacock512",
-    "to": "you",
-    "time": "2018-02-11T12:00:00Z",
-    "message": "Hi! how do you find the React course?",
-    "id": "k0ut102efa"
-  },
-  {
-    "from": "crazypeacock512",
-    "to": "you",
-    "time": "2018-02-11T12:00:00Z",
-    "message": "Hi! how do you find the React course?",
-    "id": "k0ut102efa"
-  },
-  {
-    "from": "crazypeacock512",
-    "to": "you",
-    "time": "2018-02-11T12:00:00Z",
-    "message": "Hi! how do you find the React course?",
+    "message": "Hi! Are you ready for the meetup about advanced testing?",
     "id": "k0ut102efa"
   },
   {
     "from": "you",
-    "to": "crazypeacock512",
-    "time": "2018-02-10T11:33:00Z",
-    "message": "I love it! specially the feedback form at the end, I can't wait to it xD",
-    "id": "zrhf1qmsoq"
+    "to": "kentcdodds",
+    "time": "2018-02-11T12:01:00Z",
+    "message": "I'm indecisive between slides and live coding?",
+    "id": "k0ut102efa"
+  },
+  {
+    "from": "kentcdodds",
+    "to": "you",
+    "time": "2018-02-11T12:01:00Z",
+    "message": "I'd go for live coding, it's always super fun",
+    "id": "k0ut102efa"
+  },
+  {
+    "from": "kentcdodds",
+    "to": "you",
+    "time": "2018-02-11T12:01:00Z",
+    "message": "when it works 🤣",
+    "id": "k0ut102efa"
+  },
+  {
+    "from": "you",
+    "to": "kentcdodds",
+    "time": "2018-02-11T12:01:00Z",
+    "message": "Thanks Kent 😅",
+    "id": "k0ut102efa"
   }
 ]

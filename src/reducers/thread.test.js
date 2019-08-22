@@ -1,9 +1,6 @@
-import {
-  receiveThread,
-  RECEIVE_THREAD,
-} from '../actions/thread'
+import { receiveThread, RECEIVE_THREAD } from "../actions/thread";
 
-import threadReducer from './thread'
+import threadReducer from "./threads";
 
 /*
 

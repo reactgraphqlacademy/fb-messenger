@@ -1,40 +1,31 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
 import Threads from "./Threads";
-import { fetchThreads } from "../../api/thread";
-
-import { receiveThreads } from "../../actions/thread";
+import { fetchFirstThread } from "../../api/thread";
+import { receiveThread } from "../../actions/thread";
 
 class ThreadsContainer extends Component {
   componentDidMount() {
-    fetchThreads().then(({ threads }) => {
-      this.props.receiveThreads(threads);
+    fetchFirstThread().then(thread => {
+      this.props.receiveThread(thread);
     });
   }
 
   render() {
-    const { history, match, threads } = this.props;
+    const { history, match, thread } = this.props;
 
-    return <Threads threads={threads} history={history} match={match} />;
+    return <Threads thread={thread} history={history} match={match} />;
   }
 }
 
 const mapStateToProps = state => ({
-  threads: state.threads
+  thread: state.thread
 });
 
 const mapDispatchToProps = {
-  receiveThreads
-};
-
-ThreadsContainer.propTypes = {
-  receiveThreads: PropTypes.func.isRequired,
-  threads: PropTypes.object,
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  receiveThread
 };
 
 export default withRouter(

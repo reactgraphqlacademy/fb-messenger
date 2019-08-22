@@ -1,6 +1,6 @@
-export const RECEIVE_THREADS = "RECEIVE_THREADS";
+export const RECEIVE_THREAD = "RECEIVE_THREAD";
 
-export const receiveThreads = threads => ({
-  type: RECEIVE_THREADS,
-  threads
+export const receiveThread = thread => ({
+  type: RECEIVE_THREAD,
+  thread
 });

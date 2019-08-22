@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { connect } from "react-redux";
 
@@ -8,14 +7,14 @@ import { receiveMessage } from "../../../actions/messages";
 import * as api from "../../../api/message";
 import Avatar from "../../Layout/Avatar";
 
-const Wrapper = styled.div`
+const MessagesLayout = styled.div`
   display: flex;
   flex: 2;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-const MessagesList = styled.div`
+const List = styled.div`
   padding: 1em;
   overflow-y: auto;
   p {
@@ -39,7 +38,7 @@ export const InputMessage = styled.input`
   width: 90%;
 `;
 
-const MessageWrapper = styled.div`
+const Item = styled.div`
   padding: 0.5em;
   display: flex;
   ${props =>
@@ -74,24 +73,20 @@ const Messages = ({ username, receiveMessage, messages = [], api }) => {
     setNewMessage("");
   };
 
-  const styledConversation = messages.map((message, i) => (
-    <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
+  const conversation = messages.map((message, i) => (
+    <Item key={i} from={message.from === "you" ? "sent" : "received"}>
       {message.to === "you" && <Avatar username={username} size="medium" />}
       <Message from={message.from === "you" ? "sent" : "received"}>
         {message.message}
       </Message>
-    </MessageWrapper>
+    </Item>
   ));
 
   return (
-    <Wrapper>
-      <MessagesList>
-        {styledConversation.length ? (
-          styledConversation
-        ) : (
-          <p>You have no messages</p>
-        )}
-      </MessagesList>
+    <MessagesLayout>
+      <List>
+        {conversation.length ? conversation : <p>You have no messages</p>}
+      </List>
       <NewMessage>
         <InputMessage
           onChange={e => setNewMessage(e.target.value)}
@@ -101,19 +96,12 @@ const Messages = ({ username, receiveMessage, messages = [], api }) => {
         />
         <button onClick={sendMessage}>Send</button>
       </NewMessage>
-    </Wrapper>
+    </MessagesLayout>
   );
 };
 
 Messages.defaultProps = {
   api
-};
-
-Messages.propTypes = {
-  messages: PropTypes.array,
-  username: PropTypes.string.isRequired,
-  api: PropTypes.object.isRequired,
-  receiveMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -18,7 +18,7 @@ const MessagesWrapper = styled.div`
 const ChatWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex-basis: 70%;
+  flex: 1;
 `;
 
 const Chat = ({ messages = [], match, isMessageDetailOpen }) => {
