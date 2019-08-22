@@ -40,7 +40,7 @@ describe("<Messages />", () => {
       });
     });
 
-    // Final questions:
+    // Questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
     // - What's your level of confidence that the user will be able to send a message?
@@ -48,14 +48,14 @@ describe("<Messages />", () => {
 
   it(`should send a message (integration test with Enzyme)`, async () => {
     // TODO define integration test
-    // Final questions:
+    // Questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
     // - What's your level of confidence that the user will be able to send a message?
   });
 
   it(`should send a message (integration test with React Testing Library)`, async () => {
-    // Final questions:
+    // Questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
     // - What's your level of confidence that the user will be able to send a message?
