@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import colours from '../../styles/export/colours.css'
+import React from "react";
+import styled from "styled-components";
+import colours from "../../styles/export/colours.css";
 
 const FooterWrapper = styled.div`
   padding: 8px;
@@ -8,12 +8,8 @@ const FooterWrapper = styled.div`
   background: ${colours.lightGrey};
   border-top: 1px solid ${colours.mediumGrey};
   font-size: 0.8rem;
-`
+`;
 
-const Footer = (props) => (
-  <FooterWrapper>
-    ReactJS Academy
-  </FooterWrapper>
-)
+const Footer = props => <FooterWrapper>React GraphQL Academy</FooterWrapper>;
 
-export default Footer
+export default Footer;
