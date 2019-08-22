@@ -3,6 +3,7 @@ import { shallow, mount } from "enzyme";
 import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
+import { act } from "react-dom/test-utils";
 
 import { configureStore } from "../../../store";
 import ComposedMessages, { Messages, InputMessage, Message } from "./Messages";
