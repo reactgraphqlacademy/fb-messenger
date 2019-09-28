@@ -1,5 +1,5 @@
-import React from 'react'
-import Icon from '../../Layout/Icon'
+import React from 'react';
+import Icon from '../../Layout/Icon';
 
 const ConversationBar = ({ selectedUser }) => (
   <div className="conversation-bar">
@@ -13,6 +13,6 @@ const ConversationBar = ({ selectedUser }) => (
       <Icon name="info-circle" />
     </div>
   </div>
-)
+);
 
-export default ConversationBar
+export default ConversationBar;

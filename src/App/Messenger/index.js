@@ -1,47 +1,33 @@
-import React, { Component } from "react";
-import Threads from "./Threads";
-import Chat from "./Chat";
-import messages from "../../mocks/messages";
-import users from "../../mocks/users";
+import React, { Component } from 'react';
+import Threads from './Threads';
+import Chat from './Chat';
+import mockMessages from '../../mocks/messages';
+import users from '../../mocks/users';
 
-const filterMessageByUsername = ({ username } = {}) => message =>
+const filterMessageByUsername = ({ username } = {}) => (message) =>
   message.from === username || message.to === username;
 
-class Messenger extends Component {
-  constructor() {
-    super();
-    const selectedUser = users[0];
-    this.state = {
-      selectedUser: selectedUser,
-      messages: messages.filter(filterMessageByUsername(selectedUser))
-    };
+function Messenger({ toggleModal }) {
+  const [user, setUser] = React.useState(users[0]);
+  const [messages, setMessages] = React.useState(
+    mockMessages.filter(filterMessageByUsername(user)),
+  );
+
+  function selectUser(userSelected = {}) {
+    setUser(userSelected);
+    setMessages(mockMessages.filter(filterMessageByUsername(userSelected)));
   }
 
-  selectUser = (user = {}) => {
-    this.setState({
-      selectedUser: user,
-      messages: messages.filter(filterMessageByUsername(user))
-    });
-  };
-
-  showSettings = () => {
-    this.props.toggleModal();
-  };
-
-  render() {
-    const { selectedUser, messages } = this.state;
-
-    return (
-      <div className="messenger">
-        <Threads
-          showSettings={this.showSettings}
-          selectUser={this.selectUser}
-          selectedUsername={selectedUser.username}
-        />
-        <Chat selectedUser={selectedUser} messages={messages} />
-      </div>
-    );
-  }
+  return (
+    <div className="messenger">
+      <Threads
+        showSettings={toggleModal}
+        selectUser={selectUser}
+        selectedUsername={user.username}
+      />
+      <Chat selectedUser={user} messages={messages} />
+    </div>
+  );
 }
 
 export default Messenger;
