@@ -57,7 +57,11 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 ### Bonus
 
-Checkout this branch [https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs](https://github.com/leanjscom/fb-messenger/tree/styling-in-react-leanjs), `npm install --save redux react-redux`, and move the state of the User Detail open/ close from the url into Redux. You will need to set Redux, which involves creating the store in Redux using the createStore function, adding the Provider component in the Root component, etc
+Add Redux to [your recap app](https://github.com/reactgraphqlacademy/recap). Your goal is to learn how to set the Provider in the app (it was already configured in the fb-messenger exercise), and consolidate what you've learned in Redux by moving the list of photos or characters to Redux. To do that you'll need to:
+- Create your root reducer. Hint, you'll need to add the combineReducers function here
+- Create the store. We recommend to do it in a separate file called configureStore.js. Have a look at how it's done in the fb-messenger Redux exercise branch.
+- Set the Provider at the root component
+- Move the state from the component that owns the list of photos or characters to Redux
 
 ## Links
 
