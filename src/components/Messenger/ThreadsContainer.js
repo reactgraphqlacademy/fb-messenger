@@ -14,7 +14,7 @@ const ThreadsContainer = () => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [fetchThreads]);
 
   return <Threads threads={threads} />;
 };

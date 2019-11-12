@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-
-import * as api from "../../../api/message";
+import { fetchMessages } from "../../../api/message";
 import Chat from "./Chat";
 
 const ChatContainer = ({ match }) => {
@@ -11,17 +9,13 @@ const ChatContainer = ({ match }) => {
   } = match;
 
   useEffect(() => {
-    fetchMessages(username);
-  }, [username]);
-
-  const fetchMessages = username => {
     setMessages([]);
     setTimeout(() => {
-      api.fetchMessages(username).then(messages => {
+      fetchMessages(username).then(messages => {
         setMessages(messages);
       });
     }, 1000);
-  };
+  }, [username, fetchMessages]);
 
   return <Chat messages={messages} match={match} />;
 };
