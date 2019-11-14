@@ -6,7 +6,7 @@ The goals of this exercise is to learn how to use basic forms in react using sta
 
 ### Step 1
 
-If you haven't already set up your project, head here and follow the instructions https://github.com/leanjscom/fb-messenger/blob/master/README.md
+If you haven't already set up your project, head here and follow the instructions https://github.com/reactgraphqlacademy/fb-messenger/blob/master/README.md
 
 ### Step 2
 
