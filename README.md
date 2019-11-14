@@ -80,10 +80,10 @@ Replace the inputs in `Login/index.js` with your `<Input>` component.
 
 ## Articles and links
 
-### ReactJS Academy
+### React GraphQL Academy
 
-- [React forms controlled & uncontrolled components](https://reactjs.academy/blog/react-forms-controlled-and-uncontrolled-components/)
-- [Secure React apps using JWT and React Router](https://reactjs.academy/blog/secure-react-apps-using-JWT-and-react-router/)
+- [React forms controlled & uncontrolled components](https://reactgraphql.academy/blog/react-forms-controlled-and-uncontrolled-components/)
+- [Secure React apps using JWT and React Router](https://reactgraphql.academy/blog/secure-react-apps-using-JWT-and-react-router/)
 
 ### React Router
 
