@@ -68,7 +68,7 @@ Replace the inputs in `Login/index.js` with your `<Input>` component.
 
 ### Bonus
 
-- [ ] Move the fetch api call to `'/api/auth'` from `src/components/Login/index.js` to the `src/api` folder.
+- [ ] Move the fetch api call from `src/components/Login/index.js` to the `src/api` folder.
 
 - [ ] If the user is not logged in, when she or he goes to a private route it should redirect to it after logging in.
       Example, if the user is not logged in, and the the user goes to [http://localhost:3000/messages](http://localhost:3000/messages), then the user will be redirected to [http://localhost:3000/login](http://localhost:3000/login).
