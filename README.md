@@ -57,7 +57,7 @@ Create an Input component that replaces the &lt;input&gt; in your app and can be
 
 ### Bonus
 
-- Move the fetch api call to `'/api/auth'` from `src/components/Login/index.js` to the `src/api` folder
+- Move the fetch api call from `src/components/Login/index.js` to the `src/api` folder
 - If the user is not logged in, when she or he goes to a private route it should redirect to it after logging in. Example, if the user is not logged in, and the the user goes to [http://localhost:3000/messages](http://localhost:3000/messages), then the user will be redirected to [http://localhost:3000/login](http://localhost:3000/login). After logging in, the user should be redirected to [http://localhost:3000/messages](http://localhost:3000/messages), not to the home page.
 - In the Login component, make the redirect when the login is successful more declarative. Meaning, instead of using the prop history.push(), use the &lt;Redirect&gt; component. You have an example [here](https://reacttraining.com/react-router/web/example/auth-workflow). _Hint:_ look at the Login component in the example.
 
