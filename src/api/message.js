@@ -14,7 +14,7 @@ export const fetchMessages = username => {
 
 export const sendMessage = ({ message, to }) => {
   // This fake api just returns the message with the current time and random id
-  return {
+  return Promise.resolve({
     from: "you",
     to,
     message,
@@ -22,5 +22,5 @@ export const sendMessage = ({ message, to }) => {
     id: Math.random()
       .toString(36)
       .substr(2, 10)
-  };
+  });
 };
