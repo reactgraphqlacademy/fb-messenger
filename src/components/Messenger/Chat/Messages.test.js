@@ -7,7 +7,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent, wait } from "@testing-library/react";
 
 import { configureStore } from "../../../store";
-import ComposedMessages, { Messages, MessageBox, Message } from "./Messages";
+import ComposedMessages, { Messages, InputMessage, Message } from "./Messages";
 
 const Root = ({ children }) => {
   const store = configureStore();
