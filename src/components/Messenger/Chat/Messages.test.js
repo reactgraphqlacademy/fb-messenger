@@ -4,6 +4,7 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
 import "@testing-library/jest-dom/extend-expect";
+import { act } from "react-dom/test-utils";
 import { render, fireEvent, wait } from "@testing-library/react";
 
 import { configureStore } from "../../../store";
@@ -20,9 +21,11 @@ describe("<Messages />", () => {
     // You can use console.log(wrapper.debug()) to console.log the component that you are testing
     // 2  Mock the api. Hint, the api functions are passed as a default prop (api = apiImplementation),
     // you can override that prop by doing <Messages api={my_mocked_api_object} />
-    // 3. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // 4. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // 5. Assert the 'message was sent' ->
+    // 3. Add some text to the input. Hint: wrapper.find(InputMessage).props().onChange({ target: { value: 'hi!' }})
+    //      Can we use wrapper.find('input') instead?
+    // 4. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
+    // 5. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
+    // 6. Assert the 'message was sent' ->
     //      You can use toHaveBeenCalled on the my_mocked_api_object you passed.
     //      toHaveBeenCalled needs a mock function https://jestjs.io/docs/en/mock-functions, is your sendMessage a mock?
     //      You have an example here http://airbnb.io/enzyme/#shallow-rendering heads-up!
@@ -30,6 +33,7 @@ describe("<Messages />", () => {
     //      Jest expectations are camel case (for when you copy&paste :)
     // Final questions:
     // - Is this black-box testing or white-box testing?
+    // - Do you have high confidence or low confidence you can deploy this code on a Friday?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
     // - What's your level of confidence that the user will be able to send a message?
   });
@@ -41,7 +45,7 @@ describe("<Messages />", () => {
     // 2  Mock the api. Hint, the api functions are passed as a defaultProp (look at the bottom of Messages.js),
     // you can override that prop by doing <Messages api={my_mocked_api_object} />
     // 3. Add some text to the input
-    // Hint: wrapper.find(MessageBox).props().onChange({ target: { value: 'hi!' }})
+    // Hint: wrapper.find('input').props().onChange({ target: { value: 'hi!' }})
     // 4. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // 5. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // Heads-up! you need to use await on the click button. Or even better use https://www.npmjs.com/package/wait-for-expect
