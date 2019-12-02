@@ -18,7 +18,7 @@ describe("<Messages />", () => {
   it(`should send a message (unit test)`, async () => {
     // 1. shallow the <Messages /> component
     // You can use console.log(wrapper.debug()) to console.log the component that you are testing
-    // 2  Mock the api. Hint, the api functions are passed as a defaultProp (look at the bottom of Messages.js),
+    // 2  Mock the api. Hint, the api functions are passed as a default prop (api = apiImplementation),
     // you can override that prop by doing <Messages api={my_mocked_api_object} />
     // 3. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // 4. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
