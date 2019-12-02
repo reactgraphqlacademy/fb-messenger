@@ -1,4 +1,4 @@
-import { toggleMessageDetail, TOGGLE_MESSAGE_DETAIL } from "../actions/ui";
+import { TOGGLE_MESSAGE_DETAIL } from "../actions/ui";
 
 import uiReducer, { getInitialState } from "./ui";
 
@@ -19,7 +19,9 @@ describe("UI reducer", () => {
   });
 
   it(`should return a new state if it receives a ${TOGGLE_MESSAGE_DETAIL} action`, () => {
-    const actualState = uiReducer(undefined, toggleMessageDetail());
+    const actualState = uiReducer(undefined, {
+      type: TOGGLE_MESSAGE_DETAIL
+    });
     const expectedState = { isMessageDetailOpen: true };
 
     expect(actualState).toEqual(expectedState);
