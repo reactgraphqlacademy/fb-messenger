@@ -92,7 +92,7 @@ describe("<Messages />", () => {
   it(`BONUS EXERCISE: should send a message (integration test without any testing library)`, async () => {
     /*
     Create an integration test using only vanilla JavaScript 😮
-    Hints, you can use
+    Hints, you can use:
     - the setNativeValue function defined at the bottom
     - https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
     - https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent
