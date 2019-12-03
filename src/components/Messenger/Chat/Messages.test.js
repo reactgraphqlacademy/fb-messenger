@@ -1,9 +1,11 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import waitForExpect from "wait-for-expect";
 import "@testing-library/jest-dom/extend-expect";
+import { act } from "react-dom/test-utils";
 import { render, fireEvent, wait } from "@testing-library/react";
 
 import { configureStore } from "../../../store";
@@ -95,4 +97,55 @@ describe("<Messages />", () => {
       expect(messages[messages.length - 1]).toHaveTextContent("Hi!");
     });
   });
+
+  it(`should send a message (integration test without any testing library)`, async () => {
+    const div = document.createElement("div");
+    document.body.appendChild(div);
+
+    const api = {
+      sendMessage: jest.fn(message => Promise.resolve(message))
+    };
+
+    ReactDOM.render(
+      <Root>
+        <ComposedMessages api={api} username="alex_lobera" />
+      </Root>,
+      div
+    );
+
+    const input = document.body.querySelector("input");
+
+    setNativeValue(input, "randng_text_3snd03ms!%/(Sasfkedfasd");
+
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+
+    await act(async () => {
+      document.body.querySelector("button").click();
+    });
+
+    await waitForExpect(() => {
+      expect(document.body.textContent).toContain(
+        "randng_text_3snd03ms!%/(Sasfkedfasd"
+      );
+    });
+
+    // clean up
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });
+
+// https://github.com/facebook/react/issues/10135#issuecomment-401496776
+function setNativeValue(element, value) {
+  const { set: valueSetter } =
+    Object.getOwnPropertyDescriptor(element, "value") || {};
+  const prototype = Object.getPrototypeOf(element);
+  const { set: prototypeValueSetter } =
+    Object.getOwnPropertyDescriptor(prototype, "value") || {};
+  if (prototypeValueSetter && valueSetter !== prototypeValueSetter) {
+    prototypeValueSetter.call(element, value);
+  } /* istanbul ignore next (I don't want to bother) */ else if (valueSetter) {
+    valueSetter.call(element, value);
+  } else {
+    throw new Error("The given element does not have a value setter");
+  }
+}
