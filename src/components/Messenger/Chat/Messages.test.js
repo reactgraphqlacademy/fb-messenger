@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { shallow, mount } from "enzyme";
 import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -87,4 +88,32 @@ describe("<Messages />", () => {
       //          .toHaveTextContent() comes from jest-dom's assertions -> import "@testing-library/jest-dom/extend-expect";
     });
   });
+
+  it(`BONUS EXERCISE: should send a message (integration test without any testing library)`, async () => {
+    /*
+    Create an integration test using only vanilla JavaScript 😮
+    Hints, you can use
+    - the setNativeValue function defined at the bottom
+    - https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+    - https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent
+    - https://developer.mozilla.org/en-US/docs/Web/API/Event
+    */
+  });
 });
+
+// The setNativeValue function is only for the bonus exercise
+// https://github.com/facebook/react/issues/10135#issuecomment-401496776
+function setNativeValue(element, value) {
+  const { set: valueSetter } =
+    Object.getOwnPropertyDescriptor(element, "value") || {};
+  const prototype = Object.getPrototypeOf(element);
+  const { set: prototypeValueSetter } =
+    Object.getOwnPropertyDescriptor(prototype, "value") || {};
+  if (prototypeValueSetter && valueSetter !== prototypeValueSetter) {
+    prototypeValueSetter.call(element, value);
+  } /* istanbul ignore next (I don't want to bother) */ else if (valueSetter) {
+    valueSetter.call(element, value);
+  } else {
+    throw new Error("The given element does not have a value setter");
+  }
+}
