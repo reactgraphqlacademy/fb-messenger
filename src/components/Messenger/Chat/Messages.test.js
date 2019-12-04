@@ -49,7 +49,8 @@ describe("<Messages />", () => {
     // Hint: wrapper.find('input').props().onChange({ target: { value: 'hi!' }})
     // 4. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // 5. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
-    // Heads-up! you need to use await on the click button. Or even better use https://www.npmjs.com/package/wait-for-expect
+    //      - Heads-up! you need to use await on the click button. Or even better use https://www.npmjs.com/package/wait-for-expect
+    //      - What is 'act'? https://reactjs.org/docs/test-utils.html#act
     // 6. You need to update the rendered component using http://airbnb.io/enzyme/docs/api/ShallowWrapper/update.html
     // 7. Assert the 'message was sent' -> you can just validate the message you sent is on the Messages list
     // Final questions:
