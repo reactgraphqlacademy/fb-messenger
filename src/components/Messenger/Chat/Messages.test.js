@@ -34,10 +34,8 @@ describe("<Messages />", () => {
       <Messages receiveMessage={receiveMessage} api={api} username="Alex" />
     );
 
-    wrapper
-      .find(MessageBox)
-      .props()
-      .onChange({ target: { value: "hi!" } });
+    wrapper.find(MessageBox).simulate("change", { target: { value: "hi!" } });
+
     // Heads up! the following "await" works in this case because the code that handles the click returns a Promise.resolve,
     // it won't work if the code returns a pending promise waiting to be resolved or rejected.
     // Events don't return anything. Therefore the promise returned from sendMessage is not passed to this code.
@@ -72,6 +70,7 @@ describe("<Messages />", () => {
   });
 
   it(`should send a message (integration test with React Testing Library)`, async () => {
+    const randomMessage = Math.random().toString();
     const api = {
       sendMessage: jest.fn(message => Promise.resolve(message))
     };
@@ -85,7 +84,7 @@ describe("<Messages />", () => {
     expect(queryAllByTestId(/message-*./i).length).toBe(0);
 
     fireEvent.change(getByPlaceholderText(/Type your message.../i), {
-      target: { value: "Hi!" }
+      target: { value: randomMessage }
     });
 
     fireEvent.click(getByText(/Send/i));
@@ -94,11 +93,12 @@ describe("<Messages />", () => {
     await wait(() => {
       const messages = queryAllByTestId(/message-*./i);
       expect(messages.length).toBe(1);
-      expect(messages[messages.length - 1]).toHaveTextContent("Hi!");
+      expect(messages[messages.length - 1]).toHaveTextContent(randomMessage);
     });
   });
 
   it(`should send a message (integration test without any testing library)`, async () => {
+    const randomMessage = Math.random().toString();
     const div = document.createElement("div");
     document.body.appendChild(div);
 
@@ -115,7 +115,7 @@ describe("<Messages />", () => {
 
     const input = document.body.querySelector("input");
 
-    setNativeValue(input, "randng_text_3snd03ms!%/(Sasfkedfasd");
+    setNativeValue(input, randomMessage);
 
     input.dispatchEvent(new Event("input", { bubbles: true }));
 
@@ -124,9 +124,7 @@ describe("<Messages />", () => {
     });
 
     await waitForExpect(() => {
-      expect(document.body.textContent).toContain(
-        "randng_text_3snd03ms!%/(Sasfkedfasd"
-      );
+      expect(document.body.textContent).toContain(randomMessage);
     });
 
     // clean up
