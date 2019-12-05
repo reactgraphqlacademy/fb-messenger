@@ -63,10 +63,6 @@ describe("<Messages />", () => {
   });
 
   it(`should send a message (integration test with React Testing Library)`, async () => {
-    const api = {
-      sendMessage: jest.fn(message => Promise.resolve(message))
-    };
-
     // TODO. Replace the following h1 with the component/s you are testing
     // Hint: It's very (very very) similar to what you did in the previous integration test
     const { queryAllByTestId, getByText, getByPlaceholderText } = render(
