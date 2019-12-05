@@ -31,9 +31,9 @@ describe("<Messages />", () => {
     // 6. Assert the 'message was sent' ->
     //      You can use toHaveBeenCalled on the my_mocked_api_object you passed.
     //      toHaveBeenCalled needs a mock function https://jestjs.io/docs/en/mock-functions, is your sendMessage a mock?
-    //      You have an example here http://airbnb.io/enzyme/#shallow-rendering heads-up!
-    //      Enzyme expectations are not camel case,
-    //      Jest expectations are camel case (for when you copy&paste :)
+    //      You have an example here http://airbnb.io/enzyme/#shallow-rendering
+    //      heads-up! Enzyme expectations are not camel case, Jest expectations are camel case (for when you copy&paste :)
+    //      If you remove receiveMessage from Messages.js line 76, does your test pass? how can you improve that?
     // Final questions:
     // - Is this black-box testing or white-box testing?
     // - Do you have high confidence or low confidence you can deploy this code on a Friday?
@@ -55,7 +55,7 @@ describe("<Messages />", () => {
     //      - Heads-up! you need to use await on the click button. Or even better use https://www.npmjs.com/package/wait-for-expect
     //      - What is 'act'? https://reactjs.org/docs/test-utils.html#act
     // 6. You need to update the rendered component using http://airbnb.io/enzyme/docs/api/ShallowWrapper/update.html
-    // 7. Assert the 'message was sent' -> you can just validate the message you sent is on the Messages list
+    // 7. Assert the 'message was sent'. Hint: validate the message you sent is on the Messages list
     // Final questions:
     // - Is this black-box testing or white-box testing?
     // - If I remove Redux from my application and put all the state in React, do I need to update this test?
@@ -63,27 +63,27 @@ describe("<Messages />", () => {
   });
 
   it(`should send a message (integration test with React Testing Library)`, async () => {
-    // TODO. Replace the following h1 with the component/s you are testing
+    // 1. Replace the following h1 with the component/s you are testing
     // Hint: It's very (very very) similar to what you did in the previous integration test
     const { queryAllByTestId, getByText, getByPlaceholderText } = render(
       <h1>Replace this h1 with the component/s you are testing</h1>
     );
 
-    // TODO. It expects to have zero messages in the chat
+    // 2. It expects to have zero messages in the chat
     // Hint: You might need to add something to the Message component to facilitate this
 
-    // TODO. Fire an on change event on the input message with the text "Hi!"
+    // 3. Fire an on change event on the input message with a random text
     // Hint: You might want to use the placeholder to find the input
 
-    // TODO fire the click event on the send message button
+    // 4 fire the click event on the send message button
     // https://testing-library.com/docs/dom-testing-library/api-events#fireevent-eventname
     // Question: What do you think is the best way to find the UI element that executes the send message action?
 
     // https://testing-library.com/docs/dom-testing-library/api-async#wait
     await wait(() => {
-      // TODO. Write the following expectations:
-      // 1) It expects to have 1 message in the chat
-      // 2) It expects the last message on the chat to be "Hi!"
+      // 4. Write the following expectations:
+      // A) It expects to have 1 message in the chat
+      // B) It expects the last message on the chat to be the same random text
       //    Hint: You might want to use the '(some component).toHaveTextContent(some text)' to facilitate this
       //          .toHaveTextContent() comes from jest-dom's assertions -> import "@testing-library/jest-dom/extend-expect";
     });
@@ -101,7 +101,7 @@ describe("<Messages />", () => {
   });
 });
 
-// The setNativeValue function is only for the bonus exercise
+// This setNativeValue function is only for the bonus exercise
 // https://github.com/facebook/react/issues/10135#issuecomment-401496776
 function setNativeValue(element, value) {
   const { set: valueSetter } =
