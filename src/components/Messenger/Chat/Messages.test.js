@@ -22,8 +22,10 @@ describe("<Messages />", () => {
     // You can use console.log(wrapper.debug()) to console.log the component that you are testing
     // 2  Mock the api. Hint, the api functions are passed as a default prop (api = apiImplementation),
     // you can override that prop by doing <Messages api={my_mocked_api_object} />
-    // 3. Add some text to the input. Hint: wrapper.find(InputMessage).props().onChange({ target: { value: 'hi!' }})
-    //      Can we use wrapper.find('input') instead?
+    // 3. Add some text to the input. Hint:
+    //      const randomMessage = Math.random().toString();
+    //      wrapper.find(InputMessage).simulate("change", { target: { value: randomMessage } });
+    //          Can we use wrapper.find('input') instead?
     // 4. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // 5. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // 6. Assert the 'message was sent' ->
@@ -46,7 +48,8 @@ describe("<Messages />", () => {
     // 2  Mock the api. Hint, the api functions are passed as a defaultProp (look at the bottom of Messages.js),
     // you can override that prop by doing <Messages api={my_mocked_api_object} />
     // 3. Add some text to the input
-    // Hint: wrapper.find('input').props().onChange({ target: { value: 'hi!' }})
+    //      const randomMessage = Math.random().toString();
+    //      Hint:  wrapper.find('input').simulate("change", { target: { value: randomMessage } });
     // 4. Find the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     // 5. Click on the button -> you have an example here http://airbnb.io/enzyme/#shallow-rendering
     //      - Heads-up! you need to use await on the click button. Or even better use https://www.npmjs.com/package/wait-for-expect
