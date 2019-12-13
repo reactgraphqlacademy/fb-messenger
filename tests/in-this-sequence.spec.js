@@ -29,9 +29,24 @@ describe("The threadReducer in src/reducers/index.js", () => {
   })
 
   it("should handle the action type called RECEIVE_THREAD and put action.thread in the state", () => {
-    const state = threadReducer([], { type: 'RECEIVE_THREAD', thread: [2, 3] })
+    
+    const thread = {
+      "lastMessage": {
+        "message": "I love it! specially the feedback form at the end, I can't wait to it xD",
+        "time": "2018-02-11T12:33:00Z"
+      },
+      "name": {
+        "title": "miss",
+        "first": "mary",
+        "last": "jones"
+      },
+      "email": "mary.jones56@example.com",
+      "username": "crazypeacock512"
+    }
 
-    expect(state).toEqual([2, 3])
+    const state = threadReducer([], { type: 'RECEIVE_THREAD', thread })
+
+    expect(state).toEqual({...thread, lastMessage:{...thread.lastMessage}, name:{...thread.name}})
   })
 })
 
