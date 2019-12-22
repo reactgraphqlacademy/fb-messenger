@@ -61,6 +61,7 @@ If you haven't already set up your project, head here and follow the instruction
 - [React Router Docs and approach](https://reacttraining.com/react-router/core/guides/philosophy)
 - [Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
 - [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [React lifecycle methods diagram](https://twitter.com/dan_abramov/status/981712092611989509)
 
 ## License
 
