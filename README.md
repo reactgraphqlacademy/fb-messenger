@@ -26,8 +26,8 @@ Use [deepFreeze](https://github.com/substack/deep-freeze) in your reducers to ma
 
 ## Links
 
-- [The number one reason that will make you want to test your code](https://reactgraphql.academy/blog/the-number-one-reason-that-will-make-you-want-to-test-your-code)
-- [Testing React applications
+- [Lecture: The number one reason that will make you want to test your code](https://reactgraphql.academy/blog/the-number-one-reason-that-will-make-you-want-to-test-your-code)
+- [Lecture: Testing React applications
   ](https://reactgraphql.academy/react/testing-react-applications)
 - [https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/](https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/)
 - [https://martinfowler.com/bliki/TestPyramid.html](https://martinfowler.com/bliki/TestPyramid.html)
