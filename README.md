@@ -24,8 +24,9 @@ If you haven't already set up your project, head here and follow the instruction
 Use [deepFreeze](https://github.com/substack/deep-freeze) in your reducers to make sure the state is not mutated
 
 
-## Links
-- [https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/](https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/)
+## Articles and links
+
+- [Lecture: Intro to unit testing in JavaScript](https://reactgraphql.academy/react/unit-testing-fundamentals-explained-using-javascript/)
 - [https://martinfowler.com/bliki/TestPyramid.html](https://martinfowler.com/bliki/TestPyramid.html)
 - [https://facebook.github.io/jest/docs/en/expect.html#content](https://facebook.github.io/jest/docs/en/expect.html#content)
 - [https://martinfowler.com/articles/mocksArentStubs.html](https://martinfowler.com/articles/mocksArentStubs.html)
