@@ -71,8 +71,7 @@ Split the Chat component into the following components:
 - Feel comfortable with class component and functional component syntax and using jsx.
 
 ## Links
-
-- [https://reactjs.academy/blog/introduction-to-thinking-in-react/](https://reactjs.academy/blog/introduction-to-thinking-in-react/)
+- [Lecture: Introduction to Thinking in React](https://reactgraphql.academy/react/introduction-to-thinking-in-react/)
 - [https://reactjs.academy/blog/react-is-all-about-composition-react-hooks-render-props-hocs/#react-composition-model](https://reactjs.academy/blog/react-is-all-about-composition-react-hooks-render-props-hocs/#react-composition-model)
 - [https://reactjs.org/docs/introducing-jsx.html](https://reactjs.org/docs/introducing-jsx.html)
 - [https://reactjs.org/docs/thinking-in-react.html](https://reactjs.org/docs/thinking-in-react.html)
