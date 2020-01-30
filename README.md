@@ -57,7 +57,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Articles and links
 
-- [Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
+- [Lecture: Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
 - [React Router Docs and approach](https://reacttraining.com/react-router/core/guides/philosophy)
 - [Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
 - [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
