@@ -35,7 +35,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 - [ ] 5. Refactor the `src/components/Messenger/Chat/Chat.js` component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005) as well. You have a `src/components/Messenger/Chat/ChatContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`.
 
-- [ ] 6. Move the logic on lines 36-44 of `src/components/Messenger/Chat/Chat.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Chat/ChatContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
+- [ ] 6. Move the logic related to needsToFetchUser from render method in `src/components/Messenger/Chat/Chat.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Chat/ChatContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
 
 - [ ] 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the `src/component/Login.js` should not display the `<TopBar>` and `<Footer>`. Hint: Why not try moving the Login component up the tree.
 
@@ -61,6 +61,7 @@ If you haven't already set up your project, head here and follow the instruction
 - [React Router Docs and approach](https://reacttraining.com/react-router/core/guides/philosophy)
 - [Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
 - [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [React lifecycle methods diagram](https://twitter.com/dan_abramov/status/981712092611989509)
 
 ## License
 
