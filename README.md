@@ -71,8 +71,8 @@ Create an Input component that replaces the &lt;input&gt; in your app and can be
 
 ### React GraphQL Academy
 
-- [React forms controlled & uncontrolled components](https://reactjs.academy/blog/react-forms-controlled-and-uncontrolled-components/)
-- [Secure React apps using JWT and React Router](https://reactjs.academy/blog/secure-react-apps-using-JWT-and-react-router/)
+- [Lecture: React forms controlled & uncontrolled components](https://reactjs.academy/blog/react-forms-controlled-and-uncontrolled-components/)
+- [Lecture: Secure React apps using JWT and React Router](https://reactjs.academy/blog/secure-react-apps-using-JWT-and-react-router/)
 
 ### React Router
 
