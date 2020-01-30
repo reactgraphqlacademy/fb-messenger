@@ -8,28 +8,25 @@ The goal of this exercise is to learn how to start testing in JavaScript.
 
 If you haven't already set up your project, head here and follow the instructions https://github.com/leanjscom/fb-messenger/blob/master/README.md
 
-### Step 2
 
+### Step 2
 ```sh
- git checkout testing-in-react
-```
+ git checkout testing-intro
+ ```
 
 ### Step 3
-
 ```sh
  npm i
-```
+ ```
 
 ## Bonus
 
 Use [deepFreeze](https://github.com/substack/deep-freeze) in your reducers to make sure the state is not mutated
 
+
 ## Articles and links
 
-- [Lecture: The number one reason that will make you want to test your code](https://reactgraphql.academy/blog/the-number-one-reason-that-will-make-you-want-to-test-your-code)
-- [Lecture: Testing React applications
-  ](https://reactgraphql.academy/react/testing-react-applications)
-- [https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/](https://reactjs.academy/blog/unit-testing-fundamentals-explained-using-javascript/)
+- [Lecture: Intro to unit testing in JavaScript](https://reactgraphql.academy/react/unit-testing-fundamentals-explained-using-javascript/)
 - [https://martinfowler.com/bliki/TestPyramid.html](https://martinfowler.com/bliki/TestPyramid.html)
 - [https://facebook.github.io/jest/docs/en/expect.html#content](https://facebook.github.io/jest/docs/en/expect.html#content)
 - [https://martinfowler.com/articles/mocksArentStubs.html](https://martinfowler.com/articles/mocksArentStubs.html)
