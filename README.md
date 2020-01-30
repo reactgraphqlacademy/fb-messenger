@@ -38,16 +38,31 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 ### Part 2, moving the state of the app into Redux
 
-1. The `<UserDetail>` component should not be open by default. The src/components/Messenger/Chat/Chat.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
+1. Open up the conversation by clicking on the name of the user 'Mary Jones' in the left-hand panel.  You will see the messages in the conversation appear in the centre panel, and some more information about the user in a right-hand panel.  We are going to make it possible to show and hide this right-hand panel.
+
+The first step is to make sure it is hidden by default when the conversation is opened.  The relevant component is `<UserDetail>`, which we want to make sure is not rendered when the conversation is opened up.
+
+The src/components/Messenger/Chat/Chat.js is connected to Redux and it gets the prop isMessageDetailOpen from the store.  Can you change the initial value of isMessageDetailOpen?  Which part of the code is creating this initial state? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
 
 2. Refactor uiReducer in src/reducers/index.js so when the `TOGGLE_MESSAGE_DETAIL` action is dispatched then the `UserDetail` in the chat is opened or closed. Hint, the `TOGGLE_MESSAGE_DETAIL` action is already dispatched in src/components/Messenger/Chat/ChatBar, so the only thing you need to do is to include another switch case in the uiReducer in src/reducers/index.js
 
-3. Move the state from `src/components/Messenger/Chat/ChatContainer.js` to Redux. Before doing that have a look at how `connect` is implemented in `src/components/Messenger/ThreadsContainer.js`, please read the comments at the bottom of the file. After reading ThreadsContainer, you are ready to work on ChatContainer. You will have to:
+3. Move the state from `src/components/Messenger/Chat/ChatContainer.js` to Redux. Before doing that have a look at how `connect` is implemented in `src/components/Messenger/ThreadsContainer.js`, please read the comments at the bottom of the file. After reading ThreadsContainer, you are ready to work on ChatContainer.
+
+You will have to:
 
 - Create an action creator to "receive messages" in src/actions/index.js. Hint, it'll be very similar to the `receiveThread`
 - Create a reducer in src/reducers/index.js called messagesReducer. Add the messagesReducer to the `combineReducers` function as another parameter like ui and thread.
 - The `fetchMessages` method in `ChatContainer` should dispatch "receive messages" when the api.fetchMessages resolves instead of doing `this.setState({ messages })`
 - "connect" the `ChatContainer` to Redux and "map state to props", so that `ChatContainer` gets a prop named messages with the messages from the state.
+
+*Explanation of concepts*
+
+In this app:
+
+- 'Thread' is an avaiable conversation (listed in the left-hand panel)
+- 'Messages' are the messages in the currently displayed thread.  So, when you have loaded the initial set of messages, you can dispatch a "receive messages" action to add them to the UI.
+- 'Receive message' should be use when a new message is to be added to a conversation that has already been loaded into the UI.
+
 
 4. Users should be able to send a message:
 
@@ -58,7 +73,6 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 ### Bonus
 
 Add Redux to [your recap app](https://github.com/reactgraphqlacademy/recap). Your goal is to learn how to set the Provider in the app (it was already configured in the fb-messenger exercise), and consolidate what you've learned in Redux by moving the list of photos or characters to Redux. To do that you'll need to:
-
 - Create your root reducer. Hint, you'll need to add the combineReducers function here
 - Create the store. We recommend to do it in a separate file called configureStore.js. Have a look at how it's done in the fb-messenger Redux exercise branch.
 - Set the Provider at the root component
@@ -66,7 +80,7 @@ Add Redux to [your recap app](https://github.com/reactgraphqlacademy/recap). You
 
 ## Links
 
-- [Introduction to Redux — Redux explained with very simple examples](https://reactjs.academy/blog/introduction-to-redux-explained-with-simple-examples/)
+- [Lecture: Introduction to Redux — Redux explained with very simple examples](https://reactgraphql.academy/react/introduction-to-redux-explained-with-simple-examples/)
 - [https://egghead.io/courses/getting-started-with-redux](https://egghead.io/courses/getting-started-with-redux)
 - [https://egghead.io/courses/building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
