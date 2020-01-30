@@ -24,7 +24,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 Use [deepFreeze](https://github.com/substack/deep-freeze) in your reducers to make sure the state is not mutated
 
-## Links
+## Articles and links 
 
 - [Lecture: The number one reason that will make you want to test your code](https://reactgraphql.academy/blog/the-number-one-reason-that-will-make-you-want-to-test-your-code)
 - [Lecture: Testing React applications
