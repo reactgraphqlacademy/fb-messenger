@@ -60,9 +60,9 @@ If you haven't already set up your project, head here and follow the instruction
 
 - Do we have to do initialize the Redux state in src/client/index with the same state than in src/server/app.js? Hint: [https://github.com/reduxjs/redux/tree/master/examples/universal](https://github.com/reduxjs/redux/tree/master/examples/universal)
 
-## Links
+## articles-and-links
 
-- [https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d](https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d)
+- [Lecture: Server-Side Rendering (SSR) in React](https://reactgraphql.academy/react/server-side-rendering-ssr-made-easy-react/)
 - [https://dev-blog.apollodata.com/](https://dev-blog.apollodata.com/)
 - [http://dev.apollodata.com](http://dev.apollodata.com)
 - [https://nextjs.org/](https://nextjs.org/)
