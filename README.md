@@ -64,7 +64,7 @@ Split the Chat component into the following components:
 
 ## Learning objectives
 
-- Learn the difference between declarative and imperative code.
+- Learn the difference between declarative and imperative programming.
 - Comprehend the value of breaking down your UI into reusable components.
 - Understand how to pass down dependencies via props.
 - Understand which components should hold state and how to share and manipulate state in React.
