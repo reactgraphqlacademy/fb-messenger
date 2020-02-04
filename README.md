@@ -47,7 +47,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 4. When a user sends a message:
 
-- A) The new message should be displayed on the Chat. The `sendMessage` method in src/components/Messenger/Chat/
+- A) The new message should be displayed on the Chat. The `sendMessage` function in src/components/Messenger/Chat/
   Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/index.js messagesReducer so that when a "receive message" action is dispatched the message is added at the end of the messages. Hint, the only file you need to change is in src/reducers/index.js.
 - B) When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers/index.js.
 
