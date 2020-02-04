@@ -42,10 +42,10 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 - Create an action creator to "receive messages" in src/actions/index.js. Hint, it'll be very similar to the `receiveThread`
 - Create a reducer in src/reducers/index.js called messagesReducer. Add the messagesReducer to the `combineReducers` function as another parameter like ui and thread.
-- The `fetchMessages` method in `ChatContainer` should dispatch "receive messages" when the api.fetchMessages resolves instead of doing `this.setState({ messages })`
-- "connect" the `ChatContainer` to Redux and "map state to props", so that `ChatContainer` gets a prop named messages with the messages from the state.
+- The `fetchMessages` method in `ChatContainer` should dispatch "receive messages" when the api.fetchMessages resolves instead of doing `setMessages`
+- Use useSelector in `ChatContainer` to get the messages from the Redux store. Tidy up your code after, meaning remove any unnecessary code.
 
-4. Users should be able to send a message:
+1. Users should be able to send a message:
 
 - The `sendMessage` method in src/components/Messenger/Chat/
   Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/index.js messagesReducer so that when a "receive message" action is dispatched the message is added at the end of the messages. Hint, the only file you need to change is in src/reducers/index.js.
