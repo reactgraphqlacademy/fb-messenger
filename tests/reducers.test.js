@@ -1,5 +1,6 @@
 import { threadReducer } from "../src/reducers";
 import indexReducer from "../src/reducers";
+import { receiveThread } from "../src/actions";
 
 describe("The action creator called receiveThread in src/actions/index.js", () => {
   it("should return a JSON object with a key called 'type' and value RECEIVE_THREAD", () => {
