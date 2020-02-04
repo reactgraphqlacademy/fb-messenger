@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
-import { toggleMessageDetail } from "../../../actions/ui";
+import { toggleMessageDetail } from "../../../actions";
 import Icon from "../../Layout/Icon";
 import colours from "../../../styles/export/colours.css";
 

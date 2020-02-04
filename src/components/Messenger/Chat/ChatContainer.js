@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { receiveMessages } from "../../../actions/messages";
+import { receiveMessages } from "../../../actions";
 import * as api from "../../../api/message";
 import Chat from "./Chat";
 

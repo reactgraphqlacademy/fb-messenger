@@ -38,7 +38,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 2. Refactor uiReducer in src/reducers/index.js so when the `TOGGLE_MESSAGE_DETAIL` action is dispatched then the `UserDetail` in the chat is opened or closed. Hint, the `TOGGLE_MESSAGE_DETAIL` action is already dispatched in src/components/Messenger/Chat/ChatBar, so the only thing you need to do is to include another switch case in the uiReducer in src/reducers/index.js
 
-3. Move the state from `src/components/Messenger/Chat/ChatContainer.js` to Redux. Before doing that have a look at how `connect` is implemented in `src/components/Messenger/ThreadsContainer.js`, please read the comments at the bottom of the file. After reading ThreadsContainer, you are ready to work on ChatContainer. You will have to:
+3. Move the state from `src/components/Messenger/Chat/ChatContainer.js` to Redux. Before doing that have a look at how the ThreadContainer `src/components/Messenger/ThreadsContainer.js` gets and sets the state into Redux. After reading ThreadsContainer, you are ready to work on ChatContainer. You will have to:
 
 - Create an action creator to "receive messages" in src/actions/index.js. Hint, it'll be very similar to the `receiveThread`
 - Create a reducer in src/reducers/index.js called messagesReducer. Add the messagesReducer to the `combineReducers` function as another parameter like ui and thread.

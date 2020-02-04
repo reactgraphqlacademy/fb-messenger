@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { useDispatch } from "react-redux";
 
 import colours from "../../../styles/export/colours.css";
-import { receiveMessage } from "../../../actions/messages";
+import { receiveMessage } from "../../../actions";
 import * as api from "../../../api/message";
 import Avatar from "../../Layout/Avatar";
 import Icon from "../../Layout/Icon";
