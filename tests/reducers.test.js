@@ -27,10 +27,10 @@ describe("The threadReducer in src/reducers/index.js", () => {
   });
 
   it("should handle the action type called RECEIVE_THREAD and put action.thread in the state", () => {
-    const thread = "dummy message";
-    const state = threadReducer([], { type: "RECEIVE_THREAD", thread });
+    const thread = "dummy thread";
+    const state = threadReducer(undefined, { type: "RECEIVE_THREAD", thread });
 
-    expect(state).toEqual([thread]);
+    expect(state).toEqual(thread);
   });
 });
 
