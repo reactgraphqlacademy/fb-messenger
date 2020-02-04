@@ -65,7 +65,9 @@ In order to make it easier to understand Redux we have created a simplified vers
 
 ### Bonus
 
-Move the React state of the [**bookstore**](https://github.com/reactgraphqlacademy/thinking-in-react/tree/hooks) exercise to Redux
+Move the React state of the [**bookstore**](https://github.com/reactgraphqlacademy/thinking-in-react/tree/hooks) exercise to Redux.
+
+Heads up! You'll need to set up the `react-redux` Provider component at the root of your component tree and pass the `store` to it. We already set the [Provider](https://github.com/reactgraphqlacademy/fb-messenger/blob/redux/src/components/Root.js#L9) in this Facebook Messenger app so you'll need to check the [docs](https://react-redux.js.org/api/provider) to see how to do it yourself. Ask the coach if you have questions after giving a try 🙂
 
 ## Links
 

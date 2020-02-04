@@ -5,6 +5,7 @@ import Threads from "./Threads";
 import { fetchFirstThread } from "../../api/thread";
 import { receiveThread } from "../../actions/thread";
 
+// This is a selector function
 function selectThread(state) {
   return state.thread;
 }
