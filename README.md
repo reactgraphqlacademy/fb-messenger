@@ -22,7 +22,17 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-### Part 1. Moving the state of the app into Redux
+### Part 1. Practice reducers with TDD
+
+Run the following command and try to make the test pass by fixing the code:
+
+```sh
+ npm run test-reducers
+```
+
+The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you can start the app and it should start (you need to fix the tests first!).
+
+### Part 2. Move the state of the app into Redux
 
 1. The `<UserDetail>` component should not be open by default. The src/components/Messenger/Chat/Chat.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
 
@@ -41,19 +51,17 @@ If you haven't already set up your project, head here and follow the instruction
   Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/index.js messagesReducer so that when a "receive message" action is dispatched the message is added at the end of the messages. Hint, the only file you need to change is in src/reducers/index.js.
 - When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers/index.js.
 
-### Part 2. Building your own Redux
+### Part 3. Build your own Redux
 
 In order to make it easier to understand Redux we have created a simplified version of `redux`. We have some bugs in our simplified version of `redux` that you should fix. The unit tests will help you fix the app and learn by "fixing".
 
-The idea is simple, you should execute our unit tests and fix the errors. Once all the code passes the unit tests, you can start the app and it should work (you need to fix the tests first!).
-
-1. execute `npm test`
+1. execute `npm run test-redux`
 
 2. Once all the tests pass execute `npm start`
 
-3. Once all the tests pass and you have seen the site working on the browser, replace our simplified version of `redux` with https://www.npmjs.com/package/redux (already installed in this project) now that you've understood how it works. You will need to uncomment `import { createStore } from 'redux'` and comment `import { createStore } from '../redux/createStore'` in the following file `src/store/index.js`
+3. Once all the tests pass and you have seen the site working on the browser, replace the npm version of `redux` (https://www.npmjs.com/package/redux) with yours. To do that, you will need to comment out this line `import { createStore } from 'redux'` and uncomment `import { createStore } from '../redux/createStore'` in the following file `src/store/index.js`
 
-4. Once the import from your own implementation of Redux has been replaced by the one in npm, you should run `npm start` and the web site should still work. Now that you could implement Redux yourself (you must be a Redux master!), let's use it in our project :D
+4. Once the import from your own implementation of Redux has replaced the one from npm, you should run `npm start` again, and the web site should still work. Now that you have fixed my mini Redux, you must be a Redux master! 🙂
 
 ### Bonus
 
