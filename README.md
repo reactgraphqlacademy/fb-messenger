@@ -45,11 +45,11 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 - The `fetchMessages` method in `ChatContainer` should dispatch "receive messages" when the api.fetchMessages resolves instead of doing `setMessages`
 - Use useSelector in `ChatContainer` to get the messages from the Redux store. Tidy up your code after, meaning remove any unnecessary code.
 
-1. Users should be able to send a message:
+1. When a user sends a message:
 
-- The `sendMessage` method in src/components/Messenger/Chat/
+- A) The new message is displayed on the Chat. The `sendMessage` method in src/components/Messenger/Chat/
   Messages.js dispatches a "receive message" action when a user clicks on the "send" button. Refactor the src/reducers/index.js messagesReducer so that when a "receive message" action is dispatched the message is added at the end of the messages. Hint, the only file you need to change is in src/reducers/index.js.
-- When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers/index.js.
+- B) When a new message is sent, the Threads component should display the last message sent. Hint, the only file you need to change is in src/reducers/index.js.
 
 ### Part 3. Build your own Redux
 
