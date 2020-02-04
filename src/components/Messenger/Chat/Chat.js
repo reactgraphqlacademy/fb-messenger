@@ -1,6 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 import ChatBar from "./ChatBar";
@@ -18,8 +17,13 @@ const ChatWrapper = styled.div`
   flex-basis: 70%;
 `;
 
-const Chat = ({ messages = [], match, isMessageDetailOpen }) => {
+function selectIsMessageDetailOpen(state) {
+  return state.ui.isMessageDetailOpen;
+}
+
+const Chat = ({ messages = [], match }) => {
   const { username } = match.params;
+  const isMessageDetailOpen = useSelector(selectIsMessageDetailOpen);
 
   if (!messages.length) {
     return <h2>Loading...</h2>;
@@ -36,14 +40,4 @@ const Chat = ({ messages = [], match, isMessageDetailOpen }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isMessageDetailOpen: state.ui.isMessageDetailOpen
-});
-
-Chat.propTypes = {
-  messages: PropTypes.array,
-  isMessageDetailOpen: PropTypes.bool.isRequired,
-  match: PropTypes.object.isRequired
-};
-
-export default connect(mapStateToProps)(Chat);
+export default Chat;

@@ -1,7 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import colours from "../../../styles/export/colours.css";
 import { receiveMessage } from "../../../actions/messages";
@@ -68,73 +67,51 @@ const Message = styled.div`
     props.from === "received" ? colours.black : colours.white};
 `;
 
-class Messages extends React.Component {
-  state = {
-    newMessage: ""
-  };
+const Messages = ({ username, messages = [] }) => {
+  const [newMessage, setNewMessage] = useState("");
+  const dispatch = useDispatch();
 
-  sendMessage = () => {
-    const { username, receiveMessage } = this.props;
-    const { newMessage } = this.state;
-
+  const sendMessage = () => {
     const message = api.sendMessage({
       message: newMessage,
       to: username
     });
 
-    receiveMessage(message);
+    dispatch(receiveMessage(message));
 
-    this.setState({ newMessage: "" });
+    setNewMessage("");
   };
 
-  render() {
-    const { messages = [], username } = this.props;
-    const conversation = messages.map((message, i) => (
-      <MessageWrapper
-        key={i}
-        from={message.from === "you" ? "sent" : "received"}
-      >
-        {message.to === "you" && <Avatar username={username} size="medium" />}
-        <Message from={message.from === "you" ? "sent" : "received"}>
-          {message.message}
-        </Message>
-        {message.from === "you" && (
-          <MessageRead>
-            <Icon name="check-circle" size={0.6} />
-          </MessageRead>
-        )}
-      </MessageWrapper>
-    ));
+  const conversation = messages.map((message, i) => (
+    <MessageWrapper key={i} from={message.from === "you" ? "sent" : "received"}>
+      {message.to === "you" && <Avatar username={username} size="medium" />}
+      <Message from={message.from === "you" ? "sent" : "received"}>
+        {message.message}
+      </Message>
+      {message.from === "you" && (
+        <MessageRead>
+          <Icon name="check-circle" size={0.6} />
+        </MessageRead>
+      )}
+    </MessageWrapper>
+  ));
 
-    return (
-      <MessagesWrapper>
-        <MessagesList>
-          {conversation.length ? conversation : <p>You have no messages</p>}
-        </MessagesList>
-        <NewMessage>
-          <MessageBox
-            onChange={e => this.setState({ newMessage: e.target.value })}
-            type="text"
-            value={this.state.newMessage}
-            placeholder="Type your message..."
-          />
-          <button onClick={this.sendMessage}>Send</button>
-        </NewMessage>
-      </MessagesWrapper>
-    );
-  }
-}
-
-Messages.propTypes = {
-  messages: PropTypes.array,
-  username: PropTypes.string.isRequired
+  return (
+    <MessagesWrapper>
+      <MessagesList>
+        {conversation.length ? conversation : <p>You have no messages</p>}
+      </MessagesList>
+      <NewMessage>
+        <MessageBox
+          onChange={e => setNewMessage(e.target.value)}
+          type="text"
+          value={newMessage}
+          placeholder="Type your message..."
+        />
+        <button onClick={sendMessage}>Send</button>
+      </NewMessage>
+    </MessagesWrapper>
+  );
 };
 
-const mapDispatchToProps = {
-  receiveMessage
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Messages);
+export default Messages;
