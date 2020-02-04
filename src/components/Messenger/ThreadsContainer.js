@@ -16,7 +16,7 @@ const ThreadsContainer = () => {
 
   useEffect(() => {
     fetchFirstThread().then(thread => dispatch(receiveThread(thread)));
-  });
+  }, []);
 
   return <Threads thread={thread} />;
 };
