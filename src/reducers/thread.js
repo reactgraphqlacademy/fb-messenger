@@ -11,3 +11,7 @@ export default function(state = null, action) {
       return state;
   }
 }
+
+export function selectThread(state) {
+  return state.thread;
+}
