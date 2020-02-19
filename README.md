@@ -12,7 +12,7 @@ The goal of these exercises is to understand the core principles and libraries o
 ### Clone the repo on your machine
 
 ```sh
-git clone git@github.com:reactjsacademy/fb-messenger.git
+git clone https://github.com/reactgraphqlacademy/fb-messenger.git
 ```
 
 Then `cd` into `./fb-messenger`
