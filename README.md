@@ -53,7 +53,7 @@ If you haven't already set up your project, head here and follow the instruction
      - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
      - Example: <MyLink to="https://google.com">Some link</MyLink> -> it should render an `a`
 - [ ] 2. Make sure that **any** props that are passed to `MyLink` are passed to `Link` or to `a` accordingly. 
-     - Example: `<MyLink to="/messages" className="potato">Some link</MyLink>` should return `<Link to="messages" className="potatoe">Some link</Link>`
+     - Example: `<MyLink to="/messages" className="cool-css">Some link</MyLink>` should return `<Link to="messages" className="cool-css">Some link</Link>`
 
 ## Learning objectives
 
