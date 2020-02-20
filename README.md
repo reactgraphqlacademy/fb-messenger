@@ -53,8 +53,7 @@ If you haven't already set up your project, head here and follow the instruction
         - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
         - Example: <MyLink to="https://google.com">Some link</MyLink>  -> it should render an `a`
 - [ ] 2. Make sure all the props that are passed to MyLink are passed to Link or a. It should pass on any prop we might add in the future.
-    example: <MyLink to="/messages"className="potatoe">Some link</MyLink>   
-                    -> <Link to="messages" className="potatoe">Some link</Link>
+    example: <MyLink to="/messages"className="potatoe">Some link</MyLink> -> <Link to="messages" className="potatoe">Some link</Link>
 
 ## Learning objectives
 
