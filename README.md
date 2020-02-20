@@ -1,6 +1,6 @@
-# ReactJS Facebook messenger
+# Facebook Messenger Clone
 
-The goals of this exercise are to learn how to use a declarative routing using React Router v4, and learn how to fetch data into your components.
+The goals of this exercise are to learn how to use a declarative routing using React Router, and learn how to fetch data into your components.
 
 ## To get started
 
@@ -45,22 +45,30 @@ If you haven't already set up your project, head here and follow the instruction
 
 - [ ] Given this component `<Route path="/messages/:username">` in `src/components/Messenger/index`, how can we replace the hardcoded string `"/messages"` in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in `src/components/Messenger/Chat/ChatBar`.
 - [ ] The path `/messages/:username/detail` should display the `UserDetail` of a Chat. The path `/messages/:username` should not display the `UserDetail` of a Chat. You can navigate to `/messages/:username/detail` by clicking on the Link component in `src/components/Messenger/Chat/ChatBar`
-- [ ] Refactor as many components as you can into functional components, meaning using functions instead of classes to define the component.
-- [ ] Add prop-types to all the components that need it.
+- [ ] Refactor as many components as you can into function components, meaning using functions instead of classes to define the component.
+
+### Extra Bonus
+
+- [ ] 1. In `src/components/Layout/TopBar.js` create a MyLink component that returns a `<Link>` component if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `<a>`. Replace your Link components in `src/components/Layout/TopBar.js` with your MyLink component. Heads up! you need to think of the `children` prop.
+     - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
+     - Example: <MyLink to="https://google.com">Some link</MyLink> -> it should render an `a`
+- [ ] 2. Make sure that **any** props that are passed to `MyLink` are passed to `Link` or to `a` accordingly.
+     - Example: `<MyLink to="/messages" className="cool-css">Some link</MyLink>` should return `<Link to="messages" className="cool-css">Some link</Link>`
 
 ## Learning objectives
 
 - Understand the difference beween classic approaches and declarative routing
-- Learn how to implement declarative routing with react-router v4^
+- Learn how to implement declarative routing with react-router
 - Understand the use of the `componentDidMount()` lifecycle method
 - Implement basic data fetching in React using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
 ## Articles and links
 
-- [Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
+- [Lecture: Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
 - [React Router Docs and approach](https://reacttraining.com/react-router/core/guides/philosophy)
 - [Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
 - [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [React lifecycle methods diagram](https://twitter.com/dan_abramov/status/981712092611989509)
 
 ## License
 
