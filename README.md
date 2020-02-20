@@ -58,7 +58,7 @@ If you haven't already set up your project, head here and follow the instruction
 ## Learning objectives
 
 - Understand the difference beween classic approaches and declarative routing
-- Learn how to implement declarative routing with react-router v4^
+- Learn how to implement declarative routing with react-router
 - Understand the use of the `componentDidMount()` lifecycle method
 - Implement basic data fetching in React using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
