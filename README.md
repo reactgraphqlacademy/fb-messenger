@@ -49,18 +49,19 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Extra Bonus
 
-- [ ] 1. In `src/components/Layout/TopBar.js` create a MyLink component that returns a `<Link>` component if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `<a>`. Replace your Link components in `src/components/Layout/TopBar.js` with your MyLink component. Heads up! you need to think of the `children` prop.
+- [ ] 1. In `src/components/Layout/TopBar.js` create a MyLink component that returns a `Link` component if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `a`. Replace your Link components in `src/components/Layout/TopBar.js` with your MyLink component. Heads up! you need to think of the `children` prop.
      - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
      - Example: <MyLink to="https://google.com">Some link</MyLink> -> it should render an `a`
 - [ ] 2. Make sure that **any** props that are passed to `MyLink` are passed to `Link` or to `a` accordingly.
      - Example: `<MyLink to="/messages" className="cool-css">Some link</MyLink>` should return `<Link to="messages" className="cool-css">Some link</Link>`
 
 ### Super Bonus
-- [ ] 1. In `src/components/Layout/TopBar.js` create a MyLink component that returns either a Link if to doesn't startWith "http" (`props.to.startsWith("http")`). Replace your Link components in  `src/components/Layout/TopBar.js` with your MyLink component. Heads up! you need to think of the `children` prop.
-        - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
-        - Example: <MyLink to="https://google.com">Some link</MyLink>  -> it should render an `a`
+
+- [ ] 1. In `src/components/Layout/TopBar.js` create a MyLink component that returns either a Link if to doesn't startWith "http" (`props.to.startsWith("http")`). Replace your Link components in `src/components/Layout/TopBar.js` with your MyLink component. Heads up! you need to think of the `children` prop.
+     - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
+     - Example: <MyLink to="https://google.com">Some link</MyLink> -> it should render an `a`
 - [ ] 2. Make sure all the props that are passed to MyLink are passed to Link or a. It should pass on any prop we might add in the future.
-    example: <MyLink to="/messages"className="potatoe">Some link</MyLink> -> <Link to="messages" className="potatoe">Some link</Link>
+     example: <MyLink to="/messages"className="potatoe">Some link</MyLink> -> <Link to="messages" className="potatoe">Some link</Link>
 
 ## Learning objectives
 
