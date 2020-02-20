@@ -1,4 +1,4 @@
-# ReactJS Facebook messenger
+# Facebook Messenger Clone
 
 The goals of this exercise are to learn how to use a declarative routing using React Router v4, and learn how to fetch data into your components.
 
@@ -35,7 +35,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 - [ ] 5. Refactor the `src/components/Messenger/Chat/Chat.js` component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005) as well. You have a `src/components/Messenger/Chat/ChatContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`.
 
-- [ ] 6. Move the logic on lines 36-44 of `src/components/Messenger/Chat/Chat.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Chat/ChatContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
+- [ ] 6. Move the logic related to needsToFetchUser from render method in `src/components/Messenger/Chat/Chat.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Chat/ChatContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
 
 - [ ] 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the `src/component/Login.js` should not display the `<TopBar>` and `<Footer>`. Hint: Why not try moving the Login component up the tree.
 
@@ -48,6 +48,14 @@ If you haven't already set up your project, head here and follow the instruction
 - [ ] Refactor as many components as you can into functional components, meaning using functions instead of classes to define the component.
 - [ ] Add prop-types to all the components that need it.
 
+### Extra Bonus
+
+- [ ] 1. In `src/components/Layout/TopBar.js` create a MyLink component that returns a `<Link>` component if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `<a>`. Replace your Link components in `src/components/Layout/TopBar.js` with your MyLink component. Heads up! you need to think of the `children` prop.
+     - Example: <MyLink to="/messages">Some link</MyLink> -> it should render a `Link`
+     - Example: <MyLink to="https://google.com">Some link</MyLink> -> it should render an `a`
+- [ ] 2. Make sure that **any** props that are passed to `MyLink` are passed to `Link` or to `a` accordingly. 
+     - Example: `<MyLink to="/messages" className="potato">Some link</MyLink>` should return `<Link to="messages" className="potatoe">Some link</Link>`
+
 ## Learning objectives
 
 - Understand the difference beween classic approaches and declarative routing
@@ -57,10 +65,11 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Articles and links
 
-- [Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
+- [Lecture: Declarative Routing with React Router v4](https://medium.com/leanjs/declarative-routing-with-react-router-v4-7419c198e93f)
 - [React Router Docs and approach](https://reacttraining.com/react-router/core/guides/philosophy)
 - [Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
 - [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [React lifecycle methods diagram](https://twitter.com/dan_abramov/status/981712092611989509)
 
 ## License
 
