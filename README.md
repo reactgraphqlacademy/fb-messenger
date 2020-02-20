@@ -49,7 +49,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ### Extra Bonus
 
-- [ ] 1. In `src/components/Layout/TopBar.js` create a `MyLink` component that returns the `Link` component from `react-router-dom` if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `a`. Replace your Link components in `src/components/Layout/TopBar.js` with your `MyLink` component. Heads up! you need to think of the `children` prop.
+- [ ] 1. In `src/components/Layout/TopBar.js` create a `MyLink` component that returns the `Link` component from `react-router-dom` if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `a`. Replace your `Link` components in `src/components/Layout/TopBar.js` with your `MyLink` component. Heads up! you need to think of the `children` prop.
      - Example: `<MyLink to="/messages">Some link</MyLink>` -> it should render `Link`
      - Example: `<MyLink to="https://google.com">Some link</MyLink>` -> it should render `a`
 - [ ] 2. Make sure that **any** props that are passed to `MyLink` are passed to `Link` or to `a` accordingly.
