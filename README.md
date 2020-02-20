@@ -1,4 +1,4 @@
-# ReactJS Facebook messenger
+# Facebook Messenger Clone
 
 The goals of this exercise are to learn how to use a declarative routing using React Router v4, and learn how to fetch data into your components.
 
