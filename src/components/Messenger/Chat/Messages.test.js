@@ -40,9 +40,15 @@ describe("<Messages />", () => {
     // it won't work if the code returns a pending promise waiting to be resolved or rejected.
     // Events don't return anything. Therefore the promise returned from sendMessage is not passed to this code.
     // It's better to use https://www.npmjs.com/package/wait-for-expect. Check the next test to see how to use it
-    await wrapper.find("button").simulate("click");
 
-    expect(receiveMessage).toHaveBeenCalledWith({ message: "hi!", to: "Alex" });
+    wrapper.find("button").simulate("click");
+
+    await waitForExpect(() => {
+      expect(receiveMessage).toHaveBeenCalledWith({
+        message: "hi!",
+        to: "Alex"
+      });
+    });
   });
 
   it(`should send a message (integration test)`, async () => {
@@ -74,15 +80,18 @@ describe("<Messages />", () => {
     const api = {
       sendMessage: jest.fn(message => Promise.resolve(message))
     };
-
-    const { queryAllByTestId, getByText, getByPlaceholderText } = render(
+    const { getByText, getByPlaceholderText } = render(
       <Root>
         <ComposedMessages api={api} username="alex_lobera" />
       </Root>
     );
 
-    expect(queryAllByTestId(/message-*./i).length).toBe(0);
+    // 2. It expects to have zero messages in the chat
+    // Hint: You might need to add something to the Message component to facilitate this
+    expect(getByText(/You have no messages/i)).toBeTruthy();
 
+    // 3. Fire an on change event on the input message with a random text
+    // Hint: You might want to use the placeholder to find the input
     fireEvent.change(getByPlaceholderText(/Type your message.../i), {
       target: { value: randomMessage }
     });
@@ -91,9 +100,7 @@ describe("<Messages />", () => {
 
     // https://testing-library.com/docs/dom-testing-library/api-async#wait
     await wait(() => {
-      const messages = queryAllByTestId(/message-*./i);
-      expect(messages.length).toBe(1);
-      expect(messages[messages.length - 1]).toHaveTextContent(randomMessage);
+      expect(getByText(randomMessage)).toBeTruthy();
     });
   });
 

@@ -149,7 +149,4 @@ const mapDispatchToProps = {
   receiveMessage
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Messages);
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
