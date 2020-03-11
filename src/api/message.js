@@ -1,4 +1,7 @@
+import throwRandomError from "./throwRandomError";
+
 export const fetchMessages = username => {
+  throwRandomError();
   const filterMessageByUsername = message => {
     return message.from === username || message.to === username;
   };
@@ -8,6 +11,11 @@ export const fetchMessages = username => {
   })
     .then(response => response.json())
     .then(messages => {
-      return messages.filter(filterMessageByUsername);
+      try {
+        throwRandomError();
+        return messages.filter(filterMessageByUsername);
+      } catch (e) {
+        return "🐛🐛🐛🐛🐛";
+      }
     });
 };

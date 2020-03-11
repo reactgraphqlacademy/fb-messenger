@@ -3,13 +3,16 @@ import PropTypes from "prop-types";
 
 import * as api from "../../../api/message";
 import Chat from "./Chat";
+import { logErrorToMyService } from "../../../utils";
 
 class ChatContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      messages: []
+      messages: [],
+      loading: true,
+      error: null
     };
   }
 
@@ -18,11 +21,21 @@ class ChatContainer extends Component {
   }
 
   fetchMessages = username => {
-    this.setState({ messages: [] });
-    setTimeout(() => {
-      api.fetchMessages(username).then(messages => {
-        this.setState({ messages });
-      });
+    // this.setState({ messages: [] });
+    // setTimeout(() => {
+    //   api.fetchMessages(username).then(messages => {
+    //     this.setState({ messages });
+    //   });
+    // }, 1000);
+    this.setState({ messages: [], loading: true });
+
+    setTimeout(async () => {
+      try {
+        const messages = await api.fetchMessages(username);
+        this.setState({ messages, loading: false });
+      } catch (error) {
+        this.setState({ error: error.message, loading: false });
+      }
     }, 1000);
   };
 
@@ -33,10 +46,12 @@ class ChatContainer extends Component {
   }
 
   render() {
-    const { messages } = this.state;
+    const { messages, error, loading } = this.state;
     const { match } = this.props;
 
-    return <Chat messages={messages} match={match} />;
+    return (
+      <Chat error={error} loading={loading} messages={messages} match={match} />
+    );
   }
 }
 

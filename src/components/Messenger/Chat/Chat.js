@@ -6,10 +6,12 @@ import ChatBar from "./ChatBar";
 import UserDetail from "./UserDetail";
 import Messages from "./Messages";
 
-const Chat = ({ messages, match }) => {
+const Chat = ({ messages, match, error, loading }) => {
   const { username } = match.params;
 
-  if (!messages.length) {
+  if (error) {
+    return <h2>Oops something went wrong fetching messages...</h2>;
+  } else if (loading) {
     return <h2>Loading...</h2>;
   }
 
