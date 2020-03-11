@@ -1,6 +1,6 @@
 # React GraphQL Facebook messenger
 
-The goals of this exercise is to learn how to use basic forms in react using state and how to do authentication with react router and JWT.
+The goals of this exercise is to learn how to handle errors in React.
 
 ## To get started
 
