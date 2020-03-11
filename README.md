@@ -26,7 +26,7 @@ npm i
 
 - "catch" the error so that the app doesn't crash
 - Report the error
-- Handle the error and show a fallback UI to the user. Hint: add an error state in ThreadsContainer
+- Handle the error and show a fallback UI to the user. Hint: update the error state in ThreadsContainer
 
 2- Handle the error thrown during the rendering of components/Threads.js. Hint, use an Error boundary. You can use `src/components/ErrorBoundary.js`.
 
@@ -34,7 +34,7 @@ npm i
 
 - "catch" the error so the app doesn't crash
 - Report the error
-- Handle the error and show a fallback UI to the user. Hint: add an error state in ThreadsContainer
+- Handle the error and show a fallback UI to the user. Hint: set the error state in ThreadsContainer
 
 4- Handle the error thrown during the rendering of components/Chat.js. Hint, use an Error boundary. You can use `src/components/ErrorBoundary.js`.
 

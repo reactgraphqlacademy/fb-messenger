@@ -16,20 +16,11 @@ class ThreadsContainer extends Component {
   }
 
   async componentDidMount() {
-    // fetchThreads()
-    //   .then(({ threads }) => {
-    //     this.setState({ threads });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-    try {
-      const { threads } = await fetchThreads();
-      this.setState({ threads, loading: false });
-    } catch (error) {
-      // do something
-      this.setState({ error: error.message, loading: false });
-    }
+    fetchThreads()
+      .then(({ threads }) => {
+        this.setState({ threads });
+      })
+      .catch(error => {});
   }
 
   render() {

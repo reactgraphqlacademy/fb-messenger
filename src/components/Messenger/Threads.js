@@ -8,6 +8,8 @@ import Icon from "../Layout/Icon";
 const Threads = ({ threads, error }) => {
   return error ? (
     <h1>Opps the API didn't work</h1>
+  ) : loading ? (
+    <h1>Loading...</h1>
   ) : (
     <div className="threads">
       <div className="thread-bar">
