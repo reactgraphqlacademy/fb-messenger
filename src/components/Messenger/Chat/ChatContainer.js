@@ -21,12 +21,6 @@ class ChatContainer extends Component {
   }
 
   fetchMessages = username => {
-    // this.setState({ messages: [] });
-    // setTimeout(() => {
-    //   api.fetchMessages(username).then(messages => {
-    //     this.setState({ messages });
-    //   });
-    // }, 1000);
     this.setState({ messages: [], loading: true });
 
     setTimeout(async () => {
@@ -34,6 +28,7 @@ class ChatContainer extends Component {
         const messages = await api.fetchMessages(username);
         this.setState({ messages, loading: false });
       } catch (error) {
+        logErrorToMyService(error);
         this.setState({ error: error.message, loading: false });
       }
     }, 1000);

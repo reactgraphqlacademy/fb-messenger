@@ -1,6 +1,6 @@
 # React GraphQL Facebook messenger
 
-The goals of this exercise is to learn how to use basic forms in react using state and how to do authentication with react router and JWT.
+The goals of this exercise is to learn how to handle errors in React.
 
 ## To get started
 
@@ -24,23 +24,23 @@ npm i
 
 1- Handle the error thrown in the api/threads.js fetchThreads function. Hint, Error boundaries do not catch errors for asynchronous code. Tasks:
 
-- "catch" the error so that the app doesn't crash
-- Report the error
-- Handle the error and show a fallback UI to the user. Hint: add an error state in ThreadsContainer
+- "catch" the error so that the app doesn't crash.
+- Report the error.
+- Handle the error and show a fallback UI to the user. Hint: update the error state in ThreadsContainer.
 
 2- Handle the error thrown during the rendering of components/Threads.js. Hint, use an Error boundary. You can use `src/components/ErrorBoundary.js`.
 
-3- Handle the error thrown in the api/message.js fetchMessages function. Hint, Error boundaries do not catch errors for asynchronous code
+3- Handle the error thrown in the api/message.js fetchMessages function. Hint, Error boundaries do not catch errors for asynchronous code. Tasks:
 
-- "catch" the error so the app doesn't crash
-- Report the error
-- Handle the error and show a fallback UI to the user. Hint: add an error state in ThreadsContainer
+- "catch" the error so the app doesn't crash.
+- Report the error.
+- Handle the error and show a fallback UI to the user. Hint: set the error state in ThreadsContainer.
 
 4- Handle the error thrown during the rendering of components/Chat.js. Hint, use an Error boundary. You can use `src/components/ErrorBoundary.js`.
 
 ## Bonus Exercise
 
-- Provide a different Error Boundary message in the Chat. Hint, you can use a fallback prop in the ErrorBoundary and use two `<ErrorBoundary>` elements
+- Provide a different Error Boundary message in the Chat. Hint, you can use a fallback prop in the ErrorBoundary and use two `<ErrorBoundary>` elements.
 
 ## Learning objectives
 
