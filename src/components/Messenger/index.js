@@ -8,12 +8,8 @@ import ErrorBoundary from "../ErrorBoundary";
 
 const Messenger = ({ match }) => (
   <div className="messenger">
-    <ErrorBoundary>
-      <ThreadsContainer />
-    </ErrorBoundary>
-    <ErrorBoundary fallback={<h2>Chat failed 😢</h2>}>
-      <Route path={`${match.url}/:username`} component={ChatContainer} />
-    </ErrorBoundary>
+    <ThreadsContainer />
+    <Route path={`${match.url}/:username`} component={ChatContainer} />
   </div>
 );
 

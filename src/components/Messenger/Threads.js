@@ -5,7 +5,7 @@ import { Route } from "react-router-dom";
 import Avatar from "../Layout/Avatar";
 import Icon from "../Layout/Icon";
 
-const Threads = ({ threads, error }) => {
+const Threads = ({ threads, error, loading }) => {
   return error ? (
     <h1>Opps the API didn't work</h1>
   ) : loading ? (
