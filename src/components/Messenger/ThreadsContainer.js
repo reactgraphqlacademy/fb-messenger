@@ -18,13 +18,14 @@ class ThreadsContainer extends Component {
   async componentDidMount() {
     fetchThreads()
       .then(({ threads }) => {
-        this.setState({ threads });
+        this.setState({ threads, loading: false });
       })
       .catch(error => {});
   }
 
   render() {
     const { threads, error, loading } = this.state;
+
     return <Threads loading={loading} error={error} threads={threads} />;
   }
 }
