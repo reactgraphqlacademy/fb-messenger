@@ -34,7 +34,7 @@ The idea is simple, you should execute our unit tests and fix the errors. Once a
 
 ### Part 2. Move the state of the app into Redux
 
-0. execute `npm start`
+0. `npm start`
 
 1. The `<UserDetail>` component should not be open by default. The src/components/Messenger/Chat/Chat.js is connected to Redux and it gets the prop isMessageDetailOpen from the store. Which part of the code is creating the initial state of isMessageDetailOpen? Hint, look at the uiReducer in src/reducers/index.js and change the default state.
 
