@@ -1,27 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 // TODO part 3, replace the apollo-link-http with apollo-link-batch-http
-import { createHttpLink } from "apollo-link-http";
-import { ApolloLink } from "apollo-link";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloClient } from "apollo-client";
+// import { createHttpLink } from "apollo-link-http";
+// import { ApolloLink } from "apollo-link";
+// import { InMemoryCache } from "apollo-cache-inmemory";
+// import { ApolloClient } from "apollo-client";
+import ApolloClient from "apollo-boost";
 
-import { configureStore } from "App/store";
-import Root from "./App/components/Root";
+import Root from "./Root";
 
-const configLink = {
-  uri: `/graphql`,
-  credentials: "include"
-};
-
-const graphqlClient = new ApolloClient({
-  link: ApolloLink.from([createHttpLink(configLink)]),
-  cache: new InMemoryCache()
+const client = new ApolloClient({
+  uri: `/graphql`
 });
 
-const store = configureStore();
-
 ReactDOM.render(
-  <Root store={store} graphqlClient={graphqlClient} />,
+  <Root graphqlClient={client} />,
   document.getElementById("root")
 );

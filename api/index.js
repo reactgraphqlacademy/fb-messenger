@@ -1,53 +1,16 @@
-const Express = require('express')
-const bodyParser = require('body-parser')
-const jwt = require('jsonwebtoken')
-const { graphiqlExpress, graphqlExpress } = require('graphql-server-express')
-const schema = require('./schema')
+var express = require("express");
+var graphqlHTTP = require("express-graphql");
 
-function createApi() {
-  const router = Express.Router()
+const schema = require("./schema");
 
-  router.use('/api/auth',
-    bodyParser.json(),
-    (req, res) => {
-      const { email, password } = req.body
-      if (email === 'clone@facebook.com' && password === '123') {
-        const SEVEN_DAYS_IN_MILLISECONDS = 604800000
-        const cookie = jwt.sign(
-          { id: '5ab1299177282be8578f3612', username: '@theclone' },
-          'this_is_my_secret_key ^^',
-          { expiresIn: '7 days' }
-        )
-        res.cookie(
-          '__session',
-          cookie,
-          { maxAge: SEVEN_DAYS_IN_MILLISECONDS }
-        )
-        res.status(200).send('Authorized')
-      } else {
-        res.status(401).send('Not authorized')
-      }
-    }
-  )
+const api = express();
 
-  router.post(
-    '/graphql',
-    bodyParser.json(),
-    (req, res) => {
-      return graphqlExpress({
-        schema,
-        context: { response: res },
-      })(req, res)
-    }
-  )
+api.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
 
-  router.get(
-    '/graphiql',
-    graphiqlExpress({
-      endpointURL: '/graphql'
-    }))
-
-  return router
-}
-
-module.exports = createApi
+module.exports = api;

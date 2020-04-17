@@ -1,0 +1,46 @@
+:export {
+  darkBlue: #4267b2;
+  lightBlue: #0084ff;
+  lightGrey: #f1f0f0;
+  grey: #ccc;
+  mediumGrey: #bdc7d8;
+  darkGrey: #999999;
+  black: #000000;
+  white: #ffffff;
+}
+
+@import url("https://use.fontawesome.com/releases/v5.0.6/css/all.css");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 100%;
+  height: 100%;
+}
+a:link,
+a:focus,
+a:hover {
+  cursor: pointer;
+}
+button {
+  color: #0084ff;
+  border: none;
+  cursor: pointer;
+  font-weight: bolder;
+}
+h2 {
+  font-weight: 300;
+  text-align: center;
+  margin: auto;
+  font-size: 1rem;
+}
+.page-center {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

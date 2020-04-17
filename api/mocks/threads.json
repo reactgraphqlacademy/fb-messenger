@@ -1,28 +1,28 @@
 [
   {
     "lastMessage": {
-      "from": "crazypeacock512",
-      "to":"you",
-      "message": "Hi! how do you find the React course?",
-      "time":"2018-02-11T12:00:00Z",
+      "from": "leeb",
+      "to": "you",
+      "message": "Hi! how do you find GraphQL?",
+      "time": "2018-02-11T12:00:00Z",
       "id": "k0ut102efa"
     },
-    "title": "miss",
-    "firstName": "mary",
-    "lastName": "jones",
-    "username": "crazypeacock512"
+    "title": "mr",
+    "firstName": "Lee",
+    "lastName": "Byron",
+    "username": "leeb"
   },
   {
     "lastMessage": {
-      "from": "crazytiger134",
-      "to":"you",
+      "from": "dans",
+      "to": "you",
       "message": "See you soon",
-      "time":"2018-02-11T12:00:00Z",
+      "time": "2018-02-11T12:00:00Z",
       "id": "k0ut102ef2"
     },
     "title": "mr",
-    "firstName": "alan",
-    "lastName": "walters",
-    "username": "crazytiger134"
+    "firstName": "Dan",
+    "lastName": "Schafer",
+    "username": "dans"
   }
 ]
