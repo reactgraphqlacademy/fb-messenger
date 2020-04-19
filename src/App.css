@@ -36,11 +36,3 @@ h2 {
   margin: auto;
   font-size: 1rem;
 }
-.page-center {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

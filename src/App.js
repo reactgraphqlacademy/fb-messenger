@@ -7,6 +7,7 @@ import colours from "./App.css";
 
 import TopBar from "./layout/TopBar";
 import Footer from "./layout/Footer";
+import UserProfile from "./user/Profile";
 
 const AppWrapper = styled.div`
   background-color: ${colours.white};
@@ -32,6 +33,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" render={() => <Redirect to="/messages" />} />
       <Route path="/messages" component={Messenger} />
+      <Route path="/profile" component={UserProfile} />
     </Switch>
     <Footer />
   </AppWrapper>

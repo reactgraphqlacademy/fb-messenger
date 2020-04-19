@@ -1,0 +1,10 @@
+query messages($username: String!) {
+  messages(username: $username) {
+    edges {
+      node {
+        from
+        message
+      }
+    }
+  }
+}

@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-// import { graphql } from "react-apollo";
-// import gql from "graphql-tag";
-
-// import MESSAGES_QUERY from './Messages.graphql'
-// import { THREADS_QUERY } from '../Threads'
+// import GET_MESSAGES from './Messages.graphql'
+import { GET_THREADS } from "../Threads";
 import colours from "../../App.css";
 import Avatar from "../../layout/Avatar";
 import Icon from "../../layout/Icon";
@@ -21,21 +18,26 @@ const MessagesWrapper = styled.div`
 
 const MessagesList = styled.div`
   padding: 1em;
+  flex: 1 1 auto;
   overflow-y: auto;
+  height: 0px;
   p {
     color: ${colours.darkGrey};
     font-size: 0.9em;
   }
 `;
 
-const NewMessage = styled.div`
+const NewMessageForm = styled.form`
   min-height: 20px;
-  padding: 1em;
+  padding: 0.5em;
   border-top: 1px solid ${colours.mediumGrey};
-  font-size: 0.9rem;
   display: flex;
   justify-content: space-between;
-  height: 60px;
+  height: 40px;
+  input,
+  button {
+    font-size: 0.9em;
+  }
 `;
 
 const MessageBox = styled.input`
@@ -76,9 +78,25 @@ const GET_MESSAGES = gql`
     messages(username: $username) {
       edges {
         node {
+          # remove this so students need to fix https://github.com/apollographql/apollo-client/issues/2510
+          # ask they what that id means for Apollo.
+          id
           from
-          message
+          text
         }
+      }
+    }
+  }
+`;
+
+const SEND_MESSAGES = gql`
+  mutation sendMessage($from: String!, $to: String!, $text: String!) {
+    sendMessage(message: { from: $from, to: $to, text: $text }) {
+      message {
+        id
+        from
+        to
+        text
       }
     }
   }
@@ -86,22 +104,65 @@ const GET_MESSAGES = gql`
 
 const Messages = ({ username }) => {
   const [newMessage, setNewMessage] = React.useState("");
+  const messageListDiv = useRef(null);
+  const [sendMessageMutation] = useMutation(SEND_MESSAGES, {
+    refetchQueries: [
+      {
+        query: GET_THREADS
+      }
+    ],
+    update(
+      cache,
+      {
+        data: {
+          sendMessage: { message }
+        }
+      }
+    ) {
+      const { messages } = cache.readQuery({
+        query: GET_MESSAGES,
+        variables: { username }
+      });
 
-  const sendMessage = async () => {
-    // await this.props.sendMessage({
-    //   variables: {
-    //     to: username,
-    //     from: "me",
-    //     message: newMessage
-    //   }
-    // });
+      const data = {
+        messages: {
+          ...messages,
+          edges: [
+            ...messages.edges,
+            { node: message, __typename: "MessageEdge" }
+          ]
+        }
+      };
+
+      cache.writeQuery({
+        query: GET_MESSAGES,
+        variables: { username },
+        data
+      });
+    }
+  });
+
+  const { error, data: { messages } = {}, loading } = useQuery(GET_MESSAGES, {
+    variables: { username }
+  });
+
+  useEffect(() => {
+    if (messageListDiv.current)
+      messageListDiv.current.scrollTop = messageListDiv.current.scrollHeight;
+  }, [messages]);
+
+  const sendMessage = async e => {
+    e.preventDefault();
+    await sendMessageMutation({
+      variables: {
+        to: username,
+        from: "me",
+        text: newMessage
+      }
+    });
 
     setNewMessage("");
   };
-
-  const { error, data, loading } = useQuery(GET_MESSAGES, {
-    variables: { username }
-  });
 
   if (error) {
     return <h2>{error.message}</h2>;
@@ -109,11 +170,11 @@ const Messages = ({ username }) => {
     return <h2>Loading...</h2>;
   }
 
-  const conversation = data.messages.edges.map(({ node }, i) => (
+  const conversation = messages.edges.map(({ node }, i) => (
     <MessageWrapper key={i} from={node.from === "you" ? "sent" : "received"}>
       {node.to === "you" && <Avatar username={username} size="medium" />}
       <Message from={node.from === "you" ? "sent" : "received"}>
-        {node.message}
+        {node.text}
       </Message>
       {node.from === "you" && (
         <MessageRead>
@@ -125,35 +186,21 @@ const Messages = ({ username }) => {
 
   return (
     <MessagesWrapper>
-      <MessagesList>
+      <MessagesList ref={messageListDiv}>
         {conversation.length ? conversation : <p>You have no messages</p>}
       </MessagesList>
-      <NewMessage>
+      <NewMessageForm onSubmit={sendMessage}>
         <MessageBox
           onChange={e => setNewMessage(e.target.value)}
           type="text"
           value={newMessage}
+          required
           placeholder="Type your message..."
         />
-        <button onClick={sendMessage}>Send</button>
-      </NewMessage>
+        <button type="submit">Send</button>
+      </NewMessageForm>
     </MessagesWrapper>
   );
 };
-
-// use the following function to send a message
-// const sendMessage = graphql(gql`
-//     TODO add a mutation here
-// `,
-// {
-//   options: (props) => ({
-//     refetchQueries: // TODO https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations
-//     update: (store, { data: { sendMessage } }) => {
-//       // TODO you need to update a thread and write the Query again in the cache
-//       // Hint https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment
-//     }
-//   }),
-//   name: 'sendMessage',
-// })
 
 export default Messages;

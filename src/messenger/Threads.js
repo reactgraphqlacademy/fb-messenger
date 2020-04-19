@@ -1,62 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-import colours from "../App.css";
 import Avatar from "../layout/Avatar";
 import Icon from "../layout/Icon";
+import {
+  ThreadsWrapper,
+  ThreadBar,
+  ThreadList,
+  UserName,
+} from "./threads.styles";
 
-const ThreadsWrapper = styled.div`
-  display: flex;
-  border-right: 1px solid ${colours.mediumGrey};
-  flex-direction: column;
-  flex-basis: 30%;
-`;
-
-const ThreadBar = styled.div`
-  border-bottom: 1px solid ${colours.mediumGrey};
-  padding: 0.85em;
-  h2 {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-  }
-`;
-
-const ThreadList = styled.ul`
-  overflow-y: auto;
-  width: 100%;
-  list-style: none inside none;
-  padding: 0;
-  margin: 0;
-  li {
-    display: flex;
-    align-items: center;
-    padding: 0.4em 0.75em;
-    &:hover {
-      background: ${colours.lightGrey};
-      cursor: pointer;
-    }
-  }
-`;
-
-const UserName = styled.div`
-  font-size: 0.9rem;
-  span {
-    font-size: 0.9em;
-    text-transform: capitalize;
-  }
-  small {
-    font-size: 0.8em;
-    color: ${colours.darkGrey};
-    margin: 2px 0;
-    display: block;
-  }
-`;
-
-const GET_THREADS = gql`
+export const GET_THREADS = gql`
   query {
     threads {
       edges {
@@ -64,7 +19,7 @@ const GET_THREADS = gql`
           firstName
           lastName
           lastMessage {
-            message
+            text
           }
           username
         }
@@ -88,11 +43,14 @@ const Threads = ({ history, match }) => {
     content = edges.length ? (
       <ThreadList>
         {edges.map(({ node: thread }) => (
-          <li onClick={() => history.push(`${match.url}/${thread.username}`)}>
+          <li
+            onClick={() => history.push(`${match.url}/${thread.username}`)}
+            key={thread.username}
+          >
             <Avatar username={thread.username} size="large" />
             <UserName>
               <span>{`${thread.firstName} ${thread.lastName}`}</span>
-              <small>{thread.lastMessage.message}</small>
+              <small>{thread.lastMessage.text}</small>
             </UserName>
           </li>
         ))}
@@ -114,12 +72,6 @@ const Threads = ({ history, match }) => {
       {content}
     </ThreadsWrapper>
   );
-};
-
-Threads.defaultProps = {
-  data: {
-    loading: true,
-  },
 };
 
 export default Threads;

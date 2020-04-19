@@ -2,18 +2,36 @@
 const { makeExecutableSchema } = require("graphql-tools");
 const { GraphQLDateTime } = require("graphql-iso-date");
 const { connectionFromArray } = require("graphql-relay");
-const loremIpsum = require("lorem-ipsum");
+// const loremIpsum = require("lorem-ipsum");
 
 const threads = require("./mocks/threads.json");
 const messages = require("./mocks/messages.json");
 
-if (!global.messages) {
-  global.messages = messages;
+const cache = {};
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-if (!global.threads) {
-  global.threads = threads;
+function randomId() {
+  return Math.floor(Math.random() * Math.floor(10000));
 }
+
+cache.viewer = {
+  username: "@clone2971",
+  fullname: "Clone",
+  id: randomId(),
+};
+cache.works = {
+  [cache.viewer.id]: {
+    id: randomId(),
+    userId: cache.viewer.id,
+    company: "Galactic Republic",
+  },
+};
+
+cache.messages = messages;
+cache.threads = threads;
 
 const gql = String.raw;
 
@@ -41,7 +59,7 @@ const typeDefs = gql`
   type Message implements Node {
     from: String!
     to: String!
-    message: String!
+    text: String!
     id: ID!
     time: DateTime!
     thread: Thread
@@ -68,7 +86,6 @@ const typeDefs = gql`
   }
 
   type Thread {
-    "Email of the user"
     title: String!
     firstName: String!
     lastName: String!
@@ -86,6 +103,22 @@ const typeDefs = gql`
     status: Int!
   }
 
+  type Settings {
+    location: String!
+  }
+
+  type Work {
+    id: ID!
+    company: String!
+    jobTitle: String
+  }
+
+  input UpdateWorkInput {
+    userId: ID!
+    company: String!
+    jobTitle: String
+  }
+
   type Query {
     messages(
       first: Int
@@ -101,57 +134,96 @@ const typeDefs = gql`
       last: Int
       before: String
     ): ThreadConnection
-    user(username: String!): User
+
+    viewer: User
+    work(userId: ID!): Work
   }
 
   input SendMessageInput {
     from: String!
     to: String!
-    message: String!
+    text: String!
+  }
+
+  type SendMessagePayload {
+    message: Message
+  }
+
+  type UpdateUserPayload {
+    user: User
+  }
+
+  type UpdateWorkPayload {
+    work: Work
   }
 
   type Mutation {
-    sendMessage(input: SendMessageInput!): Message
-    sendMessageWithRandomError(input: SendMessageInput!): Message
+    sendMessage(message: SendMessageInput!): SendMessagePayload!
+    updateUser(user: UpdateUserInput!): UpdateUserPayload!
+    updateWork(work: UpdateWorkInput!): UpdateWorkPayload!
   }
 
   type User {
     username: String!
-    bio: String!
+    fullname: String!
+    bio: String
+    id: ID!
+    work: Work
+  }
+
+  input UpdateUserInput {
+    fullname: String!
+    bio: String
+    id: ID!
   }
 `;
 
-const sendMessage = (_, { input: message }, context) => {
-  global.threads = global.threads.map((thread) => {
-    if (thread.username === message.to) {
-      thread.lastMessage = message;
-    }
-    return thread;
-  });
-
-  message.id = Math.random().toString(36).substr(2, 9);
-  message.time = new Date();
-  global.messages.push(message);
-  return message;
-};
-
 const resolvers = {
   Mutation: {
-    sendMessage,
+    sendMessage: (_, { message }) => {
+      cache.threads = cache.threads.map((thread) => {
+        if (thread.username === message.to) {
+          thread.lastMessage = message;
+        }
+        return thread;
+      });
+
+      message.id = Math.random().toString(36).substr(2, 9);
+      message.time = new Date();
+      cache.messages.push(message);
+
+      return { message };
+    },
+    updateUser: async (_, { user }) => {
+      cache.viewer = { ...cache.viewer, ...user };
+
+      await sleep(1000);
+
+      return { user: cache.viewer };
+    },
+    updateWork: async (_, { work: workInput }) => {
+      const work = { ...cache.works[workInput.userId], ...workInput };
+      cache.works[workInput.userId] = work;
+
+      await sleep(1000);
+
+      return { work };
+    },
   },
   Query: {
     messages: (_, { username, ...args }) =>
       myConnectionFromArray(
-        global.messages.filter(
+        cache.messages.filter(
           (message) => message.from === username || message.to === username
         ),
         args
       ),
-    threads: (_, args) => myConnectionFromArray(global.threads, args),
-    user: (_, { username }) => ({
-      username,
-      bio: loremIpsum(),
-    }),
+    threads: (_, args) => myConnectionFromArray(cache.threads, args),
+    viewer: () => cache.viewer,
+    work: (_, args) => cache.works[args.userId],
+  },
+  User: {
+    work: (parent) => cache.works[parent.id],
   },
   Message: {
     thread: () => threads[0],

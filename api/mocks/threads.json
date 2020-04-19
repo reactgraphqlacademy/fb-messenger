@@ -3,7 +3,7 @@
     "lastMessage": {
       "from": "leeb",
       "to": "you",
-      "message": "Hi! how do you find GraphQL?",
+      "text": "Hi! how do you find GraphQL?",
       "time": "2018-02-11T12:00:00Z",
       "id": "k0ut102efa"
     },
@@ -16,7 +16,7 @@
     "lastMessage": {
       "from": "dans",
       "to": "you",
-      "message": "See you soon",
+      "text": "See you soon",
       "time": "2018-02-11T12:00:00Z",
       "id": "k0ut102ef2"
     },

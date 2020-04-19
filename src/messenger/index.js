@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Route } from "react-router-dom";
 
 import colours from "../App.css";
-
 import Threads from "./Threads";
 import Chat from "./chat";
 
