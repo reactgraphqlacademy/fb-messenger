@@ -6,29 +6,21 @@ The goal of this exercise is to learn the best practices using GraphQL queries a
 
 ### Step 1
 
-If you haven't already set up your project, head here and follow the instructions https://github.com/leanjscom/fb-messenger/blob/master/README.md
+If you haven't already set up your project, head here and follow the instructions https://github.com/reactgraphqlacademy/fb-messenger/blob/master/README.md
 
 ### Step 2
 
 ```sh
- git checkout graphql-apollo
-```
-
-### Step 3
-
-```sh
- npm i
+ git checkout graphql-apollo && cd graphql-apollo && npm i
 ```
 
 ## Exercise
-
-### Part 1
 
 ```sh
  npm start
 ```
 
-## Part 1
+### Part 1
 
 ## Articles and links
 
