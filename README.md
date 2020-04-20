@@ -1,6 +1,6 @@
-# ReactJS Facebook messenger
+# GraphQL Apollo Client
 
-The goal of this exercise is to learn how to use GraphQL queries and mutations using Apollo Client.
+The goal of this exercise is to learn the best practices using GraphQL queries and mutations in Apollo Client.
 
 ## To get started
 
@@ -28,68 +28,19 @@ If you haven't already set up your project, head here and follow the instruction
  npm start
 ```
 
-[http://localhost:3000/graphiql](http://localhost:3000/graphiql)
-
-- Query a list of threads and retrieve the username of each thread.
-- Query a list of messages given a username. Hint, you need to provide a username.
-- Send a new message.
-- How many threads in the system?
-- How many types do we have in the system?
-
-### Part 2
-
-1. In src/Messenger/components/Threads.js you need to fetch the threads data using a graphql query. You'll find more info about the steps you need to follow at the bottom of src/Messenger/components/Threads.js. Hint [https://www.apollographql.com/docs/react/api/react-apollo#graphql](https://www.apollographql.com/docs/react/api/react-apollo#graphql)
-2. In src/Messenger/components/Threads.js, replace the threads query by threadsConnection. Hint, you'll also need to update the threads.map(thread => ...
-3. In src/Messenger/components/Chat/Messages.js, fetch a list of messages using the messagesConnection query. Hint, you'll need to do the same you did in Threads.js PLUS adding the username variable to the query. If the graphql query has an argument with the same name as any of the props, then Apollo Client will map that prop with the query variable. For instance, call your variable in the query \$username since Messages has a prop called username. Otherwise, you'll have to pass variables to the graphql HoC by doing:
-
-```
-export default graphql(gql`{ ... }`, {
-  options: props => ({
-    variables: {
-        // variables
-     }
-  }),
-})(MyComponent);
-```
-
-4. Use the sendMessage mutation to send a message. Sending a message should:
-
-- Display the new message at the bottom of the chat. Hint, you'll need to update the Apollo Client cache. Suggestion: update the Apollo Client cache using [refetchQueries](https://www.apollographql.com/docs/react/advanced/caching#after-mutations)
-- Update the threads to display the new message. Hint, you'll need to update the Apollo Client cache. Suggestion, update the Apollo Client cache using the [update function in options](https://www.apollographql.com/docs/react/advanced/caching#writequery-and-writefragment):
-
-```{
-      options: {
-        update:  (store, { data: { sendMessage } }) => {
-          // TODO
-        }
-      }
-    }
-```
-
-You have some hints at the bottom of src/Messenger/components/Chat/Messages.js to help you complete task 4
-
-### Bonus
-
-- Use the [Apollo Query](https://www.apollographql.com/docs/react/essentials/queries#basic) component (render props) to fetch the bio of the user in `src/Messenger/components/Chat/UserDetail.js`
-- Use [withApollo](https://www.apollographql.com/docs/react/api/react-apollo#withApollo) to get a session on handleSubmit in `src/User/components/Login` using the graphql `query getSession` instead of the REST API.
+## Part 1
 
 ## Articles and links
 
-- [https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
-- [https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations](https://www.apollographql.com/docs/react/advanced/caching.html#after-mutations)
-- [https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment](https://www.apollographql.com/docs/react/advanced/caching.html#writequery-and-writefragment)
+- [Apollo Client Developer Tools](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm/related)
+- [Updating the cache after a mutation](https://www.apollographql.com/docs/react/data/mutations/#updating-the-cache-after-a-mutation)
+- [Using fragments - Apollo docs](https://www.apollographql.com/docs/react/data/fragments)
+- [Batching Client GraphQL Queries by Apollo](https://www.apollographql.com/blog/batching-client-graphql-queries-a685f5bcd41b)
+- [Explaining GraphQL Connections by Apollo](https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976)
 - [http://graphql.org/learn/](http://graphql.org/learn/)
-- [http://graphql.org/learn/thinking-in-graphs/](http://graphql.org/learn/thinking-in-graphs/)
-- [https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b](https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b)
-- [https://dev-blog.apollodata.com/graphql-explained-5844742f195e](https://dev-blog.apollodata.com/graphql-explained-5844742f195e)
-- [https://facebook.github.io/relay/docs/thinking-in-graphql.html](https://facebook.github.io/relay/docs/thinking-in-graphql.html)
-- [https://dev-blog.apollodata.com/the-anatomy-of-a-graphql-query-6dffa9e9e747](https://dev-blog.apollodata.com/the-anatomy-of-a-graphql-query-6dffa9e9e747)
-- [https://github.com/apollographql/apollo-server](https://github.com/apollographql/apollo-server)
-- [https://www.youtube.com/watch?v=PHabPhgRUuU](https://www.youtube.com/watch?v=PHabPhgRUuU)
-- [https://facebook.github.io/relay/graphql/connections.htm](https://facebook.github.io/relay/graphql/connections.htm)
-- [https://dev-blog.apollodata.com/introducing-launchpad-the-graphql-server-demo-platform-cc4e7481fcba](https://dev-blog.apollodata.com/introducing-launchpad-the-graphql-server-demo-platform-cc4e7481fcba)
-- [https://dev-blog.apollodata.com/](https://dev-blog.apollodata.com/)
-- [http://dev.apollodata.com](http://dev.apollodata.com)
+- [Thinking in Graphs](http://graphql.org/learn/thinking-in-graphs/)
+- [GraphQL vs. REST](https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b)
+- [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm)
 
 ## License
 
