@@ -1,16 +1,13 @@
-var express = require("express");
-var graphqlHTTP = require("express-graphql");
+const express = require("express");
+const { ApolloServer } = require("apollo-server-express");
 
 const schema = require("./schema");
+const app = express();
 
-const api = express();
+const server = new ApolloServer({
+  schema,
+});
 
-api.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
+server.applyMiddleware({ app });
 
-module.exports = api;
+module.exports = app;

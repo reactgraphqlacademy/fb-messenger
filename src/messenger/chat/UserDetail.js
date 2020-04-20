@@ -6,11 +6,10 @@ import {
   User,
   UserName,
   LastActive,
-  UserBio,
+  UserDetailContent,
 } from "./UserDetail.styles";
 
 const UserDetail = ({ username }) => (
-  // TODO CAN WE ADD FRAGMENTS HERE?
   <UserDetailWrapper>
     <User>
       <div>
@@ -25,7 +24,10 @@ const UserDetail = ({ username }) => (
       <Icon name="cog" />
     </User>
 
-    <UserBio>BONUS! add the bio here</UserBio>
+    <UserDetailContent>
+      <p>bio: TODO ADD FRAGMENTS HERE</p>
+      <p>work: TODO ADD FRAGMENTS HERE</p>
+    </UserDetailContent>
   </UserDetailWrapper>
 );
 

@@ -1,28 +1,56 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
 import { StyledPage } from "./styles";
 import AboutWork from "./Work";
 
+const USER_FRAGMENT = gql`
+  fragment UpdateUserFragment on User {
+    id
+    fullname
+  }
+`;
+
+// const VIEWER = gql`
+//   query {
+//     viewer {
+//       id
+//       fullname
+//     }
+//   }
+// `;
 const VIEWER = gql`
   query {
     viewer {
-      id
-      fullname
+      ...UpdateUserFragment
+      ...ProfileWork
     }
   }
+  ${USER_FRAGMENT}
+  ${AboutWork.fragments.work}
 `;
+
+// const UPDATE_USER = gql`
+//   mutation updateUser($fullname: String!, $id: ID!) {
+//     updateUser(user: { fullname: $fullname, id: $id }) {
+//       user {
+//         id
+//         fullname
+//       }
+//     }
+//   }
+// `;
 
 const UPDATE_USER = gql`
   mutation updateUser($fullname: String!, $id: ID!) {
     updateUser(user: { fullname: $fullname, id: $id }) {
       user {
-        fullname
+        ...UpdateUserFragment
       }
     }
   }
+  ${USER_FRAGMENT}
 `;
 
 const Profile = () => {
@@ -58,16 +86,13 @@ const Profile = () => {
               value={fullname || data.viewer.fullname}
             />
           </label>
-          <button disable={mutatingUser} type="submit">
+          <button disable={mutatingUser ? true : undefined} type="submit">
             {mutatingUser ? "Saving" : "Save"}
           </button>
         </form>
         <hr />
-        <AboutWork userId={data.viewer.id} />
-        <hr />
-        <p>
-          Navigate to <Link to="/messages">messages</Link>
-        </p>
+        {/* <AboutWork userId={data.viewer.id} /> */}
+        <AboutWork user={data.viewer} />
       </div>
     </StyledPage>
   );

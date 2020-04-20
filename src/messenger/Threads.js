@@ -9,7 +9,7 @@ import {
   ThreadBar,
   ThreadList,
   UserName,
-} from "./threads.styles";
+} from "./Threads.styles";
 
 export const GET_THREADS = gql`
   query {
