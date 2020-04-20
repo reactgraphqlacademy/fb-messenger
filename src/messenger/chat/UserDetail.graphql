@@ -1,6 +1,0 @@
-query getUserDetail($username: String!) {
-  getUser(username: $username) {
-    username
-    bio
-  }
-}

@@ -1,8 +1,7 @@
-// var { buildSchema } = require("graphql");
 const { makeExecutableSchema } = require("graphql-tools");
 const { GraphQLDateTime } = require("graphql-iso-date");
 const { connectionFromArray } = require("graphql-relay");
-// const loremIpsum = require("lorem-ipsum");
+const { loremIpsum } = require("lorem-ipsum");
 
 const threads = require("./mocks/threads.json");
 const messages = require("./mocks/messages.json");
@@ -224,6 +223,7 @@ const resolvers = {
   },
   User: {
     work: (parent) => cache.works[parent.id],
+    bio: () => loremIpsum(),
   },
   Message: {
     thread: () => threads[0],
