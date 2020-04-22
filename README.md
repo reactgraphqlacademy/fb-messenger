@@ -166,7 +166,7 @@ We are simplifying the codebase while keeping the complexity of the problem, so 
 - [ ] 3. Go to Playground to write and validate the mutation that updates the fullname of the user. 🕵️‍♀️Hint, it will start with:
   ```graphql
   mutation {
-    updateUser # you need to finish this query
+    updateUser # 🚧 you need to finish this query
   }
   ```
 - [ ] 4. Use the useMutation from Apollo to update the fullname in `src/user/Profile.js`. Don't forget to use the `gql` function. You'll know the fullname was persisted properly because the fullname will update on the navbar (top right corner of the page).
@@ -174,7 +174,7 @@ We are simplifying the codebase while keeping the complexity of the problem, so 
 - [ ] 6.  Go to Playground to write and validate the mutation that updates the company of the user. 🕵️‍♀️Hint, it will start with:
   ```graphql
   mutation {
-    updateWork # you need to finish this query
+    updateWork # 🚧 you need to finish this query
   }
   ```
 - [ ] 7. Use the useMutation from Apollo to update the company in `src/user/Works.js`. You'll know it works because the company is displayed with the new name on the navbar when you reload the page. The company name won't automatically change the name on the navbar because of a 🐛 that you'll fix in the next task.
