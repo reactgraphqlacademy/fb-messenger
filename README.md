@@ -123,9 +123,9 @@ import React, { useState } from "react";
 
 const ADD_TODO = gql`
   mutation addDog($name: String!) {
-    addDog(name: $name) {
+    addDog(name: $name) { # 👩‍🏫 Mutations should return the object that has been mutated
       id
-      name # ⚠️ Mutations should return the object that has been mutated
+      name
     }
   }
 `;
