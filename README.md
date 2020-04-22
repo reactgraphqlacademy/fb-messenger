@@ -14,13 +14,13 @@ If you haven't already set up your project, head here and follow the instruction
  git checkout graphql-apollo && cd graphql-apollo && npm i
 ```
 
-## Exercise
-
 ```sh
  npm start
 ```
 
-### Part 1
+## Exercise part 1
+
+- [ ] 1.
 
 ## Articles and links
 

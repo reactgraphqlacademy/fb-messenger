@@ -31,7 +31,7 @@ const App = () => (
   <AppWrapper>
     <TopBar userPosition="right" />
     <Switch>
-      <Route exact path="/" render={() => <Redirect to="/messages" />} />
+      <Route exact path="/" render={() => <Redirect to="/profile" />} />
       <Route path="/messages" component={Messenger} />
       <Route path="/profile" component={UserProfile} />
     </Switch>
