@@ -93,8 +93,8 @@ const Profile = () => {
           </button>
         </form>
         <hr />
-        {/* <AboutWork userId={data.viewer.id} /> */}
-        <AboutWork user={data.viewer} />
+        <AboutWork userId={data.viewer.id} />
+        {/* <AboutWork user={data.viewer} /> */}
       </div>
     </StyledPage>
   );
