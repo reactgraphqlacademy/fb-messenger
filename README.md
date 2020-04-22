@@ -206,7 +206,7 @@ Example:
 
 ```JavaScript
 const USER_FRAGMENT = gql`
-  fragment UpdateUserFragment on User {
+  fragment UpdateUserForm on User {
     id
     fullname
   }
@@ -215,7 +215,7 @@ const USER_FRAGMENT = gql`
 const VIEWER = gql`
   query {
     viewer {
-      ...UpdateUserFragment
+      ...UpdateUserForm
     }
   }
   ${USER_FRAGMENT}
@@ -234,7 +234,7 @@ B) To colocate data requirements within the components and compose them into a s
 
 #### Fragments to reuse parts of queries
 
-- [ ] 9. In `src/user/Profile.js` use the `UpdateUserFragment` fragment from the example above in the following query:
+- [ ] 9. In `src/user/Profile.js` use the `UpdateUserForm` fragment from the example above in the following query:
 
 ```graphql
 query {
@@ -245,19 +245,55 @@ query {
 }
 ```
 
-- [ ] 10. In `src/user/Profile.js` use the `UpdateUserFragment` fragment from the example above in the updateUser mutation.
+- [ ] 10. In `src/user/Profile.js` use the `UpdateUserForm` fragment from the example above in the updateUser mutation.
 
 - [ ] 11. In `src/user/Work.js` create a fragment to reuse the following fields `company` and `id` between the query and the mutation.
 
 #### 🏋️‍♀️ Bonus exercise
 
-- [ ] Could we use the `UpdateUserFragment` fragment defined in `src/user/Profile.js` in `src/layout/TopBar.js`? You can try. Either case, you manage to reuse it in the TopBar or not, do you see any problems in doing so? You can discuss it with your peers. 🕵️‍♀️Hint: do you know what under-fetching and over-fetching are?
+- [ ] Could we use the `UpdateUserForm` fragment defined in `src/user/Profile.js` in `src/layout/TopBar.js`? You can try. Either case, you manage to reuse it in the TopBar or not, do you see any problems in doing so? You can discuss it with your peers. 🕵️‍♀️Hint: do you know what under-fetching and over-fetching are?
 
 #### Fragments to compose queries
 
-- [ ] 12.
+- [ ] 12. We want to send a single query to the GraphQL server with get the data requirements of our forms. The query will look like the following:
+
+```graphql
+query {
+  viewer {
+    id
+    fullname
+    work {
+      id
+      company
+    }
+  }
+}
+```
+
+But! We don't want to hardcode the fields. Instead, we want to colocate the fields with the components using fragments to define the data requirements of each component.
+
+Your task is to implement the `ProfileWorkForm` fragment in `src/user/Work.js` and import it in `src/user/Profile.js` to compose the following query:
+
+```graphql
+query {
+  viewer {
+    ...UpdateUserForm
+    ...ProfileWorkForm
+  }
+}
+```
+
+You will know it works because there will be only one request on the network tab to fetch the data requirements for both forms.
+
+You might want to check this [example from the Apollo docs](https://www.apollographql.com/docs/react/data/fragments/#colocating-fragments)
 
 #### 🏋️‍♀️ Bonus exercise
+
+Well done! You have "merged" 2 requests into 1 🎉. So before we were making 3 requests to the GraphQL API from http://localhost:3000/profile and now we are making 2 requests. 🤔 Can you get all the data our page needs in a single request to the GraphQL API?
+
+## Exercise part 4
+
+### 🥑 Before we start the exercise 🏋️‍♀️
 
 ## Articles and links
 
