@@ -11,25 +11,9 @@ import {
   UserName,
 } from "./Threads.styles";
 
-export const GET_THREADS = gql`
-  query {
-    threads {
-      edges {
-        node {
-          firstName
-          lastName
-          lastMessage {
-            text
-          }
-          username
-        }
-      }
-    }
-  }
-`;
-
 const Threads = ({ history, match }) => {
-  const { data, error, loading } = useQuery(GET_THREADS);
+  // 🚧 replace these hardcoded variables with the ones from useQuery
+  const { data, error, loading } = { loading: true, "🔥": "🚒" };
 
   let content;
   if (loading) {

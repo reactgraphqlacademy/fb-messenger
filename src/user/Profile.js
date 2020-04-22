@@ -5,67 +5,23 @@ import { gql } from "apollo-boost";
 import { StyledPage } from "./styles";
 import AboutWork from "./Work";
 
-// const USER_FRAGMENT = gql`
-//   fragment UpdateUserFragment on User {
-//     id
-//     fullname
-//   }
-// `;
-
 const VIEWER = gql`
   query {
     viewer {
       id
-      # fullname
+      fullname
     }
   }
 `;
 
-// const VIEWER = gql`
-//   query {
-//     viewer {
-//       ...UpdateUserFragment
-//       ...ProfileWork
-//     }
-//   }
-//   ${USER_FRAGMENT}
-//   ${AboutWork.fragments.work}
-// `;
-
-// const UPDATE_USER = gql`
-//   mutation updateUser($fullname: String!, $id: ID!) {
-//     updateUser(user: { fullname: $fullname, id: $id }) {
-//       user {
-//         id
-//         fullname
-//       }
-//     }
-//   }
-// `;
-
-// const UPDATE_USER = gql`
-//   mutation updateUser($fullname: String!, $id: ID!) {
-//     updateUser(user: { fullname: $fullname, id: $id }) {
-//       user {
-//         ...UpdateUserFragment
-//       }
-//     }
-//   }
-//   ${USER_FRAGMENT}
-// `;
-
 const Profile = () => {
   const [fullname, setFullname] = useState("");
-
   const { data, loading, error } = useQuery(VIEWER);
 
-  let savingUser = false;
-  // const [mutateUser, { loading: mutatingUser }] = useMutation(UPDATE_USER);
-
-  const updateUserName = (e) => {
+  const updateUser = (e) => {
     e.preventDefault();
 
-    // mutateUser({ variables: { fullname, id: data.viewer.id } });
+    // 🚧 you'll invoke a mutation here
   };
 
   if (error) {
@@ -79,7 +35,7 @@ const Profile = () => {
       <div>
         <h2>Profile</h2>
         <img alt="clone" src="/images/clone.jpg" />
-        <form onSubmit={updateUserName}>
+        <form onSubmit={updateUser}>
           <label>
             Fullname
             <input
@@ -88,13 +44,10 @@ const Profile = () => {
               value={fullname || data.viewer.fullname}
             />
           </label>
-          <button disable={savingUser ? true : undefined} type="submit">
-            {savingUser ? "Saving" : "Save"}
-          </button>
+          <button type="submit">Save</button>
         </form>
         <hr />
         <AboutWork userId={data.viewer.id} />
-        {/* <AboutWork user={data.viewer} /> */}
       </div>
     </StyledPage>
   );

@@ -10,8 +10,6 @@ const VIEWER = gql`
     viewer {
       fullname
       work {
-        # remove id in the exercise so students need to find the bug
-        # id
         company
       }
     }

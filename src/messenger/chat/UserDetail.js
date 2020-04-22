@@ -25,8 +25,9 @@ const UserDetail = ({ username }) => (
     </User>
 
     <UserDetailContent>
-      <p>bio: TODO ADD FRAGMENTS HERE</p>
-      <p>work: TODO ADD FRAGMENTS HERE</p>
+      <p>Last message: BONUS EXERCISE</p>
+      <p>Bio: BONUS EXERCISE</p>
+      <p>Work: BONUS EXERCISE</p>
     </UserDetailContent>
   </UserDetailWrapper>
 );

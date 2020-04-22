@@ -289,11 +289,79 @@ You might want to check this [example from the Apollo docs](https://www.apollogr
 
 #### 🏋️‍♀️ Bonus exercise
 
-Well done! You have "merged" 2 requests into 1 🎉. So before we were making 3 requests to the GraphQL API from http://localhost:3000/profile and now we are making 2 requests. 🤔 Can you get all the data our page needs in a single request to the GraphQL API?
+Well done! You have "merged" 2 requests into 1 🎉. So before we were making 3 requests to the GraphQL API from http://localhost:3000/profile and now we are making 2 requests. 🤔 Can you get all the data that our page needs in a single request to the GraphQL API?
 
 ## Exercise part 4
 
 ### 🥑 Before we start the exercise 🏋️‍♀️
+
+There are two important things that the Apollo Client does for us:
+
+- Firstly, it caches the result of our queries. If our requests twice the same data, the data is resolved from the cache instead of requesting it to the API.
+- Secondly, and arguably most importantly, it keeps the state consistent. If you update some data that is used in various components, all the components should react to the change and show the last state.
+
+You might be thinking that Redux does those two things. That's correct, and the reason is Redux and Apollo have a centralized store to manage the state of our app. The difference is that in Redux you need to write most of the code to get that, with Apollo (and most GraphQL clients) you won't have to write much code to get the same result.
+
+> Thanks to Apollo's store design, it's possible for the results of a query or mutation to update your UI in all the right places. In many cases it's possible for that to happen automatically, whereas in others you need to help the client out a little in doing so.
+
+When Apollo can't automatically update the cache, there are two things we can do:
+
+- Refetch some queries
+- Update the cache manually
+
+### Tasks
+
+🎯 The goal of the following tasks is to help you understand how the Apollo cache works. To do that you'll need to send messages using the chat component and keep the UI consistent.
+
+- [ ] 13. Go to `src/messenger/chat/Threads.js` and use the `useQuery` hook to fetch the data requirements of the `Threads` component. You'll need to 1) identify what data is required, 2) write and test the query in Playground, 3) run `useQuery` with the query, and 4) use the data from the query in the component.
+
+- [ ] 14. Go to `src/messenger/chat/Messages.js` and fetch the messages given the prop `username`. You'll need to 1) identify what data is required, 2) write and test the query in Playground, 3) run `useQuery` with the query, and 4) use the data from the query in the component.
+
+🤔 Let's pause for a second and think of what we just did. Now all those messages are in the Apollo cache. This means that you should be able to navigate between different conversations without sending new requests to fetch the corresponding messages if you already visited the page. You can try it by opening the network tab in the browser dev tools and navigate back and forth between the two chats (Lee and Dan).
+
+- [ ] 15. Go to `src/messenger/chat/Messages.js` and implement a mutation to send a message. You'll need to 1) identify what data is required, 2) write and test the mutation in Playground, and 3) run `useMutation` in the component. The message won't be displayed on the chat even if the mutation is posted successfully to the GraphQL API due to how the Apollo cache works (you'll fix it in the next task). You'll know that you completed this task when you reload the page and see the new message sent on the chat.
+
+16. To display on the chat the new messages that we send, we need to update the Apollo cache. There are two different strategies for that 1) to refetch the queries, 2) to manually update the cache. We'll try both.
+
+- [ ] 16.1 To display the last message in the `src/messenger/chat/Threads.js` we are going to refetch that query when a message is sent. We are using the `refetchQueries` here not because it's the best option (we'll discuss that later). It's for you to use it and compare it with the `update` parameter in the next task. You have an example of how the `refetchQueries` works here:
+
+```js
+useMutation(SEND_MESSAGE_MUTATION, {
+  refetchQueries: [
+    {
+      query: QUERY_EXAMPLE,
+      variables: { id: "x" }, // not always needed
+    },
+  ],
+});
+```
+
+You will know that your implementation works because after sending a message it will be automatically displayed on the left of the UI in the Threads component.
+
+- [ ] 16.2 To display the last message at the end of the chat we are going to manually update the cache using the [update](https://www.apollographql.com/docs/react/api/react-hooks/#params-2) parameter of the `useMutation` hook. You have an example of how the `update` parameter works here:
+
+```js
+useMutation(SEND_MESSAGE_MUTATION, {
+  update: (store, { data: { sendMessage } }) => {
+    // Read the data from our cache for this query.
+    const data = store.readQuery({ query: MESSAGES_QUERY });
+
+    // 🔥 heads up! By default the Apollo client needs the __typename to create unique object identifiers.
+    // https://www.apollographql.com/docs/react/caching/cache-configuration/#assigning-unique-identifiers
+    // Make sure it's added when you update the cache after sending a message in the next tasks.
+    data.messages = { ...data.messages }; // 🔥 this is an example, you need to edit this
+
+    // Write our data back to the cache.
+    store.writeQuery({ query: MESSAGES_QUERY, data });
+  },
+});
+```
+
+- [ ] 17. Which approach is better the `update` or the `refetchQueries`? What are the pros and cons of each? Discuss it with your peers.
+
+#### 🏋️‍♀️ Bonus exercise
+
+Fulfill the data requirements of the `src/messenger/chat/UserDetail.js` component. Try to use fragments when appropriate and reduce the round trips as much as possible.
 
 ## Articles and links
 
