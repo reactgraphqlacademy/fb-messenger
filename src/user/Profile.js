@@ -9,7 +9,7 @@ const VIEWER = gql`
   query {
     viewer {
       id
-      fullname
+      username
     }
   }
 `;
