@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-const WORK_FRAGMENT = gql`
-  fragment WorkFragment on Work {
-    company
-    id
-  }
-`;
+// const WORK_FRAGMENT = gql`
+//   fragment WorkFragment on Work {
+//     company
+//     id
+//   }
+// `;
 
 // first approach
 // const QUERY_WORK = gql`
@@ -42,32 +42,34 @@ const WORK_FRAGMENT = gql`
 //   }
 // `;
 
-const MUTATE_WORK = gql`
-  mutation updateWork($userId: ID!, $company: String!) {
-    updateWork(work: { userId: $userId, company: $company }) {
-      work {
-        ...WorkFragment
-      }
-    }
-  }
-  ${WORK_FRAGMENT}
-`;
+// const MUTATE_WORK = gql`
+//   mutation updateWork($userId: ID!, $company: String!) {
+//     updateWork(work: { userId: $userId, company: $company }) {
+//       work {
+//         ...WorkFragment
+//       }
+//     }
+//   }
+//   ${WORK_FRAGMENT}
+// `;
 
 // const Work = ({ userId }) => {
-const Work = ({ user }) => {
-  // const [company, setCompany] = useState("");
-  const [company, setCompany] = useState(user.work.company);
+// const Work = ({ user = {} }) => {
+const Work = ({ userId }) => {
+  const [company, setCompany] = useState("");
+  // const { work = {} } = user;
+  //const [company, setCompany] = useState(work.company || "");
 
   //   const { data, loading, error } = useQuery(QUERY_WORK, {
   //     variables: { userId }
   //   });
+  let savingWork = false;
+  // const [mutateWork, { loading: savingWork }] = useMutation(MUTATE_WORK);
 
-  const [mutateWork, { loading: mutatingWork }] = useMutation(MUTATE_WORK);
-
-  const updateWork = e => {
+  const updateWork = (e) => {
     e.preventDefault();
 
-    mutateWork({ variables: { company, userId: user.id } });
+    // mutateWork({ variables: { company, userId: user.id } });
   };
 
   //   if (error) {
@@ -84,29 +86,29 @@ const Work = ({ user }) => {
         <label>
           Company
           <input
-            onChange={e => setCompany(e.target.value)}
+            onChange={(e) => setCompany(e.target.value)}
             type="text"
             // value={company || data.work.company}
             value={company}
           />
         </label>
-        <button disable={mutatingWork ? true : undefined} type="submit">
-          {mutatingWork ? "Saving" : "Save"}
+        <button disable={savingWork ? true : undefined} type="submit">
+          {savingWork ? "Saving" : "Save"}
         </button>
       </form>
     </React.Fragment>
   );
 };
 
-Work.fragments = {
-  work: gql`
-    fragment ProfileWork on User {
-      work {
-        ...WorkFragment
-      }
-    }
-    ${WORK_FRAGMENT}
-  `
-};
+// Work.fragments = {
+//   work: gql`
+//     fragment ProfileWork on User {
+//       work {
+//         ...WorkFragment
+//       }
+//     }
+//     ${WORK_FRAGMENT}
+//   `,
+// };
 
 export default Work;

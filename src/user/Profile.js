@@ -5,31 +5,32 @@ import { gql } from "apollo-boost";
 import { StyledPage } from "./styles";
 import AboutWork from "./Work";
 
-const USER_FRAGMENT = gql`
-  fragment UpdateUserFragment on User {
-    id
-    fullname
+// const USER_FRAGMENT = gql`
+//   fragment UpdateUserFragment on User {
+//     id
+//     fullname
+//   }
+// `;
+
+const VIEWER = gql`
+  query {
+    viewer {
+      id
+      # fullname
+    }
   }
 `;
 
 // const VIEWER = gql`
 //   query {
 //     viewer {
-//       id
-//       fullname
+//       ...UpdateUserFragment
+//       ...ProfileWork
 //     }
 //   }
+//   ${USER_FRAGMENT}
+//   ${AboutWork.fragments.work}
 // `;
-const VIEWER = gql`
-  query {
-    viewer {
-      ...UpdateUserFragment
-      ...ProfileWork
-    }
-  }
-  ${USER_FRAGMENT}
-  ${AboutWork.fragments.work}
-`;
 
 // const UPDATE_USER = gql`
 //   mutation updateUser($fullname: String!, $id: ID!) {
@@ -42,28 +43,29 @@ const VIEWER = gql`
 //   }
 // `;
 
-const UPDATE_USER = gql`
-  mutation updateUser($fullname: String!, $id: ID!) {
-    updateUser(user: { fullname: $fullname, id: $id }) {
-      user {
-        ...UpdateUserFragment
-      }
-    }
-  }
-  ${USER_FRAGMENT}
-`;
+// const UPDATE_USER = gql`
+//   mutation updateUser($fullname: String!, $id: ID!) {
+//     updateUser(user: { fullname: $fullname, id: $id }) {
+//       user {
+//         ...UpdateUserFragment
+//       }
+//     }
+//   }
+//   ${USER_FRAGMENT}
+// `;
 
 const Profile = () => {
   const [fullname, setFullname] = useState("");
 
   const { data, loading, error } = useQuery(VIEWER);
 
-  const [mutateUser, { loading: mutatingUser }] = useMutation(UPDATE_USER);
+  let savingUser = false;
+  // const [mutateUser, { loading: mutatingUser }] = useMutation(UPDATE_USER);
 
-  const updateUserName = e => {
+  const updateUserName = (e) => {
     e.preventDefault();
 
-    mutateUser({ variables: { fullname, id: data.viewer.id } });
+    // mutateUser({ variables: { fullname, id: data.viewer.id } });
   };
 
   if (error) {
@@ -81,13 +83,13 @@ const Profile = () => {
           <label>
             Fullname
             <input
-              onChange={e => setFullname(e.target.value)}
+              onChange={(e) => setFullname(e.target.value)}
               type="text"
               value={fullname || data.viewer.fullname}
             />
           </label>
-          <button disable={mutatingUser ? true : undefined} type="submit">
-            {mutatingUser ? "Saving" : "Save"}
+          <button disable={savingUser ? true : undefined} type="submit">
+            {savingUser ? "Saving" : "Save"}
           </button>
         </form>
         <hr />

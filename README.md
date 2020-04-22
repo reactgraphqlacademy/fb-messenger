@@ -1,6 +1,19 @@
 # GraphQL Apollo Client
 
-The goal of this exercise is to learn the best practices using GraphQL queries and mutations in Apollo Client.
+This exercise is part of the [React GraphQL Academy](http://reactgraphql.academy) training material.
+
+## Our teaching method
+
+1. Collaborative learning environment & pair programming.
+   - Rooms with small groups
+   - Work with your peers, discuss, help each other.
+2. We try to foster critical thinking.
+   - ⬆️ Discovery ⬇️ Instruction
+3. We don’t explain everything you need to know before the exercise:
+   - The exercise is meant to help you come up with conclusions.
+   - Learn by doing and build a mental model.
+
+More on our [teaching method](https://reactgraphql.academy/blog/react-graphql-academy-teaching-method/)
 
 ## To get started
 
@@ -20,7 +33,15 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise part 1
 
-- [ ] 1.
+### 🥑 Before we start
+
+- TODO EXPLAIN KEY KNOWLEDGE HERE FOR THIS EXERCISE
+
+- [ ] 1. The profile page (http://localhost:3000/profile) should display the fullname of the user on the form input labeled "fullname" (right below the image). The fullname is not displayed on the input because of a bug 🐛. Your task is to fix it.
+- [ ] 2. The profile page should display the name of the company on the form input labeled "Company" (right below the fullname). This feature is not implemented. You'll need to:
+  - [ ] 2.1. Write the query to get the company that the user works for. I recommend you to write and test it first on Playground (http://localhost:3000/graphql)
+  - [ ] 2.2. Tranform the query into an AST using the `gql` function
+  - [ ] 2.3. Use the useQuery hook from Apollo.
 
 ## Articles and links
 
