@@ -9,7 +9,18 @@ const VIEWER = gql`
   query {
     viewer {
       id
-      username
+      fullname
+    }
+  }
+`;
+
+const MUTATE_USER = gql`
+  mutation updateUser($id: ID!, $fullname: String!) {
+    updateUser(user: { id: $id, fullname: $fullname }) {
+      user {
+        id
+        fullname
+      }
     }
   }
 `;
@@ -17,11 +28,12 @@ const VIEWER = gql`
 const Profile = () => {
   const [fullname, setFullname] = useState("");
   const { data, loading, error } = useQuery(VIEWER);
+  const [mutateUser, { loading: mutatingUser }] = useMutation(MUTATE_USER);
 
   const updateUser = (e) => {
     e.preventDefault();
 
-    // 🚧 you'll invoke a mutation here
+    mutateUser({ variables: { id: data.viewer.id, fullname } });
   };
 
   if (error) {
@@ -44,7 +56,7 @@ const Profile = () => {
               value={fullname || data.viewer.fullname}
             />
           </label>
-          <button type="submit">Save</button>
+          <button type="submit">{mutatingUser ? "Saving" : "Save"}</button>
         </form>
         <hr />
         <AboutWork userId={data.viewer.id} />
