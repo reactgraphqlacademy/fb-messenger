@@ -30,6 +30,7 @@ npm install
   - [ ] Bonus 1. Implement the form using only one useState.
   - [ ] Bonus 2. Use [useRef](https://reactjs.org/docs/hooks-reference.html#useref) to create an uncontrolled password input instead of using useState. Heads up! the password component is using an **i**nput, not an **I**nput. Don't use a ref with the email Input component, yet.
   - [ ] Bonus 3. Now it's time to work on the email. Use [useRef](https://reactjs.org/docs/hooks-reference.html#useref) to create an uncontrolled email Input instead of using useState. Hint, you'll need to use [forwardRef](https://reactjs.org/docs/react-api.html#reactforwardref) in the Input component.
+  - [ ] Bonus 4. When the Login page mounts, set the focus to the email input/Input (either, you can choose) component. The email should be a controlled component.
 
 - [ ] 2. Group discussion about `src/components/Layout/TopBar.js`
 
