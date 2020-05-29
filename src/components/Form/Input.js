@@ -40,6 +40,8 @@ import PropTypes from "prop-types";
 
 // B: We can use the internal state from the input and expose it to the outer component.
 // the input itself can be either controlled or uncontrolled
-const Input = props => <input {...props} className="form-control" />;
+const Input = (props, ref) => (
+  <input ref={ref} {...props} className="form-control" />
+);
 
-export default Input;
+export default React.forwardRef(Input);

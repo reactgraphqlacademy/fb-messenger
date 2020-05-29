@@ -1,10 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useRef, useEffect } from "react";
 
 import Avatar from "../../Layout/Avatar";
 import Icon from "../../Layout/Icon";
+import VideoPlayer from "../../Media/VideoPlayer";
 
 const Messages = ({ messages = [], username }) => {
+  const playerRef = useRef();
+  // after the messages are rendered, expose the hls.js instance to window so we can play and pause it from the console
+
+  useEffect(() => {
+    window.__video = playerRef.current;
+    debugger;
+  }, [playerRef.current]);
+
   const styledConversation = messages.map((message, i) => (
     <div
       key={i}
@@ -13,7 +21,15 @@ const Messages = ({ messages = [], username }) => {
       }`}
     >
       {message.to === "you" && <Avatar username={username} size="medium" />}
-      <div className="message">{message.message}</div>
+      <div className="message">
+        {message.message}
+        {message.videoUrl && (
+          <React.Fragment>
+            <br />
+            <VideoPlayer ref={playerRef} url={message.videoUrl} />
+          </React.Fragment>
+        )}
+      </div>
       {message.from === "you" && (
         <div className="message-read">
           <Icon name="check-circle" />
@@ -41,11 +57,6 @@ const Messages = ({ messages = [], username }) => {
       </div>
     </div>
   );
-};
-
-Messages.propTypes = {
-  conversation: PropTypes.array,
-  username: PropTypes.string.isRequired
 };
 
 export default Messages;
