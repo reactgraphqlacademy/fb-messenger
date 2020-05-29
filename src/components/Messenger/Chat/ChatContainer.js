@@ -5,17 +5,17 @@ import Chat from "./Chat";
 const ChatContainer = ({ match }) => {
   const [messages, setMessages] = useState([]);
   const {
-    params: { username }
+    params: { username },
   } = match;
 
   useEffect(() => {
     setMessages([]);
     setTimeout(() => {
-      fetchMessages(username).then(messages => {
+      fetchMessages(username).then((messages) => {
         setMessages(messages);
       });
     }, 1000);
-  }, [username, fetchMessages]);
+  }, [username]);
 
   return <Chat messages={messages} match={match} />;
 };

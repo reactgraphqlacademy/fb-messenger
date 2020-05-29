@@ -11,10 +11,13 @@ const ThreadsContainer = () => {
       .then(({ threads }) => {
         setThreads(threads);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
-  }, [fetchThreads]);
+  }, []);
+  //}, [fetchThreads]); fetchTreads it's not required because it's not a value that participates in the React data flow.
+  // Those values would be props, state, and anything derived from them.
+  // https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
 
   return <Threads threads={threads} />;
 };
