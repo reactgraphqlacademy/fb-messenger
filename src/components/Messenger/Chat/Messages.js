@@ -6,11 +6,9 @@ import VideoPlayer from "../../Media/VideoPlayer";
 
 const Messages = ({ messages = [], username }) => {
   const playerRef = useRef();
-  // after the messages are rendered, expose the hls.js instance to window so we can play and pause it from the console
 
   useEffect(() => {
     window.__video = playerRef.current;
-    debugger;
   }, [playerRef.current]);
 
   const styledConversation = messages.map((message, i) => (
