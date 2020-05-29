@@ -7,7 +7,7 @@ class Login extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
   }
 
@@ -17,7 +17,7 @@ class Login extends Component {
     this.setState(change);
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const { history } = this.props;
     const { password, email } = this.state;
@@ -30,10 +30,10 @@ class Login extends Component {
     const { status } = await fetch("/api/auth", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({ password, email })
+      body: JSON.stringify({ password, email }),
     });
 
     if (status === 200) {
@@ -52,13 +52,14 @@ class Login extends Component {
             type="email"
             placeholder="Enter email"
             value={this.state.email}
-            onChange={e => this.handleChange("email", e)}
+            onChange={(e) => this.handleChange("email", e)}
           />
-          <Input
+          <input
             type="password"
+            className="form-control"
             placeholder="Enter password"
             value={this.state.password}
-            onChange={e => this.handleChange("password", e)}
+            onChange={(e) => this.handleChange("password", e)}
           />
         </div>
         <button type="submit" className="btn btn-lg btn-primary btn-block">
