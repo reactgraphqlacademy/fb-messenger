@@ -1,15 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Input from "../Form/Input";
 import "./Login.css";
 
 const Login = ({ history }) => {
-  const passwordRef = useRef();
+  //   const passwordRef = useRef();
   const emailRef = useRef();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, [emailRef.current]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let password = passwordRef.current && passwordRef.current.value;
-    let email = emailRef.current && emailRef.current.value;
 
     if (!password || !email) {
       alert("Email and password are required");
@@ -36,12 +40,19 @@ const Login = ({ history }) => {
         <h2 className="form-signin-heading">Please sign in</h2>
       </div>
       <div className="form-group">
-        <Input type="email" placeholder="Enter email" ref={emailRef} />
-        <input // notice it's not capital i -> it's input not Input, so it works without forwarding the ref in the Input component
+        <Input
+          value={email}
+          type="email"
+          placeholder="Enter email"
+          onChange={(e) => setEmail(e.target.value)}
+          ref={emailRef}
+        />
+        <Input
           className="form-control"
           type="password"
           placeholder="Enter password"
-          ref={passwordRef}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <button type="submit" className="btn btn-lg btn-primary btn-block">
