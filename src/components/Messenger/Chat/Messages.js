@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Avatar from "../../Layout/Avatar";
 import Icon from "../../Layout/Icon";
+import VideoPlayer from "../../Media/VideoPlayer";
 
 const Messages = ({ messages = [], username }) => {
   const styledConversation = messages.map((message, i) => (
@@ -13,7 +14,15 @@ const Messages = ({ messages = [], username }) => {
       }`}
     >
       {message.to === "you" && <Avatar username={username} size="medium" />}
-      <div className="message">{message.message}</div>
+      <div className="message">
+        {message.message}
+        {message.videoUrl && (
+          <React.Fragment>
+            <br />
+            <VideoPlayer url={message.videoUrl} />
+          </React.Fragment>
+        )}
+      </div>
       {message.from === "you" && (
         <div className="message-read">
           <Icon name="check-circle" />
@@ -45,7 +54,7 @@ const Messages = ({ messages = [], username }) => {
 
 Messages.propTypes = {
   conversation: PropTypes.array,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
 };
 
 export default Messages;
