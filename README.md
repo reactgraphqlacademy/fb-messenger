@@ -1,6 +1,9 @@
 ## ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to think in React.
+## Learning objectives
+- Differentiate between declarative and imperative programming
+- Identify what's state and which components should hold it
+- Determine when to lift the state up
 
 ## Requirements
 
@@ -61,14 +64,6 @@ Split the Chat component into the following components:
 - Messages.js
 - UserDetail.js
 - index.js
-
-## Learning objectives
-
-- Learn the difference between declarative and imperative programming.
-- Comprehend the value of breaking down your UI into reusable components.
-- Understand how to pass down dependencies via props.
-- Understand which components should hold state and how to share and manipulate state in React.
-- Feel comfortable with class component and functional component syntax and using jsx.
 
 ## Links
 - [Lecture: Introduction to Thinking in React](https://reactgraphql.academy/react/introduction-to-thinking-in-react/)
