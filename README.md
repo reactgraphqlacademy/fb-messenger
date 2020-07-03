@@ -1,6 +1,9 @@
 # Facebook Messenger Clone
 
-The goals of this exercise are to learn how to use a declarative routing using React Router, and learn how to fetch data into your components.
+## Learning objectives
+- Implement navigation between pages using a declarative routing
+- Fetch data from a REST API using different parameters
+- Identify and group layouts using a path in the URL
 
 ## To get started
 
@@ -54,13 +57,6 @@ If you haven't already set up your project, head here and follow the instruction
      - Example: `<MyLink to="https://google.com">Some link</MyLink>` -> it should render `a`
 - [ ] 2. Make sure that **any** props that are passed to `MyLink` are passed to `Link` or to `a` accordingly.
      - Example: `<MyLink to="/messages" className="cool-css">Some link</MyLink>` should return `<Link to="messages" className="cool-css">Some link</Link>`
-
-## Learning objectives
-
-- Understand the difference beween classic approaches and declarative routing
-- Learn how to implement declarative routing with react-router
-- Understand the use of the `componentDidMount()` lifecycle method
-- Implement basic data fetching in React using [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
 ## Articles and links
 
