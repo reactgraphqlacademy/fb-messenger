@@ -1,4 +1,4 @@
-# ReactJS Facebook messenger
+# Facebook Messenger Clone
 
 ## Learning objectives
 
