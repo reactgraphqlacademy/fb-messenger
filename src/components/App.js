@@ -6,7 +6,6 @@ import Home from './Home'
 import TopBar from './Layout/TopBar'
 import Messenger from './Messenger'
 import Footer from './Layout/Footer'
-import Login from './Login'
 import Profile from './Profile'
 
 const App = () => (
@@ -15,7 +14,6 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/messages" component={Messenger} />
-      <Route path="/login" component={Login} />
       <Route path="?" component={NotFound} />
     </Switch>
     <Footer />
