@@ -216,12 +216,24 @@ body {
         li {
           display: flex;
           align-items: center;
-          padding: 0.4em 0.75em;
+          .user-name {
+            padding: 0.4em 0.75em;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            &:hover,
+            &:visited,
+            &:active,
+            &:focus {
+              text-decoration: none;
+            }
+          }
           &:hover {
             background: $light-grey;
             cursor: pointer;
           }
           span {
+            display: inline-block;
             font-size: 0.9em;
             text-transform: capitalize;
           }

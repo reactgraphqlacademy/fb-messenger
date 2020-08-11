@@ -21,33 +21,70 @@ If you haven't already set up your project, head here and follow the instruction
  npm start
 ```
 
-## Exercise
+## 🥑 Before we start the exercise part 1
+Let's discuss the following with your coach & peers:
+1. If you look at `src/components/App.js`, how many children (`Route` components) does the `Switch` have?
+2. If we open the React dev tools and we select the `Switch` component (you need to `npm start` the app), how many `Route` components were rendered? Why?
+3. ⚠️ Show trainees the network tab in the browser dev tools. Make sure they know how it works because they will use it during the exercise.
 
-- [ ] 1. Implement the following route [http://localhost:3000/profile](http://localhost:3000/profile) so it renders `src/components/Profile.js`. Hint, you need to edit 2 files:
-  1. One file is the one where you define the /profile `<Route>`. Which file is that? Hint, think of the component tree and which component should be the parent of `<Profile>`. [Route documentation](https://reacttraining.com/react-router/web/api/Route)
-  1. The second file is `src/components/Layout/TopBar.js`, edit the `<Link>` so when the user clicks on the Link it navigates to /profile. [Link documentation](https://reacttraining.com/react-router/web/api/Link)
+## 🤸‍♀️ Exercise part 1
 
-- [ ] 2. Add a Link component in `src/components/Profile.js` to the path "/messages". Why do you think `<Link>` is better than `<a>`? Hint. Look at the network tab in the Chrome Dev Tools and navigate from one page to the other using `<Link>` and then using `<a>`
+- [ ] 1. Implement the following route [http://localhost:3000/profile](http://localhost:3000/profile) so it renders `src/components/Profile.js`. To do so, you'll have to edit the file where you define the "/profile" `<Route>`. Which file is that? Hint, to find the file think of which component in the component tree should be the parent of `<Profile>`. [Route documentation](https://reacttraining.com/react-router/web/api/Route).
+  
+- [ ] 2. Go to `src/components/Layout/TopBar.js` and edit the `<Link>` component so when the user clicks on the Link "@clone" it navigates to "/profile". [Link documentation](https://reacttraining.com/react-router/web/api/Link).
 
-- [ ] 3. The `NotFound` component should be displayed when no path matches in `<App>`. Example, navigating to [http://localhost:3000/bla-bla-bla](http://localhost:3000/bla-bla-bla) should display NotFound.js. Hint: [https://reacttraining.com/react-router/web/example/no-match](https://reacttraining.com/react-router/web/example/no-match)
+- [ ] 3. The component `src/components/Profile.js` uses an `<a>` to navigate to the path "/messages". Why do you think `<Link>` would be better than `<a>`? Hint. Look at the network tab in the dev tools and navigate from one page to the other using the "@clone" `<Link>` in the TopBar and the "See messages" `<a>` in http://localhost:3000/profile.
 
-- [ ] 4. Refactor the `src/components/Messenger/Threads.js` component so it implements the container component pattern, [please read this article first](https://medium.com/@learnreact/container-components-c0e67432e005). You have a `src/components/Messenger/ThreadsContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`
+- [ ] 4. The `NotFound` component should be displayed when no path matches in `<App>`. Example, navigating to [http://localhost:3000/bla-bla-bla](http://localhost:3000/bla-bla-bla) should display NotFound.js. Hint: [https://reacttraining.com/react-router/web/example/no-match](https://reacttraining.com/react-router/web/example/no-match)
 
-- [ ] 5. Refactor the `src/components/Messenger/Chat/Chat.js` component so it implements the [container component pattern](https://medium.com/@learnreact/container-components-c0e67432e005) as well. You have a `src/components/Messenger/Chat/ChatContainer.js` file with some comments and tips. Hint: You will also have to edit the import in `src/components/Messenger/index.js`.
+- [ ] 5. In `src/components/Messenger/index.js` we have 3 `Route`s for each thread. Hardcoding the username is not a very scalable. To fix that you are going to use 1 `Route` with a URL parameter for the username. To use a URL parameter replace the usernames with ":username"
 
-- [ ] 6. Move the logic related to needsToFetchUser from render method in `src/components/Messenger/Chat/Chat.js` to the `componentDidUpdate()` lifecycle method in `src/components/Messenger/Chat/ChatContainer.js`. Why do you think [componentDidUpdate](https://reactjs.org/docs/react-component.html#componentdidupdate) is a better place?
 
-- [ ] 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the `src/component/Login.js` should not display the `<TopBar>` and `<Footer>`. Hint: Why not try moving the Login component up the tree.
+## 🏋️‍♀️ Bonus exercise part 1
+
+This page http://localhost:3000/messages/crazypeacock512/detail should display the `UserDetail` component. This page http://localhost:3000/messages/crazypeacock512 should **NOT** display the `UserDetail` component. Notice the difference is the "/detail" at the end of the URL. You can navigate to the detail page by clicking on the blue icon ℹ️ at the top-right corner of the chat. 
+- How would you implement that?
+- Is the information about the detail component being displayed or not being displayed (in other words, display detail equals true or false) part of the state of the app? What's the source of truth that determines if the detail is displayed or not?
+
+## 🥑 Before we start the exercise part 2
+Let's have a look at `src/components/Layout/TopBar.js` and discuss with the coach and your peers:
+
+1. What does useEffect do?
+2. If we refactor the code as follows and then we click on "CLICK ME AND LOOK AT THE DOCUMENT TITLE (TAB)", do you think:
+   ```js
+    console.log('rendering 🧐')
+    useEffect(() => {
+        document.title = `${count} clicks`
+    }, []) // 👀 we've added the square brackets []. https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
+   ```
+    - The console will log "rendering 🧐"?
+    - The document title will change?
+    - The state `count` will have been incremented?
+
+3. Why do you think it is called "effect"?
+   
+## 🤸‍♀️ Exercise part 2
+
+- [ ] 4. Navigate to http://localhost:3000/messages/. Open the network tab in the dev tools. You'll see infinite requests to http://localhost:3000/mocks/threads.json.
+  - [ ] 4.1. What is causing the infinite requests? Does the useState hook have to do with the problem? Try to explain it to a peer.
+  - [ ] 4.2. Fix the problem. Hint, the problem is in `src/components/Messenger/Threads.js`.
+
+- [ ] 5. Refactor the `src/components/Messenger/Threads.js` component so it implements the *container component* pattern, [please read this article first about this pattern](https://medium.com/@learnreact/container-components-c0e67432e005). You have a `src/components/Messenger/ThreadsContainer.js` file with some comments and tips (look for this emoji 👩‍🏫).
+
+  - [ ] 5.1. Which component is the children of `src/components/Messenger/ThreadsContainer.js`?
+  - [ ] 5.2. Which component is the parent of `src/components/Messenger/ThreadsContainer.js` after the refactoring? Can you point its parent component in your code? Which file do you need to look at to do so? Hint, you will need to edit an `import` in that file to complete this exercise.
+  - [ ] 5.3. Do you think the *container pattern* is useful? What for? Discuss with your peers and coach.
+
+- [ ] 6. Implement the `src/components/Messenger/Chat/Chat.js` component so it fetches and displays the messages. There are some comments and tips in that file, look for this emoji 👩‍🏫.
+
+- [ ] 7. In the following url [http://localhost:3000/login](http://localhost:3000/login), the `src/component/Login.js` should not display the `<TopBar>` and `<Footer>`. Hint: To implement that, don't think of "removing" things in certain conditions, think of "moving" things in the component tree.
 
 - [ ] 8. Display the number of messages in `<ChatBar>`.
 
-### Bonus
+## 🏋️‍♀️ Bonus exercise part 2
 
-- [ ] Given this component `<Route path="/messages/:username">` in `src/components/Messenger/index`, how can we replace the hardcoded string `"/messages"` in the path by a variable so we can move that Route in the component tree and the parent path of the Route is set dynamically? Hint, look at the Link component in `src/components/Messenger/Chat/ChatBar`.
-- [ ] The path `/messages/:username/detail` should display the `UserDetail` of a Chat. The path `/messages/:username` should not display the `UserDetail` of a Chat. You can navigate to `/messages/:username/detail` by clicking on the Link component in `src/components/Messenger/Chat/ChatBar`
-- [ ] Refactor as many components as you can into function components, meaning using functions instead of classes to define the component.
 
-### Extra Bonus
+## 🧘‍♀️ Homework
 
 - [ ] 1. In `src/components/Layout/TopBar.js` create a `MyLink` component that returns the `Link` component from `react-router-dom` if the prop `to` doesn't startWith "http" (you can use `props.to.startsWith("http")`), otherwise it should return an `a`. Replace your `Link` components in `src/components/Layout/TopBar.js` with your `MyLink` component. Heads up! you need to think of the `children` prop.
      - Example: `<MyLink to="/messages">Some link</MyLink>` -> it should render `Link`

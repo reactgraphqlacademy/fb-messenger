@@ -7,7 +7,10 @@ import Chat from './Chat/Chat'
 const Messenger = () => (
   <div className="messenger">
     <Threads />
-    <Route path={`/messages/:username`} component={Chat} />
+    <Route path="/messages/:username" component={Chat} />
+    {/* <Route path="/messages/crazypeacock512" component={Chat} />
+    <Route path="/messages/crazytiger134" component={Chat} />
+    <Route path="/messages/blueelephant847" component={Chat} /> */}
   </div>
 )
 
