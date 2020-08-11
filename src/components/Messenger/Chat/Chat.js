@@ -5,8 +5,8 @@ import UserDetail from './UserDetail'
 import Messages from './Messages'
 import ChatBar from './ChatBar'
 
-export default function Chat({ match }) {
-  const { username } = match.params
+export default function Chat() {
+  const username = ''
   const [messages, setMessages] = React.useState([])
 
   // 👩‍🏫 you need to add an effect here to fetch the messages
@@ -22,7 +22,7 @@ export default function Chat({ match }) {
 
   return (
     <div className="chat">
-      <ChatBar username={username} match={match} />
+      <ChatBar />
       <div className="chat-content">
         <Messages messages={messages} username={username} />
         <UserDetail username={username} />
