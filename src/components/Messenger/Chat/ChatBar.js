@@ -4,8 +4,7 @@ import { Link, useParams, Route } from 'react-router-dom'
 import Icon from '../../Layout/Icon'
 
 const ChatBar = ({ totalMessages }) => {
-  const { username } = useParams()
-  // const username = 'who am I?'
+  const username = 'who am I?'
 
   return (
     <div className="chat-bar">

@@ -14,7 +14,7 @@ const TopBar = props => {
       <span onClick={() => setCount(count + 1)}>
         CLICK ME AND LOOK AT THE DOCUMENT TITLE (TAB)
       </span>
-      <Link to="/profile" className="username right">
+      <Link to="/?" className="username right">
         @clone <img src="/images/default.jpg" />
       </Link>
     </div>

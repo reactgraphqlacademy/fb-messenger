@@ -10,15 +10,8 @@ export default function Chat() {
   const [messages, setMessages] = React.useState([])
 
   // 👩‍🏫 you need to add an effect here to fetch the messages
-  //   React.useEffect(() => {
-  //     fetchMessages(username).then(messages => {
-  //       setMessages(messages)
-  //     })
-  //   }, [username])
 
-  //   if (!messages.length) {
-  //     return <h2>Loading...</h2>
-  //   }
+  // 👩‍🏫 You need to use the dependencies array (https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects) in the effect so the effect runs everytime the username in the URL changes
 
   return (
     <div className="chat">
