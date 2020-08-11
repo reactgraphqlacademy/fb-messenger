@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Threads from './Threads'
 import { fetchThreads } from '../../api/thread'
 
-export default function ThreadsContainer () {
-    // 👩‍🏫 You need to add some state here
-  
-    // 👩‍🏫 you should fetch the threads here
-  
-    return (
-      // 👩‍🏫, you should return only 1 component here. Which props do you think it needs?
-    )
+export default function ThreadsContainer() {
+  const [threads, setThreads] = useState([])
+
+  useEffect(() => {
+    fetchThreads().then(({ threads }) => {
+      setThreads(threads)
+    })
+  }, [])
+
+  return <Threads threads={threads} />
 }

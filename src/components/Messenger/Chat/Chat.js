@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 import { fetchMessagesWithLatency, fetchMessages } from '../../../api/message'
 import UserDetail from './UserDetail'
@@ -6,19 +7,14 @@ import Messages from './Messages'
 import ChatBar from './ChatBar'
 
 export default function Chat() {
-  const username = ''
+  const { username } = useParams()
   const [messages, setMessages] = React.useState([])
 
-  // 👩‍🏫 you need to add an effect here to fetch the messages
-  //   React.useEffect(() => {
-  //     fetchMessages(username).then(messages => {
-  //       setMessages(messages)
-  //     })
-  //   }, [username])
-
-  //   if (!messages.length) {
-  //     return <h2>Loading...</h2>
-  //   }
+  React.useEffect(() => {
+    fetchMessages(username).then(messages => {
+      setMessages(messages)
+    })
+  }, [username])
 
   return (
     <div className="chat">

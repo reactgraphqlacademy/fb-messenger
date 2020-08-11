@@ -5,7 +5,6 @@ import Icon from '../../Layout/Icon'
 
 const ChatBar = ({ totalMessages }) => {
   const { username } = useParams()
-  // const username = 'who am I?'
 
   return (
     <div className="chat-bar">

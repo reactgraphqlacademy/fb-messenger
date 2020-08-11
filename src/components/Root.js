@@ -1,10 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import App from './App'
+import Login from './Login'
 
 const Root = () => (
   <Router>
-    <Route path="/" component={App} />
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/" component={App} />
+    </Switch>
   </Router>
 )
 

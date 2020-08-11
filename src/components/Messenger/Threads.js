@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Route, Link } from 'react-router-dom'
 
-import { fetchThreads } from '../../api/thread'
 import Avatar from '../Layout/Avatar'
 import Icon from '../Layout/Icon'
 
-export default function Threads() {
-  const [threads, setThreads] = useState([])
-
-  useEffect(() => {
-    fetchThreads().then(({ threads }) => {
-      setThreads(threads)
-    })
-  }, [])
-
+export default function Threads({ threads }) {
   return (
     <div className="threads">
       <div className="thread-bar">
