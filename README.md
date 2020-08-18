@@ -2,6 +2,11 @@
 
 The goal of this exercise is to learn how to use Redux in a React app.
 
+# Learning objectives
+- Tell pros and cons of using Redux
+- Replace local state with global state
+- Explain how the Redux store works
+
 ## To get started
 
 ### Step 1
