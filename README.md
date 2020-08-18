@@ -2,6 +2,11 @@
 
 The goals of this exercise is to learn how to use the State Hook and the Effect Hook.
 
+## Learning objectives
+- Identify use cases to imperatively modify the UI
+- Apply and forward React refs to a child component or DOM element
+- Use the focus control so a web app can be operated with the keyboard
+
 ## To get started
 
 ### Step 1
