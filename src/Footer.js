@@ -2,7 +2,7 @@ import React from "react";
 import LeanJSLogo from "./Layout/LeanJSLogo";
 
 const Footer = () => (
-  <div className="footer">
+  <footer className="footer">
     <ul>
       <li>
         <a target="_blank" href="https://reactgraphql.academy">
@@ -16,7 +16,7 @@ const Footer = () => (
         </a>
       </li>
     </ul>
-  </div>
+  </footer>
 );
 
 export default Footer;

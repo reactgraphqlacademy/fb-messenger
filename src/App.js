@@ -152,7 +152,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="footer">
+      <footer className="footer">
         <ul>
           <li>
             <a
@@ -174,7 +174,7 @@ function App() {
             </a>
           </li>
         </ul>
-      </div>
+      </footer>
     </div>
   );
 }
