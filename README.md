@@ -51,15 +51,17 @@ This exercise builds up on [this previous exercise](https://github.com/reactgrap
 
 1. Replace the “footer” HTML at the bottom of App/index.js using the src/Footer.js component.
 
-2. Refactor the topbar section by creating a function component and pass the dependencies via props. Hint: this will be similar to Modal.js. Make sure everything works before moving on to the next step
+2. Refactor the topbar section (you can indentify it by `className="top-bar"`) creating a function component (you can call it `TopBar`) and pass the required props. Hint, `TopBar` only requires 1 prop and that prop is a function. Make sure everything works before moving on to the next step.
 
-3. Create a component for “Messenger” and pass down the dependencies from App via props. Make sure everything works. You can start by making a Messenger folder with an index.js.
+3. Create a component called `Messenger` that is children of `App`. `Messenger` should contain all the code of `<div className="messenger">`. Suggestion, create a folder called Messenger with an index.js and create the `Messenger` component inside `Messenger/index.js`. Let's use this step as a stepping stone in our refactoring. Don't put any state inside the `Messenger` component yet, unless you want to implement task 3 and 4 at the same time (only if you are really sure about what you are doing). In this step, instead of adding any state inside the `Messenger` component we are going to pass it as props from the parent component.
 
-4. Is there any state in App/index.js that should be in the Messenger component? Refactor this logic out of App/index.js and into Messenger. Then, create further function components from the contents of Messenger and pass them down dependencies via props. Hint: Create a Threads.js file and a Chat folder with an index.js file inside the Messenger folder.
+4. Move as much state as you can from `App` to `Messenger`.
 
-5. Question: Is it possible to move showModal from App/index.js down the tree? why/why not?
+5. Break down the `<Messenger>` component inside `Messenger/index.js` into smaller components. Suggestion, Create a `Threads.js` file and a folder `Chat` with an `index.js` inside the `Messenger` folder. Move as much state as you can from `Messenger` to `Messenger/Threads.js` and `Messenger/Chat/index.js`
 
-6. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ...
+6. Question: Is it possible to move `toggleModal` from App/index.js down the tree? Why?
+
+7. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ...
 
 ## 🏋️‍♀️ Bonus exercise
 
