@@ -1,34 +1,36 @@
 const users = [
   {
-    gender: "female",
     name: {
-      title: "miss",
-      first: "mary",
-      last: "jones"
+      first: "The",
+      last: "traveler",
     },
-    email: "mary.jones56@example.com",
-    username: "crazypeacock512"
+    username: "thetraveler",
+    lastMessage: "good one!",
   },
   {
-    gender: "male",
     name: {
-      title: "mr",
-      first: "alan",
-      last: "walters"
+      first: "The",
+      last: "cyclist",
     },
-    email: "alan.walters29@example.com",
-    username: "crazytiger134"
+    username: "thecyclist",
+    lastMessage: "got it, let's do it!",
   },
   {
-    gender: "female",
     name: {
-      title: "miss",
-      first: "miriam",
-      last: "wallace"
+      first: "Healthy",
+      last: "couple",
     },
-    email: "miriam.wallace36@example.com",
-    username: "blackpanda974"
-  }
+    username: "healthycouple",
+    lastMessage: "I will 🤗",
+  },
+  {
+    name: {
+      first: "The",
+      last: "dancer",
+    },
+    username: "thedancer",
+    lastMessage: "I hear you 🤹‍♀️🎼",
+  },
 ];
 
 export default users;
