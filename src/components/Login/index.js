@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
-import './Login.css'
+import './Login.scss'
 
 export default function Login() {
   return (
@@ -11,7 +11,7 @@ export default function Login() {
 
       <FormGroup>
         <FormControl
-          onChange={event => this.handleChange('email', event)}
+          onChange={(event) => this.handleChange('email', event)}
           className="form-control"
           id="email"
           type="email"
