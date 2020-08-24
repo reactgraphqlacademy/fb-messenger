@@ -1,6 +1,7 @@
 ## ReactJS Facebook messenger
 
 ## Learning objectives
+
 - Differentiate between declarative and imperative programming
 - Identify what's state and which components should hold it
 - Determine when to lift the state up
@@ -42,30 +43,38 @@ git checkout thinking-in-react
 yarn && yarn start
 ```
 
-### We recommend you to start from top to bottom, and refactor, refactor, refactor
+## 🥑 Before we start the exercise
+
+This exercise builds up on [this previous exercise](https://github.com/reactgraphqlacademy/thinking-in-react). Please make sure you've done the previosu exercise before doing this one.
+
+## 🤸‍♀️ Exercise
 
 1. Replace the “footer” HTML at the bottom of App/index.js using the src/Footer.js component.
 
-2. Refactor the topbar section by creating a functional component and pass the dependencies via props. Make sure everything works Hint: this will be similar to Modal.js
+2. Refactor the topbar section by creating a function component and pass the dependencies via props. Hint: this will be similar to Modal.js. Make sure everything works before moving on to the next step
 
 3. Create a component for “Messenger” and pass down the dependencies from App via props. Make sure everything works. You can start by making a Messenger folder with an index.js.
 
-4. Is there any state in App/index.js that should be in the Messenger component? Refactor this logic out of App/index.js and into Messenger. Then, create further functional components from the contents of Messenger and pass them down dependencies via props. Hint: Create a Threads.js file and a Chat folder with an index.js file inside the Messenger folder.
+4. Is there any state in App/index.js that should be in the Messenger component? Refactor this logic out of App/index.js and into Messenger. Then, create further function components from the contents of Messenger and pass them down dependencies via props. Hint: Create a Threads.js file and a Chat folder with an index.js file inside the Messenger folder.
 
 5. Question: Is it possible to move showModal from App/index.js down the tree? why/why not?
 
 6. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ...
 
-## Bonus exercise
+## 🏋️‍♀️ Bonus exercise
 
-Split the Chat component into the following components:
+Split the Chat component into the following component hierarchy:
 
-- ChatBar.js
-- Messages.js
-- UserDetail.js
-- index.js
+-- Chat.js
+
+---- ChatBar.js
+
+---- Messages.js
+
+-------- UserDetail.js
 
 ## Links
+
 - [Lecture: Introduction to Thinking in React](https://reactgraphql.academy/react/introduction-to-thinking-in-react/)
 - [https://reactjs.academy/blog/react-is-all-about-composition-react-hooks-render-props-hocs/#react-composition-model](https://reactjs.academy/blog/react-is-all-about-composition-react-hooks-render-props-hocs/#react-composition-model)
 - [https://reactjs.org/docs/introducing-jsx.html](https://reactjs.org/docs/introducing-jsx.html)
