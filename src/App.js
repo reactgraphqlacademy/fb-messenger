@@ -43,7 +43,7 @@ function App() {
     >
       {message.to === "you" && (
         <img
-          src={`images/${selectedUser.username}.jpg`}
+          src={`/images/${selectedUser.username}.jpg`}
           alt={`${selectedUser.username}`}
           className="avatar medium"
         />
@@ -87,7 +87,7 @@ function App() {
                 onClick={() => selectUser(user)}
               >
                 <img
-                  src={`images/${user.username}.jpg`}
+                  src={`/images/${user.username}.jpg`}
                   alt={`${user.username}`}
                   className="avatar large"
                 />
@@ -119,7 +119,8 @@ function App() {
               <div className="new-message">
                 <input
                   type="text"
-                  placeholder="Type your message..."
+                  disabled={true}
+                  placeholder="🚧 work in progress..."
                   className="message-box"
                 />
                 <button>Send</button>
@@ -130,7 +131,7 @@ function App() {
                 <div>
                   <img
                     className="avatar large"
-                    src={`images/${selectedUser.username}.jpg`}
+                    src={`/images/${selectedUser.username}.jpg`}
                     alt={`${selectedUser.username}`}
                   />
                   <div className="user-title">

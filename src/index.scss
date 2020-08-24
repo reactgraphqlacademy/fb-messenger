@@ -97,6 +97,8 @@ body {
           .list {
             padding: 1em;
             overflow-y: auto;
+            flex: 1 1 auto;
+            height: 0px;
             p {
               color: $dark-grey;
               font-size: 0.9em;
@@ -141,7 +143,9 @@ body {
             display: flex;
             justify-content: space-between;
             height: 60px;
+            display: flex;
             .message-box {
+              flex: 1;
               color: $medium-grey;
               border-color: transparent;
             }
@@ -199,6 +203,8 @@ body {
       .thread-list {
         overflow-y: auto;
         width: 100%;
+        flex: 1 1 auto;
+        height: 0px;
         list-style: none inside none;
         padding: 0;
         margin: 0;
