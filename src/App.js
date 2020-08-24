@@ -30,10 +30,6 @@ function App() {
     setShowModal(!showModal);
   }
 
-  function showSettings() {
-    toggleModal();
-  }
-
   const conversation = messages.map((message) => (
     <div
       key={message.id}
@@ -70,7 +66,7 @@ function App() {
         <div className="threads">
           <div className="thread-bar">
             <h2>
-              <a onClick={showSettings}>
+              <a onClick={toggleModal}>
                 <i className="icon fas fa-cog" />
               </a>
               Threads
