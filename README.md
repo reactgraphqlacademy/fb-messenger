@@ -57,11 +57,13 @@ This exercise builds up on [this previous exercise](https://github.com/reactgrap
 
 4. Move as much state as you can from `App` to `Messenger`.
 
-5. Break down the `<Messenger>` component inside `Messenger/index.js` into smaller components. Suggestion, Create a `Threads.js` file and a folder `Chat` with an `index.js` inside the `Messenger` folder. Move as much state as you can from `Messenger` to `Messenger/Threads.js` and `Messenger/Chat/index.js`
+5. Break down the `<Messenger>` component inside `Messenger/index.js` into smaller components for `<div className="threads">` and `<div className="chat">`. Suggestion, Create a `Threads.js` file and a folder `Chat` with an `index.js` inside the `Messenger` folder. Move as much state as you can from `Messenger` to `Messenger/Threads.js` and `Messenger/Chat/index.js`
 
-6. Question: Is it possible to move `toggleModal` from App/index.js down the tree? Why?
+6. If you look at the React Dev Tools you'll see that the entire app is rerendered everytime we toggle the modal. Is it possible to rerender fewer components in the tree when we toggle the modal? If so, implement a solution.
 
-7. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ...
+7. Everytime we call the `selectUser` function we call two useState "setter" functions: 1) `setSelectedUser` and 2) `setMessages`. Questions: A) Does it trigger two rerenders of the `<Messenger>` component? B) Should we refactor both functions and use only 1 `useState` in `<Messenger>`? Why?
+
+8. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ...
 
 ## 🏋️‍♀️ Bonus exercise
 
