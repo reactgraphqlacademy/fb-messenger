@@ -1,4 +1,4 @@
-// To simplify this app, each thread is a conversation with only 1 user
+// To simplify this app, each thread is a conversation with only 1 user. We'll use the username to identify each thread
 
 export default [
   {
