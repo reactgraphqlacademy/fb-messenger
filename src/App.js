@@ -1,29 +1,31 @@
 import React, { useState } from "react";
 import Modal from "./Layout/Modal";
 import LeanJSLogo from "./Layout/LeanJSLogo";
-import mockUsers from "./mocks/users.js"; // we'll replace this mock data with data from an API in a further exercise
+import mockUsers from "./mocks/threads.js"; // we'll replace this mock data with data from an API in a further exercise
 import mockMessages from "./mocks/messages.js"; // we'll replace this mock data with data from an API in a further exercise
 
-// helper function for the exercise
-const filterMessageByUsername = ({ username } = {}) => (message) =>
+// helper function for this exercise, you don't have to understand how this function is implemented at this point
+const filterMessageByUsername = (username) => (message) =>
   message.from === username || message.to === username;
 
-// we'll replace this mockUsers initial state with data from an API in a further exercise
-const selectedUserInitialState = mockUsers[0];
+// we'll replace this mockUsers initial state with real data in a further exercise
+const currentUsernameInitialState = mockUsers[0].username;
 
 // we'll replace this mockedMessages initial state with data from an API in a further exercise
 const messagesInitialState = mockMessages.filter(
-  filterMessageByUsername(selectedUserInitialState)
+  filterMessageByUsername(currentUsernameInitialState)
 );
 
 function App() {
   const [showModal, setShowModal] = useState();
-  const [selectedUser, setSelectedUser] = useState(selectedUserInitialState);
+  const [currentUsername, setCurrentUsername] = useState(
+    currentUsernameInitialState
+  );
   const [messages, setMessages] = useState(messagesInitialState);
 
-  function selectUser(user = {}) {
-    setSelectedUser(user);
-    setMessages(mockMessages.filter(filterMessageByUsername(user)));
+  function selectThread(user) {
+    setCurrentUsername(user.username);
+    setMessages(mockMessages.filter(filterMessageByUsername(user.username)));
   }
 
   function toggleModal() {
@@ -39,8 +41,8 @@ function App() {
     >
       {message.to === "you" && (
         <img
-          src={`/images/${selectedUser.username}.jpg`}
-          alt={`${selectedUser.username}`}
+          src={`/images/${currentUsername}.jpg`}
+          alt={`${currentUsername}`}
           className="avatar medium"
         />
       )}
@@ -66,9 +68,7 @@ function App() {
         <div className="threads">
           <div className="thread-bar">
             <h2>
-              <a onClick={toggleModal}>
-                <i className="icon fas fa-cog" />
-              </a>
+              <i className="icon fas fa-cog" />
               Threads
               <i className="icon fas fa-edit" />
             </h2>
@@ -78,9 +78,11 @@ function App() {
               <li
                 key={user.username}
                 className={
-                  selectedUser.username === user.username ? "active-thread" : ""
+                  currentUsername.username === user.username
+                    ? "active-thread"
+                    : ""
                 }
-                onClick={() => selectUser(user)}
+                onClick={() => selectThread(user)}
               >
                 <img
                   src={`/images/${user.username}.jpg`}
@@ -97,10 +99,7 @@ function App() {
         </div>
         <div className="chat">
           <div className="chat-bar">
-            <h2>
-              {selectedUser.name &&
-                `${selectedUser.name.first} ${selectedUser.name.last}`}
-            </h2>
+            <h2>{currentUsername}</h2>
             <div className="chat-menu">
               <i className="icon fas fa-phone" />
               <i className="icon fas fa-video" />
@@ -127,13 +126,13 @@ function App() {
                 <div>
                   <img
                     className="avatar large"
-                    src={`/images/${selectedUser.username}.jpg`}
-                    alt={`${selectedUser.username}`}
+                    src={`/images/${currentUsername}.jpg`}
+                    alt={`${currentUsername}`}
                   />
                   <div className="user-title">
                     <div className="user-name">
-                      {selectedUser.name &&
-                        `${selectedUser.name.first} ${selectedUser.name.last}`}
+                      {currentUsername.name &&
+                        `${currentUsername.name.first} ${currentUsername.name.last}`}
                     </div>
                     <div className="last-active">
                       Active {Math.floor(Math.random() * 3) + 1}m ago

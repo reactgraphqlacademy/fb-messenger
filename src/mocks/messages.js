@@ -1,24 +1,24 @@
 const messages = [
   {
-    from: "healthycouple",
+    from: "thehealthy",
     to: "you",
     time: "2018-02-11T12:00:00Z",
     message: "How are you feeling?",
   },
   {
-    from: "healthycouple",
+    from: "thehealthy",
     to: "you",
     time: "2018-02-11T12:00:00Z",
     message: "This course seems challenging",
   },
   {
     from: "you",
-    to: "healthycouple",
+    to: "thehealthy",
     time: "2018-02-10T11:30:00Z",
     message: "it is! but I'm determined to finish all the exercises 💪",
   },
   {
-    from: "healthycouple",
+    from: "thehealthy",
     to: "you",
     time: "2018-02-11T12:00:00Z",
     message:
@@ -56,7 +56,7 @@ const messages = [
   },
   {
     from: "you",
-    to: "healthycouple",
+    to: "thehealthy",
     time: "2018-02-10T11:30:00Z",
     message: "I will 🤗",
   },
