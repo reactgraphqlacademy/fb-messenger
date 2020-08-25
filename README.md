@@ -61,7 +61,7 @@ This exercise builds up on [this previous exercise](https://github.com/reactgrap
 
 6. If you look at the React Dev Tools you'll see that the entire app is rerendered everytime we toggle the modal. Is it possible to rerender fewer components in the tree when we toggle the modal? If so, implement a solution.
 
-7. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ...
+7. Create a Link component for the a tags in the footer. Who are the children of the Link component? Link should receive a prop called `to` that becomes the href of the <a href={to} ... Hint, you can leverage the composition model of React using `children`
 
 8. Everytime we call the `selectUser` function we call two useState "setter" functions: 1) `setCurrentUsername` and 2) `setMessages`. Questions:
    - Does `selectUser` trigger two rerenders of the `<Messenger>` component?
