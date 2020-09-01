@@ -4,8 +4,6 @@ import mockMessages from "../mocks/messages.js"; // we'll replace this mock data
 import mockThreads from "../mocks/threads.js"; // we'll replace this mock data with data from an API in a further exercise
 import Threads from "./Threads";
 
-// currentThread
-
 // we'll replace this mockThreads initial state with data from an API in a further exercise
 const selectedUserInitialState = mockThreads[0];
 
@@ -13,37 +11,25 @@ const selectedUserInitialState = mockThreads[0];
 const filterMessageByUsername = ({ username } = {}) => (message) =>
   message.from === username || message.to === username;
 
-function Messenger() {
-  // TODO MOVE THIS OUTSIDE THE RENDER AND SHOW WHY
-  const messagesInitialState = mockMessages.filter(
-    filterMessageByUsername(selectedUserInitialState)
-  );
+const messagesInitialState = mockMessages.filter(
+  filterMessageByUsername(selectedUserInitialState)
+);
 
+function Messenger() {
   const [currentThread, setSelectedUser] = useState(selectedUserInitialState);
   const [messages, setMessages] = useState(messagesInitialState);
-  //   const [{ currentThread, messages }, setState] = useState({
-  //     currentThread: selectedUserInitialState,
-  //     messages: messagesInitialState,
-  //   });
 
   function selectThread(user = {}) {
     setSelectedUser(user);
     setMessages(mockMessages.filter(filterMessageByUsername(user)));
   }
 
-  //   function selectThread(user = {}) {
-  //     setState({
-  //       currentThread: user,
-  //       messages: mockMessages.filter(filterMessageByUsername(user)),
-  //     });
-  //   }
-
   const conversation = messages.map((message) => (
     <div
       key={message.id}
       className={`message-wrapper ${
         message.from === "you" ? "sent" : "received"
-      }`}
+        }`}
     >
       {message.to === "you" && (
         <img
