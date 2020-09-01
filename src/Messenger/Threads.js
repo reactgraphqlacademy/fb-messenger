@@ -1,6 +1,7 @@
 import React from "react";
+import mockThreads from "../mocks/threads.js"; // we'll replace this mock data with data from an API in a further exercise
 
-function Threads({ threadList, selectThread, currentThread }) {
+function Threads({ selectThread, currentUsername }) {
   return (
     <div className="threads">
       <div className="thread-bar">
@@ -11,11 +12,11 @@ function Threads({ threadList, selectThread, currentThread }) {
         </h2>
       </div>
       <ul className="thread-list">
-        {threadList.map((user) => (
+        {mockThreads.map((user) => (
           <li
             key={user.username}
             className={
-              currentThread.username === user.username ? "active-thread" : ""
+              currentUsername === user.username ? "active-thread" : ""
             }
             onClick={() => selectThread(user)}
           >

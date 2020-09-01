@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 
 import mockMessages from "../mocks/messages.js"; // we'll replace this mock data with data from an API in a further exercise
-import mockThreads from "../mocks/threads.js"; // we'll replace this mock data with data from an API in a further exercise
 import Threads from "./Threads";
 
-// we'll replace this mockThreads initial state with data from an API in a further exercise
-const selectedUserInitialState = mockThreads[0];
-
-// helper function for the exercise
-const filterMessageByUsername = ({ username } = {}) => (message) =>
+// helper function for this exercise. You don't have to understand how this function is implemented at this point
+const filterMessageByUsername = (username) => (message) =>
   message.from === username || message.to === username;
 
+// we'll replace this initial state with a real implementation in the next unit
+const currentUsernameInitialState = "thetraveler";
+
+// we'll replace this mockedMessages initial state with data from an API in the next unit
 const messagesInitialState = mockMessages.filter(
-  filterMessageByUsername(selectedUserInitialState)
+  filterMessageByUsername(currentUsernameInitialState)
 );
 
 function Messenger() {
-  const [currentThread, setSelectedUser] = useState(selectedUserInitialState);
+  const [currentUsername, setCurrentUsername] = useState(
+    currentUsernameInitialState
+  );
   const [messages, setMessages] = useState(messagesInitialState);
 
   function selectThread(user = {}) {
-    setSelectedUser(user);
-    setMessages(mockMessages.filter(filterMessageByUsername(user)));
+    setCurrentUsername(user.username);
+    setMessages(mockMessages.filter(filterMessageByUsername(user.username)));
   }
 
   const conversation = messages.map((message) => (
@@ -33,8 +35,8 @@ function Messenger() {
     >
       {message.to === "you" && (
         <img
-          src={`/images/${currentThread.username}.jpg`}
-          alt={`${currentThread.username}`}
+          src={`/images/${currentUsername}.jpg`}
+          alt={`${currentUsername}`}
           className="avatar medium"
         />
       )}
@@ -51,14 +53,12 @@ function Messenger() {
     <div className="messenger">
       <Threads
         selectThread={selectThread}
-        threadList={mockThreads}
-        currentThread={currentThread}
+        currentUsername={currentUsername}
       />
       <div className="chat">
         <div className="chat-bar">
           <h2>
-            {currentThread.name &&
-              `${currentThread.name.first} ${currentThread.name.last}`}
+            {currentUsername}
           </h2>
           <div className="chat-menu">
             <i className="icon fas fa-phone" />
@@ -86,13 +86,12 @@ function Messenger() {
               <div>
                 <img
                   className="avatar large"
-                  src={`/images/${currentThread.username}.jpg`}
-                  alt={`${currentThread.username}`}
+                  src={`/images/${currentUsername}.jpg`}
+                  alt={currentUsername}
                 />
                 <div className="user-title">
                   <div className="user-name">
-                    {currentThread.name &&
-                      `${currentThread.name.first} ${currentThread.name.last}`}
+                    {currentUsername}
                   </div>
                   <div className="last-active">
                     Active {Math.floor(Math.random() * 3) + 1}m ago

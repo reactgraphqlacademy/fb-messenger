@@ -1,24 +1,26 @@
-const messages = [
+// Mock data for the chat
+
+export default [
   {
-    from: "healthycouple",
+    from: "thehealthy",
     to: "you",
     time: "2018-02-11T12:00:00Z",
     message: "How are you feeling?",
   },
   {
-    from: "healthycouple",
+    from: "thehealthy",
     to: "you",
     time: "2018-02-11T12:00:00Z",
     message: "This course seems challenging",
   },
   {
     from: "you",
-    to: "healthycouple",
+    to: "thehealthy",
     time: "2018-02-10T11:30:00Z",
     message: "it is! but I'm determined to finish all the exercises 💪",
   },
   {
-    from: "healthycouple",
+    from: "thehealthy",
     to: "you",
     time: "2018-02-11T12:00:00Z",
     message:
@@ -56,7 +58,7 @@ const messages = [
   },
   {
     from: "you",
-    to: "healthycouple",
+    to: "thehealthy",
     time: "2018-02-10T11:30:00Z",
     message: "I will 🤗",
   },
@@ -71,7 +73,7 @@ const messages = [
     from: "thedancer",
     time: "2017-12-10T11:33:00Z",
     message:
-      "It's wonderful to be in tune with your code, but don't forget to enjoy coding 💃🕺",
+      "It's wonderful to be in tune with your code, but don't forget to enjoy coding and have fun 💃🕺",
   },
   {
     from: "you",
@@ -111,5 +113,3 @@ const messages = [
     message: "got it, let's do it!",
   },
 ];
-
-export default messages;

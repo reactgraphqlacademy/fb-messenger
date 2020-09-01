@@ -1,4 +1,6 @@
-const users = [
+// To simplify this app, each thread is a conversation with only 1 user. We'll use the username to identify each thread
+
+export default [
   {
     name: {
       first: "The",
@@ -17,10 +19,10 @@ const users = [
   },
   {
     name: {
-      first: "Healthy",
-      last: "couple",
+      first: "The",
+      last: "Healthy",
     },
-    username: "healthycouple",
+    username: "thehealthy",
     lastMessage: "I will 🤗",
   },
   {
@@ -32,5 +34,3 @@ const users = [
     lastMessage: "I hear you 🤹‍♀️🎼",
   },
 ];
-
-export default users;
