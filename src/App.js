@@ -4,7 +4,7 @@ import LeanJSLogo from "./Layout/LeanJSLogo";
 import mockUsers from "./mocks/threads"; // we'll replace this mock data with data from an API in a further exercise
 import mockMessages from "./mocks/messages"; // we'll replace this mock data with data from an API in a further exercise
 
-// helper function for this exercise, you don't have to understand how this function is implemented at this point
+// helper function for this exercise. You don't have to understand how this function is implemented at this point
 const filterMessageByUsername = (username) => (message) =>
   message.from === username || message.to === username;
 
