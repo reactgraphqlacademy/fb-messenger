@@ -37,7 +37,7 @@ function App() {
       key={message.id}
       className={`message-wrapper ${
         message.from === "you" ? "sent" : "received"
-      }`}
+        }`}
     >
       {message.to === "you" && (
         <img
