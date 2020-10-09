@@ -30,7 +30,7 @@ If you haven't already set up your project, head here and follow the instruction
 ### Step 2
 
 ```sh
- git checkout graphql-apollo && cd graphql-apollo && npm i && npm start
+ git checkout graphql-apollo && npm i && npm start
 ```
 
 ## Exercise part 1
